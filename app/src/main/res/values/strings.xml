@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Pocket Mode</string>
+
+    <string name="settings">Settings</string>
+    <string name="settings_lock_screen_delay_description">The delay before locking screen after covering proximity sensor:</string>
+    <string name="settings_lock_screen_delay_cur">Current delay is %d ms.</string>
+
+    <string name="help_code">Contribute on GitHub</string>
+    <string name="help_bug_report">Send bug report</string>
+    <string name="help_translate">Translate to your language</string>
+    <string name="help_donate">Donate to me</string>
+
+    <string name="about">About</string>
+    <string name="about_description">Pocket Mode is a free simple utility app with a single goal: prevent accidental touches while the device is in pocket. \n\nApp accomplishes this goal by turning the screen off after proximity sensor has been covered for some time.</string>
+
+    <string name="notification_pocket_channel">Pocket mode service notification</string>
+    <string name="notification_pocket_title">Pocket mode is running</string>
+    <string name="notification_pocket_description">Long press the notification and hide it, if you don\'t want to see it constantly.</string>
+
+    <string name="coming_soon">Coming soon</string>
+    <string name="ms">%d ms.</string>
+
+    <string name="accessibility_service_title">Pocket Mode</string>
+    <string name="accessibility_event_screen_locked">Screen locked</string>
+
+    <string name="accessibility_why_title">Grant accessibility service access</string>
+    <string name="accessibility_why_description">Pocket Mode uses accessibility service to send the command
+        that locks the screen.
+        \n\nIf you want to use this app, you\'ll have to grant the privileges
+        manually in the next screen.
+    </string>
+
+</resources>
