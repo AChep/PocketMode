@@ -8,13 +8,15 @@ import android.widget.SeekBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.browser.customtabs.CustomTabsIntent
+import androidx.core.view.isGone
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.afollestad.materialdialogs.MaterialDialog
 import com.artemchep.pocketmode.R
-import com.artemchep.pocketmode.models.`fun`.Either
+import com.artemchep.pocketmode.util.ObserverConsumer
 import com.artemchep.pocketmode.viewmodels.MainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.layout_access.*
+import kotlinx.android.synthetic.main.layout_main.*
 
 
 /**
@@ -23,6 +25,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     companion object {
         private const val DD = 100
+
+        private const val RC_RUNTIME_PERMISSIONS = 100
     }
 
     private val mainViewModel by lazy {
@@ -64,7 +68,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
             // Revert to old state of the switch, because we can not
             // change the state from the view.
-            switch.isChecked = mainViewModel.masterSwitchLiveData.value!!
+            switch.isChecked = mainViewModel.masterSwitchIsCheckedLiveData.value!!
 
             // Ask the view model to change the state.
             mainViewModel.setMasterSwitchEnabled(isChecked)
@@ -73,6 +77,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         }
 
         toolbar.setOnClickListener(this)
+        accessibilityServiceBtn.setOnClickListener(this)
+        callStateBtn.setOnClickListener(this)
         codeBtn.setOnClickListener(this)
         donateBtn.setOnClickListener(this)
         bugReportBtn.setOnClickListener(this)
@@ -87,37 +93,42 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             lockScreenDelaySeekBar.progress = it.toInt() / DD
             bindLockScreenDelay(it)
         })
-        masterSwitchLiveData.observe(this@MainActivity, Observer {
+        masterSwitchIsCheckedLiveData.observe(this@MainActivity, Observer {
             isMasterSwitchBroadcasting = true
             masterSwitch.isChecked = it
             isMasterSwitchBroadcasting = false
         })
-        openAccessibilityLiveData.observe(this@MainActivity, Observer {
-            val v = it.consume()
-            if (v is Either.Right) {
-                openAccessibilitySettings()
-            }
+        // Permissions
+        isAccessibilityGranted.observe(this@MainActivity, Observer {
+            accessibilityServiceBtn.isGone = it
         })
-        openUrlLiveData.observe(this@MainActivity, Observer {
-            val v = it.consume()
-            if (v is Either.Right) {
-                openUrl(v.b.url)
-            }
+        isReadPhoneCallGranted.observe(this@MainActivity, Observer {
+            callStateBtn.isGone = it
+        })
+        isAllGranted.observe(this@MainActivity, Observer {
+            toolbar.isEnabled = it
+            masterSwitch.isEnabled = it
+            accessContainer.isGone = it
+        })
+        // Events
+        openAccessibilityLiveData.observe(this@MainActivity, ObserverConsumer {
+            openAccessibilitySettings()
+        })
+        openRuntimePermissionLiveData.observe(this@MainActivity, ObserverConsumer {
+            openRuntimePermissions(it.permissions)
+        })
+        openUrlLiveData.observe(this@MainActivity, ObserverConsumer {
+            openUrl(it.url)
         })
     }
 
     private fun openAccessibilitySettings() {
-        MaterialDialog(this).show {
-            title(res = R.string.accessibility_why_title)
-            message(res = R.string.accessibility_why_description)
+        val intent = Intent(android.provider.Settings.ACTION_ACCESSIBILITY_SETTINGS)
+        startActivity(intent)
+    }
 
-            // Open accessibility settings on positive button text.
-            positiveButton(res = android.R.string.ok)
-            positiveButton {
-                val intent = Intent(android.provider.Settings.ACTION_ACCESSIBILITY_SETTINGS)
-                startActivity(intent)
-            }
-        }
+    private fun openRuntimePermissions(permissions: List<String>) {
+        requestPermissions(permissions.toTypedArray(), RC_RUNTIME_PERMISSIONS)
     }
 
     private fun openUrl(url: String) {
@@ -137,17 +148,21 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(view: View) {
         when (view.id) {
             R.id.toolbar -> masterSwitch.isChecked = !masterSwitch.isChecked
+            R.id.lockScreenDelayResetBtn -> mainViewModel.setLockScreenDelay()
+            // Help
             R.id.donateBtn -> {
                 val message = getString(R.string.coming_soon)
                 Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
             }
-            R.id.lockScreenDelayResetBtn -> mainViewModel.setLockScreenDelay()
             R.id.codeBtn -> mainViewModel.openRepo()
             R.id.bugReportBtn -> mainViewModel.openBugReport()
             R.id.translateBtn -> {
                 val message = getString(R.string.coming_soon)
                 Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
             }
+            // Permissions
+            R.id.accessibilityServiceBtn -> mainViewModel.grantAccessibilityService()
+            R.id.callStateBtn -> mainViewModel.grantCallState()
         }
     }
 

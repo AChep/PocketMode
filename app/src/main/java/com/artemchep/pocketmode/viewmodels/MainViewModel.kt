@@ -1,7 +1,9 @@
 package com.artemchep.pocketmode.viewmodels
 
+import android.Manifest
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import com.artemchep.pocketmode.Cfg
 import com.artemchep.pocketmode.LINK_BUG_REPORT
@@ -11,8 +13,11 @@ import com.artemchep.pocketmode.ext.context
 import com.artemchep.pocketmode.ext.isAccessibilityServiceEnabled
 import com.artemchep.pocketmode.models.events.Event
 import com.artemchep.pocketmode.models.events.OpenAccessibilityEvent
+import com.artemchep.pocketmode.models.events.OpenRuntimePermissionsEvent
 import com.artemchep.pocketmode.models.events.OpenUrlEvent
-import com.artemchep.pocketmode.sensors.ConfigIsEnabledLiveData
+import com.artemchep.pocketmode.sensors.AccessAccessibilityLiveData
+import com.artemchep.pocketmode.sensors.AccessRuntimeLiveData
+import com.artemchep.pocketmode.sensors.ConfigIsCheckedLiveData
 import com.artemchep.pocketmode.sensors.ConfigLockScreenDelayLiveData
 
 /**
@@ -20,11 +25,44 @@ import com.artemchep.pocketmode.sensors.ConfigLockScreenDelayLiveData
  */
 class MainViewModel(application: Application) : AndroidViewModel(application) {
 
-    val masterSwitchLiveData = ConfigIsEnabledLiveData()
+    val masterSwitchIsCheckedLiveData = ConfigIsCheckedLiveData()
 
     val lockScreenDelayLiveData = ConfigLockScreenDelayLiveData()
 
+    // ---- Permissions ----
+
+    val isAccessibilityGranted = AccessAccessibilityLiveData(context)
+
+    private val readPhoneCallStatePermissions = listOf(Manifest.permission.READ_PHONE_STATE)
+
+    val isReadPhoneCallGranted = MediatorLiveData<Boolean>()
+        .apply {
+            val src = AccessRuntimeLiveData(context, readPhoneCallStatePermissions)
+            addSource(src) {
+                val isGranted = it.isEmpty()
+                postValue(isGranted)
+            }
+        }
+
+    val isAllGranted = MediatorLiveData<Boolean>()
+        .apply {
+            val resolver: (Any) -> Unit = {
+                val isAccessibilityGranted = isAccessibilityGranted.value ?: false
+                val isReadPhoneCallGranted = isReadPhoneCallGranted.value ?: false
+
+                val isAllGranted = isAccessibilityGranted && isReadPhoneCallGranted
+                postValue(isAllGranted)
+            }
+
+            addSource(isAccessibilityGranted, resolver)
+            addSource(isReadPhoneCallGranted, resolver)
+        }
+
+    // ---- Events ----
+
     val openAccessibilityLiveData = MutableLiveData<Event<OpenAccessibilityEvent>>()
+
+    val openRuntimePermissionLiveData = MutableLiveData<Event<OpenRuntimePermissionsEvent>>()
 
     val openUrlLiveData = MutableLiveData<Event<OpenUrlEvent>>()
 
@@ -32,16 +70,13 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
      * Turns the master switch on and
      * off.
      */
-    fun setMasterSwitchEnabled(isEnabled: Boolean = !masterSwitchLiveData.value!!) {
+    fun setMasterSwitchEnabled(isEnabled: Boolean = !masterSwitchIsCheckedLiveData.value!!) {
         if (isEnabled) {
-            if (context.isAccessibilityServiceEnabled()) {
+            if (isAllGranted.value == true) {
                 // Enable the pocket service.
                 Cfg.edit(context) {
                     Cfg.isEnabled = true
                 }
-            } else {
-                val event = Event(OpenAccessibilityEvent)
-                openAccessibilityLiveData.postValue(event)
             }
         } else {
             // Disable the pocket service.
@@ -66,6 +101,18 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     private fun openUrl(url: String) {
         val event = Event(OpenUrlEvent(url))
         openUrlLiveData.postValue(event)
+    }
+
+    // ---- Permissions ----
+
+    fun grantAccessibilityService() {
+        val event = Event(OpenAccessibilityEvent)
+        openAccessibilityLiveData.postValue(event)
+    }
+
+    fun grantCallState() {
+        val event = Event(OpenRuntimePermissionsEvent(readPhoneCallStatePermissions))
+        openRuntimePermissionLiveData.postValue(event)
     }
 
 }

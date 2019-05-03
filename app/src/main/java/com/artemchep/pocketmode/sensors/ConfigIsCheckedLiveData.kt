@@ -5,7 +5,7 @@ import com.artemchep.pocketmode.Cfg
 /**
  * @author Artem Chepurnoy
  */
-class ConfigIsEnabledLiveData : ConfigLiveData<Boolean>(Cfg.KEY_ENABLED) {
+class ConfigIsCheckedLiveData : ConfigBaseLiveData<Boolean>(Cfg.KEY_ENABLED) {
 
     override fun updateValue() {
         val isEnabled = Cfg.isEnabled

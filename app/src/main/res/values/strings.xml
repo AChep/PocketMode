@@ -5,6 +5,10 @@
     <string name="settings_lock_screen_delay_description">The delay before locking screen after covering proximity sensor:</string>
     <string name="settings_lock_screen_delay_cur">Current delay is %d ms.</string>
 
+    <string name="access">Permissions</string>
+    <string name="access_accessibility_service">Pocket Mode uses accessibility service to send the command that locks the screen. Tap to grant accessibility service privileges</string>
+    <string name="access_runtime_call_state">Pocket Mode reads call state to not turn screen off while call is active. Tap to grant call state privileges</string>
+
     <string name="help_code">Contribute on GitHub</string>
     <string name="help_bug_report">Send bug report</string>
     <string name="help_translate">Translate to your language</string>

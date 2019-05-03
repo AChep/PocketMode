@@ -7,7 +7,7 @@ import com.artemchep.pocketmode.Cfg
 /**
  * @author Artem Chepurnoy
  */
-abstract class ConfigLiveData<T>(private val key: String) : LiveData<T>() {
+abstract class ConfigBaseLiveData<T>(private val key: String) : LiveData<T>() {
 
     private val configObserver = object : Config.OnConfigChangedListener<String> {
         override fun onConfigChanged(keys: Set<String>) {
