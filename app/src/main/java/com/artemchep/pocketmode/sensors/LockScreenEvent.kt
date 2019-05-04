@@ -29,6 +29,8 @@ class LockScreenEvent(
 ) : MediatorLiveData<Event<LockScreenEvent>>(), CoroutineScope {
     companion object {
         private const val TAG = "LockScreenEvent"
+
+        private const val DELAY_BEFORE_LOCK_SCREEN = 100L // ms.
     }
 
     override val coroutineContext: CoroutineContext
@@ -157,8 +159,9 @@ class LockScreenEvent(
         }
 
         sendLockScreenEventJob = launch {
+            delay(DELAY_BEFORE_LOCK_SCREEN)
             sendBeforeLockScreenEvent()
-            delay(Cfg.lockScreenDelay)
+            delay(Cfg.lockScreenDelay - DELAY_BEFORE_LOCK_SCREEN)
             sendOnLockScreenEvent()
         }
     }
