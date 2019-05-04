@@ -99,7 +99,7 @@
         tools:text="@string/settings_lock_screen_delay_cur" />
 
     <TextView
-        android:id="@+id/aboutDivider"
+        android:id="@+id/vibrateOnBeforeLockScreenDivider"
         android:layout_width="0dp"
         android:layout_height="1dp"
         android:layout_marginTop="24dp"
@@ -107,6 +107,33 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/lockScreenDelayCur" />
+
+    <Switch
+        android:id="@+id/vibrateOnBeforeLockScreenCheckBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:foreground="?selectableItemBackground"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:text="@string/settings_vibrate_before_locking"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textColor="?android:textColorPrimary"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/vibrateOnBeforeLockScreenDivider" />
+
+    <TextView
+        android:id="@+id/aboutDivider"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        android:background="?dividerHorizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/vibrateOnBeforeLockScreenCheckBox" />
 
     <TextView
         android:id="@+id/about"

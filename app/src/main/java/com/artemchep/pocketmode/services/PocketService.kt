@@ -6,8 +6,6 @@ import android.app.NotificationManager
 import android.app.Service
 import android.content.Intent
 import android.os.IBinder
-import android.os.VibrationEffect
-import android.os.Vibrator
 import android.view.accessibility.AccessibilityManager
 import androidx.core.app.NotificationCompat
 import androidx.core.content.getSystemService
@@ -15,6 +13,7 @@ import androidx.lifecycle.Observer
 import com.artemchep.config.Config
 import com.artemchep.pocketmode.Cfg
 import com.artemchep.pocketmode.R
+import com.artemchep.pocketmode.ext.vibrateOneShot
 import com.artemchep.pocketmode.models.`fun`.Either
 import com.artemchep.pocketmode.models.events.BeforeLockScreen
 import com.artemchep.pocketmode.models.events.Event
@@ -62,10 +61,11 @@ class PocketService : Service() {
     }
 
     private fun beforeLockScreen() {
-        val vibrator = getSystemService<Vibrator>()
-        val effect =
-            VibrationEffect.createOneShot(VIBRATE_DURATION, VibrationEffect.DEFAULT_AMPLITUDE)
-        vibrator?.vibrate(effect)
+        // Vibrate slightly when the proximity sensor
+        // detects 'near'.
+        if (Cfg.vibrateOnBeforeLockScreen) {
+            vibrateOneShot(VIBRATE_DURATION)
+        }
     }
 
     override fun onCreate() {

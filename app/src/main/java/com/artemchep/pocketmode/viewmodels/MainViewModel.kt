@@ -10,15 +10,11 @@ import com.artemchep.pocketmode.LINK_BUG_REPORT
 import com.artemchep.pocketmode.LINK_REPOSITORY
 import com.artemchep.pocketmode.LINK_TRANSLATE
 import com.artemchep.pocketmode.ext.context
-import com.artemchep.pocketmode.ext.isAccessibilityServiceEnabled
 import com.artemchep.pocketmode.models.events.Event
 import com.artemchep.pocketmode.models.events.OpenAccessibilityEvent
 import com.artemchep.pocketmode.models.events.OpenRuntimePermissionsEvent
 import com.artemchep.pocketmode.models.events.OpenUrlEvent
-import com.artemchep.pocketmode.sensors.AccessAccessibilityLiveData
-import com.artemchep.pocketmode.sensors.AccessRuntimeLiveData
-import com.artemchep.pocketmode.sensors.ConfigIsCheckedLiveData
-import com.artemchep.pocketmode.sensors.ConfigLockScreenDelayLiveData
+import com.artemchep.pocketmode.sensors.*
 
 /**
  * @author Artem Chepurnoy
@@ -26,6 +22,8 @@ import com.artemchep.pocketmode.sensors.ConfigLockScreenDelayLiveData
 class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     val masterSwitchIsCheckedLiveData = ConfigIsCheckedLiveData()
+
+    val vibrateBeforeLockingSwitchIsCheckedLiveData = ConfigVibrateBeforeIsCheckedLiveData()
 
     val lockScreenDelayLiveData = ConfigLockScreenDelayLiveData()
 
@@ -83,6 +81,12 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             Cfg.edit(context) {
                 Cfg.isEnabled = false
             }
+        }
+    }
+
+    fun setVibrateOnBeforeLockScreen(vibrateOnBeforeLockScreen: Boolean = Cfg.DEFAULT_VIBRATE_ON_BEFORE_LOCK_SCREEN) {
+        Cfg.edit(context) {
+            Cfg.vibrateOnBeforeLockScreen = vibrateOnBeforeLockScreen
         }
     }
 

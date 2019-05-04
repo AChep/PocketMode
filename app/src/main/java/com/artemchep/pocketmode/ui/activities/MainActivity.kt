@@ -35,6 +35,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     private var isMasterSwitchBroadcasting = false
 
+    private var isVibrateOnBeforeLockScreenSwitchBroadcasting = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -76,6 +78,23 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             isMasterSwitchBroadcasting = false
         }
 
+        vibrateOnBeforeLockScreenCheckBox.setOnCheckedChangeListener { switch, isChecked ->
+            if (isVibrateOnBeforeLockScreenSwitchBroadcasting) {
+                return@setOnCheckedChangeListener
+            }
+
+            isVibrateOnBeforeLockScreenSwitchBroadcasting = true
+
+            // Revert to old state of the switch, because we can not
+            // change the state from the view.
+            switch.isChecked = mainViewModel.vibrateBeforeLockingSwitchIsCheckedLiveData.value!!
+
+            // Ask the view model to change the state.
+            mainViewModel.setVibrateOnBeforeLockScreen(isChecked)
+
+            isVibrateOnBeforeLockScreenSwitchBroadcasting = false
+        }
+
         toolbar.setOnClickListener(this)
         accessibilityServiceBtn.setOnClickListener(this)
         callStateBtn.setOnClickListener(this)
@@ -97,6 +116,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             isMasterSwitchBroadcasting = true
             masterSwitch.isChecked = it
             isMasterSwitchBroadcasting = false
+        })
+        vibrateBeforeLockingSwitchIsCheckedLiveData.observe(this@MainActivity, Observer {
+            isVibrateOnBeforeLockScreenSwitchBroadcasting = true
+            vibrateOnBeforeLockScreenCheckBox.isChecked = it
+            isVibrateOnBeforeLockScreenSwitchBroadcasting = false
         })
         // Permissions
         isAccessibilityGranted.observe(this@MainActivity, Observer {

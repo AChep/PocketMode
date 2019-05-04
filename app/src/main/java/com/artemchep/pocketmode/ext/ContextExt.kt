@@ -4,6 +4,8 @@ import android.app.KeyguardManager
 import android.content.Context
 import android.hardware.display.DisplayManager
 import android.os.PowerManager
+import android.os.VibrationEffect
+import android.os.Vibrator
 import android.view.Display
 import android.view.accessibility.AccessibilityManager
 import androidx.core.content.getSystemService
@@ -60,3 +62,8 @@ fun Context.isScreenOn(): Boolean {
 fun Context.isAccessibilityServiceEnabled(): Boolean =
     getSystemService<AccessibilityManager>()?.isEnabled ?: false
 
+fun Context.vibrateOneShot(time: Long) {
+    val vibrator = getSystemService<Vibrator>()
+    val effect = VibrationEffect.createOneShot(time, VibrationEffect.DEFAULT_AMPLITUDE)
+    vibrator?.vibrate(effect)
+}
