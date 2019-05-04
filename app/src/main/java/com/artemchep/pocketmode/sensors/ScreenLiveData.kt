@@ -41,10 +41,17 @@ class ScreenLiveData(
     }
 
     private fun updateScreenState() {
-        val screen = when (context.isScreenOn()) {
+        val screen = value
+        postValue(screen)
+    }
+
+    /**
+     * It does not store the screen state, it
+     * retrieves it every time.
+     */
+    override fun getValue(): Screen =
+        when (context.isScreenOn()) {
             true -> Screen.On
             false -> Screen.Off
         }
-        postValue(screen)
-    }
 }

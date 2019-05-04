@@ -160,6 +160,15 @@ class LockScreenEvent(
 
         sendLockScreenEventJob = launch {
             delay(DELAY_BEFORE_LOCK_SCREEN)
+
+            // This is a small hack to answer Android's slow updating of the
+            // screen's state. Screen can be off, but no broadcast about it received yet.
+            //
+            // Otherwise it would be useless.
+            if (screenLiveData.value != Screen.On) {
+                return@launch
+            }
+
             sendBeforeLockScreenEvent()
             delay(Cfg.lockScreenDelay - DELAY_BEFORE_LOCK_SCREEN)
             sendOnLockScreenEvent()
