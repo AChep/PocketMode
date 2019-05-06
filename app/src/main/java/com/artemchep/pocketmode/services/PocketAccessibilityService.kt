@@ -3,7 +3,9 @@ package com.artemchep.pocketmode.services
 import android.accessibilityservice.AccessibilityService
 import android.content.Context
 import android.view.accessibility.AccessibilityEvent
+import com.artemchep.pocketmode.INTENT_ACCESSIBILITY_CHANGED
 import com.artemchep.pocketmode.R
+import com.artemchep.pocketmode.sendLocalBroadcast
 
 /**
  * @author Artem Chepurnoy
@@ -36,6 +38,16 @@ class PocketAccessibilityService : AccessibilityService() {
     /** Sends the "lock screen" command */
     private fun lockScreen() {
         performGlobalAction(GLOBAL_ACTION_LOCK_SCREEN)
+    }
+
+    override fun onCreate() {
+        super.onCreate()
+        sendLocalBroadcast(INTENT_ACCESSIBILITY_CHANGED)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        sendLocalBroadcast(INTENT_ACCESSIBILITY_CHANGED)
     }
 
     override fun onInterrupt() {

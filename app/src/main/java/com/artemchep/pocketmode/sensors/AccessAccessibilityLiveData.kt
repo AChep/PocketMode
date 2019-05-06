@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.IntentFilter
 import androidx.lifecycle.LiveData
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
+import com.artemchep.pocketmode.INTENT_ACCESSIBILITY_CHANGED
 import com.artemchep.pocketmode.ext.isAccessibilityServiceEnabled
 
 /**
@@ -26,8 +27,7 @@ class AccessAccessibilityLiveData(
         // Register an observer.
         val intentFilter = IntentFilter()
             .apply {
-                addAction(Intent.ACTION_SCREEN_OFF)
-                addAction(Intent.ACTION_SCREEN_ON)
+                addAction(INTENT_ACCESSIBILITY_CHANGED)
             }
         val lbm = LocalBroadcastManager.getInstance(context)
         lbm.registerReceiver(broadcastReceiver, intentFilter)

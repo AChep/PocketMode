@@ -11,7 +11,10 @@ import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.view.isGone
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.artemchep.pocketmode.INTENT_ACCESSIBILITY_CHANGED
+import com.artemchep.pocketmode.INTENT_RUNTIME_PERMISSIONS_CHANGED
 import com.artemchep.pocketmode.R
+import com.artemchep.pocketmode.sendLocalBroadcast
 import com.artemchep.pocketmode.util.ObserverConsumer
 import com.artemchep.pocketmode.viewmodels.MainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
@@ -27,6 +30,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         private const val DD = 100
 
         private const val RC_RUNTIME_PERMISSIONS = 100
+        private const val RC_ACCESSIBILITY = 200
     }
 
     private val mainViewModel by lazy {
@@ -148,7 +152,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun openAccessibilitySettings() {
         val intent = Intent(android.provider.Settings.ACTION_ACCESSIBILITY_SETTINGS)
-        startActivity(intent)
+        startActivityForResult(intent, RC_ACCESSIBILITY)
     }
 
     private fun openRuntimePermissions(permissions: List<String>) {
@@ -188,6 +192,22 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.accessibilityServiceBtn -> mainViewModel.grantAccessibilityService()
             R.id.callStateBtn -> mainViewModel.grantCallState()
         }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        when (requestCode) {
+            RC_ACCESSIBILITY -> sendLocalBroadcast(INTENT_ACCESSIBILITY_CHANGED)
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        sendLocalBroadcast(INTENT_RUNTIME_PERMISSIONS_CHANGED)
     }
 
 }

@@ -8,6 +8,8 @@ import android.content.pm.PackageManager
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.LiveData
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
+import com.artemchep.pocketmode.INTENT_ACCESSIBILITY_CHANGED
+import com.artemchep.pocketmode.INTENT_RUNTIME_PERMISSIONS_CHANGED
 
 /**
  * @author Artem Chepurnoy
@@ -28,8 +30,7 @@ class AccessRuntimeLiveData(
         // Register an observer.
         val intentFilter = IntentFilter()
             .apply {
-                addAction(Intent.ACTION_SCREEN_OFF)
-                addAction(Intent.ACTION_SCREEN_ON)
+                addAction(INTENT_RUNTIME_PERMISSIONS_CHANGED)
             }
         val lbm = LocalBroadcastManager.getInstance(context)
         lbm.registerReceiver(broadcastReceiver, intentFilter)
