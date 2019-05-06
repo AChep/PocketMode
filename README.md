@@ -2,7 +2,7 @@ Pocket Mode
 ==========
 
 <img alt="Main screen" align="right" height="400"
-   src="https://github.com/AChep/PocketMode/raw/master/screenshots/screenshot.jpg" />
+   src="https://github.com/AChep/PocketMode/raw/master/screenshots/screenshot.png" />
 
 *Pocket Mode is an Android app that locks your phone when you hover the proximity sensor.*
 
