@@ -30,6 +30,17 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/troubleshootingContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="0dp">
+
+                <include layout="@layout/layout_troubleshooting" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
                 android:id="@+id/mainContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -56,8 +67,8 @@
 
             <View
                 android:layout_width="match_parent"
-                android:alpha="0.8"
                 android:layout_height="match_parent"
+                android:alpha="0.8"
                 android:background="@drawable/bg_toolbar" />
 
             <TextView

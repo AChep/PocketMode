@@ -10,6 +10,9 @@
     <string name="access_accessibility_service">Pocket Mode uses accessibility service to send the command that locks the screen. Tap to grant accessibility service privileges</string>
     <string name="access_runtime_call_state">Pocket Mode reads call state to not turn screen off while call is active. Tap to grant call state privileges</string>
 
+    <string name="troubleshoot">Troubleshooting</string>
+    <string name="troubleshoot_reboot">Reboot the device, if it doesn\'t lock the screen after giving required permissions and enabling the service</string>
+
     <string name="help_code">Contribute on GitHub</string>
     <string name="help_bug_report">Send bug report</string>
     <string name="help_translate">Translate to your language</string>
