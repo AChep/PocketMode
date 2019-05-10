@@ -52,8 +52,13 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="@dimen/actionBarSize"
-            android:background="@drawable/bg_toolbar"
             android:foreground="?selectableItemBackground">
+
+            <View
+                android:layout_width="match_parent"
+                android:alpha="0.8"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_toolbar" />
 
             <TextView
                 android:layout_width="wrap_content"

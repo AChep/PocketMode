@@ -1,6 +1,7 @@
 package com.artemchep.pocketmode.ui.activities
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
@@ -14,6 +15,8 @@ import androidx.lifecycle.ViewModelProviders
 import com.artemchep.pocketmode.INTENT_ACCESSIBILITY_CHANGED
 import com.artemchep.pocketmode.INTENT_RUNTIME_PERMISSIONS_CHANGED
 import com.artemchep.pocketmode.R
+import com.artemchep.pocketmode.ext.setStatusBarColor
+import com.artemchep.pocketmode.models.events.StatusBarColor
 import com.artemchep.pocketmode.sendLocalBroadcast
 import com.artemchep.pocketmode.util.ObserverConsumer
 import com.artemchep.pocketmode.viewmodels.MainViewModel
@@ -44,6 +47,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        // Apply the color of status bar
+        when (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
+            Configuration.UI_MODE_NIGHT_NO -> window.setStatusBarColor(StatusBarColor.LIGHT)
+            Configuration.UI_MODE_NIGHT_YES -> window.setStatusBarColor(StatusBarColor.DARK)
+        }
 
         lockScreenDelaySeekBar.max = resources.getInteger(R.integer.maxDelay) / DD
         lockScreenDelaySeekBar.min = resources.getInteger(R.integer.minDelay) / DD
