@@ -8,7 +8,6 @@ import android.content.pm.PackageManager
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.LiveData
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
-import com.artemchep.pocketmode.INTENT_ACCESSIBILITY_CHANGED
 import com.artemchep.pocketmode.INTENT_RUNTIME_PERMISSIONS_CHANGED
 
 /**

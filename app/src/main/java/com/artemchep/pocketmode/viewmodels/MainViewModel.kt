@@ -64,6 +64,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     val openUrlLiveData = MutableLiveData<Event<OpenUrlEvent>>()
 
+    val openDonateToMeLiveData = MutableLiveData<Event<Unit>>()
+
     /**
      * Turns the master switch on and
      * off.
@@ -105,6 +107,11 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     private fun openUrl(url: String) {
         val event = Event(OpenUrlEvent(url))
         openUrlLiveData.postValue(event)
+    }
+
+    fun openDonateToMe() {
+        val event = Event(Unit)
+        openDonateToMeLiveData.postValue(event)
     }
 
     // ---- Permissions ----

@@ -1,13 +1,11 @@
 package com.artemchep.pocketmode.ui.activities
 
 import android.content.Intent
-import android.content.res.Configuration
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.SeekBar
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.view.isGone
 import androidx.lifecycle.Observer
@@ -15,9 +13,8 @@ import androidx.lifecycle.ViewModelProviders
 import com.artemchep.pocketmode.INTENT_ACCESSIBILITY_CHANGED
 import com.artemchep.pocketmode.INTENT_RUNTIME_PERMISSIONS_CHANGED
 import com.artemchep.pocketmode.R
-import com.artemchep.pocketmode.ext.setStatusBarColor
-import com.artemchep.pocketmode.models.events.StatusBarColor
 import com.artemchep.pocketmode.sendLocalBroadcast
+import com.artemchep.pocketmode.ui.activities.base.BaseActivity
 import com.artemchep.pocketmode.util.ObserverConsumer
 import com.artemchep.pocketmode.viewmodels.MainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
@@ -28,7 +25,7 @@ import kotlinx.android.synthetic.main.layout_main.*
 /**
  * @author Artem Chepurnoy
  */
-class MainActivity : AppCompatActivity(), View.OnClickListener {
+class MainActivity : BaseActivity(), View.OnClickListener {
     companion object {
         private const val DD = 100
 
@@ -47,12 +44,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        // Apply the color of status bar
-        when (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
-            Configuration.UI_MODE_NIGHT_NO -> window.setStatusBarColor(StatusBarColor.LIGHT)
-            Configuration.UI_MODE_NIGHT_YES -> window.setStatusBarColor(StatusBarColor.DARK)
-        }
 
         lockScreenDelaySeekBar.max = resources.getInteger(R.integer.maxDelay) / DD
         lockScreenDelaySeekBar.min = resources.getInteger(R.integer.minDelay) / DD
@@ -157,6 +148,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         openUrlLiveData.observe(this@MainActivity, ObserverConsumer {
             openUrl(it.url)
         })
+        openDonateToMeLiveData.observe(this@MainActivity, ObserverConsumer {
+            val intent = Intent(this@MainActivity, DonateActivity::class.java)
+            startActivity(intent)
+        })
     }
 
     private fun openAccessibilitySettings() {
@@ -187,10 +182,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.toolbar -> masterSwitch.isChecked = !masterSwitch.isChecked
             R.id.lockScreenDelayResetBtn -> mainViewModel.setLockScreenDelay()
             // Help
-            R.id.donateBtn -> {
-                val message = getString(R.string.coming_soon)
-                Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-            }
+            R.id.donateBtn -> mainViewModel.openDonateToMe()
             R.id.codeBtn -> mainViewModel.openRepo()
             R.id.bugReportBtn -> mainViewModel.openBugReport()
             R.id.translateBtn -> {

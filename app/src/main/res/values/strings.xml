@@ -26,6 +26,7 @@
     <string name="notification_pocket_description">Long press the notification and hide it, if you don\'t want to see it constantly.</string>
 
     <string name="coming_soon">Coming soon</string>
+    <string name="error">Oh, snap!</string>
     <string name="ms">%d ms.</string>
 
     <string name="accessibility_service_title">Pocket Mode</string>

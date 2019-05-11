@@ -1,6 +1,5 @@
 package com.artemchep.pocketmode.sensors
 
-import android.os.SystemClock
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData

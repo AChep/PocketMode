@@ -40,10 +40,11 @@ class PocketViewModel(context: Context) {
      * Send the lock events when it thinks that your phone is in
      * the pocket.
      */
-    val lockScreenLiveData: LiveData<Event<com.artemchep.pocketmode.models.events.LockScreenEvent>> = LockScreenEvent(
-        proximityLiveData = proximityLiveData,
-        screenLiveData = screenLiveData,
-        phoneCallLiveData = phoneCallSoloLiveData,
-        keyguardLiveData = keyguardLiveData
-    )
+    val lockScreenLiveData: LiveData<Event<com.artemchep.pocketmode.models.events.LockScreenEvent>> =
+        LockScreenEvent(
+            proximityLiveData = proximityLiveData,
+            screenLiveData = screenLiveData,
+            phoneCallLiveData = phoneCallSoloLiveData,
+            keyguardLiveData = keyguardLiveData
+        )
 }

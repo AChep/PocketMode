@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Intent
 import com.artemchep.config.Config
 import com.artemchep.pocketmode.services.PocketService
+import org.solovyev.android.checkout.Billing
 
 /**
  * @author Artem Chepurnoy
@@ -26,6 +27,12 @@ class Heart : Application() {
 
     val pocketServiceIntent: Intent
         get() = Intent(this@Heart, PocketService::class.java)
+
+    val billing = Billing(this, object : Billing.DefaultConfiguration() {
+        override fun getPublicKey(): String {
+            return BuildConfig.MY_LICENSE_KEY
+        }
+    })
 
     override fun onCreate() {
         super.onCreate()
