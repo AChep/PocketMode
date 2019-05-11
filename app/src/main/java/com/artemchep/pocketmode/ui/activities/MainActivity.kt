@@ -185,10 +185,7 @@ class MainActivity : BaseActivity(), View.OnClickListener {
             R.id.donateBtn -> mainViewModel.openDonateToMe()
             R.id.codeBtn -> mainViewModel.openRepo()
             R.id.bugReportBtn -> mainViewModel.openBugReport()
-            R.id.translateBtn -> {
-                val message = getString(R.string.coming_soon)
-                Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-            }
+            R.id.translateBtn -> mainViewModel.openTranslationService()
             // Permissions
             R.id.accessibilityServiceBtn -> mainViewModel.grantAccessibilityService()
             R.id.callStateBtn -> mainViewModel.grantCallState()
