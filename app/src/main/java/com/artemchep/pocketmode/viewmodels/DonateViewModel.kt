@@ -54,6 +54,9 @@ class DonateViewModel(application: Application) : AndroidViewModel(application) 
                 // Add the singleton purchase flow
                 // listener.
                 checkout.createPurchaseFlow(requestListener)
+
+                // Mirror value.
+                postValue(checkout)
             }
         }
 
