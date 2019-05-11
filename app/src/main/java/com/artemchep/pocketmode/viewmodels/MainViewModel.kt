@@ -46,14 +46,11 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         .apply {
             val resolver: (Any) -> Unit = {
                 val isAccessibilityGranted = isAccessibilityGranted.value ?: false
-                val isReadPhoneCallGranted = isReadPhoneCallGranted.value ?: false
-
-                val isAllGranted = isAccessibilityGranted && isReadPhoneCallGranted
+                val isAllGranted = isAccessibilityGranted
                 postValue(isAllGranted)
             }
 
             addSource(isAccessibilityGranted, resolver)
-            addSource(isReadPhoneCallGranted, resolver)
         }
 
     // ---- Events ----

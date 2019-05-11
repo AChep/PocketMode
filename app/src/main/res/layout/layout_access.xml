@@ -56,7 +56,6 @@
         android:background="?selectableItemBackground"
         android:drawableStart="@drawable/ic_outline_phone"
         android:drawablePadding="16dp"
-        android:drawableTint="?colorAccent"
         android:paddingHorizontal="16dp"
         android:paddingTop="12dp"
         android:paddingBottom="12dp"
