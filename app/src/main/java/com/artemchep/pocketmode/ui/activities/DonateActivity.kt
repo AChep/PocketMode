@@ -67,6 +67,7 @@ class DonateActivity : BaseActivity(), View.OnClickListener {
                                     )
                                 }
                         }
+                        .sortedBy { sku -> sku.sku.detailedPrice.amount }
 
                     itemAdapter.setNewList(items)
                 }
