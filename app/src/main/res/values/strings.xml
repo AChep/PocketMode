@@ -27,6 +27,7 @@
 
     <string name="coming_soon">Coming soon</string>
     <string name="error">Oh, snap!</string>
+    <string name="purchased">Purchased</string>
     <string name="ms">%d ms.</string>
 
     <string name="accessibility_service_title">Pocket Mode</string>

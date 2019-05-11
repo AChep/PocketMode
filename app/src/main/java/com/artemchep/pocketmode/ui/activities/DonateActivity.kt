@@ -16,6 +16,7 @@ import com.artemchep.pocketmode.viewmodels.DonateViewModel
 import com.mikepenz.fastadapter.FastAdapter
 import com.mikepenz.fastadapter.adapters.ItemAdapter
 import kotlinx.android.synthetic.main.activity_donate.*
+import org.solovyev.android.checkout.Sku
 
 /**
  * @author Artem Chepurnoy
@@ -56,7 +57,17 @@ class DonateActivity : BaseActivity(), View.OnClickListener {
                     recyclerView.isVisible = true
 
                     // Bind products to recycler view.
-                    val items = it.value.flatMap { it.skus }.map(::SkuItem)
+                    val items = it.value
+                        .flatMap { product ->
+                            product.skus
+                                .map { sku ->
+                                    SkuItem(
+                                        sku = sku,
+                                        isPurchased = product.isPurchased(sku)
+                                    )
+                                }
+                        }
+
                     itemAdapter.setNewList(items)
                 }
                 is Loader.Loading -> {

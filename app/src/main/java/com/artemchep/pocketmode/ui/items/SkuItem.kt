@@ -1,6 +1,8 @@
 package com.artemchep.pocketmode.ui.items
 
 import android.view.View
+import androidx.core.view.isGone
+import androidx.core.view.isVisible
 import com.artemchep.pocketmode.R
 import com.mikepenz.fastadapter.FastAdapter
 import com.mikepenz.fastadapter.items.AbstractItem
@@ -12,7 +14,8 @@ import org.solovyev.android.checkout.Sku
  * @author Artem Chepurnoy
  */
 class SkuItem(
-    val sku: Sku
+    val sku: Sku,
+    val isPurchased: Boolean
 ) : AbstractItem<SkuItem, SkuItem.ViewHolder>() {
 
     override fun getType(): Int = 0
@@ -28,6 +31,8 @@ class SkuItem(
 
         override fun bindView(item: SkuItem, payloads: MutableList<Any>) {
             priceTextView.text = item.sku.price
+            priceTextView.isGone = item.isPurchased
+            purchasedTextView.isVisible = item.isPurchased
             titleTextView.text = item.sku.displayTitle
             summaryTextView.text = item.sku.description
         }
