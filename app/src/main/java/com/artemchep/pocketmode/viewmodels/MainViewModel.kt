@@ -42,7 +42,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             }
         }
 
-    val isAllGranted = MediatorLiveData<Boolean>()
+    val isRequiredGranted = MediatorLiveData<Boolean>()
         .apply {
             val resolver: (Any) -> Unit = {
                 val isAccessibilityGranted = isAccessibilityGranted.value ?: false
@@ -51,6 +51,19 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             }
 
             addSource(isAccessibilityGranted, resolver)
+        }
+
+    val isAllGranted = MediatorLiveData<Boolean>()
+        .apply {
+            val resolver: (Any) -> Unit = {
+                val isAccessibilityGranted = isAccessibilityGranted.value ?: false
+                val isReadPhoneCallGranted = isReadPhoneCallGranted.value ?: false
+                val isAllGranted = isAccessibilityGranted && isReadPhoneCallGranted
+                postValue(isAllGranted)
+            }
+
+            addSource(isAccessibilityGranted, resolver)
+            addSource(isReadPhoneCallGranted, resolver)
         }
 
     // ---- Events ----

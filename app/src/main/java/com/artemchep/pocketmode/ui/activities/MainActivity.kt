@@ -134,9 +134,11 @@ class MainActivity : BaseActivity(), View.OnClickListener {
             callStateBtn.isGone = it
         })
         isAllGranted.observe(this@MainActivity, Observer {
+            accessContainer.isGone = it
+        })
+        isRequiredGranted.observe(this@MainActivity, Observer {
             toolbar.isEnabled = it
             masterSwitch.isEnabled = it
-            accessContainer.isGone = it
         })
         // Events
         openAccessibilityLiveData.observe(this@MainActivity, ObserverConsumer {
