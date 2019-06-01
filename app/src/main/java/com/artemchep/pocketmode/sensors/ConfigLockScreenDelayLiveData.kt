@@ -5,11 +5,8 @@ import com.artemchep.pocketmode.Cfg
 /**
  * @author Artem Chepurnoy
  */
-class ConfigLockScreenDelayLiveData : ConfigBaseLiveData<Long>(Cfg.KEY_LOCK_SCREEN_DELAY) {
-
-    override fun updateValue() {
-        val delay = Cfg.lockScreenDelay
-        postValue(delay)
-    }
-
-}
+class ConfigLockScreenDelayLiveData
+    : ConfigBaseLiveData<Long>(
+    Cfg.KEY_LOCK_SCREEN_DELAY,
+    Cfg::lockScreenDelay
+)

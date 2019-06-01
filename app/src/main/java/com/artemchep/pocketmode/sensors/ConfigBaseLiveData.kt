@@ -7,7 +7,10 @@ import com.artemchep.pocketmode.Cfg
 /**
  * @author Artem Chepurnoy
  */
-abstract class ConfigBaseLiveData<T>(private val key: String) : LiveData<T>() {
+abstract class ConfigBaseLiveData<T>(
+    private val key: String,
+    private val getter: () -> T
+) : LiveData<T>() {
 
     private val configObserver = object : Config.OnConfigChangedListener<String> {
         override fun onConfigChanged(keys: Set<String>) {
@@ -15,6 +18,10 @@ abstract class ConfigBaseLiveData<T>(private val key: String) : LiveData<T>() {
                 updateValue()
             }
         }
+    }
+
+    init {
+        value = getter()
     }
 
     override fun onActive() {
@@ -28,6 +35,9 @@ abstract class ConfigBaseLiveData<T>(private val key: String) : LiveData<T>() {
         super.onInactive()
     }
 
-    protected abstract fun updateValue()
+    private fun updateValue() {
+        val v = getter()
+        postValue(v)
+    }
 
 }

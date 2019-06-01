@@ -6,11 +6,7 @@ import com.artemchep.pocketmode.Cfg
  * @author Artem Chepurnoy
  */
 class ConfigVibrateBeforeIsCheckedLiveData
-    : ConfigBaseLiveData<Boolean>(Cfg.KEY_VIBRATE_ON_BEFORE_LOCK_SCREEN) {
-
-    override fun updateValue() {
-        val isEnabled = Cfg.vibrateOnBeforeLockScreen
-        postValue(isEnabled)
-    }
-
-}
+    : ConfigBaseLiveData<Boolean>(
+    Cfg.KEY_VIBRATE_ON_BEFORE_LOCK_SCREEN,
+    Cfg::vibrateOnBeforeLockScreen
+)
