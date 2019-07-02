@@ -50,6 +50,7 @@
         android:id="@+id/lockScreenBtnDescription"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
         android:text="@string/troubleshoot_lock_screen_description"
         android:textAppearance="@style/TextSection"
         app:layout_constraintBottom_toBottomOf="@id/lockScreenBtn"
