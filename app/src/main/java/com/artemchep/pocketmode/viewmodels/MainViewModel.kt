@@ -15,6 +15,7 @@ import com.artemchep.pocketmode.models.events.OpenAccessibilityEvent
 import com.artemchep.pocketmode.models.events.OpenRuntimePermissionsEvent
 import com.artemchep.pocketmode.models.events.OpenUrlEvent
 import com.artemchep.pocketmode.sensors.*
+import com.artemchep.pocketmode.services.PocketAccessibilityService
 
 /**
  * @author Artem Chepurnoy
@@ -82,7 +83,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
      */
     fun setMasterSwitchEnabled(isEnabled: Boolean = !masterSwitchIsCheckedLiveData.value!!) {
         if (isEnabled) {
-            if (isAllGranted.value == true) {
+            if (isRequiredGranted.value == true) {
                 // Enable the pocket service.
                 Cfg.edit(context) {
                     Cfg.isEnabled = true
@@ -106,6 +107,10 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         Cfg.edit(context) {
             Cfg.lockScreenDelay = delay
         }
+    }
+
+    fun lockScreen() {
+        PocketAccessibilityService.sendLockScreenEvent(context, javaClass)
     }
 
     fun openRepo() = openUrl(LINK_REPOSITORY)

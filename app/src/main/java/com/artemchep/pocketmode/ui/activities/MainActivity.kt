@@ -20,6 +20,7 @@ import com.artemchep.pocketmode.viewmodels.MainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.layout_access.*
 import kotlinx.android.synthetic.main.layout_main.*
+import kotlinx.android.synthetic.main.layout_troubleshooting.*
 
 
 /**
@@ -106,6 +107,7 @@ class MainActivity : BaseActivity(), View.OnClickListener {
         donateBtn.setOnClickListener(this)
         bugReportBtn.setOnClickListener(this)
         translateBtn.setOnClickListener(this)
+        lockScreenBtn.setOnClickListener(this)
         lockScreenDelayResetBtn.setOnClickListener(this)
 
         mainViewModel.setup()
@@ -138,6 +140,7 @@ class MainActivity : BaseActivity(), View.OnClickListener {
         })
         isRequiredGranted.observe(this@MainActivity, Observer {
             toolbar.isEnabled = it
+            lockScreenBtn.isEnabled = it
             masterSwitch.isEnabled = it
         })
         // Events
@@ -182,6 +185,7 @@ class MainActivity : BaseActivity(), View.OnClickListener {
     override fun onClick(view: View) {
         when (view.id) {
             R.id.toolbar -> masterSwitch.isChecked = !masterSwitch.isChecked
+            R.id.lockScreenBtn -> mainViewModel.lockScreen()
             R.id.lockScreenDelayResetBtn -> mainViewModel.setLockScreenDelay()
             // Help
             R.id.donateBtn -> mainViewModel.openDonateToMe()

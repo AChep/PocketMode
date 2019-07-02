@@ -11,6 +11,8 @@
     <string name="access_runtime_call_state">Pocket Mode reads call state to not turn screen off while call is active. Tap to grant call state privileges</string>
 
     <string name="troubleshoot">Troubleshooting</string>
+    <string name="troubleshoot_lock_screen">Lock screen</string>
+    <string name="troubleshoot_lock_screen_description">When working correctly, pressing this button should lock the screen.</string>
     <string name="troubleshoot_reboot">Reboot the device, if it doesn\'t lock the screen after giving required permissions and enabling the service</string>
 
     <string name="help_code">Contribute on GitHub</string>

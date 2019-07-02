@@ -1,7 +1,7 @@
 <accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
     android:accessibilityEventTypes="typeNotificationStateChanged"
-    android:accessibilityFeedbackType="feedbackSpoken"
-    android:canRetrieveWindowContent="true"
+    android:accessibilityFeedbackType="feedbackGeneric"
+    android:canRetrieveWindowContent="false"
     android:notificationTimeout="100"
-    android:packageNames="com.artemchep.pocketmode"
+    android:packageNames="com.artemchep.pocketmode,com.artemchep.pocketmode.debug"
     android:settingsActivity="com.artemchep.pocketmode.ui.activities.MainActivity" />

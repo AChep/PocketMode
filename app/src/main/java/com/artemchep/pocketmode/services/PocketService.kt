@@ -10,6 +10,9 @@ import android.view.accessibility.AccessibilityManager
 import androidx.core.app.NotificationCompat
 import androidx.core.content.getSystemService
 import androidx.lifecycle.Observer
+import androidx.work.ExistingPeriodicWorkPolicy
+import androidx.work.PeriodicWorkRequestBuilder
+import androidx.work.WorkManager
 import com.artemchep.config.Config
 import com.artemchep.pocketmode.Cfg
 import com.artemchep.pocketmode.R
@@ -20,12 +23,16 @@ import com.artemchep.pocketmode.models.events.Event
 import com.artemchep.pocketmode.models.events.LockScreenEvent
 import com.artemchep.pocketmode.models.events.OnLockScreen
 import com.artemchep.pocketmode.viewmodels.PocketViewModel
+import java.time.Duration
 
 /**
  * @author Artem Chepurnoy
  */
 class PocketService : Service() {
     companion object {
+        private const val WORK_RESTART_ID = "PocketService::restart"
+        private const val WORK_RESTART_PERIOD = 60 * 60 * 1000L // ms
+
         private const val NOTIFICATION_CHANNEL = "pocket_notification_channel"
         private const val NOTIFICATION_ID = 112
 
@@ -53,11 +60,7 @@ class PocketService : Service() {
     }
 
     private fun lockScreen() {
-        val manager = getSystemService<AccessibilityManager>()!!
-        if (manager.isEnabled) {
-            val event = PocketAccessibilityService.createLockScreenEvent(this)
-            manager.sendAccessibilityEvent(event)
-        }
+        PocketAccessibilityService.sendLockScreenEvent(this, javaClass)
     }
 
     private fun beforeLockScreen() {
@@ -74,6 +77,15 @@ class PocketService : Service() {
         stopSelfIfPocketServiceIsDisabled()
 
         pocketViewModel.lockScreenLiveData.observeForever(pocketObserver)
+
+        // Start a scheduler to restart service in
+        // few hours in cause it was killed.
+        val request = PeriodicWorkRequestBuilder<PocketServiceRestartWorker>(
+            Duration.ofMillis(WORK_RESTART_PERIOD)
+        ).build()
+        WorkManager
+            .getInstance()
+            .enqueueUniquePeriodicWork(WORK_RESTART_ID, ExistingPeriodicWorkPolicy.KEEP, request)
     }
 
     private fun stopSelfIfPocketServiceIsDisabled() {

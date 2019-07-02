@@ -46,4 +46,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/troubleshooting" />
 
+    <TextView
+        android:id="@+id/lockScreenBtnDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/troubleshoot_lock_screen_description"
+        android:textAppearance="@style/TextSection"
+        app:layout_constraintBottom_toBottomOf="@id/lockScreenBtn"
+        app:layout_constraintEnd_toStartOf="@id/lockScreenBtn"
+        app:layout_constraintStart_toEndOf="@id/startGuideline"
+        app:layout_constraintTop_toTopOf="@id/lockScreenBtn" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/lockScreenBtn"
+        style="@style/ButtonOutlined"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/troubleshoot_lock_screen"
+        app:layout_constraintEnd_toStartOf="@id/endGuideline"
+        app:layout_constraintTop_toBottomOf="@id/troubleshootingReboot" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

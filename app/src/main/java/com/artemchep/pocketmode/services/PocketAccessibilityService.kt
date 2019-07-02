@@ -3,9 +3,12 @@ package com.artemchep.pocketmode.services
 import android.accessibilityservice.AccessibilityService
 import android.content.Context
 import android.view.accessibility.AccessibilityEvent
+import android.view.accessibility.AccessibilityManager
+import androidx.core.content.getSystemService
 import com.artemchep.pocketmode.INTENT_ACCESSIBILITY_CHANGED
 import com.artemchep.pocketmode.R
 import com.artemchep.pocketmode.sendLocalBroadcast
+import com.crashlytics.android.Crashlytics
 
 /**
  * @author Artem Chepurnoy
@@ -15,14 +18,27 @@ class PocketAccessibilityService : AccessibilityService() {
         private const val EVENT_TYPE = AccessibilityEvent.TYPE_NOTIFICATION_STATE_CHANGED
         private const val EVENT_TEXT_RES = R.string.accessibility_event_screen_locked
 
-        fun createLockScreenEvent(context: Context) =
+        fun createLockScreenEvent(context: Context, clazz: Class<*>) =
             AccessibilityEvent.obtain(EVENT_TYPE)
                 .apply {
                     packageName = context.applicationContext.packageName
-                    className = PocketService::class.java.name
+                    className = clazz.name
                     isEnabled = true
                     text.add(context.getString(EVENT_TEXT_RES))
                 }!!
+
+        fun sendLockScreenEvent(context: Context, clazz: Class<*>) {
+            val manager = context.getSystemService<AccessibilityManager>()!!
+            if (manager.isEnabled) {
+                val event = createLockScreenEvent(context, clazz)
+                manager.sendAccessibilityEvent(event)
+            } else {
+                Crashlytics.log(
+                    "Tried to send the lock event from [${clazz.simpleName}], " +
+                            "but the accessibility manager is disabled."
+                )
+            }
+        }
     }
 
     override fun onAccessibilityEvent(event: AccessibilityEvent?) {
