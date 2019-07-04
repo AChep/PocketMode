@@ -3,6 +3,7 @@ package com.artemchep.pocketmode.viewmodels
 import android.Manifest
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import com.artemchep.pocketmode.Cfg
@@ -10,6 +11,7 @@ import com.artemchep.pocketmode.LINK_BUG_REPORT
 import com.artemchep.pocketmode.LINK_REPOSITORY
 import com.artemchep.pocketmode.LINK_TRANSLATE
 import com.artemchep.pocketmode.ext.context
+import com.artemchep.pocketmode.models.Proximity
 import com.artemchep.pocketmode.models.events.Event
 import com.artemchep.pocketmode.models.events.OpenAccessibilityEvent
 import com.artemchep.pocketmode.models.events.OpenRuntimePermissionsEvent
@@ -27,6 +29,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     val vibrateBeforeLockingSwitchIsCheckedLiveData = ConfigVibrateBeforeIsCheckedLiveData()
 
     val lockScreenDelayLiveData = ConfigLockScreenDelayLiveData()
+
+    val proximityLiveData: LiveData<Proximity> = ProximityLiveData(context)
 
     // ---- Permissions ----
 

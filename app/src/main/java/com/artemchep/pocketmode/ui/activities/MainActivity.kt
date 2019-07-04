@@ -5,7 +5,6 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.SeekBar
-import android.widget.Toast
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.view.isGone
 import androidx.lifecycle.Observer
@@ -13,6 +12,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.artemchep.pocketmode.INTENT_ACCESSIBILITY_CHANGED
 import com.artemchep.pocketmode.INTENT_RUNTIME_PERMISSIONS_CHANGED
 import com.artemchep.pocketmode.R
+import com.artemchep.pocketmode.models.Proximity
 import com.artemchep.pocketmode.sendLocalBroadcast
 import com.artemchep.pocketmode.ui.activities.base.BaseActivity
 import com.artemchep.pocketmode.util.ObserverConsumer
@@ -127,6 +127,13 @@ class MainActivity : BaseActivity(), View.OnClickListener {
             isVibrateOnBeforeLockScreenSwitchBroadcasting = true
             vibrateOnBeforeLockScreenCheckBox.isChecked = it
             isVibrateOnBeforeLockScreenSwitchBroadcasting = false
+        })
+        proximityLiveData.observe(this@MainActivity, Observer {
+            val iconRes = when (it) {
+                Proximity.Far -> R.drawable.ic_eye
+                Proximity.Near -> R.drawable.ic_eye_off
+            }
+            proximityIcon.setImageResource(iconRes)
         })
         // Permissions
         isAccessibilityGranted.observe(this@MainActivity, Observer {

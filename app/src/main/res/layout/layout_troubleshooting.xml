@@ -67,4 +67,26 @@
         app:layout_constraintEnd_toStartOf="@id/endGuideline"
         app:layout_constraintTop_toBottomOf="@id/troubleshootingReboot" />
 
+    <TextView
+        android:id="@+id/proximityIconDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="@string/troubleshoot_proximity_description"
+        android:textAppearance="@style/TextSection"
+        app:layout_constraintBottom_toBottomOf="@id/proximityIcon"
+        app:layout_constraintEnd_toStartOf="@id/lockScreenBtn"
+        app:layout_constraintStart_toEndOf="@id/startGuideline"
+        app:layout_constraintTop_toTopOf="@id/proximityIcon" />
+
+    <ImageView
+        android:id="@+id/proximityIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/ic_eye"
+        android:text="@string/troubleshoot_lock_screen"
+        app:layout_constraintEnd_toStartOf="@id/endGuideline"
+        app:layout_constraintTop_toBottomOf="@id/lockScreenBtn" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
