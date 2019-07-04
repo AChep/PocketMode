@@ -24,8 +24,9 @@ class ProximityLiveData(
         }
 
         override fun onSensorChanged(event: SensorEvent) {
+            val distance = event.values[0]
             val proximity =
-                if (event.values[0] >= event.sensor.maximumRange) {
+                if (distance >= event.sensor.maximumRange && distance >= 1.0f) {
                     Proximity.Far
                 } else {
                     Proximity.Near
