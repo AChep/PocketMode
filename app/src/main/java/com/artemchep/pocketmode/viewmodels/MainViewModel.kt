@@ -30,7 +30,10 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     val lockScreenDelayLiveData = ConfigLockScreenDelayLiveData()
 
-    val proximityLiveData: LiveData<Proximity> = ProximityLiveData(context)
+    val proximityLiveData: LiveData<Float> = ProximityLiveData(context)
+
+    val proximityBinaryLiveData: LiveData<Proximity> =
+        ProximityBinaryLiveData(context, proximityLiveData)
 
     // ---- Permissions ----
 

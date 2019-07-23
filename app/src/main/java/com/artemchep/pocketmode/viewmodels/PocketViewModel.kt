@@ -16,7 +16,10 @@ import com.artemchep.pocketmode.sensors.*
  * @author Artem Chepurnoy
  */
 class PocketViewModel(context: Context) {
-    private val proximityLiveData: LiveData<Proximity> = ProximityLiveData(context)
+    private val proximityLiveData: LiveData<Float> = ProximityLiveData(context)
+
+    private val proximityBinaryLiveData: LiveData<Proximity> =
+        ProximityBinaryLiveData(context, proximityLiveData)
 
     private val screenLiveData: LiveData<Screen> = ScreenLiveData(context)
 
@@ -42,7 +45,7 @@ class PocketViewModel(context: Context) {
      */
     val lockScreenLiveData: LiveData<Event<com.artemchep.pocketmode.models.events.LockScreenEvent>> =
         LockScreenEvent(
-            proximityLiveData = proximityLiveData,
+            proximityLiveData = proximityBinaryLiveData,
             screenLiveData = screenLiveData,
             phoneCallLiveData = phoneCallSoloLiveData,
             keyguardLiveData = keyguardLiveData

@@ -128,12 +128,15 @@ class MainActivity : BaseActivity(), View.OnClickListener {
             vibrateOnBeforeLockScreenCheckBox.isChecked = it
             isVibrateOnBeforeLockScreenSwitchBroadcasting = false
         })
-        proximityLiveData.observe(this@MainActivity, Observer {
+        proximityBinaryLiveData.observe(this@MainActivity, Observer {
             val iconRes = when (it) {
                 Proximity.Far -> R.drawable.ic_eye
                 Proximity.Near -> R.drawable.ic_eye_off
             }
             proximityIcon.setImageResource(iconRes)
+        })
+        proximityLiveData.observe(this@MainActivity, Observer {
+            proximityCmText.text = getString(R.string.cm, it)
         })
         // Permissions
         isAccessibilityGranted.observe(this@MainActivity, Observer {

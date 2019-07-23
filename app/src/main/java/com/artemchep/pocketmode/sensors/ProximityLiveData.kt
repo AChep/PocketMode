@@ -7,14 +7,13 @@ import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import androidx.core.content.getSystemService
 import androidx.lifecycle.LiveData
-import com.artemchep.pocketmode.models.Proximity
 
 /**
  * @author Artem Chepurnoy
  */
 class ProximityLiveData(
     private val context: Context
-) : LiveData<Proximity>() {
+) : LiveData<Float>() {
     private val sensorManager by lazy { context.getSystemService<SensorManager>() }
 
     private val sensorProximity by lazy { sensorManager?.getDefaultSensor(Sensor.TYPE_PROXIMITY) }
@@ -25,13 +24,7 @@ class ProximityLiveData(
 
         override fun onSensorChanged(event: SensorEvent) {
             val distance = event.values[0]
-            val proximity =
-                if (distance >= event.sensor.maximumRange && distance >= 1.0f) {
-                    Proximity.Far
-                } else {
-                    Proximity.Near
-                }
-            postValue(proximity)
+            postValue(distance)
         }
     }
 

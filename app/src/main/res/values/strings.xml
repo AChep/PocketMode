@@ -32,6 +32,7 @@
     <string name="error">Oh, snap!</string>
     <string name="purchased">Purchased</string>
     <string name="ms">%d ms.</string>
+    <string name="cm">%.1f cm.</string>
 
     <string name="accessibility_service_title">Pocket Mode</string>
     <string name="accessibility_event_screen_locked">Screen locked</string>
