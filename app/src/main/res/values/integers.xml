@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <integer name="minDelay">500</integer>
-    <integer name="maxDelay">3000</integer>
+    <integer name="minDelay">200</integer>
+    <integer name="maxDelay">4000</integer>
 </resources>
