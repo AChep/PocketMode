@@ -6,14 +6,13 @@ import android.os.Bundle
 import android.view.View
 import android.widget.SeekBar
 import androidx.browser.customtabs.CustomTabsIntent
+import androidx.core.net.toUri
 import androidx.core.view.isGone
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.artemchep.pocketmode.INTENT_ACCESSIBILITY_CHANGED
-import com.artemchep.pocketmode.INTENT_RUNTIME_PERMISSIONS_CHANGED
-import com.artemchep.pocketmode.R
+import com.afollestad.materialdialogs.MaterialDialog
+import com.artemchep.pocketmode.*
 import com.artemchep.pocketmode.models.Proximity
-import com.artemchep.pocketmode.sendLocalBroadcast
 import com.artemchep.pocketmode.ui.activities.base.BaseActivity
 import com.artemchep.pocketmode.util.ObserverConsumer
 import com.artemchep.pocketmode.viewmodels.MainViewModel
@@ -32,6 +31,7 @@ class MainActivity : BaseActivity(), View.OnClickListener {
 
         private const val RC_RUNTIME_PERMISSIONS = 100
         private const val RC_ACCESSIBILITY = 200
+        private const val RC_OVERLAYS = 300
     }
 
     private val mainViewModel by lazy {
@@ -41,6 +41,8 @@ class MainActivity : BaseActivity(), View.OnClickListener {
     private var isMasterSwitchBroadcasting = false
 
     private var isVibrateOnBeforeLockScreenSwitchBroadcasting = false
+
+    private var isOverlayOnBeforeLockScreenSwitchBroadcasting = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -100,6 +102,23 @@ class MainActivity : BaseActivity(), View.OnClickListener {
             isVibrateOnBeforeLockScreenSwitchBroadcasting = false
         }
 
+        overlayOnBeforeLockScreenCheckBox.setOnCheckedChangeListener { switch, isChecked ->
+            if (isOverlayOnBeforeLockScreenSwitchBroadcasting) {
+                return@setOnCheckedChangeListener
+            }
+
+            isOverlayOnBeforeLockScreenSwitchBroadcasting = true
+
+            // Revert to old state of the switch, because we can not
+            // change the state from the view.
+            switch.isChecked = mainViewModel.overlayBeforeLockingSwitchIsCheckedLiveData.value!!
+
+            // Ask the view model to change the state.
+            mainViewModel.setOverlayOnBeforeLockScreen(isChecked)
+
+            isOverlayOnBeforeLockScreenSwitchBroadcasting = false
+        }
+
         toolbar.setOnClickListener(this)
         accessibilityServiceBtn.setOnClickListener(this)
         callStateBtn.setOnClickListener(this)
@@ -127,6 +146,11 @@ class MainActivity : BaseActivity(), View.OnClickListener {
             isVibrateOnBeforeLockScreenSwitchBroadcasting = true
             vibrateOnBeforeLockScreenCheckBox.isChecked = it
             isVibrateOnBeforeLockScreenSwitchBroadcasting = false
+        })
+        overlayBeforeLockingSwitchIsCheckedLiveData.observe(this@MainActivity, Observer {
+            isOverlayOnBeforeLockScreenSwitchBroadcasting = true
+            overlayOnBeforeLockScreenCheckBox.isChecked = it
+            isOverlayOnBeforeLockScreenSwitchBroadcasting = false
         })
         proximityBinaryLiveData.observe(this@MainActivity, Observer {
             val iconRes = when (it) {
@@ -157,6 +181,9 @@ class MainActivity : BaseActivity(), View.OnClickListener {
         openAccessibilityLiveData.observe(this@MainActivity, ObserverConsumer {
             openAccessibilitySettings()
         })
+        openOverlaysLiveData.observe(this@MainActivity, ObserverConsumer {
+            openOverlaysSettings()
+        })
         openRuntimePermissionLiveData.observe(this@MainActivity, ObserverConsumer {
             openRuntimePermissions(it.permissions)
         })
@@ -172,6 +199,20 @@ class MainActivity : BaseActivity(), View.OnClickListener {
     private fun openAccessibilitySettings() {
         val intent = Intent(android.provider.Settings.ACTION_ACCESSIBILITY_SETTINGS)
         startActivityForResult(intent, RC_ACCESSIBILITY)
+    }
+
+    private fun openOverlaysSettings() {
+        MaterialDialog(this).show {
+            title(R.string.access)
+            message(R.string.access_overlays)
+            positiveButton(res = android.R.string.ok) {
+                val intent = Intent(android.provider.Settings.ACTION_MANAGE_OVERLAY_PERMISSION)
+                    .apply {
+                        data = "package:$packageName".toUri()
+                    }
+                startActivityForResult(intent, RC_ACCESSIBILITY)
+            }
+        }
     }
 
     private fun openRuntimePermissions(permissions: List<String>) {
@@ -212,6 +253,7 @@ class MainActivity : BaseActivity(), View.OnClickListener {
         super.onActivityResult(requestCode, resultCode, data)
         when (requestCode) {
             RC_ACCESSIBILITY -> sendLocalBroadcast(INTENT_ACCESSIBILITY_CHANGED)
+            RC_OVERLAYS -> sendLocalBroadcast(INTENT_OVERLAYS_CHANGED)
         }
     }
 

@@ -6,6 +6,8 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager
 
 const val INTENT_ACCESSIBILITY_CHANGED = "accessibility_changed"
 
+const val INTENT_OVERLAYS_CHANGED = "overlays_changed"
+
 const val INTENT_RUNTIME_PERMISSIONS_CHANGED = "runtime_permissions_changed"
 
 fun Context.sendLocalBroadcast(action: String) = sendLocalBroadcast(Intent(action))

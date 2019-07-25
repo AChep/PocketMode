@@ -7,3 +7,4 @@ sealed class LockScreenEvent
 
 object BeforeLockScreen : LockScreenEvent()
 object OnLockScreen : LockScreenEvent()
+object Idle : LockScreenEvent()

@@ -6,7 +6,7 @@ import com.artemchep.pocketmode.models.`fun`.Either
  * @author Artem Chepurnoy
  */
 open class Event<out T>(
-    private val value: T
+    val value: T
 ) {
     private var isConsumed = false
 

@@ -2,6 +2,7 @@ package com.artemchep.pocketmode.viewmodels
 
 import android.Manifest
 import android.app.Application
+import android.provider.Settings
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
@@ -12,10 +13,7 @@ import com.artemchep.pocketmode.LINK_REPOSITORY
 import com.artemchep.pocketmode.LINK_TRANSLATE
 import com.artemchep.pocketmode.ext.context
 import com.artemchep.pocketmode.models.Proximity
-import com.artemchep.pocketmode.models.events.Event
-import com.artemchep.pocketmode.models.events.OpenAccessibilityEvent
-import com.artemchep.pocketmode.models.events.OpenRuntimePermissionsEvent
-import com.artemchep.pocketmode.models.events.OpenUrlEvent
+import com.artemchep.pocketmode.models.events.*
 import com.artemchep.pocketmode.sensors.*
 import com.artemchep.pocketmode.services.PocketAccessibilityService
 
@@ -27,6 +25,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     val masterSwitchIsCheckedLiveData = ConfigIsCheckedLiveData()
 
     val vibrateBeforeLockingSwitchIsCheckedLiveData = ConfigVibrateBeforeIsCheckedLiveData()
+
+    val overlayBeforeLockingSwitchIsCheckedLiveData = ConfigOverlayBeforeIsCheckedLiveData()
 
     val lockScreenDelayLiveData = ConfigLockScreenDelayLiveData()
 
@@ -78,6 +78,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     val openAccessibilityLiveData = MutableLiveData<Event<OpenAccessibilityEvent>>()
 
+    val openOverlaysLiveData = MutableLiveData<Event<OpenOverlaysEvent>>()
+
     val openRuntimePermissionLiveData = MutableLiveData<Event<OpenRuntimePermissionsEvent>>()
 
     val openUrlLiveData = MutableLiveData<Event<OpenUrlEvent>>()
@@ -107,6 +109,20 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     fun setVibrateOnBeforeLockScreen(vibrateOnBeforeLockScreen: Boolean = Cfg.DEFAULT_VIBRATE_ON_BEFORE_LOCK_SCREEN) {
         Cfg.edit(context) {
             Cfg.vibrateOnBeforeLockScreen = vibrateOnBeforeLockScreen
+        }
+    }
+
+    fun setOverlayOnBeforeLockScreen(overlayOnBeforeLockScreen: Boolean = Cfg.DEFAULT_OVERLAY_ON_BEFORE_LOCK_SCREEN) {
+        val canDrawOverlays = Settings.canDrawOverlays(context)
+        if (canDrawOverlays || !overlayOnBeforeLockScreen) {
+            // Update the preference, we have got the
+            // permission.
+            Cfg.edit(context) {
+                Cfg.overlayOnBeforeLockScreen = overlayOnBeforeLockScreen
+            }
+        } else if (!canDrawOverlays) {
+            val event = Event(OpenOverlaysEvent)
+            openOverlaysLiveData.postValue(event)
         }
     }
 

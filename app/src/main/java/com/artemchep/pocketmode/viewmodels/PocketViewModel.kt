@@ -39,6 +39,8 @@ class PocketViewModel(context: Context) {
 
     private val keyguardLiveData: LiveData<Keyguard> = KeyguardLiveData(context)
 
+    private val overlayBeforeLockingSwitchIsCheckedLiveData = ConfigOverlayBeforeIsCheckedLiveData()
+
     /**
      * Send the lock events when it thinks that your phone is in
      * the pocket.
@@ -50,4 +52,17 @@ class PocketViewModel(context: Context) {
             phoneCallLiveData = phoneCallSoloLiveData,
             keyguardLiveData = keyguardLiveData
         )
+
+    val overlayLiveData: LiveData<Boolean> = MediatorLiveData<Boolean>()
+        .apply {
+            val resolver = { _: Any? ->
+                val isEnabled = overlayBeforeLockingSwitchIsCheckedLiveData.value == true
+                val isCovered =
+                    lockScreenLiveData.value?.value != com.artemchep.pocketmode.models.events.Idle
+                postValue(isEnabled && isCovered)
+            }
+
+            addSource(overlayBeforeLockingSwitchIsCheckedLiveData, resolver)
+            addSource(lockScreenLiveData, resolver)
+        }
 }

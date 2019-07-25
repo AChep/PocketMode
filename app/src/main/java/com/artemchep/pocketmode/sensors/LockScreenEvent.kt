@@ -10,10 +10,8 @@ import com.artemchep.pocketmode.models.Keyguard
 import com.artemchep.pocketmode.models.PhoneCall
 import com.artemchep.pocketmode.models.Proximity
 import com.artemchep.pocketmode.models.Screen
-import com.artemchep.pocketmode.models.events.BeforeLockScreen
-import com.artemchep.pocketmode.models.events.Event
+import com.artemchep.pocketmode.models.events.*
 import com.artemchep.pocketmode.models.events.LockScreenEvent
-import com.artemchep.pocketmode.models.events.OnLockScreen
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
@@ -38,6 +36,10 @@ class LockScreenEvent(
     private lateinit var coroutineContextJob: Job
 
     // ---- Main ----
+
+    init {
+        value = Event(Idle)
+    }
 
     private val elapsedRealtime: Long
         get() = System.currentTimeMillis()
@@ -171,6 +173,10 @@ class LockScreenEvent(
             sendBeforeLockScreenEvent()
             delay(Cfg.lockScreenDelay - DELAY_BEFORE_LOCK_SCREEN)
             sendOnLockScreenEvent()
+        }.apply {
+            invokeOnCompletion {
+                sendIdleEvent()
+            }
         }
     }
 
@@ -189,6 +195,11 @@ class LockScreenEvent(
 
     private fun sendOnLockScreenEvent() {
         val value = Event(OnLockScreen)
+        postValue(value)
+    }
+
+    private fun sendIdleEvent() {
+        val value = Event(Idle)
         postValue(value)
     }
 }
