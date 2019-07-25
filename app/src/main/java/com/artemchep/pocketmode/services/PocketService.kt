@@ -6,7 +6,6 @@ import android.app.NotificationManager
 import android.app.Service
 import android.content.Intent
 import android.os.IBinder
-import android.view.accessibility.AccessibilityManager
 import androidx.core.app.NotificationCompat
 import androidx.core.content.getSystemService
 import androidx.lifecycle.Observer
@@ -84,7 +83,7 @@ class PocketService : Service() {
             Duration.ofMillis(WORK_RESTART_PERIOD)
         ).build()
         WorkManager
-            .getInstance()
+            .getInstance(this)
             .enqueueUniquePeriodicWork(WORK_RESTART_ID, ExistingPeriodicWorkPolicy.KEEP, request)
     }
 
