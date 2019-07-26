@@ -21,10 +21,13 @@
     <string name="overlay_title">Pocket mode is on</string>
     <string name="overlay_description">Uncover the top of your device</string>
 
+    <string name="lab_sensors">Proximity sensors</string>
+
     <string name="help_code">Contribute on GitHub</string>
     <string name="help_bug_report">Send bug report</string>
     <string name="help_translate">Translate to your language</string>
     <string name="help_donate">Donate to me</string>
+    <string name="help_test">Laboratory</string>
 
     <string name="about">About</string>
     <string name="about_description">Pocket Mode is a free simple utility app with a single goal: prevent accidental touches while the device is in pocket. \n\nApp accomplishes this goal by turning the screen off after proximity sensor has been covered for some time.</string>

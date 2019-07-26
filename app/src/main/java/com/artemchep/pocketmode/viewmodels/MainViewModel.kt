@@ -86,6 +86,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     val openDonateToMeLiveData = MutableLiveData<Event<Unit>>()
 
+    val openLabLiveData = MutableLiveData<Event<Unit>>()
+
     /**
      * Turns the master switch on and
      * off.
@@ -150,6 +152,11 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     fun openDonateToMe() {
         val event = Event(Unit)
         openDonateToMeLiveData.postValue(event)
+    }
+
+    fun openLab() {
+        val event = Event(Unit)
+        openLabLiveData.postValue(event)
     }
 
     // ---- Permissions ----

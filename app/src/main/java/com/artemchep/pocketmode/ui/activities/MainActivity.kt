@@ -126,6 +126,7 @@ class MainActivity : BaseActivity(), View.OnClickListener {
         donateBtn.setOnClickListener(this)
         bugReportBtn.setOnClickListener(this)
         translateBtn.setOnClickListener(this)
+        labBtn.setOnClickListener(this)
         lockScreenBtn.setOnClickListener(this)
         lockScreenDelayResetBtn.setOnClickListener(this)
 
@@ -194,6 +195,10 @@ class MainActivity : BaseActivity(), View.OnClickListener {
             val intent = Intent(this@MainActivity, DonateActivity::class.java)
             startActivity(intent)
         })
+        openLabLiveData.observe(this@MainActivity, ObserverConsumer {
+            val intent = Intent(this@MainActivity, LabActivity::class.java)
+            startActivity(intent)
+        })
     }
 
     private fun openAccessibilitySettings() {
@@ -243,6 +248,7 @@ class MainActivity : BaseActivity(), View.OnClickListener {
             R.id.codeBtn -> mainViewModel.openRepo()
             R.id.bugReportBtn -> mainViewModel.openBugReport()
             R.id.translateBtn -> mainViewModel.openTranslationService()
+            R.id.labBtn -> mainViewModel.openLab()
             // Permissions
             R.id.accessibilityServiceBtn -> mainViewModel.grantAccessibilityService()
             R.id.callStateBtn -> mainViewModel.grantCallState()
