@@ -3,6 +3,7 @@ package com.artemchep.pocketmode.ui.activities
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.TypedValue
 import android.view.View
 import android.widget.SeekBar
 import androidx.browser.customtabs.CustomTabsIntent
@@ -11,6 +12,9 @@ import androidx.core.view.isGone
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.afollestad.materialdialogs.MaterialDialog
+import com.afollestad.materialdialogs.WhichButton
+import com.afollestad.materialdialogs.actions.getActionButton
+import com.afollestad.materialdialogs.callbacks.onShow
 import com.artemchep.pocketmode.*
 import com.artemchep.pocketmode.models.Proximity
 import com.artemchep.pocketmode.ui.activities.base.BaseActivity
@@ -216,6 +220,20 @@ class MainActivity : BaseActivity(), View.OnClickListener {
                         data = "package:$packageName".toUri()
                     }
                 startActivityForResult(intent, RC_ACCESSIBILITY)
+            }
+
+            onShow { dialog ->
+                val typedValue = TypedValue()
+                val styledAttribute =
+                    obtainStyledAttributes(
+                        typedValue.data,
+                        intArrayOf(android.R.attr.textColorPrimary)
+                    )
+
+                val textColorPrimary = styledAttribute.getColorStateList(0)
+                dialog.getActionButton(WhichButton.POSITIVE).setTextColor(textColorPrimary)
+
+                styledAttribute.recycle()
             }
         }
     }
