@@ -2,6 +2,7 @@ package com.artemchep.pocketmode.ui.items
 
 import android.view.View
 import com.artemchep.pocketmode.R
+import com.artemchep.pocketmode.ext.getStringOrEmpty
 import com.artemchep.pocketmode.models.Proximity
 import com.artemchep.pocketmode.models.sensors.ProximitySensorSnapshot
 import com.mikepenz.fastadapter.FastAdapter
@@ -33,7 +34,8 @@ class ProximitySensorSnapshotItem(
         override fun bindView(item: ProximitySensorSnapshotItem, payloads: MutableList<Any>) {
             titleTextView.text = item.snapshot.name
             summaryTextView.text = item.snapshot.id.toString()
-            proximityCmText.text = itemView.context.getString(R.string.cm, item.snapshot.distance)
+            proximityCmText.text =
+                itemView.context.getStringOrEmpty(R.string.cm, item.snapshot.distance)
 
             val iconRes = when (item.snapshot.proximity) {
                 Proximity.Far -> R.drawable.ic_eye

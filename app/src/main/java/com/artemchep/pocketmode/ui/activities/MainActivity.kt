@@ -16,6 +16,7 @@ import com.afollestad.materialdialogs.WhichButton
 import com.afollestad.materialdialogs.actions.getActionButton
 import com.afollestad.materialdialogs.callbacks.onShow
 import com.artemchep.pocketmode.*
+import com.artemchep.pocketmode.ext.getStringOrEmpty
 import com.artemchep.pocketmode.models.Proximity
 import com.artemchep.pocketmode.ui.activities.base.BaseActivity
 import com.artemchep.pocketmode.util.ObserverConsumer
@@ -69,8 +70,8 @@ class MainActivity : BaseActivity(), View.OnClickListener {
             }
         })
 
-        lockScreenDelayMin.text = getString(R.string.ms, lockScreenDelaySeekBar.min * DD)
-        lockScreenDelayMax.text = getString(R.string.ms, lockScreenDelaySeekBar.max * DD)
+        lockScreenDelayMin.text = getStringOrEmpty(R.string.ms, lockScreenDelaySeekBar.min * DD)
+        lockScreenDelayMax.text = getStringOrEmpty(R.string.ms, lockScreenDelaySeekBar.max * DD)
 
         masterSwitch.setOnCheckedChangeListener { switch, isChecked ->
             if (isMasterSwitchBroadcasting) {
@@ -165,7 +166,7 @@ class MainActivity : BaseActivity(), View.OnClickListener {
             proximityIcon.setImageResource(iconRes)
         })
         proximityLiveData.observe(this@MainActivity, Observer {
-            proximityCmText.text = getString(R.string.cm, it)
+            proximityCmText.text = getStringOrEmpty(R.string.cm, it)
         })
         // Permissions
         isAccessibilityGranted.observe(this@MainActivity, Observer {
@@ -253,7 +254,7 @@ class MainActivity : BaseActivity(), View.OnClickListener {
     }
 
     private fun bindLockScreenDelay(delay: Long) {
-        lockScreenDelayCur.text = getString(R.string.settings_lock_screen_delay_cur, delay)
+        lockScreenDelayCur.text = getStringOrEmpty(R.string.settings_lock_screen_delay_cur, delay)
     }
 
     override fun onClick(view: View) {

@@ -8,7 +8,16 @@ import android.os.VibrationEffect
 import android.os.Vibrator
 import android.view.Display
 import android.view.accessibility.AccessibilityManager
+import androidx.annotation.StringRes
 import androidx.core.content.getSystemService
+
+fun Context.getStringOrEmpty(@StringRes resId: Int, vararg formatArgs: Any): String {
+    return try {
+        resources.getString(resId, *formatArgs)
+    } catch (e: Exception) {
+        null
+    }.orEmpty()
+}
 
 /**
  * Return whether the keyguard is currently locked.
