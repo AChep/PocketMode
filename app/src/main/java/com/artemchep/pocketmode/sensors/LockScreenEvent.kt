@@ -1,6 +1,7 @@
 package com.artemchep.pocketmode.sensors
 
 import android.util.Log
+import androidx.annotation.UiThread
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.Observer
@@ -28,6 +29,7 @@ class LockScreenEvent(
         private const val TAG = "LockScreenEvent"
 
         private const val DELAY_BEFORE_LOCK_SCREEN = 100L // ms.
+        private const val DELAY_BEFORE_IDLE = 50L // ms.
     }
 
     override val coroutineContext: CoroutineContext
@@ -159,7 +161,7 @@ class LockScreenEvent(
             return
         }
 
-        sendLockScreenEventJob = launch {
+        sendLockScreenEventJob = launch(Dispatchers.Main) {
             delay(DELAY_BEFORE_LOCK_SCREEN)
 
             // This is a small hack to answer Android's slow updating of the
@@ -173,6 +175,7 @@ class LockScreenEvent(
             sendBeforeLockScreenEvent()
             delay(Cfg.lockScreenDelay - DELAY_BEFORE_LOCK_SCREEN)
             sendOnLockScreenEvent()
+            delay(DELAY_BEFORE_IDLE)
         }.apply {
             invokeOnCompletion {
                 sendIdleEvent()
@@ -188,14 +191,16 @@ class LockScreenEvent(
         sendLockScreenEventJob = null
     }
 
+    @UiThread
     private fun sendBeforeLockScreenEvent() {
         val value = Event(BeforeLockScreen)
-        postValue(value)
+        setValue(value)
     }
 
+    @UiThread
     private fun sendOnLockScreenEvent() {
         val value = Event(OnLockScreen)
-        postValue(value)
+        setValue(value)
     }
 
     private fun sendIdleEvent() {
