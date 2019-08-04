@@ -135,6 +135,7 @@ class MainActivity : BaseActivity(),
         codeBtn.setOnClickListener(this)
         donateBtn.setOnClickListener(this)
         bugReportBtn.setOnClickListener(this)
+        bugReportDontKillMyAppBtn.setOnClickListener(this)
         translateBtn.setOnClickListener(this)
         labBtn.setOnClickListener(this)
         lockScreenBtn.setOnClickListener(this)
@@ -281,6 +282,7 @@ class MainActivity : BaseActivity(),
             R.id.donateBtn -> mainViewModel.openDonateToMe()
             R.id.codeBtn -> mainViewModel.openRepo()
             R.id.bugReportBtn -> mainViewModel.openBugReport()
+            R.id.bugReportDontKillMyAppBtn -> mainViewModel.openBugReportDontKillMyApp()
             R.id.translateBtn -> mainViewModel.openTranslationService()
             R.id.labBtn -> mainViewModel.openLab()
             // Permissions

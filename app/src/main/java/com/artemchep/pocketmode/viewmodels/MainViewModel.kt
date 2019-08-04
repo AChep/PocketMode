@@ -7,10 +7,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
-import com.artemchep.pocketmode.Cfg
-import com.artemchep.pocketmode.LINK_BUG_REPORT
-import com.artemchep.pocketmode.LINK_REPOSITORY
-import com.artemchep.pocketmode.LINK_TRANSLATE
+import com.artemchep.pocketmode.*
 import com.artemchep.pocketmode.ext.context
 import com.artemchep.pocketmode.models.Proximity
 import com.artemchep.pocketmode.models.events.*
@@ -141,6 +138,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     fun openRepo() = openUrl(LINK_REPOSITORY)
 
     fun openBugReport() = openUrl(LINK_BUG_REPORT)
+
+    fun openBugReportDontKillMyApp() = openUrl(LINK_BUG_REPORT_DONT_KILL_MY_APP)
 
     fun openTranslationService() = openUrl(LINK_TRANSLATE)
 
