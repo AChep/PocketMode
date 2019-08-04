@@ -25,6 +25,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     val overlayBeforeLockingSwitchIsCheckedLiveData = ConfigOverlayBeforeIsCheckedLiveData()
 
+    val proximityWakeLockIsCheckedLiveData = ConfigProximityWakeLockIsCheckedLiveData()
+
     val lockScreenDelayLiveData = ConfigLockScreenDelayLiveData()
 
     val proximityLiveData: LiveData<Float> = ProximityLiveData(context)
@@ -122,6 +124,12 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         } else if (!canDrawOverlays) {
             val event = Event(OpenOverlaysEvent)
             openOverlaysLiveData.postValue(event)
+        }
+    }
+
+    fun setProximityWakeLock(proximityWakeLock: Boolean = Cfg.DEFAULT_PROXIMITY_WAKE_LOCK) {
+        Cfg.edit(context) {
+            Cfg.proximityWakeLock = proximityWakeLock
         }
     }
 

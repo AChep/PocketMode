@@ -1,8 +1,10 @@
 package com.artemchep.pocketmode.viewmodels
 
 import android.content.Context
+import android.os.PowerManager
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
+import com.artemchep.pocketmode.Cfg
 import com.artemchep.pocketmode.models.Keyguard
 import com.artemchep.pocketmode.models.PhoneCall
 import com.artemchep.pocketmode.models.Proximity
@@ -20,6 +22,18 @@ class PocketViewModel(context: Context) {
 
     private val proximityBinaryLiveData: LiveData<Proximity> =
         ProximityBinaryLiveData(context, proximityLiveData)
+
+    /**
+     * Holds the wake lock while being
+     * observed.
+     */
+    private val wakeLockLiveData: LiveData<Nothing> = WakeLockLiveData(context) {
+        if (Cfg.proximityWakeLock) {
+            PowerManager.PROXIMITY_SCREEN_OFF_WAKE_LOCK
+        } else {
+            PowerManager.PARTIAL_WAKE_LOCK
+        }
+    }
 
     private val screenLiveData: LiveData<Screen> = ScreenLiveData(context)
 
@@ -47,7 +61,11 @@ class PocketViewModel(context: Context) {
      */
     val lockScreenLiveData: LiveData<Event<com.artemchep.pocketmode.models.events.LockScreenEvent>> =
         LockScreenEvent(
-            proximityLiveData = proximityBinaryLiveData,
+            proximityLiveData = MediatorLiveData<Proximity>()
+                .apply {
+                    addSource(proximityBinaryLiveData) { postValue(it) }
+                    addSource(wakeLockLiveData) {}
+                },
             screenLiveData = screenLiveData,
             phoneCallLiveData = phoneCallSoloLiveData,
             keyguardLiveData = keyguardLiveData

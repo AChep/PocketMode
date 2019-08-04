@@ -14,6 +14,8 @@ object Cfg : SharedPrefConfig("config") {
     const val DEFAULT_VIBRATE_ON_BEFORE_LOCK_SCREEN = true
     const val KEY_OVERLAY_ON_BEFORE_LOCK_SCREEN = "pocket::overlay_on_before_lock_screen"
     const val DEFAULT_OVERLAY_ON_BEFORE_LOCK_SCREEN = false
+    const val KEY_PROXIMITY_WAKE_LOCK = "pocket::proximity_wake_lock"
+    const val DEFAULT_PROXIMITY_WAKE_LOCK = true
     /**
      * The delay before screen should turn off after proximity
      * sensor reported "near" state.
@@ -41,6 +43,10 @@ object Cfg : SharedPrefConfig("config") {
     var overlayOnBeforeLockScreen by configDelegate(
         KEY_OVERLAY_ON_BEFORE_LOCK_SCREEN,
         DEFAULT_OVERLAY_ON_BEFORE_LOCK_SCREEN
+    )
+    var proximityWakeLock by configDelegate(
+        KEY_PROXIMITY_WAKE_LOCK,
+        DEFAULT_PROXIMITY_WAKE_LOCK
     )
     /**
      * The delay before screen should turn off after proximity

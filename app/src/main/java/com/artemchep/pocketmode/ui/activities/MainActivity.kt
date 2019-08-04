@@ -54,6 +54,8 @@ class MainActivity : BaseActivity(),
 
     private var isOverlayOnBeforeLockScreenSwitchBroadcasting = false
 
+    private var isProximityWakeLockSwitchBroadcasting = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -129,6 +131,23 @@ class MainActivity : BaseActivity(),
             isOverlayOnBeforeLockScreenSwitchBroadcasting = false
         }
 
+        proximityWakeLockCheckBox.setOnCheckedChangeListener { switch, isChecked ->
+            if (isProximityWakeLockSwitchBroadcasting) {
+                return@setOnCheckedChangeListener
+            }
+
+            isProximityWakeLockSwitchBroadcasting = true
+
+            // Revert to old state of the switch, because we can not
+            // change the state from the view.
+            switch.isChecked = mainViewModel.proximityWakeLockIsCheckedLiveData.value!!
+
+            // Ask the view model to change the state.
+            mainViewModel.setProximityWakeLock(isChecked)
+
+            isProximityWakeLockSwitchBroadcasting = false
+        }
+
         toolbar.setOnClickListener(this)
         accessibilityServiceBtn.setOnClickListener(this)
         callStateBtn.setOnClickListener(this)
@@ -168,6 +187,11 @@ class MainActivity : BaseActivity(),
             isOverlayOnBeforeLockScreenSwitchBroadcasting = true
             overlayOnBeforeLockScreenCheckBox.isChecked = it
             isOverlayOnBeforeLockScreenSwitchBroadcasting = false
+        })
+        proximityWakeLockIsCheckedLiveData.observe(this@MainActivity, Observer {
+            isProximityWakeLockSwitchBroadcasting = true
+            proximityWakeLockCheckBox.isChecked = it
+            isProximityWakeLockSwitchBroadcasting = false
         })
         proximityBinaryLiveData.observe(this@MainActivity, Observer {
             val iconRes = when (it) {

@@ -116,6 +116,7 @@
         android:paddingHorizontal="16dp"
         android:paddingTop="12dp"
         android:paddingBottom="12dp"
+        android:switchPadding="8dp"
         android:text="@string/settings_vibrate_before_locking"
         android:textAppearance="?android:textAppearanceMedium"
         android:textColor="?android:textColorPrimary"
@@ -132,6 +133,7 @@
         android:paddingHorizontal="16dp"
         android:paddingTop="12dp"
         android:paddingBottom="12dp"
+        android:switchPadding="8dp"
         android:text="@string/settings_overlay_before_locking"
         android:textAppearance="?android:textAppearanceMedium"
         android:textColor="?android:textColorPrimary"
@@ -139,6 +141,23 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/vibrateOnBeforeLockScreenCheckBox" />
+
+    <Switch
+        android:id="@+id/proximityWakeLockCheckBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:foreground="?selectableItemBackground"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:switchPadding="8dp"
+        android:text="@string/settings_turn_screen_off_when_covered"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textColor="?android:textColorPrimary"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/overlayOnBeforeLockScreenCheckBox" />
 
     <TextView
         android:id="@+id/aboutDivider"
@@ -148,7 +167,7 @@
         android:background="?dividerHorizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/overlayOnBeforeLockScreenCheckBox" />
+        app:layout_constraintTop_toBottomOf="@id/proximityWakeLockCheckBox" />
 
     <TextView
         android:id="@+id/about"
@@ -190,6 +209,7 @@
         android:background="?selectableItemBackground"
         android:drawableStart="@drawable/ic_outline_credit_card"
         android:drawablePadding="16dp"
+        android:gravity="center_vertical"
         android:paddingHorizontal="16dp"
         android:paddingTop="12dp"
         android:paddingBottom="12dp"
@@ -208,6 +228,7 @@
         android:background="?selectableItemBackground"
         android:drawableStart="@drawable/ic_outline_bug_report"
         android:drawablePadding="16dp"
+        android:gravity="center_vertical"
         android:paddingHorizontal="16dp"
         android:paddingTop="12dp"
         android:paddingBottom="12dp"
@@ -256,6 +277,7 @@
         android:background="?selectableItemBackground"
         android:drawableStart="@drawable/ic_outline_code"
         android:drawablePadding="16dp"
+        android:gravity="center_vertical"
         android:paddingHorizontal="16dp"
         android:paddingTop="12dp"
         android:paddingBottom="12dp"
@@ -274,6 +296,7 @@
         android:background="?selectableItemBackground"
         android:drawableStart="@drawable/ic_outline_translate"
         android:drawablePadding="16dp"
+        android:gravity="center_vertical"
         android:paddingHorizontal="16dp"
         android:paddingTop="12dp"
         android:paddingBottom="12dp"

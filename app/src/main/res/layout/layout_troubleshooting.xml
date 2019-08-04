@@ -122,6 +122,7 @@
         android:background="?selectableItemBackground"
         android:drawableStart="@drawable/ic_test_tube"
         android:drawablePadding="16dp"
+        android:gravity="center_vertical"
         android:paddingHorizontal="16dp"
         android:paddingTop="12dp"
         android:paddingBottom="12dp"
