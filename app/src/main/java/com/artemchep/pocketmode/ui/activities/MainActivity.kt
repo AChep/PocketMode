@@ -16,6 +16,8 @@ import com.afollestad.materialdialogs.WhichButton
 import com.afollestad.materialdialogs.actions.getActionButton
 import com.afollestad.materialdialogs.callbacks.onShow
 import com.artemchep.pocketmode.*
+import com.artemchep.pocketmode.analytics.AnalyticsHolder
+import com.artemchep.pocketmode.analytics.AnalyticsHolderImpl
 import com.artemchep.pocketmode.ext.getStringOrEmpty
 import com.artemchep.pocketmode.models.Proximity
 import com.artemchep.pocketmode.ui.activities.base.BaseActivity
@@ -30,7 +32,10 @@ import kotlinx.android.synthetic.main.layout_troubleshooting.*
 /**
  * @author Artem Chepurnoy
  */
-class MainActivity : BaseActivity(), View.OnClickListener {
+class MainActivity : BaseActivity(),
+    AnalyticsHolder by AnalyticsHolderImpl(),
+    View.OnClickListener {
+
     companion object {
         private const val DD = 100
 
@@ -164,6 +169,11 @@ class MainActivity : BaseActivity(), View.OnClickListener {
                 Proximity.Near -> R.drawable.ic_eye_off
             }
             proximityIcon.setImageResource(iconRes)
+
+            // Log the changes in a proximity
+            // sensors; maybe this will help to investigate issues with
+            // some devices.
+            analytics.logTestProximitySensorChange(it)
         })
         proximityLiveData.observe(this@MainActivity, Observer {
             proximityCmText.text = getStringOrEmpty(R.string.cm, it)

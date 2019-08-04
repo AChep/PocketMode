@@ -10,6 +10,10 @@ import android.view.Display
 import android.view.accessibility.AccessibilityManager
 import androidx.annotation.StringRes
 import androidx.core.content.getSystemService
+import com.artemchep.pocketmode.Heart
+
+val Context.heart: Heart
+    get() = applicationContext as Heart
 
 fun Context.getStringOrEmpty(@StringRes resId: Int, vararg formatArgs: Any): String {
     return try {

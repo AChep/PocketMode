@@ -1,9 +1,15 @@
 package com.artemchep.pocketmode
 
+import android.app.Activity
 import android.app.Application
 import android.content.Intent
+import android.os.Bundle
 import com.artemchep.config.Config
+import com.artemchep.pocketmode.analytics.Analytics
+import com.artemchep.pocketmode.analytics.AnalyticsFirebase
+import com.artemchep.pocketmode.analytics.AnalyticsHolder
 import com.artemchep.pocketmode.services.PocketService
+import com.google.firebase.analytics.FirebaseAnalytics
 import org.solovyev.android.checkout.Billing
 
 /**
@@ -34,10 +40,38 @@ class Heart : Application() {
         }
     })
 
+    val analytics: Analytics by lazy { AnalyticsFirebase(FirebaseAnalytics.getInstance(this)) }
+
     override fun onCreate() {
         super.onCreate()
         Cfg.init(this)
         Cfg.observe(cfgObserver)
+
+        registerActivityLifecycleCallbacks(object : ActivityLifecycleCallbacks {
+            override fun onActivityPaused(activity: Activity?) {
+            }
+
+            override fun onActivityResumed(activity: Activity?) {
+            }
+
+            override fun onActivityStarted(activity: Activity?) {
+            }
+
+            override fun onActivityDestroyed(activity: Activity?) {
+            }
+
+            override fun onActivitySaveInstanceState(activity: Activity?, outState: Bundle?) {
+            }
+
+            override fun onActivityStopped(activity: Activity?) {
+            }
+
+            override fun onActivityCreated(activity: Activity?, savedInstanceState: Bundle?) {
+                if (activity is AnalyticsHolder) {
+                    activity.analytics = analytics
+                }
+            }
+        })
 
         // Start the service.
         if (Cfg.isEnabled) {

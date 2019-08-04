@@ -7,6 +7,7 @@ import android.view.accessibility.AccessibilityManager
 import androidx.core.content.getSystemService
 import com.artemchep.pocketmode.INTENT_ACCESSIBILITY_CHANGED
 import com.artemchep.pocketmode.R
+import com.artemchep.pocketmode.ext.heart
 import com.artemchep.pocketmode.sendLocalBroadcast
 import com.crashlytics.android.Crashlytics
 
@@ -53,6 +54,7 @@ class PocketAccessibilityService : AccessibilityService() {
 
     /** Sends the "lock screen" command */
     private fun lockScreen() {
+        heart.analytics.logPocketModeLocked()
         performGlobalAction(GLOBAL_ACTION_LOCK_SCREEN)
     }
 

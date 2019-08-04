@@ -17,6 +17,7 @@ import androidx.work.WorkManager
 import com.artemchep.config.Config
 import com.artemchep.pocketmode.Cfg
 import com.artemchep.pocketmode.R
+import com.artemchep.pocketmode.ext.heart
 import com.artemchep.pocketmode.ext.vibrateOneShot
 import com.artemchep.pocketmode.models.`fun`.Either
 import com.artemchep.pocketmode.models.events.BeforeLockScreen
@@ -108,6 +109,7 @@ class PocketService : Service() {
     }
 
     private fun lockScreen() {
+        heart.analytics.logPocketModeTriggered()
         PocketAccessibilityService.sendLockScreenEvent(this, javaClass)
     }
 
