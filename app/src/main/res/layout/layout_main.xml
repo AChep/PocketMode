@@ -157,9 +157,19 @@
         android:layout_marginTop="16dp"
         android:text="@string/about"
         android:textAppearance="@style/TextSection"
-        app:layout_constraintEnd_toStartOf="@id/endGuideline"
+        app:layout_constraintEnd_toStartOf="@id/aboutAuthor"
         app:layout_constraintStart_toEndOf="@id/startGuideline"
         app:layout_constraintTop_toBottomOf="@id/aboutDivider" />
+
+    <TextView
+        android:id="@+id/aboutAuthor"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textAppearance="@style/TextSection"
+        app:layout_constraintBaseline_toBaselineOf="@id/about"
+        app:layout_constraintEnd_toStartOf="@id/endGuideline"
+        tools:text="@string/about_author" />
 
     <TextView
         android:id="@+id/aboutText"

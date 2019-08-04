@@ -140,6 +140,11 @@ class MainActivity : BaseActivity(),
         lockScreenBtn.setOnClickListener(this)
         lockScreenDelayResetBtn.setOnClickListener(this)
 
+        aboutAuthor.text = getStringOrEmpty(
+            R.string.about_author,
+            getString(R.string.about_author_artem_chepurnoy)
+        )
+
         mainViewModel.setup()
     }
 
