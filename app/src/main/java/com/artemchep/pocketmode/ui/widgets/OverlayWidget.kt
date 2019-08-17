@@ -5,9 +5,9 @@ import android.content.Context
 import android.view.View
 import android.widget.FrameLayout
 import com.artemchep.pocketmode.R
+import com.artemchep.pocketmode.ext.resumeOrNothing
 import kotlinx.android.synthetic.main.service_overlay.view.*
 import kotlinx.coroutines.*
-import kotlin.coroutines.resume
 
 /**
  * @author Artem Chepurnoy
@@ -69,11 +69,11 @@ class OverlayWidget(context: Context) : FrameLayout(context) {
                                 block()
                             }
 
-                            continuation.resume(Unit)
+                            continuation.resumeOrNothing(Unit)
                         }
 
                         override fun onAnimationCancel(animation: Animator?) {
-                            continuation.resume(Unit)
+                            continuation.resumeOrNothing(Unit)
                         }
                     })
                     .duration = enterExitAnimationDuration
