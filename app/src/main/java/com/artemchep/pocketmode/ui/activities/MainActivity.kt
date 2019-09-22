@@ -21,7 +21,6 @@ import com.artemchep.pocketmode.*
 import com.artemchep.pocketmode.analytics.AnalyticsHolder
 import com.artemchep.pocketmode.analytics.AnalyticsHolderImpl
 import com.artemchep.pocketmode.ext.getStringOrEmpty
-import com.artemchep.pocketmode.ext.updateContentPadding
 import com.artemchep.pocketmode.models.Proximity
 import com.artemchep.pocketmode.ui.activities.base.BaseActivity
 import com.artemchep.pocketmode.util.ObserverConsumer
