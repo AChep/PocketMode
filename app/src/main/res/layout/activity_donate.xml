@@ -32,6 +32,13 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <View
+            android:id="@+id/statusBar"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:alpha="0.8"
+            android:background="@drawable/bg_toolbar" />
+
         <FrameLayout
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
@@ -44,23 +51,31 @@
                 android:alpha="0.8"
                 android:background="@drawable/bg_toolbar" />
 
-            <ImageButton
-                android:id="@+id/backBtn"
-                style="?actionButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:src="@drawable/ic_arrow_back" />
+            <FrameLayout
+                android:id="@+id/toolbarContent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:fontFamily="@font/manrope_semibold"
-                android:text="@string/help_donate"
-                android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="?android:textColorPrimary"
-                android:textSize="20sp" />
+                <ImageButton
+                    android:id="@+id/backBtn"
+                    style="?actionButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|start"
+                    android:rotationY="@dimen/autorotate_rotation_y"
+                    android:src="@drawable/ic_arrow_back" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/manrope_semibold"
+                    android:text="@string/help_donate"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:textColor="?android:textColorPrimary"
+                    android:textSize="20sp" />
+
+            </FrameLayout>
 
         </FrameLayout>
 

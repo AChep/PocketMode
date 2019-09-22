@@ -2,6 +2,8 @@ package com.artemchep.pocketmode.ui.activities
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.ViewCompat
+import androidx.core.view.updatePadding
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -27,6 +29,24 @@ class LabActivity : BaseActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lab)
+
+        ViewCompat.setOnApplyWindowInsetsListener(window.decorView) { _, insets ->
+            statusBar.layoutParams.height = insets.systemWindowInsetTop
+            scrollView.updatePadding(
+                top = insets.systemWindowInsetTop,
+                bottom = insets.systemWindowInsetBottom
+            )
+            toolbarContent.updatePadding(
+                left = insets.systemWindowInsetLeft,
+                right = insets.systemWindowInsetRight
+            )
+            scrollViewContent.updatePadding(
+                left = insets.systemWindowInsetLeft,
+                right = insets.systemWindowInsetRight
+            )
+
+            insets.consumeSystemWindowInsets()
+        }
 
         backBtn.setOnClickListener(this)
 

@@ -8,7 +8,9 @@ import android.view.View
 import android.widget.SeekBar
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.net.toUri
+import androidx.core.view.ViewCompat
 import androidx.core.view.isGone
+import androidx.core.view.updatePadding
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.afollestad.materialdialogs.MaterialDialog
@@ -19,6 +21,7 @@ import com.artemchep.pocketmode.*
 import com.artemchep.pocketmode.analytics.AnalyticsHolder
 import com.artemchep.pocketmode.analytics.AnalyticsHolderImpl
 import com.artemchep.pocketmode.ext.getStringOrEmpty
+import com.artemchep.pocketmode.ext.updateContentPadding
 import com.artemchep.pocketmode.models.Proximity
 import com.artemchep.pocketmode.ui.activities.base.BaseActivity
 import com.artemchep.pocketmode.util.ObserverConsumer
@@ -59,6 +62,24 @@ class MainActivity : BaseActivity(),
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        ViewCompat.setOnApplyWindowInsetsListener(window.decorView) { _, insets ->
+            statusBar.layoutParams.height = insets.systemWindowInsetTop
+            scrollView.updatePadding(
+                top = insets.systemWindowInsetTop,
+                bottom = insets.systemWindowInsetBottom
+            )
+            toolbarContent.updatePadding(
+                left = insets.systemWindowInsetLeft,
+                right = insets.systemWindowInsetRight
+            )
+            scrollViewContent.updatePadding(
+                left = insets.systemWindowInsetLeft,
+                right = insets.systemWindowInsetRight
+            )
+
+            insets.consumeSystemWindowInsets()
+        }
 
         lockScreenDelaySeekBar.max = resources.getInteger(R.integer.maxDelay) / DD
         lockScreenDelaySeekBar.min = resources.getInteger(R.integer.minDelay) / DD

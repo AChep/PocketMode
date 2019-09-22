@@ -3,7 +3,9 @@ package com.artemchep.pocketmode.ui.activities
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.ViewCompat
 import androidx.core.view.isVisible
+import androidx.core.view.updatePadding
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,7 +18,6 @@ import com.artemchep.pocketmode.viewmodels.DonateViewModel
 import com.mikepenz.fastadapter.FastAdapter
 import com.mikepenz.fastadapter.adapters.ItemAdapter
 import kotlinx.android.synthetic.main.activity_donate.*
-import org.solovyev.android.checkout.Sku
 
 /**
  * @author Artem Chepurnoy
@@ -32,6 +33,21 @@ class DonateActivity : BaseActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_donate)
+
+        ViewCompat.setOnApplyWindowInsetsListener(window.decorView) { _, insets ->
+            statusBar.layoutParams.height = insets.systemWindowInsetTop
+            recyclerView.updatePadding(
+                top = insets.systemWindowInsetTop +
+                        resources.getDimensionPixelSize(R.dimen.actionBarSize),
+                bottom = insets.systemWindowInsetBottom
+            )
+            toolbarContent.updatePadding(
+                left = insets.systemWindowInsetLeft,
+                right = insets.systemWindowInsetRight
+            )
+
+            insets.consumeSystemWindowInsets()
+        }
 
         backBtn.setOnClickListener(this)
 
