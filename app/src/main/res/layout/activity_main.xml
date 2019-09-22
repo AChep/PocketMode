@@ -21,7 +21,7 @@
             android:paddingTop="@dimen/actionBarSize"
             android:paddingBottom="16dp">
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/accessContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -30,9 +30,9 @@
 
                 <include layout="@layout/layout_access" />
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/troubleshootingContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -41,9 +41,9 @@
 
                 <include layout="@layout/layout_troubleshooting" />
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/mainContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -51,7 +51,7 @@
 
                 <include layout="@layout/layout_main" />
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
         </LinearLayout>
 
