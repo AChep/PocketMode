@@ -6,11 +6,13 @@ import android.hardware.display.DisplayManager
 import android.os.PowerManager
 import android.os.VibrationEffect
 import android.os.Vibrator
+import android.provider.Settings.Secure
+import android.provider.Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES
 import android.view.Display
-import android.view.accessibility.AccessibilityManager
 import androidx.annotation.StringRes
 import androidx.core.content.getSystemService
 import com.artemchep.pocketmode.Heart
+import com.artemchep.pocketmode.services.PocketAccessibilityService
 
 val Context.heart: Heart
     get() = applicationContext as Heart
@@ -73,7 +75,12 @@ fun Context.isScreenOn(): Boolean {
 }
 
 fun Context.isAccessibilityServiceEnabled(): Boolean =
-    getSystemService<AccessibilityManager>()?.isEnabled ?: false
+    isAccessibilityServiceEnabled(PocketAccessibilityService::class.java)
+
+fun Context.isAccessibilityServiceEnabled(accessibilityServiceClass: Class<*>): Boolean {
+    val enabledServices = Secure.getString(contentResolver, ENABLED_ACCESSIBILITY_SERVICES)
+    return enabledServices?.contains(packageName + "/" + accessibilityServiceClass.name) == true
+}
 
 fun Context.vibrateOneShot(time: Long) {
     val vibrator = getSystemService<Vibrator>()
