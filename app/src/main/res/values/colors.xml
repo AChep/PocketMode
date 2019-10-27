@@ -4,5 +4,7 @@
     <color name="colorPrimaryDark">#fff</color>
     <color name="colorAccent">#ff3d00</color>
 
+    <color name="colorNavigationBarPreQ">#B3FFFFFF</color>
+
     <color name="green">#4caf50</color>
 </resources>
