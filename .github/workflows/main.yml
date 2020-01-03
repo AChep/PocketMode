@@ -1,0 +1,17 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v1
+    - uses: malinskiy/action-android/emulator-run-cmd@release/0.0.2
+      with:
+        cmd: ./gradlew build
+        api: 29
+        tag: default
+        abi: x86
