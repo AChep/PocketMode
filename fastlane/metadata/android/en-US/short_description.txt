@@ -1,0 +1,1 @@
+Prevents accidental clicks while phone is in pocket

@@ -1,0 +1,1 @@
+Support system-wide Light/Dark theme toggle.
