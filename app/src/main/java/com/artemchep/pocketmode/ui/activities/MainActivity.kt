@@ -232,6 +232,11 @@ class MainActivity : BaseActivity(),
             proximityWakeLockCheckBox.isChecked = it
             isProximityWakeLockSwitchBroadcasting = false
         })
+        analyticsIsCheckedLiveData.observe(this@MainActivity, Observer {
+            isAnalyticsSwitchBroadcasting = true
+            analyticsCheckBox.isChecked = it
+            isAnalyticsSwitchBroadcasting = false
+        })
         proximityBinaryLiveData.observe(this@MainActivity, Observer {
             val iconRes = when (it) {
                 Proximity.Far -> R.drawable.ic_eye
