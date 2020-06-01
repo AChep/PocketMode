@@ -27,6 +27,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     val proximityWakeLockIsCheckedLiveData = ConfigProximityWakeLockIsCheckedLiveData()
 
+    val analyticsIsCheckedLiveData = ConfigAnalyticsIsCheckedLiveData()
+
     val lockScreenDelayLiveData = ConfigLockScreenDelayLiveData()
 
     val proximityLiveData: LiveData<Float> = ProximityLiveData(context)
@@ -130,6 +132,12 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     fun setProximityWakeLock(proximityWakeLock: Boolean = Cfg.DEFAULT_PROXIMITY_WAKE_LOCK) {
         Cfg.edit(context) {
             Cfg.proximityWakeLock = proximityWakeLock
+        }
+    }
+
+    fun setAnalytics(analytics: Boolean = Cfg.DEFAULT_ANALYTICS) {
+        Cfg.edit(context) {
+            Cfg.analytics = analytics
         }
     }
 

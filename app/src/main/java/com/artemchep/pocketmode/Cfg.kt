@@ -16,6 +16,9 @@ object Cfg : SharedPrefConfig("config") {
     const val DEFAULT_OVERLAY_ON_BEFORE_LOCK_SCREEN = false
     const val KEY_PROXIMITY_WAKE_LOCK = "pocket::proximity_wake_lock"
     const val DEFAULT_PROXIMITY_WAKE_LOCK = true
+    const val KEY_ANALYTICS = "pocket::analytics"
+    const val DEFAULT_ANALYTICS = true
+
     /**
      * The delay before screen should turn off after proximity
      * sensor reported "near" state.
@@ -48,6 +51,11 @@ object Cfg : SharedPrefConfig("config") {
         KEY_PROXIMITY_WAKE_LOCK,
         DEFAULT_PROXIMITY_WAKE_LOCK
     )
+    var analytics by configDelegate(
+        KEY_ANALYTICS,
+        DEFAULT_ANALYTICS
+    )
+
     /**
      * The delay before screen should turn off after proximity
      * sensor reported "near" state.

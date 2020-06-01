@@ -58,6 +58,8 @@ class MainActivity : BaseActivity(),
 
     private var isProximityWakeLockSwitchBroadcasting = false
 
+    private var isAnalyticsSwitchBroadcasting = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -166,6 +168,23 @@ class MainActivity : BaseActivity(),
             mainViewModel.setProximityWakeLock(isChecked)
 
             isProximityWakeLockSwitchBroadcasting = false
+        }
+
+        analyticsCheckBox.setOnCheckedChangeListener { switch, isChecked ->
+            if (isAnalyticsSwitchBroadcasting) {
+                return@setOnCheckedChangeListener
+            }
+
+            isAnalyticsSwitchBroadcasting = true
+
+            // Revert to old state of the switch, because we can not
+            // change the state from the view.
+            switch.isChecked = mainViewModel.analyticsIsCheckedLiveData.value!!
+
+            // Ask the view model to change the state.
+            mainViewModel.setAnalytics(isChecked)
+
+            isAnalyticsSwitchBroadcasting = false
         }
 
         toolbar.setOnClickListener(this)

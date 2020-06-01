@@ -8,6 +8,7 @@ import com.artemchep.config.Config
 import com.artemchep.pocketmode.analytics.Analytics
 import com.artemchep.pocketmode.analytics.AnalyticsFirebase
 import com.artemchep.pocketmode.analytics.AnalyticsHolder
+import com.artemchep.pocketmode.analytics.AnalyticsStub
 import com.artemchep.pocketmode.services.PocketService
 import com.google.firebase.analytics.FirebaseAnalytics
 import org.solovyev.android.checkout.Billing
@@ -40,7 +41,11 @@ class Heart : Application() {
         }
     })
 
-    val analytics: Analytics by lazy { AnalyticsFirebase(FirebaseAnalytics.getInstance(this)) }
+    val analytics: Analytics by lazy {
+        if (Cfg.analytics) {
+            AnalyticsFirebase(FirebaseAnalytics.getInstance(this))
+        } else AnalyticsStub()
+    }
 
     override fun onCreate() {
         super.onCreate()
