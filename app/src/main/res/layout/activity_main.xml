@@ -28,7 +28,9 @@
                 android:layout_marginBottom="16dp"
                 app:cardCornerRadius="0dp">
 
-                <include layout="@layout/layout_access" />
+                <include
+                    android:id="@+id/accessStub"
+                    layout="@layout/layout_access" />
 
             </com.google.android.material.card.MaterialCardView>
 
@@ -39,7 +41,9 @@
                 android:layout_marginBottom="16dp"
                 app:cardCornerRadius="0dp">
 
-                <include layout="@layout/layout_troubleshooting" />
+                <include
+                    android:id="@+id/troubleshootingStub"
+                    layout="@layout/layout_troubleshooting" />
 
             </com.google.android.material.card.MaterialCardView>
 
@@ -49,7 +53,9 @@
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="0dp">
 
-                <include layout="@layout/layout_main" />
+                <include
+                    android:id="@+id/mainStub"
+                    layout="@layout/layout_main" />
 
             </com.google.android.material.card.MaterialCardView>
 

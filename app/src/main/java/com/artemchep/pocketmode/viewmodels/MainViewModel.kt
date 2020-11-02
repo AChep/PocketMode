@@ -9,10 +9,12 @@ import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import com.artemchep.pocketmode.*
 import com.artemchep.pocketmode.ext.context
+import com.artemchep.pocketmode.models.MainScreen
 import com.artemchep.pocketmode.models.Proximity
 import com.artemchep.pocketmode.models.events.*
 import com.artemchep.pocketmode.sensors.*
 import com.artemchep.pocketmode.services.PocketAccessibilityService
+import com.artemchep.pocketmode.util.combine
 
 /**
  * @author Artem Chepurnoy
@@ -74,6 +76,55 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             addSource(isAccessibilityGranted, resolver)
             addSource(isReadPhoneCallGranted, resolver)
         }
+
+    // ---- Out ----
+
+    private val mainScreenMinLockDelay = context.resources.getInteger(R.integer.minDelay).toLong()
+
+    private val mainScreenMaxLockDelay = context.resources.getInteger(R.integer.maxDelay).toLong()
+
+    private val mainScreenSettings = combine(
+        overlayBeforeLockingSwitchIsCheckedLiveData,
+        vibrateBeforeLockingSwitchIsCheckedLiveData,
+        proximityWakeLockIsCheckedLiveData,
+        lockScreenDelayLiveData,
+    ) { overlayEnabled, shouldVibrateBeforeLocking, shouldUseProximityWakeLock, lockDelay ->
+        MainScreen.Settings(
+            isVibrateBeforeLockingEnabled = shouldVibrateBeforeLocking,
+            onVibrateBeforeLockingChanged = ::setVibrateOnBeforeLockScreen,
+            isShowOverlayBeforeLockingEnabled = overlayEnabled,
+            onShowOverlayBeforeLockingChanged = ::setOverlayOnBeforeLockScreen,
+            isTurnScreenBlackEnabled = shouldUseProximityWakeLock,
+            onTurnScreenBlackChanged = ::setProximityWakeLock,
+            lockDelayMinMs = mainScreenMinLockDelay,
+            lockDelayMaxMs = mainScreenMaxLockDelay,
+            lockDelayMs = lockDelay,
+        )
+    }
+
+    private val mainScreenTroubleshooting = combine(
+        overlayBeforeLockingSwitchIsCheckedLiveData,
+        vibrateBeforeLockingSwitchIsCheckedLiveData,
+        proximityWakeLockIsCheckedLiveData,
+        lockScreenDelayLiveData,
+    ) { overlay, vibrateBeforeLocking, shouldUseProximityWakeLock, lockDelay ->
+        MainScreen.Troubleshooting(
+            onLockScreen = {},
+            onLaboratoryScreen = {},
+            proximityCm = 1f,
+            proximityIsClose = false,
+        )
+    }
+
+    val mainScreen = combine(
+        mainScreenSettings,
+        mainScreenTroubleshooting,
+    ) { settings, troubleshooting ->
+        MainScreen(
+            settings = settings,
+            troubleshooting = troubleshooting,
+        )
+    }
 
     // ---- Events ----
 

@@ -7,6 +7,9 @@ import com.artemchep.pocketmode.models.Proximity
  */
 class AnalyticsStub(
 ) : Analytics {
+    override fun log(message: String) {
+    }
+
     override fun logPocketModeTriggered() {
     }
 

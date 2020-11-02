@@ -11,13 +11,13 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.artemchep.pocketmode.R
 import com.artemchep.pocketmode.checkout.intentstarters.ActivityIntentStarter
+import com.artemchep.pocketmode.databinding.ActivityDonateBinding
 import com.artemchep.pocketmode.models.Loader
 import com.artemchep.pocketmode.ui.activities.base.BaseActivity
 import com.artemchep.pocketmode.ui.items.SkuItem
 import com.artemchep.pocketmode.viewmodels.DonateViewModel
 import com.mikepenz.fastadapter.FastAdapter
 import com.mikepenz.fastadapter.adapters.ItemAdapter
-import kotlinx.android.synthetic.main.activity_donate.*
 
 /**
  * @author Artem Chepurnoy
@@ -30,18 +30,22 @@ class DonateActivity : BaseActivity(), View.OnClickListener {
 
     private val itemAdapter by lazy { ItemAdapter<SkuItem>() }
 
+    private val viewBinding by lazy {
+        ActivityDonateBinding.bind(findViewById(android.R.id.content))
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_donate)
 
         ViewCompat.setOnApplyWindowInsetsListener(window.decorView) { _, insets ->
-            statusBar.layoutParams.height = insets.systemWindowInsetTop
-            recyclerView.updatePadding(
+            viewBinding.statusBar.layoutParams.height = insets.systemWindowInsetTop
+            viewBinding.recyclerView.updatePadding(
                 top = insets.systemWindowInsetTop +
                         resources.getDimensionPixelSize(R.dimen.actionBarSize),
                 bottom = insets.systemWindowInsetBottom
             )
-            toolbarContent.updatePadding(
+            viewBinding.toolbarContent.updatePadding(
                 left = insets.systemWindowInsetLeft,
                 right = insets.systemWindowInsetRight
             )
@@ -49,10 +53,10 @@ class DonateActivity : BaseActivity(), View.OnClickListener {
             insets.consumeSystemWindowInsets()
         }
 
-        backBtn.setOnClickListener(this)
+        viewBinding.backBtn.setOnClickListener(this)
 
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = FastAdapter.with<SkuItem, ItemAdapter<*>>(itemAdapter)
+        viewBinding.recyclerView.layoutManager = LinearLayoutManager(this)
+        viewBinding.recyclerView.adapter = FastAdapter.with<SkuItem, ItemAdapter<*>>(itemAdapter)
             .withOnClickListener { _, _, item, _ ->
                 val intentStarter = ActivityIntentStarter(this)
                 donateViewModel.purchase(intentStarter, item.sku)
@@ -68,9 +72,9 @@ class DonateActivity : BaseActivity(), View.OnClickListener {
         productLiveData.observe(this@DonateActivity, Observer {
             when (it) {
                 is Loader.Ok -> {
-                    errorView.isVisible = false
-                    progressView.isVisible = false
-                    recyclerView.isVisible = true
+                    viewBinding.errorView.isVisible = false
+                    viewBinding.progressView.isVisible = false
+                    viewBinding.recyclerView.isVisible = true
 
                     // Bind products to recycler view.
                     val items = it.value
@@ -88,14 +92,14 @@ class DonateActivity : BaseActivity(), View.OnClickListener {
                     itemAdapter.setNewList(items)
                 }
                 is Loader.Loading -> {
-                    errorView.isVisible = false
-                    progressView.isVisible = true
-                    recyclerView.isVisible = false
+                    viewBinding.errorView.isVisible = false
+                    viewBinding.progressView.isVisible = true
+                    viewBinding.recyclerView.isVisible = false
                 }
                 is Loader.Error -> {
-                    errorView.isVisible = true
-                    progressView.isVisible = false
-                    recyclerView.isVisible = false
+                    viewBinding.errorView.isVisible = true
+                    viewBinding.progressView.isVisible = false
+                    viewBinding.recyclerView.isVisible = false
                 }
             }
         })

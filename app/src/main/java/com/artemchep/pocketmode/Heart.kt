@@ -6,11 +6,10 @@ import android.content.Intent
 import android.os.Bundle
 import com.artemchep.config.Config
 import com.artemchep.pocketmode.analytics.Analytics
-import com.artemchep.pocketmode.analytics.AnalyticsFirebase
 import com.artemchep.pocketmode.analytics.AnalyticsHolder
 import com.artemchep.pocketmode.analytics.AnalyticsStub
+import com.artemchep.pocketmode.analytics.createAnalytics
 import com.artemchep.pocketmode.services.PocketService
-import com.google.firebase.analytics.FirebaseAnalytics
 import org.solovyev.android.checkout.Billing
 
 /**
@@ -43,7 +42,7 @@ class Heart : Application() {
 
     val analytics: Analytics by lazy {
         if (Cfg.analytics) {
-            AnalyticsFirebase(FirebaseAnalytics.getInstance(this))
+            createAnalytics(this)
         } else AnalyticsStub()
     }
 

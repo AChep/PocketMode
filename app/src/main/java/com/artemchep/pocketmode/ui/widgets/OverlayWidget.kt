@@ -5,8 +5,8 @@ import android.content.Context
 import android.view.View
 import android.widget.FrameLayout
 import com.artemchep.pocketmode.R
+import com.artemchep.pocketmode.databinding.ServiceOverlayBinding
 import com.artemchep.pocketmode.ext.resumeOrNothing
-import kotlinx.android.synthetic.main.service_overlay.view.*
 import kotlinx.coroutines.*
 
 /**
@@ -26,6 +26,8 @@ class OverlayWidget(context: Context) : FrameLayout(context) {
         View.inflate(context, R.layout.service_overlay, this)
     }
 
+    private val viewBinding = ServiceOverlayBinding.bind(this)
+
     private val enterExitAnimationDuration by lazy {
         resources.getInteger(android.R.integer.config_shortAnimTime).toLong()
     }
@@ -34,12 +36,12 @@ class OverlayWidget(context: Context) : FrameLayout(context) {
 
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
-        contentCardView.alpha = INIT_ALPHA
-        contentCardView.scaleX = INIT_SCALE_X
-        contentCardView.scaleY = INIT_SCALE_Y
-        contentCardView.translationY = INIT_TRANSLATE_Y
-        contentCardView.rotationX = INIT_ROTATION_X
-        contentCardView.animate()
+        viewBinding.contentCardView.alpha = INIT_ALPHA
+        viewBinding.contentCardView.scaleX = INIT_SCALE_X
+        viewBinding.contentCardView.scaleY = INIT_SCALE_Y
+        viewBinding.contentCardView.translationY = INIT_TRANSLATE_Y
+        viewBinding.contentCardView.rotationX = INIT_ROTATION_X
+        viewBinding.contentCardView.animate()
             .scaleX(1.0f)
             .scaleY(1.0f)
             .alpha(1.0f)
@@ -54,8 +56,8 @@ class OverlayWidget(context: Context) : FrameLayout(context) {
             // Suspend the job until the animation
             // completes.
             suspendCancellableCoroutine<Unit> { continuation ->
-                contentCardView.animate().cancel()
-                contentCardView.animate()
+                viewBinding.contentCardView.animate().cancel()
+                viewBinding.contentCardView.animate()
                     .scaleX(INIT_SCALE_X)
                     .scaleY(INIT_SCALE_Y)
                     .alpha(INIT_ALPHA)

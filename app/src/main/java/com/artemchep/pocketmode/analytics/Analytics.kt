@@ -7,6 +7,8 @@ import com.artemchep.pocketmode.models.Proximity
  */
 interface Analytics {
 
+    fun log(message: String)
+
     fun logPocketModeTriggered()
 
     fun logPocketModeLocked()

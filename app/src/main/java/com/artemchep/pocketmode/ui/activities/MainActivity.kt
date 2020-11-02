@@ -10,6 +10,7 @@ import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.net.toUri
 import androidx.core.view.ViewCompat
 import androidx.core.view.isGone
+import androidx.core.view.isVisible
 import androidx.core.view.updatePadding
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -20,16 +21,12 @@ import com.afollestad.materialdialogs.callbacks.onShow
 import com.artemchep.pocketmode.*
 import com.artemchep.pocketmode.analytics.AnalyticsHolder
 import com.artemchep.pocketmode.analytics.AnalyticsHolderImpl
+import com.artemchep.pocketmode.databinding.ActivityMainBinding
 import com.artemchep.pocketmode.ext.getStringOrEmpty
 import com.artemchep.pocketmode.models.Proximity
 import com.artemchep.pocketmode.ui.activities.base.BaseActivity
 import com.artemchep.pocketmode.util.ObserverConsumer
 import com.artemchep.pocketmode.viewmodels.MainViewModel
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.layout_access.*
-import kotlinx.android.synthetic.main.layout_main.*
-import kotlinx.android.synthetic.main.layout_troubleshooting.*
-
 
 /**
  * @author Artem Chepurnoy
@@ -60,21 +57,25 @@ class MainActivity : BaseActivity(),
 
     private var isAnalyticsSwitchBroadcasting = false
 
+    private val viewBinding by lazy {
+        ActivityMainBinding.bind(findViewById(android.R.id.content))
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         ViewCompat.setOnApplyWindowInsetsListener(window.decorView) { _, insets ->
-            statusBar.layoutParams.height = insets.systemWindowInsetTop
-            scrollView.updatePadding(
+            viewBinding.statusBar.layoutParams.height = insets.systemWindowInsetTop
+            viewBinding.scrollView.updatePadding(
                 top = insets.systemWindowInsetTop,
                 bottom = insets.systemWindowInsetBottom
             )
-            toolbarContent.updatePadding(
+            viewBinding.toolbarContent.updatePadding(
                 left = insets.systemWindowInsetLeft,
                 right = insets.systemWindowInsetRight
             )
-            scrollViewContent.updatePadding(
+            viewBinding.scrollViewContent.updatePadding(
                 left = insets.systemWindowInsetLeft,
                 right = insets.systemWindowInsetRight
             )
@@ -82,9 +83,12 @@ class MainActivity : BaseActivity(),
             insets.consumeSystemWindowInsets()
         }
 
-        lockScreenDelaySeekBar.max = resources.getInteger(R.integer.maxDelay) / DD
-        lockScreenDelaySeekBar.min = resources.getInteger(R.integer.minDelay) / DD
-        lockScreenDelaySeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+        viewBinding.mainStub.lockScreenDelaySeekBar.max =
+            resources.getInteger(R.integer.maxDelay) / DD
+        viewBinding.mainStub.lockScreenDelaySeekBar.min =
+            resources.getInteger(R.integer.minDelay) / DD
+        viewBinding.mainStub.lockScreenDelaySeekBar.setOnSeekBarChangeListener(object :
+            SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
                 val delay = progress * DD
                 bindLockScreenDelay(delay.toLong())
@@ -94,15 +98,17 @@ class MainActivity : BaseActivity(),
             }
 
             override fun onStopTrackingTouch(seekBar: SeekBar) {
-                val delay = lockScreenDelaySeekBar.progress * DD
+                val delay = viewBinding.mainStub.lockScreenDelaySeekBar.progress * DD
                 mainViewModel.setLockScreenDelay(delay.toLong())
             }
         })
 
-        lockScreenDelayMin.text = getStringOrEmpty(R.string.ms, lockScreenDelaySeekBar.min * DD)
-        lockScreenDelayMax.text = getStringOrEmpty(R.string.ms, lockScreenDelaySeekBar.max * DD)
+        viewBinding.mainStub.lockScreenDelayMin.text =
+            getStringOrEmpty(R.string.ms, viewBinding.mainStub.lockScreenDelaySeekBar.min * DD)
+        viewBinding.mainStub.lockScreenDelayMax.text =
+            getStringOrEmpty(R.string.ms, viewBinding.mainStub.lockScreenDelaySeekBar.max * DD)
 
-        masterSwitch.setOnCheckedChangeListener { switch, isChecked ->
+        viewBinding.masterSwitch.setOnCheckedChangeListener { switch, isChecked ->
             if (isMasterSwitchBroadcasting) {
                 return@setOnCheckedChangeListener
             }
@@ -119,7 +125,7 @@ class MainActivity : BaseActivity(),
             isMasterSwitchBroadcasting = false
         }
 
-        vibrateOnBeforeLockScreenCheckBox.setOnCheckedChangeListener { switch, isChecked ->
+        viewBinding.mainStub.vibrateOnBeforeLockScreenCheckBox.setOnCheckedChangeListener { switch, isChecked ->
             if (isVibrateOnBeforeLockScreenSwitchBroadcasting) {
                 return@setOnCheckedChangeListener
             }
@@ -136,7 +142,7 @@ class MainActivity : BaseActivity(),
             isVibrateOnBeforeLockScreenSwitchBroadcasting = false
         }
 
-        overlayOnBeforeLockScreenCheckBox.setOnCheckedChangeListener { switch, isChecked ->
+        viewBinding.mainStub.overlayOnBeforeLockScreenCheckBox.setOnCheckedChangeListener { switch, isChecked ->
             if (isOverlayOnBeforeLockScreenSwitchBroadcasting) {
                 return@setOnCheckedChangeListener
             }
@@ -153,7 +159,7 @@ class MainActivity : BaseActivity(),
             isOverlayOnBeforeLockScreenSwitchBroadcasting = false
         }
 
-        proximityWakeLockCheckBox.setOnCheckedChangeListener { switch, isChecked ->
+        viewBinding.mainStub.proximityWakeLockCheckBox.setOnCheckedChangeListener { switch, isChecked ->
             if (isProximityWakeLockSwitchBroadcasting) {
                 return@setOnCheckedChangeListener
             }
@@ -170,7 +176,8 @@ class MainActivity : BaseActivity(),
             isProximityWakeLockSwitchBroadcasting = false
         }
 
-        analyticsCheckBox.setOnCheckedChangeListener { switch, isChecked ->
+        viewBinding.mainStub.analyticsCheckBox.isVisible = BuildConfig.ANALYTICS
+        viewBinding.mainStub.analyticsCheckBox.setOnCheckedChangeListener { switch, isChecked ->
             if (isAnalyticsSwitchBroadcasting) {
                 return@setOnCheckedChangeListener
             }
@@ -187,19 +194,19 @@ class MainActivity : BaseActivity(),
             isAnalyticsSwitchBroadcasting = false
         }
 
-        toolbar.setOnClickListener(this)
-        accessibilityServiceBtn.setOnClickListener(this)
-        callStateBtn.setOnClickListener(this)
-        codeBtn.setOnClickListener(this)
-        donateBtn.setOnClickListener(this)
-        bugReportBtn.setOnClickListener(this)
-        bugReportDontKillMyAppBtn.setOnClickListener(this)
-        translateBtn.setOnClickListener(this)
-        labBtn.setOnClickListener(this)
-        lockScreenBtn.setOnClickListener(this)
-        lockScreenDelayResetBtn.setOnClickListener(this)
+        viewBinding.toolbar.setOnClickListener(this)
+        viewBinding.accessStub.accessibilityServiceBtn.setOnClickListener(this)
+        viewBinding.accessStub.callStateBtn.setOnClickListener(this)
+        viewBinding.mainStub.codeBtn.setOnClickListener(this)
+        viewBinding.mainStub.donateBtn.setOnClickListener(this)
+        viewBinding.mainStub.bugReportBtn.setOnClickListener(this)
+        viewBinding.mainStub.bugReportDontKillMyAppBtn.setOnClickListener(this)
+        viewBinding.mainStub.translateBtn.setOnClickListener(this)
+        viewBinding.troubleshootingStub.labBtn.setOnClickListener(this)
+        viewBinding.troubleshootingStub.lockScreenBtn.setOnClickListener(this)
+        viewBinding.mainStub.lockScreenDelayResetBtn.setOnClickListener(this)
 
-        aboutAuthor.text = getStringOrEmpty(
+        viewBinding.mainStub.aboutAuthor.text = getStringOrEmpty(
             R.string.about_author,
             getString(R.string.about_author_artem_chepurnoy)
         )
@@ -209,32 +216,32 @@ class MainActivity : BaseActivity(),
 
     private fun MainViewModel.setup() {
         lockScreenDelayLiveData.observe(this@MainActivity, Observer {
-            lockScreenDelaySeekBar.progress = it.toInt() / DD
+            viewBinding.mainStub.lockScreenDelaySeekBar.progress = it.toInt() / DD
             bindLockScreenDelay(it)
         })
         masterSwitchIsCheckedLiveData.observe(this@MainActivity, Observer {
             isMasterSwitchBroadcasting = true
-            masterSwitch.isChecked = it
+            viewBinding.masterSwitch.isChecked = it
             isMasterSwitchBroadcasting = false
         })
         vibrateBeforeLockingSwitchIsCheckedLiveData.observe(this@MainActivity, Observer {
             isVibrateOnBeforeLockScreenSwitchBroadcasting = true
-            vibrateOnBeforeLockScreenCheckBox.isChecked = it
+            viewBinding.mainStub.vibrateOnBeforeLockScreenCheckBox.isChecked = it
             isVibrateOnBeforeLockScreenSwitchBroadcasting = false
         })
         overlayBeforeLockingSwitchIsCheckedLiveData.observe(this@MainActivity, Observer {
             isOverlayOnBeforeLockScreenSwitchBroadcasting = true
-            overlayOnBeforeLockScreenCheckBox.isChecked = it
+            viewBinding.mainStub.overlayOnBeforeLockScreenCheckBox.isChecked = it
             isOverlayOnBeforeLockScreenSwitchBroadcasting = false
         })
         proximityWakeLockIsCheckedLiveData.observe(this@MainActivity, Observer {
             isProximityWakeLockSwitchBroadcasting = true
-            proximityWakeLockCheckBox.isChecked = it
+            viewBinding.mainStub.proximityWakeLockCheckBox.isChecked = it
             isProximityWakeLockSwitchBroadcasting = false
         })
         analyticsIsCheckedLiveData.observe(this@MainActivity, Observer {
             isAnalyticsSwitchBroadcasting = true
-            analyticsCheckBox.isChecked = it
+            viewBinding.mainStub.analyticsCheckBox.isChecked = it
             isAnalyticsSwitchBroadcasting = false
         })
         proximityBinaryLiveData.observe(this@MainActivity, Observer {
@@ -242,7 +249,7 @@ class MainActivity : BaseActivity(),
                 Proximity.Far -> R.drawable.ic_eye
                 Proximity.Near -> R.drawable.ic_eye_off
             }
-            proximityIcon.setImageResource(iconRes)
+            viewBinding.troubleshootingStub.proximityIcon.setImageResource(iconRes)
 
             // Log the changes in a proximity
             // sensors; maybe this will help to investigate issues with
@@ -250,22 +257,22 @@ class MainActivity : BaseActivity(),
             analytics.logTestProximitySensorChange(it)
         })
         proximityLiveData.observe(this@MainActivity, Observer {
-            proximityCmText.text = getStringOrEmpty(R.string.cm, it)
+            viewBinding.troubleshootingStub.proximityCmText.text = getStringOrEmpty(R.string.cm, it)
         })
         // Permissions
         isAccessibilityGranted.observe(this@MainActivity, Observer {
-            accessibilityServiceBtn.isGone = it
+            viewBinding.accessStub.accessibilityServiceBtn.isGone = it
         })
         isReadPhoneCallGranted.observe(this@MainActivity, Observer {
-            callStateBtn.isGone = it
+            viewBinding.accessStub.callStateBtn.isGone = it
         })
         isAllGranted.observe(this@MainActivity, Observer {
-            accessContainer.isGone = it
+            viewBinding.accessContainer.isGone = it
         })
         isRequiredGranted.observe(this@MainActivity, Observer {
-            toolbar.isEnabled = it
-            lockScreenBtn.isEnabled = it
-            masterSwitch.isEnabled = it
+            viewBinding.toolbar.isEnabled = it
+            viewBinding.troubleshootingStub.lockScreenBtn.isEnabled = it
+            viewBinding.masterSwitch.isEnabled = it
         })
         // Events
         openAccessibilityLiveData.observe(this@MainActivity, ObserverConsumer {
@@ -338,12 +345,13 @@ class MainActivity : BaseActivity(),
     }
 
     private fun bindLockScreenDelay(delay: Long) {
-        lockScreenDelayCur.text = getStringOrEmpty(R.string.settings_lock_screen_delay_cur, delay)
+        viewBinding.mainStub.lockScreenDelayCur.text =
+            getStringOrEmpty(R.string.settings_lock_screen_delay_cur, delay)
     }
 
     override fun onClick(view: View) {
         when (view.id) {
-            R.id.toolbar -> masterSwitch.isChecked = !masterSwitch.isChecked
+            R.id.toolbar -> viewBinding.masterSwitch.isChecked = !viewBinding.masterSwitch.isChecked
             R.id.lockScreenBtn -> mainViewModel.lockScreen()
             R.id.lockScreenDelayResetBtn -> mainViewModel.setLockScreenDelay()
             // Help

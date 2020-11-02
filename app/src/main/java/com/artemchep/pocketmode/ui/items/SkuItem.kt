@@ -4,10 +4,9 @@ import android.view.View
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import com.artemchep.pocketmode.R
+import com.artemchep.pocketmode.databinding.ItemDonationBinding
 import com.mikepenz.fastadapter.FastAdapter
 import com.mikepenz.fastadapter.items.AbstractItem
-import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.item_donation.*
 import org.solovyev.android.checkout.Sku
 
 /**
@@ -22,19 +21,17 @@ class SkuItem(
 
     override fun getLayoutRes(): Int = R.layout.item_donation
 
-    override fun getViewHolder(v: View): ViewHolder = ViewHolder(v)
+    override fun getViewHolder(v: View): ViewHolder = ViewHolder(ItemDonationBinding.bind(v))
 
-    class ViewHolder(view: View) : FastAdapter.ViewHolder<SkuItem>(view), LayoutContainer {
-
-        override val containerView: View?
-            get() = itemView
-
+    class ViewHolder(
+        private val viewBinding: ItemDonationBinding
+    ) : FastAdapter.ViewHolder<SkuItem>(viewBinding.root) {
         override fun bindView(item: SkuItem, payloads: MutableList<Any>) {
-            priceTextView.text = item.sku.price
-            priceTextView.isGone = item.isPurchased
-            purchasedTextView.isVisible = item.isPurchased
-            titleTextView.text = item.sku.displayTitle
-            summaryTextView.text = item.sku.description
+            viewBinding.priceTextView.text = item.sku.price
+            viewBinding.priceTextView.isGone = item.isPurchased
+            viewBinding.purchasedTextView.isVisible = item.isPurchased
+            viewBinding.titleTextView.text = item.sku.displayTitle
+            viewBinding.summaryTextView.text = item.sku.description
         }
 
         override fun unbindView(item: SkuItem) {

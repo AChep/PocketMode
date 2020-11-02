@@ -9,7 +9,6 @@ import com.artemchep.pocketmode.INTENT_ACCESSIBILITY_CHANGED
 import com.artemchep.pocketmode.R
 import com.artemchep.pocketmode.ext.heart
 import com.artemchep.pocketmode.sendLocalBroadcast
-import com.crashlytics.android.Crashlytics
 
 /**
  * @author Artem Chepurnoy
@@ -34,7 +33,7 @@ class PocketAccessibilityService : AccessibilityService() {
                 val event = createLockScreenEvent(context, clazz)
                 manager.sendAccessibilityEvent(event)
             } else {
-                Crashlytics.log(
+                context.heart.analytics.log(
                     "Tried to send the lock event from [${clazz.simpleName}], " +
                             "but the accessibility manager is disabled."
                 )
