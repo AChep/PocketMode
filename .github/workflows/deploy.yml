@@ -28,7 +28,9 @@ jobs:
           echo ${{ secrets.KEYSTORE_B64 }} | base64 -d | zcat >> app/pocketmode-release.keystore
           echo ${{ secrets.KEYSTORE_PROPS_B64 }} | base64 -d | zcat >> app/pocketmode-release.properties
       - name: build with Gradle
-        run: ./gradlew clean bundlePlaystoreRelease assemblePlaystoreRelease assembleOpensourceRelease
+        run: ./gradlew clean bundlePlaystoreRelease assemblePlaystoreRelease
+      - name: build with Gradle [oss]
+        run: ./gradlew assembleOpensourceRelease
       - name: create release
         id: create_release
         uses: actions/create-release@v1
