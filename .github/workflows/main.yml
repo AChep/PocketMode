@@ -23,4 +23,4 @@ jobs:
         echo '${{ secrets.GOOGLE_SERVICES }}' >> google-services.json
         cd ..
     - name: Run tests
-      run: ./gradlew check
+      run: ./gradlew assembleDebug
