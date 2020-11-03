@@ -61,4 +61,4 @@ jobs:
         with:
           serviceAccountJsonPlainText: ${{ secrets.SERVICE_ACCOUNT }}
           packageName: com.artemchep.pocketmode
-          releaseFile: app/build/outputs/bundle/playstore/release/app-playstore-release.aab
+          releaseFile: app/build/outputs/bundle/playstoreRelease/app-playstore-release.aab
