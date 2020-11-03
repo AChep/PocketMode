@@ -12,8 +12,6 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
-apply plugin: 'com.google.firebase.crashlytics'
-
 android {
     compileSdkVersion 29
     defaultConfig {
@@ -120,5 +118,6 @@ if (!getGradle()
         .toString()
         .contains("Opensource")
 ) {
+    apply plugin: 'com.google.firebase.crashlytics'
     apply plugin: 'com.google.gms.google-services'
 }

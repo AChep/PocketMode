@@ -1,0 +1,352 @@
+
+<!DOCTYPE html>
+<html lang="en" prefix="og: https://ogp.me/ns#" xmlns:fb="https://www.facebook.com/2008/fbml">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta property="og:locale" content="en_US" />
+          <meta property="og:locale:alternate" content="ar_SA" />
+          <meta property="og:locale:alternate" content="pt_PT" />
+          <meta property="og:locale:alternate" content="pt_BR" />
+          <meta property="og:locale:alternate" content="cs_CZ" />
+          <meta property="og:locale:alternate" content="de_DE" />
+          <meta property="og:locale:alternate" content="es_ES" />
+          <meta property="og:locale:alternate" content="fr_FR" />
+          <meta property="og:locale:alternate" content="it_IT" />
+          <meta property="og:locale:alternate" content="pl_PL" />
+          <meta property="og:locale:alternate" content="sk_SK" />
+          <meta property="og:locale:alternate" content="ru_RU" />
+          <meta property="og:locale:alternate" content="uk_UA" />
+          <meta property="og:locale:alternate" content="ja_JP" />
+          <meta property="og:locale:alternate" content="be_BY" />
+          <meta property="og:locale:alternate" content="hu_HU" />
+          <meta property="og:locale:alternate" content="da_DK" />
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,500" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,500" rel="stylesheet">
+      <link href="https://d2srrzh48sp2nh.cloudfront.net/5f98f878/images/respond.proxy.gif" id="respond-redirect" rel="respond-redirect" />
+
+    <title>Log In - Crowdin</title>
+<meta name="description" content="Crowdin is a crowdsourcing localization platform that connects development and translators." />
+<meta name="robots" content="noindex, follow" />
+<link rel="canonical" href="https://crowdin.com/login" />
+<script type="text/javascript">var CDN = "https://d2srrzh48sp2nh.cloudfront.net/5f98f878", CROWDIN_VERSION = "9", WEBSOCKETS_HOST = "wss://ws-lb.crowdin.com", DESKTOP_VIEW = 1, TABLET_VIEW = 0, MOBILE_VIEW = 0, CURRENT_LOCALE = "en_US", CUSTOM_LANGUAGES_FLAG_TEMPLATES = '{"big":"https:\/\/crowdin-static.downloads.crowdin.com\/images\/custom_flags\/big\/%d_%s.png","small":"https:\/\/crowdin-static.downloads.crowdin.com\/images\/custom_flags\/small\/%d_%s.png"}';</script>
+<script type="text/javascript" src="https://d2srrzh48sp2nh.cloudfront.net/5f98f878/js/src/core.js?1561647097" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://d2srrzh48sp2nh.cloudfront.net/5f98f878/js/src/browser.js?1561647097" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://d2srrzh48sp2nh.cloudfront.net/5f98f878/js/src/logger.js?1561647097" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://d2srrzh48sp2nh.cloudfront.net/5f98f878/js/lib/crowdin-localizer.js?1561647097" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://d2srrzh48sp2nh.cloudfront.net/5f98f878/js/lib/icu/messageformatLight.js?1561647097" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://d2srrzh48sp2nh.cloudfront.net/5f98f878/js/lib/icu/Intl.complete.min.js?1561647097" crossorigin="anonymous"></script>
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+<link href="https://crowdin.com/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#2e3340">
+<meta name="theme-color" content="#ffffff">
+<link rel="alternate" hreflang="en" href="https://crowdin.com/" />
+<link rel="alternate" hreflang="ar" href="https://ar.crowdin.com/" />
+<link rel="alternate" hreflang="pt-PT" href="https://pt.crowdin.com/" />
+<link rel="alternate" hreflang="pt-BR" href="https://br.crowdin.com/" />
+<link rel="alternate" hreflang="cs" href="https://cs.crowdin.com/" />
+<link rel="alternate" hreflang="de" href="https://de.crowdin.com/" />
+<link rel="alternate" hreflang="es" href="https://es.crowdin.com/" />
+<link rel="alternate" hreflang="fr" href="https://fr.crowdin.com/" />
+<link rel="alternate" hreflang="it" href="https://it.crowdin.com/" />
+<link rel="alternate" hreflang="pl" href="https://pl.crowdin.com/" />
+<link rel="alternate" hreflang="sk" href="https://sk.crowdin.com/" />
+<link rel="alternate" hreflang="ru" href="https://ru.crowdin.com/" />
+<link rel="alternate" hreflang="uk" href="https://uk.crowdin.com/" />
+<link rel="alternate" hreflang="ja" href="https://ja.crowdin.com/" />
+<link rel="alternate" hreflang="be" href="https://be.crowdin.com/" />
+<link rel="alternate" hreflang="hu" href="https://hu.crowdin.com/" />
+<link rel="alternate" hreflang="da" href="https://da.crowdin.com/" />
+<link rel="search" href="//crowdin.com/xml/osd.xml" title="Search projects on Crowdin" type="application/opensearchdescription+xml" />
+<meta name="msapplication-TileColor" content="#00aba9">
+<meta name="msapplication-TileImage" content="/mstile-144x144.png">
+
+                <script type="text/javascript">
+                    window.onerror = function(msg, url, line, col, error_obj) {
+                        ga('send', 'event', 'JS Error', msg, navigator.userAgent + ' -> ' + url + ' : ' + line);
+                        var message = '[JS] ' + msg + '\nSource: ' + url + ' at line:' + line + ', col:' + col;
+                        crowdin.log.error(message, error_obj);
+                        return true;
+                    };
+                </script>
+            
+
+            <script>
+                !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+                n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+                n.push=n;n.loaded=!0;n.version="2.0";n.queue=[];t=b.createElement(e);t.async=!0;
+                t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+                document,"script","https://connect.facebook.net/en_US/fbevents.js");
+                
+                fbq("init", "862655787218711");
+                fbq("track", "PageView");
+            </script>
+            <noscript>
+                <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=862655787218711&ev=PageView&noscript=1"/>
+            </noscript>
+        
+
+            <script>
+                (function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,"script","https://www.google-analytics.com/analytics.js","ga");
+                
+                ga("create", "UA-8379793-1", {
+                "cookieDomain": "crowdin.com"
+                });
+                
+                
+                
+                ga("send", "pageview");
+            
+            </script>
+        
+
+            <!-- Google Tag Manager -->
+            <script>
+                (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                })(window,document,'script','dataLayer','GTM-W87XVT8');
+            </script>
+            <!-- End Google Tag Manager -->
+        
+<script type="text/javascript">var recaptcha_public_key = "6LfgViQUAAAAAMit8Vn8TtuocNimMx5C__evI4Fi"</script>
+<script type="text/javascript">var USER_IS_LOGGED_IN = 0;</script>
+<script type="text/javascript">var KB_URL = "https:\/\/support.crowdin.com"</script>
+<link href="https://d2srrzh48sp2nh.cloudfront.net/5f98f878/css/crowdin-frontend-new.min.css?1561647098" media="screen" rel="stylesheet" type="text/css"/>
+<link href="https://d2srrzh48sp2nh.cloudfront.net/5f98f878/css/lib/animate.min.css?1561647096" media="screen" rel="stylesheet" type="text/css"/>
+<link href="https://d2srrzh48sp2nh.cloudfront.net/5f98f878/css/lib/cookieconsent.css?1561647096" media="screen" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="https://d2srrzh48sp2nh.cloudfront.net/5f98f878/l10n_cache/cache.dynamic.en_US.js?1561647098" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://d2srrzh48sp2nh.cloudfront.net/5f98f878/js/lib/jquery-new.min.js?1561647097" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://d2srrzh48sp2nh.cloudfront.net/5f98f878/js/lib/crowdin-vendor.min.js?1561647097" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://d2srrzh48sp2nh.cloudfront.net/5f98f878/js/lib/jquery.cookie.min.js?1561647097" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://d2srrzh48sp2nh.cloudfront.net/5f98f878/js/front/content-page.js?1561647097" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://d2srrzh48sp2nh.cloudfront.net/5f98f878/js/src/class.js?1561647097" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://d2srrzh48sp2nh.cloudfront.net/5f98f878/js/src/application.js?1561647097" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://d2srrzh48sp2nh.cloudfront.net/5f98f878/js/packages/login.init.js?1561647097" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://d2srrzh48sp2nh.cloudfront.net/5f98f878/js/lib/jquery.capslockstate.js?1561647097" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://d2srrzh48sp2nh.cloudfront.net/5f98f878/js/src/common_functions.js?1561647097" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://d2srrzh48sp2nh.cloudfront.net/5f98f878/js/lib/magic/content-code.js?1561647097" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://d2srrzh48sp2nh.cloudfront.net/5f98f878/js/lib/magic/content-focus.js?1561647097" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://d2srrzh48sp2nh.cloudfront.net/5f98f878/js/lib/jquery-validation/jquery.validate.min.js?1561647097" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://d2srrzh48sp2nh.cloudfront.net/5f98f878/js/lib/jquery-validation/jquery.validate.i18n.js?1561647097" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://d2srrzh48sp2nh.cloudfront.net/5f98f878/js/lib/jquery-validation/jquery.validate.setup.js?1561647097" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://d2srrzh48sp2nh.cloudfront.net/5f98f878/js/lib/jquery-validation/additional-methods.min.js?1561647097" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://d2srrzh48sp2nh.cloudfront.net/5f98f878/js/lib/cookieconsent.js?1561647097" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://d2srrzh48sp2nh.cloudfront.net/5f98f878/js/front/cookieconsent.js?1561647097" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/backend/tracker/member_status"></script>
+<script type="text/javascript">CrowdinLocalizer.setLocale("en");</script>
+
+  </head>
+
+  
+  <body class="login">
+    
+                <!-- Google Tag Manager (noscript) -->
+                <noscript>
+                    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W87XVT8" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+                </noscript>
+                <!-- End Google Tag Manager (noscript) -->
+            
+          <div class="d-flex flex-column login__holder">
+  <header class="login__header">
+  <div class="container-fluid d-flex justify-content-between align-items-center">
+    <a class="navbar-logo " href="https://crowdin.com" title="Crowdin &mdash; Localization Management Platform">
+      <svg class="white-logo"  width="173" height="32">
+        <image xlink:href="/images/crowdin-logo-small-white.svg" src="/images/crowdin-logo-small-white.png" width="173" height="32" alt="Crowdin" />
+      </svg>
+      <svg class="default-logo"  width="173" height="32">
+        <image xlink:href="/images/crowdin-logo-small.svg" src="/images/crowdin-logo-small.png" width="173" height="32" alt="Crowdin" />
+      </svg>
+    </a>
+    <a class="btn btn-outline-primary s-margin-left" href="/join"" tabindex="11">
+    Sign up    </a>
+  </div>
+</header>  <div class="login__main-holder container">
+    <div class="row pseudo-row d-none d-lg-flex">
+      <div class="col-lg-7 col-xl-6 col-xxl-7"></div>
+    </div>
+    <div class="row">
+      <section class="login__main-holder__section-about col-lg-6 offset-xl-1 col-xl-4 offset-xxl-0 col-xxl-5 d-none d-lg-flex flex-column align-self-center">
+        <header class="login__main-holder__section-about__title">
+          <h1 class="h1">
+            Agile localization solution for tech companies          </h1>
+          <p class="subtitle-h1 ">
+            Crowdin is a cloud-based solution that streamlines localization management for your team. It's the perfect place to effectively manage all of your multilingual content.          </p>
+          <div>
+            <a href="/" class="btn btn-link btn-sm">
+              <span class="icon-arrow-forward icon icon--white"></span>
+            </a>
+          </div>
+        </header>
+      </section>
+      <section id="login-register-div" class="login__main-holder__section-form offset-sm-2 col-sm-8 offset-lg-2 offset-xl-2 offset-xxl-3 col-lg-4 align-self-center">
+        <h3 class="text-center text-lg-left">Log In to Crowdin</h3>
+<div class="left-col signin-crowdin">
+  <div id="login_failed_block" class="alert alert-danger hidden animated">
+      </div>
+
+  
+  
+  
+  <form action="/login" method="post" id="login_form">
+    <fieldset>
+      <input type="hidden" name="redirect" value="/profile"/>
+      <input type="hidden" name="mfa_hash" value=""/>
+
+      
+      <div class="form-group">
+        <label for="login_login">Email or username</label>
+        <input name="login" id="login_login" type="text" class="form-control" tabindex="1" value="" data-autofocus/>
+      </div>
+      <div class="form-group">
+        <span class="float-right forgotpass terms">
+          <a href="/user/lostpassword" tabindex="4">Forgot password?</a>
+        </span>
+        <label for="login_password">Password</label>
+        <input name="password" id="login_password" type="password" class="form-control no-margin-bottom" tabindex="2" />
+        <span id="capsWarning" class="help-block text-small hidden" style="color:#a94442;">Caps Lock is on</span>
+      </div>
+      <div class="form-group">
+          <label class="checkbox" id="accept-terms-label" for="remember_me">
+              <input name="remember_me" id="remember_me" type="checkbox" tabindex="3" checked/>
+              <span>Remember Me</span>
+          </label>
+      </div>
+
+      <div class="g-recaptcha form-group hide" data-sitekey="6LfgViQUAAAAAMit8Vn8TtuocNimMx5C__evI4Fi"></div>
+
+      <div class="form-group mfa-group hidden">
+        <label for="login_mfa">Two-Factor Authentication code</label>
+        <input name="mfa_code" id="login_mfa" type="text" class="form-control no-margin-bottom" autofocus />
+        <span class="help-block small">Enter the code from the two-factor app on your mobile device. If you've lost your device, you may enter one of your recovery codes.</span>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block" tabindex="3">Log in</button>
+          </fieldset>
+  </form>
+    <div class="signin-social">
+    <p class="control-label margin-top small">or continue with:</p>
+    <div class="openid-login btn-group-vertical" style="display: block;">
+              <a class="btn btn-outline-secondary btn-sm btn-sso btn-fcbk-signup" tabindex="8" href="https://crowdin.com/login/facebook_request_auth?redirect_to=%2Fprofile" >
+          <i class="icon-soc-30 icon-soc-30-fcbk"></i><span class="s-margin-left">Facebook</span>
+        </a>
+              <a class="btn btn-outline-secondary btn-sm btn-sso btn-ggl-signup" tabindex="9" href="https://crowdin.com/login/google_request_auth?redirect_to=%2Fprofile" >
+          <i class="icon-soc-30 icon-soc-30-ggl"></i><span class="s-margin-left">Google</span>
+        </a>
+              <a class="btn btn-outline-secondary btn-sm btn-sso btn-twtr-signup" tabindex="10" href="https://crowdin.com/login/twitter_request_auth?redirect_to=%2Fprofile" >
+          <i class="icon-soc-30 icon-soc-30-twtr"></i><span class="s-margin-left">Twitter</span>
+        </a>
+              <a class="btn btn-outline-secondary btn-sm btn-sso btn-gthb-signup" tabindex="11" href="https://crowdin.com/login/github_request_auth?redirect_to=%2Fprofile" >
+          <i class="icon-soc-30 icon-soc-30-gthb"></i><span class="s-margin-left">Github</span>
+        </a>
+              <a class="btn btn-outline-secondary btn-sm btn-sso btn-gtlb-signup" tabindex="12" href="https://crowdin.com/login/gitlab_request_auth?redirect_to=%2Fprofile" >
+          <i class="icon-soc-30 icon-soc-30-gtlb"></i><span class="s-margin-left">Gitlab</span>
+        </a>
+          </div>
+    <form method="post" id="sso_do_login">
+      <div class="form-group">
+        <div class="checkbox mt-2">
+          <label id="accept-terms-label" for="remember_me_sso">
+            <input id="remember_me_sso" type="checkbox" tabindex="7" checked>
+              Remember Me          </label>
+        </div>
+      </div>
+    </form>
+  </div>
+
+<script>
+  $(function() {
+    $('.btn', '#login-register-div .openid-login').click(function() {
+      var remember_me = $("#remember_me_sso").is(":checked") == true ? 1 : 0;
+
+      $('#sso_do_login').attr('action', this.href+'&remember_me='+remember_me).submit();
+
+      return false;
+    });
+  });
+</script>
+
+  <div class="bottom-magiclogin">
+    <hr>
+    <a href="/magiclogin" tabindex="12" class="btn btn-block btn-link" id="magiclogin-bottom">Send Magic Link</a>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(function() {
+    var hash = window.location.hash.substr(1);
+    if(hash.length) {
+      $('#login_form').append('<input type="hidden" name="hash" value="' + htmlspecialchars(hash) + '" />');
+    }
+
+    if(isMobileDevice()) {
+      $('#login_form').attr('novalidate', '');
+      $('#login_login').prop('type', 'email');
+    }
+
+    $('[data-autofocus]').focus();
+  });
+
+  $(document).ready(function() {
+    $(window).on("capsOn", function() {
+      if($("#login_password:focus").length > 0) {
+        $("#capsWarning").removeClass('hidden');
+      }
+    });
+
+    $(window).on("capsOff capsUnknown", function() {
+      $("#capsWarning").addClass('hidden');
+    });
+
+    $("#login_password").on("focusout", function() {
+      $("#capsWarning").addClass('hidden');
+    });
+
+    $("#login_password").on("focusin", function() {
+      if ($(window).capslockstate("state") === true) {
+        $("#capsWarning").removeClass('hidden');
+      }
+    });
+
+    $(window).capslockstate();
+  });
+</script>
+
+      </section>
+    </div>
+  </div>
+</div>
+<style type="text/css">
+  html, body {
+    height: 100%;
+  }
+</style>
+    
+    
+                <!-- Google remarketing -->
+                <script type="text/javascript">
+                    /* <![CDATA[ */
+                    var google_conversion_id = 825739086;
+                    var google_custom_params = window.google_tag_params;
+                    var google_remarketing_only = true;
+                    /* ]]> */
+                </script>
+                <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js"></script>
+                <noscript>
+                    <div style="display:inline;">
+                        <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/825739086/?guid=ON&amp;script=0"/>
+                    </div>
+                </noscript>
+                <!-- /Google remarketing -->
+              </body>
+</html>

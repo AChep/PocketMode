@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="108px" height="108px" viewBox="0 0 108 108" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
+    <title>ic_launcher_foreground@1x</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M54.0896126,39 C64.8160209,39 70.1792251,49.6666667 70.1792251,71 L38,71 C38,49.6666667 43.3632042,39 54.0896126,39 Z" id="path-1"></path>
+        <filter x="-7.8%" y="-10.9%" width="115.5%" height="115.6%" filterUnits="objectBoundingBox" id="filter-2">
+            <feMorphology radius="0.5" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="-1" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="0.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.100147192 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="adaptive-icon">
+            <g id="foreground">
+                <g>
+                    <g id="Triangle" transform="translate(54.089613, 55.000000) rotate(-180.000000) translate(-54.089613, -55.000000) ">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                        <use stroke="#000000" stroke-width="1" fill="#FFB74D" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    </g>
+                    <path d="M54.0896126,41 C63.4826876,41 68.1792251,50.3333333 68.1792251,69 L40,69 C40,50.3333333 44.6965375,41 54.0896126,41 Z" id="Triangle" stroke="#636363" stroke-width="0.5" fill="#FFB74D" stroke-dasharray="2" transform="translate(54.089613, 55.000000) rotate(-180.000000) translate(-54.089613, -55.000000) "></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

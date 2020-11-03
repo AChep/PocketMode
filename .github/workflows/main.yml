@@ -23,4 +23,4 @@ jobs:
         echo ${{ secrets.GOOGLE_SERVICES }} | base64 -d | zcat >> google-services.json
         cd ..
     - name: Run tests
-      run: ./gradlew assembleDebug
+      run: ./gradlew assemblePlaystoreDebug
