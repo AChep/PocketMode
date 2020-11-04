@@ -1,7 +1,0 @@
-Pocket Mode is an Android app that locks your phone when you hover the proximity sensor.
-
-I have developed this app because stock Android lacks this feature and my phone always changes something or disables important things while laying inside the pocket. Seriously, this has to be stopped.
-
-Used permissions explained:
-- android.permission.RECEIVE_BOOT_COMPLETED -- needed to restart the service after a reboot.
-- android.permission.READ_PHONE_STATE -- needed to pause screen locking while call is ongoing.

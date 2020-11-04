@@ -1,1 +1,0 @@
-Pocket Mode: Prevent accidental clicks
