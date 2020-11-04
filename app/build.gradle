@@ -86,7 +86,6 @@ android {
         }
         opensource {
             dimension "app"
-            applicationIdSuffix ".os"
             buildConfigField "boolean", "ANALYTICS", "false"
         }
     }
