@@ -18,9 +18,35 @@ android {
         applicationId "com.artemchep.pocketmode"
         minSdkVersion 28
         targetSdkVersion 29
-        versionCode 17
-        versionName "1.4.4"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        def versionTag = System.getenv("POCKET_MODE_RELEASE_TAG")
+            ?: "0.1.0-0"
+
+        def versionPartsCount = 4
+        def versionParts = {
+            def l = it
+                .split(/[^0-9]+/)
+                .collect {
+                    try {
+                        it as int
+                    } catch (Exception ignored) {
+                        null
+                    }
+                }
+                .findAll { it != null }
+            l += [0] * versionPartsCount
+            l.take(versionPartsCount)
+        }(versionTag)
+
+        versionCode = versionParts
+            .withIndex()
+            .collect { v, index ->
+                def reverseIndex = versionParts.size - index - 1
+                v * Math.pow(100, reverseIndex) as int
+            }
+            .sum()
+        versionName = versionParts.join('.')
     }
     signingConfigs {
         release {
