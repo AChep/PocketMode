@@ -16,7 +16,8 @@
     <style name="ButtonOutlined" parent="Widget.MaterialComponents.Button.OutlinedButton">
         <item name="cornerRadius">24dp</item>
         <item name="android:textColor">?android:textColorPrimary</item>
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textAllCaps">false</item>
     </style>
 
     <style name="TextSection" parent="TextAppearance.AppCompat.Caption">
