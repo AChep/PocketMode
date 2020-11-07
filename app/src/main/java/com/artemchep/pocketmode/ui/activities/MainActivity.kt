@@ -259,6 +259,9 @@ class MainActivity : BaseActivity(),
         proximityLiveData.observe(this@MainActivity, Observer {
             viewBinding.troubleshootingStub.proximityCmText.text = getStringOrEmpty(R.string.cm, it)
         })
+        appInfoLiveData.observe(this@MainActivity, Observer {
+            viewBinding.aboutAppVersionInfo.text = it
+        })
         // Permissions
         isAccessibilityGranted.observe(this@MainActivity, Observer {
             viewBinding.accessStub.accessibilityServiceBtn.isGone = it

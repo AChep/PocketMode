@@ -59,6 +59,18 @@
 
             </com.google.android.material.card.MaterialCardView>
 
+            <TextView
+                android:id="@+id/aboutAppVersionInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:alpha="0.5"
+                android:gravity="center"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textAppearance="@style/TextSection"
+                tools:text="Pocket Mode v1.0.0" />
+
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>

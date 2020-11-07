@@ -35,6 +35,15 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     val proximityLiveData: LiveData<Float> = ProximityLiveData(context)
 
+    val appInfoLiveData: LiveData<out String> = MutableLiveData<String>()
+        .apply {
+            val versionName = BuildConfig.VERSION_NAME
+            val versionCode = BuildConfig.VERSION_CODE
+            val flavor = BuildConfig.FLAVOR
+            val name = context.getString(R.string.app_name)
+            value = "$name v$versionName+$versionCode ($flavor)"
+        }
+
     val proximityBinaryLiveData: LiveData<Proximity> =
         ProximityBinaryLiveData(context, proximityLiveData)
 
