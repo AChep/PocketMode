@@ -114,7 +114,7 @@
                     android:textColor="?android:textColorPrimary"
                     android:textSize="20sp" />
 
-                <androidx.appcompat.widget.SwitchCompat
+                <com.google.android.material.switchmaterial.SwitchMaterial
                     android:id="@+id/masterSwitch"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
