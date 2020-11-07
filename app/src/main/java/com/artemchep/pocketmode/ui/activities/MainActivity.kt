@@ -27,6 +27,7 @@ import com.artemchep.pocketmode.models.Proximity
 import com.artemchep.pocketmode.ui.activities.base.BaseActivity
 import com.artemchep.pocketmode.util.ObserverConsumer
 import com.artemchep.pocketmode.viewmodels.MainViewModel
+import eightbitlab.com.blurview.RenderScriptBlur
 
 /**
  * @author Artem Chepurnoy
@@ -64,6 +65,13 @@ class MainActivity : BaseActivity(),
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        viewBinding.toolbarBlurView
+            .setupWith(viewBinding.root)
+            .setBlurAlgorithm(RenderScriptBlur(this))
+            .setBlurRadius(5f)
+            .setBlurAutoUpdate(true)
+            .setHasFixedTransformationMatrix(true)
 
         ViewCompat.setOnApplyWindowInsetsListener(window.decorView) { _, insets ->
             viewBinding.statusBar.layoutParams.height = insets.systemWindowInsetTop
