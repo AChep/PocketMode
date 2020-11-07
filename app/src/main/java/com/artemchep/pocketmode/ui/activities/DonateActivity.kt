@@ -7,7 +7,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.isVisible
 import androidx.core.view.updatePadding
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.artemchep.pocketmode.R
 import com.artemchep.pocketmode.checkout.intentstarters.ActivityIntentStarter
@@ -25,7 +25,7 @@ import com.mikepenz.fastadapter.adapters.ItemAdapter
 class DonateActivity : BaseActivity(), View.OnClickListener {
 
     private val donateViewModel by lazy {
-        ViewModelProviders.of(this).get(DonateViewModel::class.java)
+        ViewModelProvider(this).get(DonateViewModel::class.java)
     }
 
     private val itemAdapter by lazy { ItemAdapter<SkuItem>() }
