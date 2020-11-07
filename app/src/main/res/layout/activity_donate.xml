@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -22,68 +23,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:drawableTop="@drawable/ic_outline_sentiment_dissatisfied"
         android:drawablePadding="4dp"
         android:text="@string/error"
-        android:visibility="gone" />
+        android:visibility="gone"
+        app:drawableTopCompat="@drawable/ic_outline_sentiment_dissatisfied" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <View
-            android:id="@+id/statusBar"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:alpha="0.8"
-            android:background="@drawable/bg_toolbar" />
-
-        <FrameLayout
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/actionBarSize"
-            android:foreground="?selectableItemBackground">
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:alpha="0.8"
-                android:background="@drawable/bg_toolbar" />
-
-            <FrameLayout
-                android:id="@+id/toolbarContent"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ImageButton
-                    android:id="@+id/backBtn"
-                    style="?actionButtonStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|start"
-                    android:rotationY="@dimen/autorotate_rotation_y"
-                    android:src="@drawable/ic_arrow_back" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/manrope_semibold"
-                    android:text="@string/help_donate"
-                    android:textAppearance="?android:textAppearanceMedium"
-                    android:textColor="?android:textColorPrimary"
-                    android:textSize="20sp" />
-
-            </FrameLayout>
-
-        </FrameLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="3dp"
-            android:background="@drawable/bg_shadow" />
-
-    </LinearLayout>
+    <include
+        android:id="@+id/toolbarLayout"
+        layout="@layout/layout_toolbar_with_back_btn" />
 
 </FrameLayout>

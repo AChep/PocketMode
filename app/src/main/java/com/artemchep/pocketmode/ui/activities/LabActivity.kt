@@ -35,12 +35,12 @@ class LabActivity : BaseActivity(), View.OnClickListener {
         setContentView(R.layout.activity_lab)
 
         ViewCompat.setOnApplyWindowInsetsListener(window.decorView) { _, insets ->
-            viewBinding.statusBar.layoutParams.height = insets.systemWindowInsetTop
+            viewBinding.toolbarLayout.statusBar.layoutParams.height = insets.systemWindowInsetTop
             viewBinding.scrollView.updatePadding(
                 top = insets.systemWindowInsetTop,
                 bottom = insets.systemWindowInsetBottom
             )
-            viewBinding.toolbarContent.updatePadding(
+            viewBinding.toolbarLayout.toolbarContent.updatePadding(
                 left = insets.systemWindowInsetLeft,
                 right = insets.systemWindowInsetRight
             )
@@ -52,7 +52,8 @@ class LabActivity : BaseActivity(), View.OnClickListener {
             insets.consumeSystemWindowInsets()
         }
 
-        viewBinding.backBtn.setOnClickListener(this)
+        viewBinding.toolbarLayout.titleTextView.setText(R.string.help_test)
+        viewBinding.toolbarLayout.backBtn.setOnClickListener(this)
 
         viewBinding.sensorsRecyclerView.layoutManager = LinearLayoutManager(this)
         viewBinding.sensorsRecyclerView.adapter =

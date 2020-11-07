@@ -39,13 +39,13 @@ class DonateActivity : BaseActivity(), View.OnClickListener {
         setContentView(R.layout.activity_donate)
 
         ViewCompat.setOnApplyWindowInsetsListener(window.decorView) { _, insets ->
-            viewBinding.statusBar.layoutParams.height = insets.systemWindowInsetTop
+            viewBinding.toolbarLayout.statusBar.layoutParams.height = insets.systemWindowInsetTop
             viewBinding.recyclerView.updatePadding(
                 top = insets.systemWindowInsetTop +
                         resources.getDimensionPixelSize(R.dimen.actionBarSize),
                 bottom = insets.systemWindowInsetBottom
             )
-            viewBinding.toolbarContent.updatePadding(
+            viewBinding.toolbarLayout.toolbarContent.updatePadding(
                 left = insets.systemWindowInsetLeft,
                 right = insets.systemWindowInsetRight
             )
@@ -53,7 +53,8 @@ class DonateActivity : BaseActivity(), View.OnClickListener {
             insets.consumeSystemWindowInsets()
         }
 
-        viewBinding.backBtn.setOnClickListener(this)
+        viewBinding.toolbarLayout.titleTextView.setText(R.string.help_donate)
+        viewBinding.toolbarLayout.backBtn.setOnClickListener(this)
 
         viewBinding.recyclerView.layoutManager = LinearLayoutManager(this)
         viewBinding.recyclerView.adapter = FastAdapter.with<SkuItem, ItemAdapter<*>>(itemAdapter)

@@ -79,7 +79,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/manrope_semibold"
-        android:text="Reset"
+        android:text="@string/reset"
         app:layout_constraintEnd_toEndOf="@id/endGuideline"
         app:layout_constraintTop_toBottomOf="@id/lockScreenDelaySeekBar" />
 
@@ -107,7 +107,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/lockScreenDelayCur" />
 
-    <Switch
+    <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/vibrateOnBeforeLockScreenCheckBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -125,7 +125,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/vibrateOnBeforeLockScreenDivider" />
 
-    <Switch
+    <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/overlayOnBeforeLockScreenCheckBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -142,7 +142,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/vibrateOnBeforeLockScreenCheckBox" />
 
-    <Switch
+    <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/proximityWakeLockCheckBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -159,7 +159,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/overlayOnBeforeLockScreenCheckBox" />
 
-    <Switch
+    <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/analyticsCheckBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -224,7 +224,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="?selectableItemBackground"
-        android:drawableStart="@drawable/ic_outline_credit_card"
         android:drawablePadding="16dp"
         android:gravity="center_vertical"
         android:paddingHorizontal="16dp"
@@ -234,6 +233,7 @@
         android:textAppearance="?android:textAppearanceMedium"
         android:textColor="?android:textColorPrimary"
         android:textSize="15sp"
+        app:drawableStartCompat="@drawable/ic_outline_credit_card"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/aboutText" />
@@ -243,7 +243,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="?selectableItemBackground"
-        android:drawableStart="@drawable/ic_outline_bug_report"
         android:drawablePadding="16dp"
         android:gravity="center_vertical"
         android:paddingHorizontal="16dp"
@@ -253,6 +252,7 @@
         android:textAppearance="?android:textAppearanceMedium"
         android:textColor="?android:textColorPrimary"
         android:textSize="15sp"
+        app:drawableStartCompat="@drawable/ic_outline_bug_report"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/donateBtn" />
@@ -262,7 +262,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="?selectableItemBackground"
-        android:drawableStart="@drawable/ic_shortcut_18"
         android:drawablePadding="16dp"
         android:gravity="center_vertical"
         android:paddingHorizontal="32dp"
@@ -271,6 +270,7 @@
         android:text="@string/help_bug_report_dont_kill_my_app"
         android:textColor="?android:textColorSecondary"
         android:textStyle="italic"
+        app:drawableStartCompat="@drawable/ic_shortcut_18"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/bugReportBtn" />
@@ -292,7 +292,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:background="?selectableItemBackground"
-        android:drawableStart="@drawable/ic_outline_code"
         android:drawablePadding="16dp"
         android:gravity="center_vertical"
         android:paddingHorizontal="16dp"
@@ -302,6 +301,7 @@
         android:textAppearance="?android:textAppearanceMedium"
         android:textColor="?android:textColorPrimary"
         android:textSize="15sp"
+        app:drawableStartCompat="@drawable/ic_outline_code"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/bugReportDontKillMyAppBtn" />
@@ -311,7 +311,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="?selectableItemBackground"
-        android:drawableStart="@drawable/ic_outline_translate"
         android:drawablePadding="16dp"
         android:gravity="center_vertical"
         android:paddingHorizontal="16dp"
@@ -321,6 +320,7 @@
         android:textAppearance="?android:textAppearanceMedium"
         android:textColor="?android:textColorPrimary"
         android:textSize="15sp"
+        app:drawableStartCompat="@drawable/ic_outline_translate"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/codeBtn" />
