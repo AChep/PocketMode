@@ -3,10 +3,7 @@ package com.artemchep.pocketmode.viewmodels
 import android.Manifest
 import android.app.Application
 import android.provider.Settings
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MediatorLiveData
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.*
 import com.artemchep.pocketmode.*
 import com.artemchep.pocketmode.ext.context
 import com.artemchep.pocketmode.models.MainScreen
@@ -46,6 +43,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     val proximityBinaryLiveData: LiveData<Proximity> =
         ProximityBinaryLiveData(context, proximityLiveData)
+            .distinctUntilChanged()
 
     // ---- Permissions ----
 

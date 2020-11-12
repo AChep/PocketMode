@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.PowerManager
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.distinctUntilChanged
 import com.artemchep.pocketmode.Cfg
 import com.artemchep.pocketmode.models.Keyguard
 import com.artemchep.pocketmode.models.PhoneCall
@@ -22,6 +23,7 @@ class PocketViewModel(context: Context) {
 
     private val proximityBinaryLiveData: LiveData<Proximity> =
         ProximityBinaryLiveData(context, proximityLiveData)
+            .distinctUntilChanged()
 
     /**
      * Holds the wake lock while being
@@ -36,6 +38,7 @@ class PocketViewModel(context: Context) {
     }
 
     private val screenLiveData: LiveData<Screen> = ScreenLiveData(context)
+        .distinctUntilChanged()
 
     private val phoneCallLiveData: LiveData<Either<NoReadPhoneStatePermissionGranted, PhoneCall>> =
         PhoneCallLiveData(context)
@@ -52,6 +55,7 @@ class PocketViewModel(context: Context) {
         }
 
     private val keyguardLiveData: LiveData<Keyguard> = KeyguardLiveData(context)
+        .distinctUntilChanged()
 
     private val overlayBeforeLockingSwitchIsCheckedLiveData = ConfigOverlayBeforeIsCheckedLiveData()
 
