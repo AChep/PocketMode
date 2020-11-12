@@ -1,0 +1,16 @@
+name: detekt
+
+on:
+  push:
+    branches: [ master ]
+
+  jobs:
+    detekt:
+      runs-on: ubuntu-latest
+
+      steps:
+        - name: "checkout"
+          uses: actions/checkout@v2
+
+        - name: "detekt"
+          uses: natiginfo/action-detekt-all@1.14.2
