@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.os.Handler
 import androidx.lifecycle.LiveData
 import com.artemchep.pocketmode.ext.isScreenOn
 import com.artemchep.pocketmode.models.Screen
@@ -14,6 +15,16 @@ import com.artemchep.pocketmode.models.Screen
 class ScreenLiveData(
     private val context: Context
 ) : LiveData<Screen>() {
+    companion object {
+        private const val SCREEN_CHECK_INTERVAL = 100L
+    }
+
+    private val handler = Handler()
+
+    private val updateScreenStateRunnable = Runnable {
+        updateScreenState()
+    }
+
     private val broadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
             updateScreenState()
@@ -37,12 +48,21 @@ class ScreenLiveData(
 
     override fun onInactive() {
         context.unregisterReceiver(broadcastReceiver)
+        handler.removeCallbacksAndMessages(null)
         super.onInactive()
     }
 
     private fun updateScreenState() {
         val screen = isScreenOn()
         postValue(screen)
+
+        // While the screen is on, send the update every
+        // few seconds. This is needed because of the
+        // Always On mode which may not send the 'screen is off'
+        // broadcast.
+        if (screen is Screen.On && hasActiveObservers()) {
+            handler.postDelayed(updateScreenStateRunnable, SCREEN_CHECK_INTERVAL)
+        }
     }
 
     /**
