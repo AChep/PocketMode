@@ -3,8 +3,6 @@ package com.artemchep.pocketmode.sensors
 import androidx.lifecycle.LiveData
 import com.artemchep.config.Config
 import com.artemchep.pocketmode.Cfg
-import kotlin.reflect.KProperty0
-import kotlin.reflect.KProperty1
 
 /**
  * @author Artem Chepurnoy

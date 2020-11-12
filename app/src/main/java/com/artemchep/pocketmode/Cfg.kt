@@ -31,6 +31,7 @@ object Cfg : SharedPrefConfig("config") {
      * `false` otherwise.
      */
     var isEnabled by configDelegate(KEY_ENABLED, DEFAULT_ENABLED)
+
     /**
      * `true` if the service should be running,
      * `false` otherwise.
@@ -39,6 +40,7 @@ object Cfg : SharedPrefConfig("config") {
         KEY_VIBRATE_ON_BEFORE_LOCK_SCREEN,
         DEFAULT_VIBRATE_ON_BEFORE_LOCK_SCREEN
     )
+
     /**
      * `true` if the overlay should be shown before locking the screen,
      * `false` otherwise.
