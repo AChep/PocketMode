@@ -5,33 +5,37 @@ import android.hardware.Sensor
 import android.hardware.SensorManager
 import androidx.core.content.getSystemService
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.Transformations
 import com.artemchep.pocketmode.models.Proximity
 
 /**
  * @author Artem Chepurnoy
  */
-class ProximityBinaryLiveData(
-    private val context: Context,
-    proximitySensor: LiveData<Float>
-) : MediatorLiveData<Proximity>() {
-    private val sensorManager by lazy { context.getSystemService<SensorManager>() }
+@Suppress("FunctionName")
+fun ProximityBinaryLiveData(
+    context: Context,
+    proximitySensor: LiveData<Float>,
+): LiveData<Proximity> {
+    val proximityBinaryTransformation = proximityBinaryTransformationFactory(context)
+    return Transformations.map(proximitySensor, proximityBinaryTransformation)
+}
 
-    private val sensorProximityMaxRange by lazy {
-        sensorManager
-            ?.getDefaultSensor(Sensor.TYPE_PROXIMITY)
-            ?.maximumRange ?: 1.0f
+fun proximityBinaryTransformationFactory(
+    context: Context,
+): (distance: Float) -> Proximity {
+    val sensorProximityMaxRange = context.getSystemService<SensorManager>()
+        ?.getDefaultSensor(Sensor.TYPE_PROXIMITY)
+        ?.maximumRange ?: 1.0f
+    return { distance ->
+        proximityBinaryTransformationFactory(distance, sensorProximityMaxRange)
     }
+}
 
-    init {
-        addSource(proximitySensor) { distance ->
-            val proximity =
-                if (distance >= sensorProximityMaxRange && distance >= 1.0f) {
-                    Proximity.Far
-                } else {
-                    Proximity.Near
-                }
-            postValue(proximity)
-        }
-    }
+fun proximityBinaryTransformationFactory(
+    distance: Float,
+    distanceMax: Float,
+) = if (distance >= distanceMax && distance >= 1.0f) {
+    Proximity.Far
+} else {
+    Proximity.Near
 }

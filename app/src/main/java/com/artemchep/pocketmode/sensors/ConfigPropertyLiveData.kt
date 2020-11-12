@@ -3,15 +3,16 @@ package com.artemchep.pocketmode.sensors
 import androidx.lifecycle.LiveData
 import com.artemchep.config.Config
 import com.artemchep.pocketmode.Cfg
+import kotlin.reflect.KProperty0
+import kotlin.reflect.KProperty1
 
 /**
  * @author Artem Chepurnoy
  */
-abstract class ConfigBaseLiveData<T>(
+open class ConfigPropertyLiveData<T>(
     private val key: String,
     private val getter: () -> T
 ) : LiveData<T>() {
-
     private val configObserver = object : Config.OnConfigChangedListener<String> {
         override fun onConfigChanged(keys: Set<String>) {
             if (key in keys) {

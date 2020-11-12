@@ -5,8 +5,8 @@ import com.artemchep.pocketmode.Cfg
 /**
  * @author Artem Chepurnoy
  */
-class ConfigAnalyticsIsCheckedLiveData
-    : ConfigBaseLiveData<Boolean>(
+@Suppress("FunctionName")
+fun ConfigAnalyticsIsCheckedLiveData() = ConfigPropertyLiveData(
     Cfg.KEY_ANALYTICS,
     Cfg::analytics
 )

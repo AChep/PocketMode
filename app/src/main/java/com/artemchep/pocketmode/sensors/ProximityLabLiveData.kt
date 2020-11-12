@@ -7,7 +7,6 @@ import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import androidx.core.content.getSystemService
 import androidx.lifecycle.LiveData
-import com.artemchep.pocketmode.models.Proximity
 import com.artemchep.pocketmode.models.sensors.ProximitySensorSnapshot
 import java.util.concurrent.ConcurrentHashMap
 
@@ -71,15 +70,12 @@ class ProximityLabLiveData(
     private fun Sensor.toProximitySensorSnapshot(event: SensorEvent) =
         run {
             val distance = event.values[0]
+            val proximity = proximityBinaryTransformationFactory(distance, maximumRange)
             ProximitySensorSnapshot(
                 id = id,
                 name = name,
-                proximity = if (distance >= maximumRange && distance >= 1.0f) {
-                    Proximity.Far
-                } else {
-                    Proximity.Near
-                },
-                distance = distance
+                proximity = proximity,
+                distance = distance,
             )
         }
 

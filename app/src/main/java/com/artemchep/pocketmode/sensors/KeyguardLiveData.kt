@@ -13,7 +13,7 @@ class KeyguardLiveData(
     private val context: Context
 ) : LiveData<Keyguard>() {
     companion object {
-        private const val PERIOD = 750L
+        private const val PERIOD = 200L
     }
 
     private lateinit var observeKeyguardJob: Job

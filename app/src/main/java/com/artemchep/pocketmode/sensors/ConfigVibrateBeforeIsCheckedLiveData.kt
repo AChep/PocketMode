@@ -5,8 +5,8 @@ import com.artemchep.pocketmode.Cfg
 /**
  * @author Artem Chepurnoy
  */
-class ConfigVibrateBeforeIsCheckedLiveData
-    : ConfigBaseLiveData<Boolean>(
+@Suppress("FunctionName")
+fun ConfigVibrateBeforeIsCheckedLiveData() = ConfigPropertyLiveData(
     Cfg.KEY_VIBRATE_ON_BEFORE_LOCK_SCREEN,
     Cfg::vibrateOnBeforeLockScreen
 )

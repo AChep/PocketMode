@@ -5,8 +5,8 @@ import com.artemchep.pocketmode.Cfg
 /**
  * @author Artem Chepurnoy
  */
-class ConfigProximityWakeLockIsCheckedLiveData
-    : ConfigBaseLiveData<Boolean>(
+@Suppress("FunctionName")
+fun ConfigProximityWakeLockIsCheckedLiveData() = ConfigPropertyLiveData(
     Cfg.KEY_PROXIMITY_WAKE_LOCK,
     Cfg::proximityWakeLock
 )
