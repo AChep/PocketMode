@@ -5,7 +5,6 @@ import android.os.PowerManager
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.distinctUntilChanged
-import com.artemchep.pocketmode.Cfg
 import com.artemchep.pocketmode.models.Keyguard
 import com.artemchep.pocketmode.models.PhoneCall
 import com.artemchep.pocketmode.models.Proximity
@@ -30,11 +29,7 @@ class PocketViewModel(context: Context) {
      * observed.
      */
     private val wakeLockLiveData: LiveData<Nothing> = WakeLockLiveData(context) {
-        if (Cfg.proximityWakeLock) {
-            PowerManager.PROXIMITY_SCREEN_OFF_WAKE_LOCK
-        } else {
-            PowerManager.PARTIAL_WAKE_LOCK
-        }
+        PowerManager.PARTIAL_WAKE_LOCK
     }
 
     private val screenLiveData: LiveData<Screen> = ScreenLiveData(context)
