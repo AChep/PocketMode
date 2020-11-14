@@ -39,7 +39,7 @@ files: [
     # The dest allows you to specify a file name in Crowdin
     # e.g. "/messages.json"
     #
-    "dest" : "/pocketmode/pocketmode/string.xml",
+    "dest" : "/string.xml",
 
     #
     # File type
