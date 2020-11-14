@@ -14,7 +14,7 @@ import com.artemchep.pocketmode.models.Screen
  */
 class ScreenLiveData(
     private val context: Context
-) : LiveData<Screen>() {
+) : LiveData<Screen?>() {
     companion object {
         private const val SCREEN_CHECK_INTERVAL = 100L
     }
@@ -50,6 +50,7 @@ class ScreenLiveData(
         context.unregisterReceiver(broadcastReceiver)
         handler.removeCallbacksAndMessages(null)
         super.onInactive()
+        value = null
     }
 
     private fun updateScreenState() {

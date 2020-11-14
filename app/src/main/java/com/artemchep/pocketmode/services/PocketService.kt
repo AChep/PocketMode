@@ -20,20 +20,22 @@ import com.artemchep.pocketmode.R
 import com.artemchep.pocketmode.ext.heart
 import com.artemchep.pocketmode.ext.vibrateOneShot
 import com.artemchep.pocketmode.models.`fun`.Either
-import com.artemchep.pocketmode.models.events.BeforeLockScreen
-import com.artemchep.pocketmode.models.events.Event
-import com.artemchep.pocketmode.models.events.LockScreenEvent
-import com.artemchep.pocketmode.models.events.OnLockScreen
+import com.artemchep.pocketmode.models.events.*
 import com.artemchep.pocketmode.ui.widgets.OverlayWidget
 import com.artemchep.pocketmode.viewmodels.PocketViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import java.time.Duration
+import kotlin.coroutines.CoroutineContext
 
 
 /**
  * @author Artem Chepurnoy
  */
-class PocketService : Service() {
+class PocketService : Service(), CoroutineScope {
     companion object {
         private const val WORK_RESTART_ID = "PocketService::restart"
         private const val WORK_RESTART_PERIOD = 60 * 60 * 1000L // ms
@@ -43,6 +45,11 @@ class PocketService : Service() {
 
         private const val VIBRATE_DURATION = 50L // ms
     }
+
+    private lateinit var job: Job
+
+    override val coroutineContext: CoroutineContext
+        get() = Dispatchers.Main + job
 
     private val windowManager by lazy { getSystemService<WindowManager>() }
 
@@ -122,12 +129,27 @@ class PocketService : Service() {
     }
 
     override fun onCreate() {
+        job = Job()
         super.onCreate()
         Cfg.observe(configObserver)
         stopSelfIfPocketServiceIsDisabled()
 
-        pocketViewModel.lockScreenLiveData.observeForever(pocketObserver)
-        pocketViewModel.overlayLiveData.observeForever(overlayObserver)
+        launch {
+            pocketViewModel.lockScreenEventFlow.collect { event ->
+                when (event) {
+                    is OnLockScreen -> lockScreen()
+                    is BeforeLockScreen -> beforeLockScreen()
+                    is Idle -> {
+                        // Do nothing.
+                    }
+                }
+            }
+        }
+        launch {
+            pocketViewModel.overlayFlow.collect {
+                overlayObserver.onChanged(it)
+            }
+        }
 
         // Start a scheduler to restart service in
         // few hours in cause it was killed.
@@ -175,10 +197,10 @@ class PocketService : Service() {
     }
 
     override fun onDestroy() {
-        pocketViewModel.lockScreenLiveData.removeObserver(pocketObserver)
-        pocketViewModel.overlayLiveData.removeObserver(overlayObserver)
         Cfg.removeObserver(configObserver)
         super.onDestroy()
+        job.cancel()
+        overlayExitJob?.cancel()
     }
 
     override fun onBind(intent: Intent?): IBinder? = null

@@ -13,7 +13,7 @@ import androidx.lifecycle.LiveData
  */
 class ProximityLiveData(
     private val context: Context
-) : LiveData<Float>() {
+) : LiveData<Float?>() {
     private val sensorManager by lazy { context.getSystemService<SensorManager>() }
 
     private val sensorProximity by lazy { sensorManager?.getDefaultSensor(Sensor.TYPE_PROXIMITY) }
@@ -42,5 +42,6 @@ class ProximityLiveData(
     override fun onInactive() {
         sensorManager?.unregisterListener(sensorListener)
         super.onInactive()
+        value = null
     }
 }

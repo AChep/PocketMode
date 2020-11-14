@@ -253,6 +253,9 @@ class MainActivity : BaseActivity(),
             isAnalyticsSwitchBroadcasting = false
         })
         proximityBinaryLiveData.observe(this@MainActivity, Observer {
+            if (it == null) {
+                return@Observer
+            }
             val iconRes = when (it) {
                 Proximity.Far -> R.drawable.ic_eye
                 Proximity.Near -> R.drawable.ic_eye_off
@@ -265,6 +268,9 @@ class MainActivity : BaseActivity(),
             analytics.logTestProximitySensorChange(it)
         })
         proximityLiveData.observe(this@MainActivity, Observer {
+            if (it == null) {
+                return@Observer
+            }
             viewBinding.troubleshootingStub.proximityCmText.text = getStringOrEmpty(R.string.cm, it)
         })
         appInfoLiveData.observe(this@MainActivity, Observer {

@@ -14,20 +14,20 @@ import com.artemchep.pocketmode.models.Proximity
 @Suppress("FunctionName")
 fun ProximityBinaryLiveData(
     context: Context,
-    proximitySensor: LiveData<Float>,
-): LiveData<Proximity> {
+    proximitySensor: LiveData<Float?>,
+): LiveData<Proximity?> {
     val proximityBinaryTransformation = proximityBinaryTransformationFactory(context)
     return Transformations.map(proximitySensor, proximityBinaryTransformation)
 }
 
-fun proximityBinaryTransformationFactory(
+private fun proximityBinaryTransformationFactory(
     context: Context,
-): (distance: Float) -> Proximity {
+): (distance: Float?) -> Proximity? {
     val sensorProximityMaxRange = context.getSystemService<SensorManager>()
         ?.getDefaultSensor(Sensor.TYPE_PROXIMITY)
         ?.maximumRange ?: 1.0f
-    return { distance ->
-        proximityBinaryTransformationFactory(distance, sensorProximityMaxRange)
+    return transform@{ distance ->
+        distance?.let { proximityBinaryTransformationFactory(it, sensorProximityMaxRange) }
     }
 }
 
