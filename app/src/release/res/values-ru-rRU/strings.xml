@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="settings">Настройки</string>
+    <string name="settings_lock_screen_delay_description">Задержка перед блокировкой экрана после покрытия датчика приближения:</string>
+    <string name="settings_lock_screen_delay_cur">Текущая задержка: %d мс.</string>
+    <string name="settings_vibrate_before_locking">Вибрация перед блокировкой</string>
+    <string name="settings_overlay_before_locking">Показывать предупреждение поверх экрана перед блокировкой</string>
+    <string name="settings_turn_screen_off_when_covered">Затемнять экран пока сенсор приближения закрыт</string>
+    <string name="settings_analytics">Анонимно отправлять данные об использовании</string>
+    <string name="access">Права доступа</string>
+    <string name="access_accessibility_service">Pocket Mode использует службу специальных возможностей для отправки команды, блокирующей экран. Нажмите, чтобы предоставить доступ к службе</string>
+    <string name="access_runtime_call_state">Pocket Mode использует доступ к телефонной службе, чтобы не выключать экран при активном вызове. Нажмите, чтобы предоставить доступ к службе</string>
+    <string name="access_overlays">Pocket Mode может рисовать поверх всех приложений, чтобы показать пользователю, что датчик приближения покрыт.</string>
+    <string name="troubleshoot">Устранение неисправностей</string>
+    <string name="troubleshoot_lock_screen">Заблокировать экран</string>
+    <string name="troubleshoot_lock_screen_description">При правильной работе, нажатие на эту кнопку должно блокировать экран.</string>
+    <string name="troubleshoot_proximity_description">При правильной работе, покрытие датчика приближения должно менять значок на зачеркнутый глаз.</string>
+    <string name="troubleshoot_reboot">Перезагрузите устройство, если приложение не блокирует экран после предоставления необходимых разрешений</string>
+    <string name="overlay_title">Pocket Mode активен</string>
+    <string name="overlay_description">Уберите закрывающие верхнюю часть устройства предметы</string>
+    <string name="lab_sensors">Датчики приближения</string>
+    <string name="help_code">Внести свой вклад на GitHub</string>
+    <string name="help_bug_report">Отправить отчет об ошибке</string>
+    <string name="help_bug_report_dont_kill_my_app">Приложение перестает работать через некоторое время! #dontkillmyapp</string>
+    <string name="help_translate">Перевести на ваш родной язык</string>
+    <string name="help_donate">Пожертвовать</string>
+    <string name="help_test">Лаборатория</string>
+    <string name="about">О программе</string>
+    <string name="about_author">Разработано %s</string>
+    <string name="about_description">Pocket Mode - это бесплатная утилита с одной целью: предотвращать случайные действия при нахождении устройства в кармане. \n\nПриложение достигает этой цели, выключая экран после того, как датчик приближения был накрыт некоторое время.</string>
+    <string name="notification_pocket_channel">Сервисное уведомление Pocket Mode</string>
+    <string name="notification_pocket_title">Pocket Mode активен</string>
+    <string name="notification_pocket_description">Скройте уведомление, если не хотите чтобы оно было в панели уведомления.</string>
+    <string name="coming_soon">Скоро будут доступно</string>
+    <string name="error">Ой, блин!</string>
+    <string name="purchased">Приобретено</string>
+    <string name="ms">%d мс.</string>
+    <string name="cm">%.1f см.</string>
+    <string name="reset">Сбросить</string>
+    <string name="accessibility_service_title">Pocket Mode</string>
+    <string name="accessibility_event_screen_locked">Экран заблокирован</string>
+    <string name="accessibility_why_title">Предоставить доступ к службе специальных возможностей</string>
+    <string name="accessibility_why_description">Режим Pocket Mode использует службу специальных возможностей для отправки команды,
+        которая блокирует экран.
+        \n\nЕсли вы хотите использовать это приложение, вам нужно предоставить права приложению
+        вручную на следующем экране.
+    </string>
+</resources>
