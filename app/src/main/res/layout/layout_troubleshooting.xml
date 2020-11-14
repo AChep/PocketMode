@@ -51,13 +51,13 @@
         android:id="@+id/lockScreenBtnDescription"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="16dp"
         android:text="@string/troubleshoot_lock_screen_description"
         android:textAppearance="@style/TextSection"
-        app:layout_constraintBottom_toBottomOf="@id/lockScreenBtn"
         app:layout_constraintEnd_toStartOf="@id/lockScreenBtn"
         app:layout_constraintStart_toEndOf="@id/startGuideline"
-        app:layout_constraintTop_toTopOf="@id/lockScreenBtn" />
+        app:layout_constraintTop_toBottomOf="@id/troubleshootingReboot" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/lockScreenBtn"
@@ -68,17 +68,25 @@
         app:layout_constraintEnd_toStartOf="@id/endGuideline"
         app:layout_constraintTop_toBottomOf="@id/troubleshootingReboot" />
 
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/lockScreenBarrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="lockScreenBtnDescription,lockScreenBtn" />
+
     <TextView
         android:id="@+id/proximityIconDescription"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="16dp"
+        android:minHeight="48dp"
         android:text="@string/troubleshoot_proximity_description"
         android:textAppearance="@style/TextSection"
-        app:layout_constraintBottom_toBottomOf="@id/proximityIcon"
         app:layout_constraintEnd_toStartOf="@id/lockScreenBtn"
         app:layout_constraintStart_toEndOf="@id/startGuideline"
-        app:layout_constraintTop_toTopOf="@id/proximityIcon" />
+        app:layout_constraintTop_toTopOf="@id/lockScreenBarrier" />
 
     <TextView
         android:id="@+id/proximityCmText"
@@ -98,17 +106,17 @@
         android:id="@+id/proximityIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
         android:src="@drawable/ic_eye"
         android:text="@string/troubleshoot_lock_screen"
+        app:layout_constraintBottom_toBottomOf="@id/proximityIconDescription"
         app:layout_constraintEnd_toStartOf="@id/endGuideline"
-        app:layout_constraintTop_toBottomOf="@id/lockScreenBtn" />
+        app:layout_constraintTop_toTopOf="@id/proximityIconDescription" />
 
     <TextView
         android:id="@+id/troubleshootingDontKillMyApp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:background="?selectableItemBackground"
         android:drawablePadding="16dp"
         android:gravity="center_vertical"
