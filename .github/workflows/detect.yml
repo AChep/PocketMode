@@ -5,7 +5,7 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  detekt:
     runs-on: ubuntu-latest
     steps:
       - name: "checkout"
