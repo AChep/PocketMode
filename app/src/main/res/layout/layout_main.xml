@@ -258,35 +258,6 @@
         app:layout_constraintTop_toBottomOf="@id/donateBtn" />
 
     <TextView
-        android:id="@+id/bugReportDontKillMyAppBtn"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="?selectableItemBackground"
-        android:drawablePadding="16dp"
-        android:gravity="center_vertical"
-        android:paddingHorizontal="32dp"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
-        android:text="@string/help_bug_report_dont_kill_my_app"
-        android:textColor="?android:textColorSecondary"
-        android:textStyle="italic"
-        app:drawableStartCompat="@drawable/ic_shortcut_18"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/bugReportBtn" />
-
-    <View
-        android:id="@+id/bugReportDontKillMyAppDivider"
-        android:layout_width="1dp"
-        android:layout_height="10dp"
-        android:layout_marginStart="32dp"
-        android:background="?dividerVertical"
-        android:rotation="-45"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/bugReportBtn"
-        tools:background="#000" />
-
-    <TextView
         android:id="@+id/codeBtn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -304,7 +275,7 @@
         app:drawableStartCompat="@drawable/ic_outline_code"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/bugReportDontKillMyAppBtn" />
+        app:layout_constraintTop_toBottomOf="@id/bugReportBtn" />
 
     <TextView
         android:id="@+id/translateBtn"

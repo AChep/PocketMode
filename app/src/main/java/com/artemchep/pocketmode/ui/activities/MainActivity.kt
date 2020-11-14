@@ -208,9 +208,9 @@ class MainActivity : BaseActivity(),
         viewBinding.mainStub.codeBtn.setOnClickListener(this)
         viewBinding.mainStub.donateBtn.setOnClickListener(this)
         viewBinding.mainStub.bugReportBtn.setOnClickListener(this)
-        viewBinding.mainStub.bugReportDontKillMyAppBtn.setOnClickListener(this)
         viewBinding.mainStub.translateBtn.setOnClickListener(this)
         viewBinding.troubleshootingStub.labBtn.setOnClickListener(this)
+        viewBinding.troubleshootingStub.troubleshootingDontKillMyApp.setOnClickListener(this)
         viewBinding.troubleshootingStub.lockScreenBtn.setOnClickListener(this)
         viewBinding.mainStub.lockScreenDelayResetBtn.setOnClickListener(this)
 
@@ -369,7 +369,7 @@ class MainActivity : BaseActivity(),
             R.id.donateBtn -> mainViewModel.openDonateToMe()
             R.id.codeBtn -> mainViewModel.openRepo()
             R.id.bugReportBtn -> mainViewModel.openBugReport()
-            R.id.bugReportDontKillMyAppBtn -> mainViewModel.openBugReportDontKillMyApp()
+            R.id.troubleshootingDontKillMyApp -> mainViewModel.openBugReportDontKillMyApp()
             R.id.translateBtn -> mainViewModel.openTranslationService()
             R.id.labBtn -> mainViewModel.openLab()
             // Permissions
