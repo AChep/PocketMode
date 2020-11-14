@@ -20,7 +20,7 @@
     <string name="overlay_description">Uncover the top of your device</string>
     <string name="lab_sensors">Proximity sensors</string>
     <string name="help_code">Contribute on GitHub</string>
-    <string name="help_bug_report">Send bug report</string>
+    <string name="help_bug_report">Send a bug report</string>
     <string name="help_bug_report_dont_kill_my_app">App stops working after a while! #dontkillmyapp</string>
     <string name="help_translate">Translate to your language</string>
     <string name="help_donate">Donate to me</string>

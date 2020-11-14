@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="settings">Settings</string>
+    <string name="settings">Qurğular</string>
     <string name="settings_lock_screen_delay_description">The delay before locking screen after covering proximity sensor:</string>
     <string name="settings_lock_screen_delay_cur">Current delay is %d ms.</string>
     <string name="settings_vibrate_before_locking">Vibrate before locking</string>
