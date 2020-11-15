@@ -30,7 +30,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     val lockScreenDelayLiveData = ConfigLockScreenDelayLiveData()
 
-    val proximityLiveData: LiveData<Float?> = ProximityLiveData(context)
+    val proximityLiveData: LiveData<Float> = ProximityLiveData(context)
 
     val appInfoLiveData: LiveData<out String> = MutableLiveData<String>()
         .apply {
@@ -41,7 +41,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             value = "$name v$versionName+$versionCode ($flavor)"
         }
 
-    val proximityBinaryLiveData: LiveData<Proximity?> =
+    val proximityBinaryLiveData: LiveData<Proximity> =
         ProximityBinaryLiveData(context, proximityLiveData)
             .distinctUntilChanged()
 

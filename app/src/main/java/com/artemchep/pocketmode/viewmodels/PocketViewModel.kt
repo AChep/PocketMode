@@ -1,11 +1,9 @@
 package com.artemchep.pocketmode.viewmodels
 
 import android.content.Context
-import android.os.PowerManager
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.asFlow
-import androidx.lifecycle.distinctUntilChanged
+import androidx.lifecycle.map
 import com.artemchep.pocketmode.models.Keyguard
 import com.artemchep.pocketmode.models.PhoneCall
 import com.artemchep.pocketmode.models.Proximity
@@ -13,7 +11,6 @@ import com.artemchep.pocketmode.models.Screen
 import com.artemchep.pocketmode.models.`fun`.Either
 import com.artemchep.pocketmode.models.events.Idle
 import com.artemchep.pocketmode.models.events.LockScreenEvent
-import com.artemchep.pocketmode.models.issues.NoReadPhoneStatePermissionGranted
 import com.artemchep.pocketmode.sensors.*
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flatMapLatest
@@ -24,38 +21,19 @@ import kotlinx.coroutines.flow.map
  * @author Artem Chepurnoy
  */
 class PocketViewModel(context: Context) {
-    private val proximityLiveData: LiveData<Float?> = ProximityLiveData(context)
+    private val proximityBinaryFlow: Flow<Proximity> = flowOfBinaryProximity(context)
 
-    private val proximityBinaryLiveData: LiveData<Proximity?> =
-        ProximityBinaryLiveData(context, proximityLiveData)
-            .distinctUntilChanged()
+    private val screenFlow: Flow<Screen> = flowOfScreen(context)
 
-    /**
-     * Holds the wake lock while being
-     * observed.
-     */
-    private val wakeLockLiveData: LiveData<Nothing> = WakeLockLiveData(context) {
-        PowerManager.PARTIAL_WAKE_LOCK
-    }
+    private val keyguardFlow: Flow<Keyguard> = flowOfKeyguard(context)
 
-    private val screenLiveData: LiveData<Screen?> = ScreenLiveData(context)
-
-    private val phoneCallLiveData: LiveData<Either<NoReadPhoneStatePermissionGranted, PhoneCall>> =
-        PhoneCallLiveData(context)
-
-    private val phoneCallSoloLiveData = MediatorLiveData<PhoneCall>()
-        .apply {
-            addSource(phoneCallLiveData) { state ->
-                val value = when (state) {
-                    is Either.Left -> PhoneCall.Idle
-                    is Either.Right -> state.b
-                }
-                postValue(value)
+    private val phoneCallLiveData: LiveData<PhoneCall> = PhoneCallLiveData(context)
+        .map { state ->
+            when (state) {
+                is Either.Left -> PhoneCall.Idle
+                is Either.Right -> state.b
             }
         }
-
-    private val keyguardLiveData: LiveData<Keyguard> = KeyguardLiveData(context)
-        .distinctUntilChanged()
 
     private val overlayBeforeLockingSwitchIsCheckedLiveData = ConfigOverlayBeforeIsCheckedLiveData()
 
@@ -64,11 +42,11 @@ class PocketViewModel(context: Context) {
      * the pocket.
      */
     val lockScreenEventFlow: Flow<LockScreenEvent> =
-        LockScreenEventFlow(
-            proximityLiveData = proximityBinaryLiveData,
-            screenLiveData = screenLiveData,
-            phoneCallLiveData = phoneCallSoloLiveData,
-            keyguardLiveData = keyguardLiveData
+        flowOfLockScreen(
+            proximityFlow = proximityBinaryFlow,
+            screenFlow = screenFlow,
+            keyguardFlow = keyguardFlow,
+            phoneCallLiveData = phoneCallLiveData,
         )
 
     val overlayFlow: Flow<Boolean> = overlayBeforeLockingSwitchIsCheckedLiveData

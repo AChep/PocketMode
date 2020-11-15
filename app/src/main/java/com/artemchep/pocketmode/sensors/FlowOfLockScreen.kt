@@ -18,24 +18,21 @@ import kotlinx.coroutines.flow.*
 /**
  * @author Artem Chepurnoy
  */
-@Suppress("FunctionName")
-fun LockScreenEventFlow(
-    proximityLiveData: LiveData<Proximity?>,
-    screenLiveData: LiveData<Screen?>,
+fun flowOfLockScreen(
+    proximityFlow: Flow<Proximity>,
+    screenFlow: Flow<Screen>,
     phoneCallLiveData: LiveData<PhoneCall>,
-    keyguardLiveData: LiveData<Keyguard>
+    keyguardFlow: Flow<Keyguard>
 ): Flow<LockScreenEvent> {
-    val proximityFlow = proximityLiveData.asFlow().filterNotNull().distinctUntilChanged()
-    val screenFlow = screenLiveData.asFlow().filterNotNull().distinctUntilChanged()
     val phoneCallFlow = phoneCallLiveData.asFlow().distinctUntilChanged()
-    val keyguardFlow = keyguardLiveData.asFlow().distinctUntilChanged()
     return screenFlow
+        .distinctUntilChanged()
         // If the screen is on -> subscribe to the
         // keyguard flow.
         .flatMapLatest { screen ->
             when (screen) {
                 is Screen.On -> combine(
-                    keyguardFlow,
+                    keyguardFlow.distinctUntilChanged(),
                     phoneCallFlow,
                 ) { keyguard, phoneCall ->
                     when {
@@ -54,9 +51,11 @@ fun LockScreenEventFlow(
                     }
                 }
                     .flatMapLatest { it }
+                    .distinctUntilChanged()
                     .flatMapLatest { isActive ->
                         if (isActive) {
                             proximityFlow
+                                .distinctUntilChanged()
                                 .flatMapLatest { proximity ->
                                     when (proximity) {
                                         is Proximity.Far -> flowOf(Idle)
