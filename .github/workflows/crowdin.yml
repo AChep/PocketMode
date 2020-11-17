@@ -15,6 +15,11 @@ name: Synchronize Crowdin
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - master
+    paths:
+      - 'app/src/main/res/values/strings.xml'
 
 jobs:
 
