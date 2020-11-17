@@ -29,7 +29,7 @@ jobs:
           echo ::set-output name=tag::${GITHUB_REF:10}
       - id: env
         run: |
-          echo ::set-env name=POCKET_MODE_RELEASE_TAG::${{ steps.vars.outputs.tag }}
+          echo "POCKET_MODE_RELEASE_TAG=${{ steps.vars.outputs.tag }}" >> $GITHUB_ENV
       - name: copy secrets
         run: |
           echo ${{ secrets.GOOGLE_SERVICES }} | base64 -d | zcat >> app/google-services.json
