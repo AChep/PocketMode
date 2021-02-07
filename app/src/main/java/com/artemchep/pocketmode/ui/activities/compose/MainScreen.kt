@@ -1,8 +1,6 @@
 package com.artemchep.pocketmode.ui.activities.compose
 
-import androidx.compose.foundation.Icon
 import androidx.compose.foundation.ScrollableColumn
-import androidx.compose.foundation.Text
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
@@ -130,7 +128,8 @@ fun TroubleshootingCardContent(ui: MainScreen.Troubleshooting) = ConstraintLayou
                 bottom.linkTo(proximityText.bottom)
                 end.linkTo(parent.end, 16.dp)
             },
-        asset = if (ui.proximityIsClose) Icons.Outlined.Edit else Icons.Outlined.Edit
+        imageVector = if (ui.proximityIsClose) Icons.Outlined.Edit else Icons.Outlined.Edit,
+        contentDescription = null,
     )
     Text(
         modifier = Modifier
@@ -179,7 +178,8 @@ fun TroubleshootingCardContent(ui: MainScreen.Troubleshooting) = ConstraintLayou
             ),
         icon = {
             Icon(
-                asset = Icons.Outlined.Place
+                imageVector = Icons.Outlined.Place,
+                contentDescription = null,
             )
         },
         text = {
@@ -397,7 +397,8 @@ fun SettingsCardContent(ui: MainScreen.Settings) = ConstraintLayout(
             },
         icon = {
             Icon(
-                asset = Icons.Outlined.ShoppingCart
+                imageVector = Icons.Outlined.ShoppingCart,
+                contentDescription = null,
             )
         },
         text = {
@@ -416,7 +417,8 @@ fun SettingsCardContent(ui: MainScreen.Settings) = ConstraintLayout(
             },
         icon = {
             Icon(
-                asset = Icons.Outlined.Build
+                imageVector = Icons.Outlined.Build,
+                contentDescription = null,
             )
         },
         text = {
