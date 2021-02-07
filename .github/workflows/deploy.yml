@@ -20,10 +20,11 @@ jobs:
         uses: metcalfc/changelog-generator@v0.4.4
         with:
           myToken: ${{ secrets.GITHUB_TOKEN }}
-      - name: set up JDK 1.8
+      - name: "Setup JDK 11"
+        id: setup-java
         uses: actions/setup-java@v1
         with:
-          java-version: 1.8
+          java-version: "11"
       - id: vars
         run: |
           echo ::set-output name=tag::${GITHUB_REF:10}
@@ -35,19 +36,12 @@ jobs:
           echo ${{ secrets.GOOGLE_SERVICES }} | base64 -d | zcat >> app/google-services.json
           echo ${{ secrets.KEYSTORE_B64 }} | base64 -d | zcat >> app/pocketmode-release.keystore
           echo ${{ secrets.KEYSTORE_PROPS_B64 }} | base64 -d | zcat >> app/pocketmode-release.properties
-      - name: Generate cache key
-        run: ./checksum.sh . checksum.txt
-      - uses: actions/cache@v2
+      - name: "./gradlew clean bundlePlaystoreRelease assemblePlaystoreRelease assembleOpensourceRelease"
+        uses: eskatos/gradle-command-action@v1
+        env:
+          JAVA_HOME: ${{ steps.setup-java.outputs.path }}
         with:
-          path: |
-            ~/.gradle/caches/modules-*
-            ~/.gradle/caches/jars-*
-            ~/.gradle/caches/build-cache-*
-          key: gradle-${{ hashFiles('checksum.txt') }}
-      - name: build with Gradle
-        run: ./gradlew clean bundlePlaystoreRelease assemblePlaystoreRelease
-      - name: build with Gradle [oss]
-        run: ./gradlew assembleOpensourceRelease
+          arguments: clean bundlePlaystoreRelease assemblePlaystoreRelease assembleOpensourceRelease
       - name: create release
         id: create_release
         uses: actions/create-release@v1
