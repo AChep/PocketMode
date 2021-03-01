@@ -31,17 +31,20 @@ jobs:
       - id: env
         run: |
           echo "POCKET_MODE_RELEASE_TAG=${{ steps.vars.outputs.tag }}" >> $GITHUB_ENV
+          echo "ACRA_URI=${{ secrets.ACRA_URI }}" >> $GITHUB_ENV
+          echo "ACRA_USERNAME=${{ secrets.ACRA_USERNAME }}" >> $GITHUB_ENV
+          echo "ACRA_PASSWORD=${{ secrets.ACRA_PASSWORD }}" >> $GITHUB_ENV
       - name: copy secrets
         run: |
           echo ${{ secrets.GOOGLE_SERVICES }} | base64 -d | zcat >> app/google-services.json
           echo ${{ secrets.KEYSTORE_B64 }} | base64 -d | zcat >> app/pocketmode-release.keystore
           echo ${{ secrets.KEYSTORE_PROPS_B64 }} | base64 -d | zcat >> app/pocketmode-release.properties
-      - name: "./gradlew clean bundlePlaystoreRelease assemblePlaystoreRelease assembleOpensourceRelease"
+      - name: "./gradlew bundlePlaystoreRelease"
         uses: eskatos/gradle-command-action@v1
         env:
           JAVA_HOME: ${{ steps.setup-java.outputs.path }}
         with:
-          arguments: clean bundlePlaystoreRelease assemblePlaystoreRelease assembleOpensourceRelease
+          arguments: bundlePlaystoreRelease
       - name: create release
         id: create_release
         uses: actions/create-release@v1
@@ -51,6 +54,19 @@ jobs:
           body: ${{ steps.changelog.outputs.changelog }}
           draft: false
           prerelease: false
+      - name: upload Release mappings
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: app/build/outputs/mapping/playstore/mapping.txt
+          asset_name: pocketmode-release-${{ steps.vars.outputs.tag }}-play-store-mapping.txt
+          asset_content_type: application/zip
+      - name: "./gradlew assemblePlaystoreRelease assembleOpensourceRelease"
+        uses: eskatos/gradle-command-action@v1
+        env:
+          JAVA_HOME: ${{ steps.setup-java.outputs.path }}
+        with:
+          arguments: assemblePlaystoreRelease assembleOpensourceRelease
       - name: upload Release [ps] apk
         uses: actions/upload-release-asset@v1
         with:
@@ -58,12 +74,26 @@ jobs:
           asset_path: app/build/outputs/apk/playstore/release/app-playstore-release.apk
           asset_name: pocketmode-release-${{ steps.vars.outputs.tag }}.apk
           asset_content_type: application/zip
+      - name: upload Release [ps] mappings
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: app/build/outputs/mapping/playstore/mapping.txt
+          asset_name: pocketmode-release-${{ steps.vars.outputs.tag }}-mapping.txt
+          asset_content_type: application/zip
       - name: upload Release [oss] apk
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: app/build/outputs/apk/opensource/release/app-opensource-release.apk
           asset_name: pocketmode-release-oss-${{ steps.vars.outputs.tag }}.apk
+          asset_content_type: application/zip
+      - name: upload Release [oss] mappings
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: app/build/outputs/mapping/opensource/mapping.txt
+          asset_name: pocketmode-release-oss-${{ steps.vars.outputs.tag }}-mapping.txt
           asset_content_type: application/zip
       - name: upload to play store
         uses: r0adkll/upload-google-play@v1
