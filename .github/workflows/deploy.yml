@@ -58,7 +58,7 @@ jobs:
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: app/build/outputs/mapping/playstore/mapping.txt
+          asset_path: app/build/outputs/mapping/playstoreRelease/mapping.txt
           asset_name: pocketmode-release-${{ steps.vars.outputs.tag }}-play-store-mapping.txt
           asset_content_type: application/zip
       - name: "./gradlew assemblePlaystoreRelease assembleOpensourceRelease"
@@ -78,7 +78,7 @@ jobs:
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: app/build/outputs/mapping/playstore/mapping.txt
+          asset_path: app/build/outputs/mapping/playstoreRelease/mapping.txt
           asset_name: pocketmode-release-${{ steps.vars.outputs.tag }}-mapping.txt
           asset_content_type: application/zip
       - name: upload Release [oss] apk
@@ -92,7 +92,7 @@ jobs:
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: app/build/outputs/mapping/opensource/mapping.txt
+          asset_path: app/build/outputs/mapping/opensourceRelease/mapping.txt
           asset_name: pocketmode-release-oss-${{ steps.vars.outputs.tag }}-mapping.txt
           asset_content_type: application/zip
       - name: upload to play store
