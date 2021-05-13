@@ -25,6 +25,7 @@
     <string name="help_translate">Översätt till ditt språk</string>
     <string name="help_donate">Donera till mig</string>
     <string name="help_test">Laboratory</string>
+    <string name="help_more_apps">Discover more apps</string>
     <string name="about">Om</string>
     <string name="about_author">Developed by %s</string>
     <string name="about_description">Pocket Mode är en gratis och enkel nyttoapp med ett enkelt mål: att förhindra oavsiktliga tryck när enheten är i fickan. \n\nAppen når detta mål genom att stänga av skärmen när närvarosensorn har varit täckt en stund.</string>

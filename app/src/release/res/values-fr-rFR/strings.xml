@@ -25,6 +25,7 @@
     <string name="help_translate">Translate to your language</string>
     <string name="help_donate">Donate to me</string>
     <string name="help_test">Laboratory</string>
+    <string name="help_more_apps">Discover more apps</string>
     <string name="about">About</string>
     <string name="about_author">Developed by %s</string>
     <string name="about_description">Pocket Mode is a free simple utility app with a single goal: prevent accidental touches while the device is in pocket. \n\nApp accomplishes this goal by turning the screen off after proximity sensor has been covered for some time.</string>

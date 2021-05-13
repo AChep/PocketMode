@@ -25,6 +25,7 @@
     <string name="help_translate">Traducendo nella tua lingua</string>
     <string name="help_donate">Donami</string>
     <string name="help_test">Laboratorio</string>
+    <string name="help_more_apps">Discover more apps</string>
     <string name="about">Informazioni su</string>
     <string name="about_author">Sviluppato da</string>
     <string name="about_description">Pocket Mode è una semplice app gratuita con un unico obiettivo: prevenire tocchi accidentali mentre il dispositivo è in tasca. \n\nL\'app raggiunge questo obiettivo spegnendo lo schermo dopo che il sensore di prossimità è stato coperto per un certo tempo.</string>
