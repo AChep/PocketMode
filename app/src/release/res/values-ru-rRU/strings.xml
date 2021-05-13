@@ -25,6 +25,7 @@
     <string name="help_translate">Перевести на ваш родной язык</string>
     <string name="help_donate">Пожертвовать</string>
     <string name="help_test">Лаборатория</string>
+    <string name="help_more_apps">Discover more apps</string>
     <string name="about">О программе</string>
     <string name="about_author">Разработано %s</string>
     <string name="about_description">Pocket Mode - это бесплатная утилита с одной целью: предотвращать случайные действия при нахождении устройства в кармане. \n\nПриложение достигает этой цели, выключая экран после того, как датчик приближения был накрыт некоторое время.</string>
