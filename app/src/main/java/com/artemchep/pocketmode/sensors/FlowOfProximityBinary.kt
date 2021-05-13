@@ -52,7 +52,7 @@ private fun proximityBinaryTransformationFactory(
 fun proximityBinaryTransformationFactory(
     distance: Float,
     distanceMax: Float,
-) = if (distance >= distanceMax && distance >= 1.0f) {
+) = if (distance >= distanceMax) {
     Proximity.Far
 } else {
     Proximity.Near
