@@ -1,8 +1,9 @@
 package com.artemchep.pocketmode.ui.activities.compose
 
-import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Build
@@ -13,12 +14,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.constraintlayout.compose.Dimension
 import com.artemchep.pocketmode.R
 import com.artemchep.pocketmode.models.MainScreen
 
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun Content(ui: MainScreen) {
-    ScrollableColumn {
+    val verticalScrollState = rememberScrollState(0)
+    Column(
+        Modifier.verticalScroll(verticalScrollState),
+    ) {
         Card(
             shape = MaterialTheme.shapes.large,
             modifier = Modifier
@@ -56,6 +63,7 @@ fun Content(ui: MainScreen) {
     }
 }
 
+@ExperimentalMaterialApi
 @Composable
 fun TroubleshootingCardContent(ui: MainScreen.Troubleshooting) = ConstraintLayout(
     modifier = Modifier
@@ -190,6 +198,7 @@ fun TroubleshootingCardContent(ui: MainScreen.Troubleshooting) = ConstraintLayou
     )
 }
 
+@ExperimentalMaterialApi
 @Composable
 fun SettingsCardContent(ui: MainScreen.Settings) = ConstraintLayout(
     modifier = Modifier
@@ -471,6 +480,7 @@ fun SettingsCardContent(ui: MainScreen.Settings) = ConstraintLayout(
     )
 }
 
+@ExperimentalMaterialApi
 @Composable
 fun ListItemTextSwitch(
     modifier: Modifier = Modifier,
