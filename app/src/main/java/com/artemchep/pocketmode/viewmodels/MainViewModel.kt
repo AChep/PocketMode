@@ -232,6 +232,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         openLabLiveData.postValue(event)
     }
 
+    fun openApps() = openUrl(LINK_APPS)
+
     // ---- Permissions ----
 
     fun grantAccessibilityService() {

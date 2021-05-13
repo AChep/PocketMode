@@ -209,6 +209,7 @@ class MainActivity : BaseActivity(),
         viewBinding.mainStub.donateBtn.setOnClickListener(this)
         viewBinding.mainStub.bugReportBtn.setOnClickListener(this)
         viewBinding.mainStub.translateBtn.setOnClickListener(this)
+        viewBinding.mainStub.moreAppsBtn.setOnClickListener(this)
         viewBinding.troubleshootingStub.labBtn.setOnClickListener(this)
         viewBinding.troubleshootingStub.troubleshootingDontKillMyApp.setOnClickListener(this)
         viewBinding.troubleshootingStub.lockScreenBtn.setOnClickListener(this)
@@ -378,6 +379,7 @@ class MainActivity : BaseActivity(),
             R.id.troubleshootingDontKillMyApp -> mainViewModel.openBugReportDontKillMyApp()
             R.id.translateBtn -> mainViewModel.openTranslationService()
             R.id.labBtn -> mainViewModel.openLab()
+            R.id.moreAppsBtn -> mainViewModel.openApps()
             // Permissions
             R.id.accessibilityServiceBtn -> mainViewModel.grantAccessibilityService()
             R.id.callStateBtn -> mainViewModel.grantCallState()
