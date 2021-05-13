@@ -45,8 +45,8 @@ class PhoneCallLiveData(
 
     private fun postPhoneState(phoneState: Int) {
         val value = when (phoneState) {
-            TelephonyManager.CALL_STATE_RINGING,
-            TelephonyManager.CALL_STATE_OFFHOOK -> PhoneCall.Ongoing
+            TelephonyManager.CALL_STATE_RINGING -> PhoneCall.Ongoing
+            TelephonyManager.CALL_STATE_OFFHOOK -> PhoneCall.Offhook
             else -> PhoneCall.Idle
         }
         postValue(Either.Right(value))
