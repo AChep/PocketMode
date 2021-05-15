@@ -232,6 +232,13 @@ class MainActivity : BaseActivity(),
 
     private fun MainViewModel.setup() {
         lockScreenDelayLiveData.observe(this@MainActivity, Observer {
+            val stopMonitoringDelay = keyguardUnlockedDelay(it)
+            val lockScreenDelay = it
+
+            val text = getString(R.string.how_it_works, stopMonitoringDelay, lockScreenDelay)
+            viewBinding.troubleshootingStub.howItWorks.text = text
+        })
+        lockScreenDelayLiveData.observe(this@MainActivity, Observer {
             viewBinding.mainStub.lockScreenDelaySeekBar.progress = it.toInt() / DD
             bindLockScreenDelay(it)
         })

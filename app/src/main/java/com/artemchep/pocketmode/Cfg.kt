@@ -65,5 +65,7 @@ object Cfg : SharedPrefConfig("config") {
     var lockScreenDelay by configDelegate(KEY_LOCK_SCREEN_DELAY, DEFAULT_LOCK_SCREEN_DELAY)
 }
 
-val Cfg.keyguardUnlockedDelay: Long
-    get() = lockScreenDelay.let { min(it * 3L, max(it, 5000L)) }
+val Cfg.keyguardUnlockedDelay: Long get() = keyguardUnlockedDelay(lockScreenDelay)
+
+fun keyguardUnlockedDelay(lockScreenDelay: Long) =
+    min(lockScreenDelay * 3L, max(lockScreenDelay, 5000L))
