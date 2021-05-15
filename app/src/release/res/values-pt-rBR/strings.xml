@@ -11,6 +11,7 @@
     <string name="access_accessibility_service">O modo Pocket usa o serviço de acessibilidade para enviar o comando que bloqueia a tela. Toque para conceder privilégios de serviço de acessibilidade</string>
     <string name="access_runtime_call_state">O modo Pocket lê o estado de chamada para não desligar a tela enquanto a chamada está ativa. Toque para conceder privilégios de estado de chamada</string>
     <string name="access_overlays">Modo de bolso pode inserir uma sobreposição em cima dos aplicativos para mostrar ao usuário que o sensor de proximidade está coberto.</string>
+    <string name="how_it_works">Pocket mode monitors the proximity sensor for %d ms. after turning the screen on. If in this time window the proximity sensor has been covered for at least %d ms. the app turns the screen back off.</string>
     <string name="troubleshoot">Solução de problemas</string>
     <string name="troubleshoot_lock_screen">Bloquear tela</string>
     <string name="troubleshoot_lock_screen_description">Ao funcionar corretamente, pressionando este botão deve bloquear a tela.</string>

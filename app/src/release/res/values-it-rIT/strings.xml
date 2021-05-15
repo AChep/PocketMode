@@ -11,6 +11,7 @@
     <string name="access_accessibility_service">Pocket Mode utilizza il servizio di accessibilità per inviare il comando che blocca lo schermo. Tocca per concedere i privilegi di servizio di accessibilità</string>
     <string name="access_runtime_call_state">Pocket Mode legge lo stato delle chiamate per non spegnere lo schermo mentre la chiamata è attiva. Tocca per concedere privilegi di stato delle chiamate</string>
     <string name="access_overlays">Pocket Mode può disegnare sovrapposizione in cima alle app utente per mostrare all\'utente che il sensore di prossimità è coperto.</string>
+    <string name="how_it_works">Pocket mode monitors the proximity sensor for %d ms. after turning the screen on. If in this time window the proximity sensor has been covered for at least %d ms. the app turns the screen back off.</string>
     <string name="troubleshoot">Risoluzione problemi</string>
     <string name="troubleshoot_lock_screen">Schermata di sblocco</string>
     <string name="troubleshoot_lock_screen_description">Quando si lavora correttamente, premere questo pulsante dovrebbe bloccare lo schermo.</string>
