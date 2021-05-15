@@ -42,6 +42,9 @@ class MainActivity : BaseActivity(),
         private const val RC_RUNTIME_PERMISSIONS = 100
         private const val RC_ACCESSIBILITY = 200
         private const val RC_OVERLAYS = 300
+
+        private const val DONATE_ACTIVITY_NAME =
+            "com.artemchep.pocketmode.ui.activities.DonateActivity"
     }
 
     private val mainViewModel by lazy {
@@ -215,6 +218,10 @@ class MainActivity : BaseActivity(),
         viewBinding.troubleshootingStub.lockScreenBtn.setOnClickListener(this)
         viewBinding.mainStub.lockScreenDelayResetBtn.setOnClickListener(this)
 
+        viewBinding.mainStub.donateBtn.isVisible = kotlin.runCatching {
+            Class.forName(DONATE_ACTIVITY_NAME)
+        }.isSuccess
+
         viewBinding.mainStub.aboutAuthor.text = getStringOrEmpty(
             R.string.about_author,
             getString(R.string.about_author_artem_chepurnoy)
@@ -306,8 +313,11 @@ class MainActivity : BaseActivity(),
             openUrl(it.url)
         })
         openDonateToMeLiveData.observe(this@MainActivity, ObserverConsumer {
-            val intent = Intent(this@MainActivity, DonateActivity::class.java)
-            startActivity(intent)
+            kotlin.runCatching {
+                val clazz = Class.forName(DONATE_ACTIVITY_NAME)
+                val intent = Intent(this@MainActivity, clazz)
+                startActivity(intent)
+            }
         })
         openLabLiveData.observe(this@MainActivity, ObserverConsumer {
             val intent = Intent(this@MainActivity, LabActivity::class.java)

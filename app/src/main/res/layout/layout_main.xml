@@ -218,11 +218,19 @@
         app:layout_constraintStart_toEndOf="@id/startGuideline"
         app:layout_constraintTop_toBottomOf="@id/about" />
 
+    <Space
+        android:id="@+id/btnDivider"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/aboutText" />
+
     <TextView
         android:id="@+id/donateBtn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:background="?selectableItemBackground"
         android:drawablePadding="16dp"
         android:gravity="center_vertical"
@@ -236,7 +244,7 @@
         app:drawableStartCompat="@drawable/ic_outline_credit_card"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/aboutText" />
+        app:layout_constraintTop_toBottomOf="@id/btnDivider" />
 
     <TextView
         android:id="@+id/bugReportBtn"

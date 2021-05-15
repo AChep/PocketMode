@@ -50,11 +50,13 @@ class Heart : Application() {
     val pocketServiceIntent: Intent
         get() = Intent(this@Heart, PocketService::class.java)
 
-    val billing = Billing(this, object : Billing.DefaultConfiguration() {
-        override fun getPublicKey(): String {
-            return BuildConfig.MY_LICENSE_KEY
-        }
-    })
+    val billing by lazy {
+        Billing(this, object : Billing.DefaultConfiguration() {
+            override fun getPublicKey(): String {
+                return BuildConfig.MY_LICENSE_KEY
+            }
+        })
+    }
 
     val analytics: Analytics by lazy {
         if (Cfg.analytics) {

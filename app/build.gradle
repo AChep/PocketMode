@@ -134,7 +134,8 @@ dependencies {
     implementation "androidx.work:work-runtime-ktx:2.7.0-alpha03"
     implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0'
     implementation 'com.mikepenz:fastadapter:3.3.1'
-    implementation 'org.solovyev.android:checkout:1.2.3'
+    compileOnly 'org.solovyev.android:checkout:1.2.3'
+    playstoreImplementation 'org.solovyev.android:checkout:1.2.3'
     implementation 'androidx.compose.ui:ui:1.0.0-beta06'
     implementation 'androidx.compose.material:material:1.0.0-beta06'
     implementation "androidx.constraintlayout:constraintlayout-compose:1.0.0-alpha06"
