@@ -68,4 +68,6 @@ object Cfg : SharedPrefConfig("config") {
 val Cfg.keyguardUnlockedDelay: Long get() = keyguardUnlockedDelay(lockScreenDelay)
 
 fun keyguardUnlockedDelay(lockScreenDelay: Long) =
-    min(lockScreenDelay * 3L, max(lockScreenDelay, 5000L))
+    (lockScreenDelay * 3L)
+        .coerceAtLeast(3000L)
+        .coerceAtMost(max(8000L, 1000L + lockScreenDelay))
