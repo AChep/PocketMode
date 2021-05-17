@@ -11,6 +11,7 @@
     <string name="access_accessibility_service">Pocket Mode использует службу специальных возможностей для отправки команды, блокирующей экран. Нажмите, чтобы предоставить доступ к службе</string>
     <string name="access_runtime_call_state">Pocket Mode использует доступ к телефонной службе, чтобы не выключать экран при активном вызове. Нажмите, чтобы предоставить доступ к службе</string>
     <string name="access_overlays">Pocket Mode может рисовать поверх всех приложений, чтобы показать пользователю, что датчик приближения покрыт.</string>
+    <string name="how_it_works">Pocket mode monitors the proximity sensor for %d ms. after turning the screen on. If in this time window the proximity sensor has been covered for at least %d ms. the app turns the screen back off.</string>
     <string name="troubleshoot">Устранение неисправностей</string>
     <string name="troubleshoot_lock_screen">Заблокировать экран</string>
     <string name="troubleshoot_lock_screen_description">При правильной работе, нажатие на эту кнопку должно блокировать экран.</string>

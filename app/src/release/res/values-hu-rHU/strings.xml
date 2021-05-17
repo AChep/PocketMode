@@ -11,6 +11,7 @@
     <string name="access_accessibility_service">Pocket Mode uses accessibility service to send the command that locks the screen. Tap to grant accessibility service privileges</string>
     <string name="access_runtime_call_state">Pocket Mode reads call state to not turn screen off while call is active. Tap to grant call state privileges</string>
     <string name="access_overlays">Pocket Mode can draw overlay on top of the user apps to show user that the proximity sensor is covered.</string>
+    <string name="how_it_works">Pocket mode monitors the proximity sensor for %d ms. after turning the screen on. If in this time window the proximity sensor has been covered for at least %d ms. the app turns the screen back off.</string>
     <string name="troubleshoot">Hibaelhárítás</string>
     <string name="troubleshoot_lock_screen">Képernyő zárolás</string>
     <string name="troubleshoot_lock_screen_description">When working correctly, pressing this button should lock the screen.</string>

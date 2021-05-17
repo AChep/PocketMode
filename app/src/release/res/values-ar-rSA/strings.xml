@@ -11,6 +11,7 @@
     <string name="access_accessibility_service">وضع الجيب يستخدم خدمة الوصول لإرسال الأمر الذي يقفل الشاشة. انقر لمنح امتيازات خدمة الوصول</string>
     <string name="access_runtime_call_state">وضع الجيب يقرأ حالة المكالمة لعدم إيقاف تشغيل الشاشة أثناء تفعيل المكالمة. انقر لمنح امتيازات الولاية</string>
     <string name="access_overlays">وضع الجيب يمكنه رسم تراكب على أعلى تطبيقات المستخدم لإظهار المستخدم أن مستشعر القرب مشمول.</string>
+    <string name="how_it_works">Pocket mode monitors the proximity sensor for %d ms. after turning the screen on. If in this time window the proximity sensor has been covered for at least %d ms. the app turns the screen back off.</string>
     <string name="troubleshoot">استكشاف الأخطاء</string>
     <string name="troubleshoot_lock_screen">شاشة القفل</string>
     <string name="troubleshoot_lock_screen_description">عند العمل بشكل صحيح، الضغط على هذا الزر يجب أن يقفل الشاشة.</string>
