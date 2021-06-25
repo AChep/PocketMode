@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="settings">Nastavení</string>
+    <string name="settings_use_pocket_mode">Use pocket mode</string>
     <string name="settings_lock_screen_delay_description">Prodleva před zamknutím obrazovky po zakrytí senzoru přiblížení:</string>
     <string name="settings_lock_screen_delay_cur">Aktuální prodleva je %d ms.</string>
     <string name="settings_vibrate_before_locking">Vibrovat před zamknutím</string>

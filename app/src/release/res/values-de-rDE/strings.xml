@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="settings">Einstellungen</string>
+    <string name="settings_use_pocket_mode">Use pocket mode</string>
     <string name="settings_lock_screen_delay_description">Verzögerung, bis der Bildschirm gesperrt wird, wenn der Näherungssensor auslöst:</string>
     <string name="settings_lock_screen_delay_cur">Aktuelle Verzögerung ist %d ms.</string>
     <string name="settings_vibrate_before_locking">Vibrieren vor Sperren</string>

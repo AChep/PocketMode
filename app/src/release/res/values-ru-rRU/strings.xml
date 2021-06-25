@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="settings">Настройки</string>
+    <string name="settings_use_pocket_mode">Use pocket mode</string>
     <string name="settings_lock_screen_delay_description">Задержка перед блокировкой экрана после покрытия датчика приближения:</string>
     <string name="settings_lock_screen_delay_cur">Текущая задержка: %d мс.</string>
     <string name="settings_vibrate_before_locking">Вибрация перед блокировкой</string>

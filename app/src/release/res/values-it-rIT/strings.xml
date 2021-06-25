@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="settings">Impostazioni</string>
+    <string name="settings_use_pocket_mode">Use pocket mode</string>
     <string name="settings_lock_screen_delay_description">Il ritardo prima di bloccare lo schermo dopo aver coperto il sensore di prossimità:</string>
     <string name="settings_lock_screen_delay_cur">Il ritardo attuale è di %d ms.</string>
     <string name="settings_vibrate_before_locking">Vibra prima di bloccare</string>

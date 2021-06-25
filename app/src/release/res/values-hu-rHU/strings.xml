@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="settings">Beállítások</string>
+    <string name="settings_use_pocket_mode">Use pocket mode</string>
     <string name="settings_lock_screen_delay_description">A képernyő lezárása előtti késleltetés a közelségérzékelő lefedése után:</string>
     <string name="settings_lock_screen_delay_cur">A jelenlegi késés beállítva %d mp.</string>
     <string name="settings_vibrate_before_locking">Vibrate before locking</string>
