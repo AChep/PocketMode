@@ -8,10 +8,7 @@ import android.view.View
 import android.widget.SeekBar
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.net.toUri
-import androidx.core.view.ViewCompat
-import androidx.core.view.isGone
-import androidx.core.view.isVisible
-import androidx.core.view.updatePadding
+import androidx.core.view.*
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.afollestad.materialdialogs.MaterialDialog
