@@ -7,6 +7,7 @@ import android.util.TypedValue
 import android.view.View
 import android.widget.SeekBar
 import androidx.browser.customtabs.CustomTabsIntent
+import androidx.core.graphics.ColorUtils
 import androidx.core.net.toUri
 import androidx.core.view.*
 import androidx.lifecycle.Observer
@@ -59,29 +60,17 @@ class MainActivity : BaseActivity(),
     private var isAnalyticsSwitchBroadcasting = false
 
     private val viewBinding by lazy {
-        ActivityMainBinding.bind(findViewById(android.R.id.content))
+        ActivityMainBinding.bind(findViewById(R.id.content))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        viewBinding.toolbarBlurView
-            .setupWith(viewBinding.root)
-            .setBlurAlgorithm(RenderScriptBlur(this))
-            .setBlurRadius(5f)
-            .setBlurAutoUpdate(true)
-            .setHasFixedTransformationMatrix(true)
-
         ViewCompat.setOnApplyWindowInsetsListener(window.decorView) { _, insets ->
-            viewBinding.statusBar.layoutParams.height = insets.systemWindowInsetTop
+            viewBinding.statusBarBg.layoutParams.height = insets.systemWindowInsetTop
             viewBinding.scrollView.updatePadding(
-                top = insets.systemWindowInsetTop,
                 bottom = insets.systemWindowInsetBottom
-            )
-            viewBinding.toolbarContent.updatePadding(
-                left = insets.systemWindowInsetLeft,
-                right = insets.systemWindowInsetRight
             )
             viewBinding.scrollViewContent.updatePadding(
                 left = insets.systemWindowInsetLeft,
@@ -202,7 +191,7 @@ class MainActivity : BaseActivity(),
             isAnalyticsSwitchBroadcasting = false
         }
 
-        viewBinding.toolbar.setOnClickListener(this)
+        viewBinding.masterSwitchText.setOnClickListener(this)
         viewBinding.accessStub.accessibilityServiceBtn.setOnClickListener(this)
         viewBinding.accessStub.callStateBtn.setOnClickListener(this)
         viewBinding.mainStub.codeBtn.setOnClickListener(this)
@@ -289,8 +278,13 @@ class MainActivity : BaseActivity(),
             viewBinding.aboutAppVersionInfo.text = it
         })
         // Permissions
-        isAccessibilityGranted.observe(this@MainActivity, Observer {
-            viewBinding.accessStub.accessibilityServiceBtn.isGone = it
+        isAccessibilityGranted.observe(this@MainActivity, Observer { isGranted ->
+            viewBinding.accessStub.accessibilityServiceBtn.isGone = isGranted
+            viewBinding.accessContainer.strokeColor = viewBinding.accessContainer.strokeColor
+                .let { color ->
+                    val alpha = if (isGranted) 0 else 255
+                    ColorUtils.setAlphaComponent(color, alpha)
+                }
         })
         isReadPhoneCallGranted.observe(this@MainActivity, Observer {
             viewBinding.accessStub.callStateBtn.isGone = it
@@ -299,8 +293,8 @@ class MainActivity : BaseActivity(),
             viewBinding.accessContainer.isGone = it
         })
         isRequiredGranted.observe(this@MainActivity, Observer {
-            viewBinding.toolbar.isEnabled = it
             viewBinding.troubleshootingStub.lockScreenBtn.isEnabled = it
+            viewBinding.masterSwitchText.isEnabled = it
             viewBinding.masterSwitch.isEnabled = it
         })
         // Events
@@ -384,6 +378,7 @@ class MainActivity : BaseActivity(),
     override fun onClick(view: View) {
         when (view.id) {
             R.id.toolbar -> viewBinding.masterSwitch.isChecked = !viewBinding.masterSwitch.isChecked
+            R.id.masterSwitchText -> viewBinding.masterSwitch.performClick()
             R.id.lockScreenBtn -> mainViewModel.lockScreen()
             R.id.lockScreenDelayResetBtn -> mainViewModel.setLockScreenDelay()
             // Help

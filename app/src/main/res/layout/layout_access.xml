@@ -34,10 +34,9 @@
         android:id="@+id/accessibilityServiceBtn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:background="?selectableItemBackground"
-        android:drawableStart="@drawable/ic_outline_accessibility"
         android:drawablePadding="16dp"
-        android:drawableTint="?colorAccent"
         android:paddingHorizontal="16dp"
         android:paddingTop="12dp"
         android:paddingBottom="12dp"
@@ -45,6 +44,8 @@
         android:textAppearance="?android:textAppearanceMedium"
         android:textColor="?android:textColorPrimary"
         android:textSize="15sp"
+        app:drawableStartCompat="@drawable/ic_outline_accessibility"
+        app:drawableTint="?colorAccent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/access" />
@@ -54,7 +55,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="?selectableItemBackground"
-        android:drawableStart="@drawable/ic_outline_phone"
         android:drawablePadding="16dp"
         android:paddingHorizontal="16dp"
         android:paddingTop="12dp"
@@ -63,8 +63,10 @@
         android:textAppearance="?android:textAppearanceMedium"
         android:textColor="?android:textColorPrimary"
         android:textSize="15sp"
+        app:drawableStartCompat="@drawable/ic_outline_phone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/accessibilityServiceBtn" />
+        app:layout_constraintTop_toBottomOf="@id/accessibilityServiceBtn"
+        app:layout_goneMarginTop="16dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

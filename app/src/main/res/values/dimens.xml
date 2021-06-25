@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="actionBarSize">56dp</dimen>
+    <dimen name="cardMarginHorizontal">16dp</dimen>
+    <dimen name="cardCornerRadius">32dp</dimen>
 
     <dimen name="autorotate_rotation_y">0.0</dimen>
 </resources>

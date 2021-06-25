@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activities.MainActivity">
+    android:clipChildren="false"
+    app:layoutDescription="@xml/desc_activity_main"
+    tools:showPaths="true">
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scrollView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clipToPadding="false">
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbarBg">
 
         <LinearLayout
             android:id="@+id/scrollViewContent"
@@ -18,15 +25,52 @@
             android:layout_height="wrap_content"
             android:clipToPadding="false"
             android:orientation="vertical"
-            android:paddingTop="@dimen/actionBarSize"
+            android:paddingTop="16dp"
             android:paddingBottom="16dp">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/masterSwitchContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/cardMarginHorizontal"
+                android:layout_marginEnd="@dimen/cardMarginHorizontal"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="@dimen/cardCornerRadius">
+
+                <TextView
+                    android:id="@+id/masterSwitchText"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:layout_gravity="start|center_vertical"
+                    android:background="?selectableItemBackground"
+                    android:fontFamily="@font/manrope_semibold"
+                    android:gravity="center_vertical"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:text="@string/settings_use_pocket_mode"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:textColor="?colorOnSurface" />
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/masterSwitch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp" />
+
+            </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/accessContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/cardMarginHorizontal"
+                android:layout_marginEnd="@dimen/cardMarginHorizontal"
                 android:layout_marginBottom="16dp"
-                app:cardCornerRadius="0dp">
+                app:cardCornerRadius="@dimen/cardCornerRadius"
+                app:strokeColor="?colorAccent"
+                app:strokeWidth="1dp">
 
                 <include
                     android:id="@+id/accessStub"
@@ -34,30 +78,30 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-            <com.google.android.material.card.MaterialCardView
+            <LinearLayout
                 android:id="@+id/troubleshootingContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                app:cardCornerRadius="0dp">
+                android:orientation="vertical">
 
                 <include
                     android:id="@+id/troubleshootingStub"
                     layout="@layout/layout_troubleshooting" />
 
-            </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
 
-            <com.google.android.material.card.MaterialCardView
+            <LinearLayout
                 android:id="@+id/mainContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="0dp">
+                android:orientation="vertical">
 
                 <include
                     android:id="@+id/mainStub"
                     layout="@layout/layout_main" />
 
-            </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/aboutAppVersionInfo"
@@ -75,76 +119,59 @@
 
     </androidx.core.widget.NestedScrollView>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <eightbitlab.com.blurview.BlurView
-            android:id="@+id/toolbarBlurView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <View
-                    android:id="@+id/statusBar"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:alpha="0.8"
-                    android:background="@drawable/bg_toolbar" />
-
-                <FrameLayout
-                    android:id="@+id/toolbar"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/actionBarSize"
-                    android:foreground="?selectableItemBackground">
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:alpha="0.8"
-                        android:background="@drawable/bg_toolbar" />
-
-                    <FrameLayout
-                        android:id="@+id/toolbarContent"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:fontFamily="@font/manrope_semibold"
-                            android:text="@string/app_name"
-                            android:textAppearance="?android:textAppearanceMedium"
-                            android:textColor="?android:textColorPrimary"
-                            android:textSize="20sp" />
-
-                        <com.google.android.material.switchmaterial.SwitchMaterial
-                            android:id="@+id/masterSwitch"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="end|center_vertical"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginEnd="16dp" />
-
-                    </FrameLayout>
-
-                </FrameLayout>
-
-            </LinearLayout>
-
-        </eightbitlab.com.blurview.BlurView>
+    <FrameLayout
+        android:id="@+id/statusBarBg"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="3dp"
-            android:background="@drawable/bg_shadow" />
+            android:layout_height="match_parent"
+            android:alpha="0.9"
+            android:background="?android:colorBackground" />
+    </FrameLayout>
 
-    </LinearLayout>
+    <FrameLayout
+        android:id="@+id/toolbarBg"
+        android:layout_width="0dp"
+        android:layout_height="180dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/statusBarBg">
 
-</FrameLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.9"
+            android:background="?android:colorBackground" />
+    </FrameLayout>
+
+    <ImageView
+        android:id="@+id/appIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="?actionBarSize"
+        android:layout_marginStart="16dp"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintBottom_toBottomOf="@id/toolbarBg"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/appName"
+        android:layout_width="wrap_content"
+        android:layout_height="?actionBarSize"
+        android:fontFamily="@font/manrope_semibold"
+        android:gravity="center_vertical"
+        android:maxLines="1"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:text="@string/app_name"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textColor="?android:textColorPrimary"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toBottomOf="@id/toolbarBg"
+        app:layout_constraintStart_toEndOf="@id/appIcon" />
+
+</androidx.constraintlayout.motion.widget.MotionLayout>
