@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="settings">Inställningar</string>
+    <string name="settings_use_pocket_mode">Use pocket mode</string>
     <string name="settings_lock_screen_delay_description">Fördröjning innan skärmen låses efter närvarosensorn täckts:</string>
     <string name="settings_lock_screen_delay_cur">Nuvarande fördröjning är %d ms.</string>
     <string name="settings_vibrate_before_locking">Vibrera före låsning</string>

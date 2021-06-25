@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="settings">Configurações</string>
+    <string name="settings_use_pocket_mode">Use pocket mode</string>
     <string name="settings_lock_screen_delay_description">O atraso para bloquear a tela após cobrir o sensor:</string>
     <string name="settings_lock_screen_delay_cur">O atraso atual é de %d ms.</string>
     <string name="settings_vibrate_before_locking">Vibrar antes de bloquear</string>
