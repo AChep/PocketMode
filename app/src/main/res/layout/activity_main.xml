@@ -19,103 +19,113 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbarBg">
 
-        <LinearLayout
-            android:id="@+id/scrollViewContent"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:clipToPadding="false"
-            android:orientation="vertical"
-            android:paddingTop="16dp"
-            android:paddingBottom="16dp">
+            android:layout_height="wrap_content">
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/masterSwitchContainer"
+            <LinearLayout
+                android:id="@+id/scrollViewContent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/cardMarginHorizontal"
-                android:layout_marginEnd="@dimen/cardMarginHorizontal"
-                android:layout_marginBottom="16dp"
-                app:cardCornerRadius="@dimen/cardCornerRadius">
+                android:layout_marginStart="@dimen/sheetMarginStart"
+                android:clipToPadding="false"
+                android:orientation="vertical"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_max="520dp">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/masterSwitchContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/cardMarginHorizontal"
+                    android:layout_marginEnd="@dimen/cardMarginHorizontal"
+                    android:layout_marginBottom="16dp"
+                    app:cardCornerRadius="@dimen/cardCornerRadius">
+
+                    <TextView
+                        android:id="@+id/masterSwitchText"
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:layout_gravity="start|center_vertical"
+                        android:background="?selectableItemBackground"
+                        android:fontFamily="@font/manrope_semibold"
+                        android:gravity="center_vertical"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:text="@string/settings_use_pocket_mode"
+                        android:textAppearance="?android:textAppearanceMedium"
+                        android:textColor="?colorOnSurface" />
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/masterSwitch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end|center_vertical"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp" />
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/accessContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/cardMarginHorizontal"
+                    android:layout_marginEnd="@dimen/cardMarginHorizontal"
+                    android:layout_marginBottom="16dp"
+                    app:cardCornerRadius="@dimen/cardCornerRadius"
+                    app:strokeColor="?colorAccent"
+                    app:strokeWidth="1dp">
+
+                    <include
+                        android:id="@+id/accessStub"
+                        layout="@layout/layout_access" />
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <LinearLayout
+                    android:id="@+id/troubleshootingContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:orientation="vertical">
+
+                    <include
+                        android:id="@+id/troubleshootingStub"
+                        layout="@layout/layout_troubleshooting" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/mainContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <include
+                        android:id="@+id/mainStub"
+                        layout="@layout/layout_main" />
+
+                </LinearLayout>
 
                 <TextView
-                    android:id="@+id/masterSwitchText"
+                    android:id="@+id/aboutAppVersionInfo"
                     android:layout_width="match_parent"
-                    android:layout_height="56dp"
-                    android:layout_gravity="start|center_vertical"
-                    android:background="?selectableItemBackground"
-                    android:fontFamily="@font/manrope_semibold"
-                    android:gravity="center_vertical"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:alpha="0.5"
+                    android:gravity="center"
                     android:paddingStart="16dp"
                     android:paddingEnd="16dp"
-                    android:text="@string/settings_use_pocket_mode"
-                    android:textAppearance="?android:textAppearanceMedium"
-                    android:textColor="?colorOnSurface" />
-
-                <com.google.android.material.switchmaterial.SwitchMaterial
-                    android:id="@+id/masterSwitch"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end|center_vertical"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp" />
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/accessContainer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/cardMarginHorizontal"
-                android:layout_marginEnd="@dimen/cardMarginHorizontal"
-                android:layout_marginBottom="16dp"
-                app:cardCornerRadius="@dimen/cardCornerRadius"
-                app:strokeColor="?colorAccent"
-                app:strokeWidth="1dp">
-
-                <include
-                    android:id="@+id/accessStub"
-                    layout="@layout/layout_access" />
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <LinearLayout
-                android:id="@+id/troubleshootingContainer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:orientation="vertical">
-
-                <include
-                    android:id="@+id/troubleshootingStub"
-                    layout="@layout/layout_troubleshooting" />
+                    android:textAppearance="@style/TextSection"
+                    tools:text="Pocket Mode v1.0.0" />
 
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/mainContainer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <include
-                    android:id="@+id/mainStub"
-                    layout="@layout/layout_main" />
-
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/aboutAppVersionInfo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:alpha="0.5"
-                android:gravity="center"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:textAppearance="@style/TextSection"
-                tools:text="Pocket Mode v1.0.0" />
-
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
 
@@ -143,11 +153,34 @@
         app:layout_constraintTop_toBottomOf="@id/statusBarBg">
 
         <View
+            android:id="@+id/toolbarBgImpl"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:alpha="0.9"
             android:background="?android:colorBackground" />
     </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/toolbarShadow"
+        android:layout_width="0dp"
+        android:layout_height="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbarBg">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_shadow" />
+    </FrameLayout>
+
+    <View
+        android:id="@+id/startGuideline"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/sheetMarginStart"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/appIcon"
@@ -156,7 +189,7 @@
         android:layout_marginStart="16dp"
         android:src="@mipmap/ic_launcher"
         app:layout_constraintBottom_toBottomOf="@id/toolbarBg"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toEndOf="@id/startGuideline" />
 
     <TextView
         android:id="@+id/appName"

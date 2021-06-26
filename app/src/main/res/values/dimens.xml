@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="actionBarSize">56dp</dimen>
+    <dimen name="sheetMarginStart">0dp</dimen>
     <dimen name="cardMarginHorizontal">16dp</dimen>
     <dimen name="cardCornerRadius">32dp</dimen>
 

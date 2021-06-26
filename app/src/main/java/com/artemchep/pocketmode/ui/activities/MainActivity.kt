@@ -26,6 +26,10 @@ import com.artemchep.pocketmode.ui.activities.base.BaseActivity
 import com.artemchep.pocketmode.util.ObserverConsumer
 import com.artemchep.pocketmode.viewmodels.MainViewModel
 import eightbitlab.com.blurview.RenderScriptBlur
+import android.view.MotionEvent
+
+
+
 
 /**
  * @author Artem Chepurnoy
@@ -78,6 +82,11 @@ class MainActivity : BaseActivity(),
             )
 
             insets.consumeSystemWindowInsets()
+        }
+
+        viewBinding.toolbarBg.setOnTouchListener { v, event ->
+            viewBinding.root.requestDisallowInterceptTouchEvent(true)
+            true
         }
 
         viewBinding.mainStub.lockScreenDelaySeekBar.max =

@@ -5,12 +5,28 @@
     <Transition
         app:constraintSetEnd="@id/collapsed"
         app:constraintSetStart="@id/expanded"
-        app:motionInterpolator="easeInOut">
+        app:motionInterpolator="linear">
 
         <OnSwipe
             app:dragDirection="dragUp"
             app:touchAnchorId="@id/toolbarBg"
-            app:touchAnchorSide="bottom" />
+            app:touchAnchorSide="bottom"
+            app:touchRegionId="@id/scrollView" />
+
+        <KeyFrameSet>
+            <KeyAttribute
+                android:scaleY="0.0"
+                app:framePosition="0"
+                app:motionTarget="@id/toolbarShadow" />
+            <KeyAttribute
+                android:scaleY="0.0"
+                app:framePosition="95"
+                app:motionTarget="@id/toolbarShadow" />
+            <KeyAttribute
+                android:scaleY="1"
+                app:framePosition="100"
+                app:motionTarget="@id/toolbarShadow" />
+        </KeyFrameSet>
 
     </Transition>
 
@@ -37,12 +53,12 @@
 
         <Constraint
             android:id="@id/appIcon"
-            android:layout_width="32dp"
+            android:layout_width="28dp"
             android:layout_height="?actionBarSize"
             android:layout_marginStart="16dp"
             android:src="@mipmap/ic_launcher"
             app:layout_constraintBottom_toBottomOf="@id/toolbarBg"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toEndOf="@id/startGuideline" />
 
         <Constraint
             android:id="@id/appName"
