@@ -30,6 +30,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     val lockScreenDelayLiveData = ConfigLockScreenDelayLiveData()
 
+    val vibrateDurationLiveData = ConfigVibrateDurationLiveData()
+
     val proximityLiveData: LiveData<Float> = ProximityLiveData(context)
 
     val appInfoLiveData: LiveData<out String> = MutableLiveData<String>()
@@ -202,6 +204,12 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     fun setLockScreenDelay(delay: Long = Cfg.DEFAULT_LOCK_SCREEN_DELAY) {
         Cfg.edit(context) {
             Cfg.lockScreenDelay = delay
+        }
+    }
+
+    fun setVibrateDurationDelay(duration: Long = Cfg.DEFAULT_VIBRATE_DURATION_BEFORE_LOCK_SCREEN) {
+        Cfg.edit(context) {
+            Cfg.vibrateDurationBeforeLockScreen = duration
         }
     }
 

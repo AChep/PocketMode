@@ -21,14 +21,11 @@ import com.artemchep.pocketmode.analytics.AnalyticsHolder
 import com.artemchep.pocketmode.analytics.AnalyticsHolderImpl
 import com.artemchep.pocketmode.databinding.ActivityMainBinding
 import com.artemchep.pocketmode.ext.getStringOrEmpty
+import com.artemchep.pocketmode.ext.vibrateOneShot
 import com.artemchep.pocketmode.models.Proximity
 import com.artemchep.pocketmode.ui.activities.base.BaseActivity
 import com.artemchep.pocketmode.util.ObserverConsumer
 import com.artemchep.pocketmode.viewmodels.MainViewModel
-import eightbitlab.com.blurview.RenderScriptBlur
-import android.view.MotionEvent
-
-
 
 
 /**
@@ -40,6 +37,7 @@ class MainActivity : BaseActivity(),
 
     companion object {
         private const val DD = 100
+        private const val VIBRATE_DURATION_DD = 10
 
         private const val RC_RUNTIME_PERMISSIONS = 100
         private const val RC_ACCESSIBILITY = 200
@@ -113,6 +111,30 @@ class MainActivity : BaseActivity(),
             getStringOrEmpty(R.string.ms, viewBinding.mainStub.lockScreenDelaySeekBar.min * DD)
         viewBinding.mainStub.lockScreenDelayMax.text =
             getStringOrEmpty(R.string.ms, viewBinding.mainStub.lockScreenDelaySeekBar.max * DD)
+
+        viewBinding.mainStub.vibrateDurationSeekBar.max =
+            resources.getInteger(R.integer.maxVibrateDuration) / VIBRATE_DURATION_DD
+        viewBinding.mainStub.vibrateDurationSeekBar.min =
+            resources.getInteger(R.integer.minVibrateDuration) / VIBRATE_DURATION_DD
+        viewBinding.mainStub.vibrateDurationSeekBar.setOnSeekBarChangeListener(object :
+            SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
+                bindVibrateDuration()
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar) {
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar) {
+                val delay = viewBinding.mainStub.vibrateDurationSeekBar.progress * VIBRATE_DURATION_DD
+                mainViewModel.setVibrateDurationDelay(delay.toLong())
+            }
+        })
+
+        viewBinding.mainStub.vibrateDurationMin.text =
+            getStringOrEmpty(R.string.ms, viewBinding.mainStub.vibrateDurationSeekBar.min * VIBRATE_DURATION_DD)
+        viewBinding.mainStub.vibrateDurationMax.text =
+            getStringOrEmpty(R.string.ms, viewBinding.mainStub.vibrateDurationSeekBar.max * VIBRATE_DURATION_DD)
 
         viewBinding.masterSwitch.setOnCheckedChangeListener { switch, isChecked ->
             if (isMasterSwitchBroadcasting) {
@@ -212,6 +234,8 @@ class MainActivity : BaseActivity(),
         viewBinding.troubleshootingStub.troubleshootingDontKillMyApp.setOnClickListener(this)
         viewBinding.troubleshootingStub.lockScreenBtn.setOnClickListener(this)
         viewBinding.mainStub.lockScreenDelayResetBtn.setOnClickListener(this)
+        viewBinding.mainStub.vibrateDurationResetBtn.setOnClickListener(this)
+        viewBinding.mainStub.vibrateDurationTestBtn.setOnClickListener(this)
 
         viewBinding.mainStub.donateBtn.isVisible = kotlin.runCatching {
             Class.forName(DONATE_ACTIVITY_NAME)
@@ -237,6 +261,10 @@ class MainActivity : BaseActivity(),
             viewBinding.mainStub.lockScreenDelaySeekBar.progress = it.toInt() / DD
             bindLockScreenDelay(it)
         })
+        vibrateDurationLiveData.observe(this@MainActivity, Observer {
+            viewBinding.mainStub.vibrateDurationSeekBar.progress = it.toInt() / VIBRATE_DURATION_DD
+            bindVibrateDuration()
+        })
         masterSwitchIsCheckedLiveData.observe(this@MainActivity, Observer {
             isMasterSwitchBroadcasting = true
             viewBinding.masterSwitch.isChecked = it
@@ -245,6 +273,10 @@ class MainActivity : BaseActivity(),
         vibrateBeforeLockingSwitchIsCheckedLiveData.observe(this@MainActivity, Observer {
             isVibrateOnBeforeLockScreenSwitchBroadcasting = true
             viewBinding.mainStub.vibrateOnBeforeLockScreenCheckBox.isChecked = it
+            viewBinding.mainStub.vibrateDurationSeekBar.isEnabled = it
+            viewBinding.mainStub.vibrateDurationResetBtn.isEnabled = it
+            viewBinding.mainStub.vibrateDurationTestBtn.isEnabled = it
+            bindVibrateDuration()
             isVibrateOnBeforeLockScreenSwitchBroadcasting = false
         })
         overlayBeforeLockingSwitchIsCheckedLiveData.observe(this@MainActivity, Observer {
@@ -384,12 +416,27 @@ class MainActivity : BaseActivity(),
             getStringOrEmpty(R.string.settings_lock_screen_delay_cur, delay)
     }
 
+    private fun bindVibrateDuration() {
+        viewBinding.mainStub.vibrateDurationCur.text =
+            if (!viewBinding.mainStub.vibrateDurationSeekBar.isEnabled) {
+                getStringOrEmpty(R.string.settings_vibrate_before_locking_duration_off)
+            } else {
+                val duration = viewBinding.mainStub.vibrateDurationSeekBar.progress * VIBRATE_DURATION_DD
+                getStringOrEmpty(R.string.settings_vibrate_before_locking_duration_cur, duration)
+            }
+    }
+
     override fun onClick(view: View) {
         when (view.id) {
             R.id.toolbar -> viewBinding.masterSwitch.isChecked = !viewBinding.masterSwitch.isChecked
             R.id.masterSwitchText -> viewBinding.masterSwitch.performClick()
             R.id.lockScreenBtn -> mainViewModel.lockScreen()
             R.id.lockScreenDelayResetBtn -> mainViewModel.setLockScreenDelay()
+            R.id.vibrateDurationResetBtn -> mainViewModel.setVibrateDurationDelay()
+            R.id.vibrateDurationTestBtn -> {
+                val duration = Cfg.vibrateDurationBeforeLockScreen.coerceAtLeast(0L)
+                vibrateOneShot(duration)
+            }
             // Help
             R.id.donateBtn -> mainViewModel.openDonateToMe()
             R.id.codeBtn -> mainViewModel.openRepo()

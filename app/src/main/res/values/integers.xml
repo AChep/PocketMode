@@ -2,4 +2,6 @@
 <resources>
     <integer name="minDelay">200</integer>
     <integer name="maxDelay">4000</integer>
+    <integer name="minVibrateDuration">10</integer>
+    <integer name="maxVibrateDuration">100</integer>
 </resources>

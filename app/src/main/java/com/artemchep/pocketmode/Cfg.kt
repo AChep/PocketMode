@@ -12,6 +12,8 @@ object Cfg : SharedPrefConfig("config") {
     private const val DEFAULT_ENABLED = false
     const val KEY_VIBRATE_ON_BEFORE_LOCK_SCREEN = "pocket::vibrate_on_before_lock_screen"
     const val DEFAULT_VIBRATE_ON_BEFORE_LOCK_SCREEN = true
+    const val KEY_VIBRATE_DURATION_BEFORE_LOCK_SCREEN = "pocket::vibrate_duratino_before_lock_screen"
+    const val DEFAULT_VIBRATE_DURATION_BEFORE_LOCK_SCREEN = 50L // ms
     const val KEY_OVERLAY_ON_BEFORE_LOCK_SCREEN = "pocket::overlay_on_before_lock_screen"
     const val DEFAULT_OVERLAY_ON_BEFORE_LOCK_SCREEN = false
     const val KEY_PROXIMITY_WAKE_LOCK = "pocket::proximity_wake_lock"
@@ -39,6 +41,11 @@ object Cfg : SharedPrefConfig("config") {
     var vibrateOnBeforeLockScreen by configDelegate(
         KEY_VIBRATE_ON_BEFORE_LOCK_SCREEN,
         DEFAULT_VIBRATE_ON_BEFORE_LOCK_SCREEN
+    )
+
+    var vibrateDurationBeforeLockScreen by configDelegate(
+        KEY_VIBRATE_DURATION_BEFORE_LOCK_SCREEN,
+        DEFAULT_VIBRATE_DURATION_BEFORE_LOCK_SCREEN
     )
 
     /**

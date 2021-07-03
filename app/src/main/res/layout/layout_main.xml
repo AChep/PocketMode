@@ -123,6 +123,79 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/vibrateOnBeforeLockScreenDivider" />
 
+    <TextView
+        android:id="@+id/vibrateDurationMin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/vibrateDurationSeekBar"
+        app:layout_constraintStart_toEndOf="@id/startGuideline"
+        app:layout_constraintTop_toTopOf="@id/vibrateDurationSeekBar"
+        tools:text="100 ms." />
+
+    <TextView
+        android:id="@+id/vibrateDurationMax"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/vibrateDurationSeekBar"
+        app:layout_constraintEnd_toStartOf="@id/endGuideline"
+        app:layout_constraintTop_toTopOf="@id/vibrateDurationSeekBar"
+        tools:text="2000 ms." />
+
+    <androidx.appcompat.widget.AppCompatSeekBar
+        android:id="@+id/vibrateDurationSeekBar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toStartOf="@id/vibrateDurationMax"
+        app:layout_constraintStart_toEndOf="@id/vibrateDurationMin"
+        app:layout_constraintTop_toBottomOf="@id/vibrateOnBeforeLockScreenCheckBox" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/vibrateDurationResetBtn"
+        style="@style/ButtonOutlined"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/manrope_semibold"
+        android:text="@string/reset"
+        app:layout_constraintEnd_toEndOf="@id/endGuideline"
+        app:layout_constraintTop_toBottomOf="@id/vibrateDurationSeekBar" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/vibrateDurationTestBtn"
+        style="@style/ButtonOutlined"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/manrope_semibold"
+        android:text="@string/test"
+        app:layout_constraintEnd_toStartOf="@id/vibrateDurationResetBtn"
+        app:layout_constraintTop_toTopOf="@id/vibrateDurationResetBtn" />
+
+    <TextView
+        android:id="@+id/vibrateDurationCur"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textColor="?android:textColorPrimary"
+        android:textSize="15sp"
+        app:layout_constraintBaseline_toBaselineOf="@id/vibrateDurationResetBtn"
+        app:layout_constraintEnd_toStartOf="@id/vibrateDurationTestBtn"
+        app:layout_constraintStart_toEndOf="@id/startGuideline"
+        tools:text="@string/settings_vibrate_before_locking_duration_cur" />
+
+    <TextView
+        android:id="@+id/overlayOnBeforeLockScreenDivider"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="24dp"
+        android:background="?dividerHorizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/vibrateDurationCur" />
+
     <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/overlayOnBeforeLockScreenCheckBox"
         android:layout_width="0dp"
@@ -138,7 +211,7 @@
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/vibrateOnBeforeLockScreenCheckBox" />
+        app:layout_constraintTop_toBottomOf="@id/overlayOnBeforeLockScreenDivider" />
 
     <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/proximityWakeLockCheckBox"

@@ -42,8 +42,6 @@ class PocketService : Service(), CoroutineScope {
 
         private const val NOTIFICATION_CHANNEL = "pocket_notification_channel"
         private const val NOTIFICATION_ID = 112
-
-        private const val VIBRATE_DURATION = 50L // ms
     }
 
     private lateinit var job: Job
@@ -124,7 +122,7 @@ class PocketService : Service(), CoroutineScope {
         // Vibrate slightly when the proximity sensor
         // detects 'near'.
         if (Cfg.vibrateOnBeforeLockScreen) {
-            vibrateOneShot(VIBRATE_DURATION)
+            vibrateOneShot(Cfg.vibrateDurationBeforeLockScreen.coerceAtLeast(0L))
         }
     }
 
