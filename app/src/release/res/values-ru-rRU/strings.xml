@@ -5,6 +5,8 @@
     <string name="settings_lock_screen_delay_description">Задержка перед блокировкой экрана после покрытия датчика приближения:</string>
     <string name="settings_lock_screen_delay_cur">Текущая задержка: %d мс.</string>
     <string name="settings_vibrate_before_locking">Вибрация перед блокировкой</string>
+    <string name="settings_vibrate_before_locking_duration_cur">Current duration is %d ms.</string>
+    <string name="settings_vibrate_before_locking_duration_off">Currently disabled.</string>
     <string name="settings_overlay_before_locking">Показывать предупреждение поверх экрана перед блокировкой</string>
     <string name="settings_turn_screen_off_when_covered">Затемнять экран пока сенсор приближения закрыт</string>
     <string name="settings_analytics">Анонимно отправлять данные об использовании</string>
@@ -40,6 +42,7 @@
     <string name="ms">%d мс.</string>
     <string name="cm">%.1f см.</string>
     <string name="reset">Сбросить</string>
+    <string name="test">Test</string>
     <string name="accessibility_service_title">Pocket Mode</string>
     <string name="accessibility_event_screen_locked">Экран заблокирован</string>
     <string name="accessibility_why_title">Предоставить доступ к службе специальных возможностей</string>

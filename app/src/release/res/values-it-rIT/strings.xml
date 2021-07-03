@@ -5,6 +5,8 @@
     <string name="settings_lock_screen_delay_description">Il ritardo prima di bloccare lo schermo dopo aver coperto il sensore di prossimità:</string>
     <string name="settings_lock_screen_delay_cur">Il ritardo attuale è di %d ms.</string>
     <string name="settings_vibrate_before_locking">Vibra prima di bloccare</string>
+    <string name="settings_vibrate_before_locking_duration_cur">Current duration is %d ms.</string>
+    <string name="settings_vibrate_before_locking_duration_off">Currently disabled.</string>
     <string name="settings_overlay_before_locking">Mostra sovrapposizione prima di bloccare</string>
     <string name="settings_turn_screen_off_when_covered">Gira lo schermo nero mentre il sensore di prossimità è coperto</string>
     <string name="settings_analytics">Invia i dati di utilizzo in modo anonimo</string>
@@ -40,6 +42,7 @@
     <string name="ms">%d ms.</string>
     <string name="cm">%.1f cm.</string>
     <string name="reset">Reimposta</string>
+    <string name="test">Test</string>
     <string name="accessibility_service_title">Modalità Tasca</string>
     <string name="accessibility_event_screen_locked">Schermo bloccato.</string>
     <string name="accessibility_why_title">Concedi accesso ai servizi di accessibilità</string>

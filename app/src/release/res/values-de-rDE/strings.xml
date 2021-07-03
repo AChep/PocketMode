@@ -5,6 +5,8 @@
     <string name="settings_lock_screen_delay_description">Verzögerung, bis der Bildschirm gesperrt wird, wenn der Näherungssensor auslöst:</string>
     <string name="settings_lock_screen_delay_cur">Aktuelle Verzögerung ist %d ms.</string>
     <string name="settings_vibrate_before_locking">Vibrieren vor Sperren</string>
+    <string name="settings_vibrate_before_locking_duration_cur">Current duration is %d ms.</string>
+    <string name="settings_vibrate_before_locking_duration_off">Currently disabled.</string>
     <string name="settings_overlay_before_locking">Overlay anzeigen, bevor der Bildschirm gesperrt wird</string>
     <string name="settings_turn_screen_off_when_covered">Turn screen black while the proximity sensor is covered</string>
     <string name="settings_analytics">Send usage data anonymously</string>
@@ -43,6 +45,7 @@ bestimmte Zeit ausgelöst hat.</string>
     <string name="ms">%d ms.</string>
     <string name="cm">%.1f cm.</string>
     <string name="reset">Reset</string>
+    <string name="test">Test</string>
     <string name="accessibility_service_title">Pocket Mode</string>
     <string name="accessibility_event_screen_locked">Bildschirm gesperrt</string>
     <string name="accessibility_why_title">Berechtigung für Bedienungshilfen Dienst gewähren</string>
