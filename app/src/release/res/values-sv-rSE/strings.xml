@@ -5,6 +5,8 @@
     <string name="settings_lock_screen_delay_description">Fördröjning innan skärmen låses efter närvarosensorn täckts:</string>
     <string name="settings_lock_screen_delay_cur">Nuvarande fördröjning är %d ms.</string>
     <string name="settings_vibrate_before_locking">Vibrera före låsning</string>
+    <string name="settings_vibrate_before_locking_duration_cur">Current duration is %d ms.</string>
+    <string name="settings_vibrate_before_locking_duration_off">Currently disabled.</string>
     <string name="settings_overlay_before_locking">Show overlay before locking</string>
     <string name="settings_turn_screen_off_when_covered">Turn screen black while the proximity sensor is covered</string>
     <string name="settings_analytics">Send usage data anonymously</string>
@@ -40,6 +42,7 @@
     <string name="ms">%d ms.</string>
     <string name="cm">%.1f cm.</string>
     <string name="reset">Reset</string>
+    <string name="test">Test</string>
     <string name="accessibility_service_title">Pocket Mode</string>
     <string name="accessibility_event_screen_locked">Skärmen låst</string>
     <string name="accessibility_why_title">Tillåt tillgång till tjänstetillgänglighet</string>
