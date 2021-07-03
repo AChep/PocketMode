@@ -187,6 +187,7 @@
         android:layout_width="wrap_content"
         android:layout_height="?actionBarSize"
         android:layout_marginStart="16dp"
+        android:layout_marginBottom="8dp"
         android:src="@mipmap/ic_launcher"
         app:layout_constraintBottom_toBottomOf="@id/toolbarBg"
         app:layout_constraintStart_toEndOf="@id/startGuideline" />
@@ -195,6 +196,7 @@
         android:id="@+id/appName"
         android:layout_width="wrap_content"
         android:layout_height="?actionBarSize"
+        android:layout_marginBottom="8dp"
         android:fontFamily="@font/manrope_semibold"
         android:gravity="center_vertical"
         android:maxLines="1"
