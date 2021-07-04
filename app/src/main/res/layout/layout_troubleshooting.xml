@@ -34,25 +34,15 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/howToDivider"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="16dp"
-        android:background="?dividerHorizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/howItWorks" />
-
-    <TextView
         android:id="@+id/troubleshooting"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:text="@string/troubleshoot"
         android:textAppearance="@style/TextSection"
         app:layout_constraintEnd_toStartOf="@id/endGuideline"
         app:layout_constraintStart_toEndOf="@id/startGuideline"
-        app:layout_constraintTop_toBottomOf="@id/howToDivider" />
+        app:layout_constraintTop_toBottomOf="@id/howItWorks" />
 
     <TextView
         android:id="@+id/troubleshootingReboot"
@@ -156,20 +146,9 @@
         app:layout_constraintTop_toBottomOf="@id/proximityIconDescription" />
 
     <TextView
-        android:id="@+id/labDivider"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="16dp"
-        android:background="?dividerHorizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/troubleshootingDontKillMyApp" />
-
-    <TextView
         android:id="@+id/labBtn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:background="?selectableItemBackground"
         android:drawablePadding="16dp"
         android:gravity="center_vertical"
@@ -183,6 +162,6 @@
         app:drawableStartCompat="@drawable/ic_test_tube"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/labDivider" />
+        app:layout_constraintTop_toBottomOf="@id/troubleshootingDontKillMyApp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

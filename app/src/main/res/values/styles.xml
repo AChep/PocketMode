@@ -21,6 +21,7 @@
     </style>
 
     <style name="TextSection" parent="TextAppearance.AppCompat.Caption">
+        <item name="android:textColor">?colorAccent</item>
     </style>
 
 </resources>

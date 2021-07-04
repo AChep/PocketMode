@@ -24,7 +24,7 @@
         android:id="@+id/settings"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:text="@string/settings"
         android:textAppearance="@style/TextSection"
         app:layout_constraintEnd_toStartOf="@id/endGuideline"
@@ -109,7 +109,7 @@
         android:id="@+id/vibrateOnBeforeLockScreenCheckBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:foreground="?selectableItemBackground"
         android:paddingHorizontal="16dp"
         android:paddingTop="12dp"
@@ -200,7 +200,7 @@
         android:id="@+id/overlayOnBeforeLockScreenCheckBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:foreground="?selectableItemBackground"
         android:paddingHorizontal="16dp"
         android:paddingTop="12dp"
@@ -251,25 +251,15 @@
         app:layout_constraintTop_toBottomOf="@id/proximityWakeLockCheckBox" />
 
     <TextView
-        android:id="@+id/aboutDivider"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="16dp"
-        android:background="?dividerHorizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/analyticsCheckBox" />
-
-    <TextView
         android:id="@+id/about"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:text="@string/about"
         android:textAppearance="@style/TextSection"
         app:layout_constraintEnd_toStartOf="@id/aboutAuthor"
         app:layout_constraintStart_toEndOf="@id/startGuideline"
-        app:layout_constraintTop_toBottomOf="@id/aboutDivider" />
+        app:layout_constraintTop_toBottomOf="@id/analyticsCheckBox" />
 
     <TextView
         android:id="@+id/aboutAuthor"
