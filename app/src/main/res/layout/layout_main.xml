@@ -229,6 +229,7 @@
         android:textAppearance="?android:textAppearanceMedium"
         android:textColor="?android:textColorPrimary"
         android:textSize="15sp"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/overlayOnBeforeLockScreenCheckBox" />
