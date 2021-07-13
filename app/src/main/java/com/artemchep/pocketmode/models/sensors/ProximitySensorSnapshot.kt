@@ -2,8 +2,6 @@ package com.artemchep.pocketmode.models.sensors
 
 import com.artemchep.pocketmode.models.Proximity
 
-private val REGEX = "^\\d+$".toRegex()
-
 /**
  * @author Artem Chepurnoy
  */
@@ -19,8 +17,6 @@ data class ProximitySensorSnapshot(
      * prone to issues, `false` otherwise.
      */
     val isSoftware by lazy {
-        isRuntime ||
-                name.isBlank() ||
-                REGEX.matches(name)
+        isRuntime || name.startsWith("proximity") || name.length <= 10
     }
 }
