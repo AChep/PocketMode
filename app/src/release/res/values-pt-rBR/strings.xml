@@ -20,6 +20,8 @@
     <string name="troubleshoot_lock_screen_description">Ao funcionar corretamente, pressionando este botão deve bloquear a tela.</string>
     <string name="troubleshoot_proximity_description">Ao funcionar corretamente, a cobertura do sensor de proximidade deve mudar o ícone para um olho cruzado.</string>
     <string name="troubleshoot_reboot">Reiniciar o dispositivo, se ele não bloquear a tela após conceder permissões necessárias e ativar o serviço</string>
+    <string name="troubleshoot_sw_sensor_title">You device may be using a virtual Proximity sensor that is prone to have calibration issues and may need a reset.</string>
+    <string name="troubleshoot_sw_sensor_reset_app">Download the Proximity sensor reset app from the Play Store</string>
     <string name="overlay_title">Modo de bolso está ligado</string>
     <string name="overlay_description">Descubra o sensor do seu celular</string>
     <string name="lab_sensors">Sensores de proximidade</string>
