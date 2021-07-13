@@ -20,6 +20,8 @@
     <string name="troubleshoot_lock_screen_description">عند العمل بشكل صحيح، الضغط على هذا الزر يجب أن يقفل الشاشة.</string>
     <string name="troubleshoot_proximity_description">عند العمل بشكل صحيح، يجب أن يغير تغطية مستشعر القرب الرمز إلى عين عابرة.</string>
     <string name="troubleshoot_reboot">إعادة تشغيل الجهاز، إذا لم يقفل الشاشة بعد إعطاء الأذونات المطلوبة وتمكين الخدمة</string>
+    <string name="troubleshoot_sw_sensor_title">You device may be using a virtual Proximity sensor that is prone to have calibration issues and may need a reset.</string>
+    <string name="troubleshoot_sw_sensor_reset_app">Download the Proximity sensor reset app from the Play Store</string>
     <string name="overlay_title">وضع الجيب قيد التشغيل</string>
     <string name="overlay_description">اكتشف الجزء العلوي من جهازك</string>
     <string name="lab_sensors">مستشعرات القرب</string>

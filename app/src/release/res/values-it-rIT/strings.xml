@@ -20,6 +20,8 @@
     <string name="troubleshoot_lock_screen_description">Quando si lavora correttamente, premere questo pulsante dovrebbe bloccare lo schermo.</string>
     <string name="troubleshoot_proximity_description">Quando si lavora correttamente, coprire il sensore di prossimità dovrebbe cambiare l\'icona in un occhio incrociato.</string>
     <string name="troubleshoot_reboot">Riavvia il dispositivo, se non blocca lo schermo dopo aver dato i permessi necessari e abilitando il servizio</string>
+    <string name="troubleshoot_sw_sensor_title">You device may be using a virtual Proximity sensor that is prone to have calibration issues and may need a reset.</string>
+    <string name="troubleshoot_sw_sensor_reset_app">Download the Proximity sensor reset app from the Play Store</string>
     <string name="overlay_title">La modalità tasca è attiva</string>
     <string name="overlay_description">Cambia il Pin del tuo dispositivo</string>
     <string name="lab_sensors">Sensore di prossimità</string>

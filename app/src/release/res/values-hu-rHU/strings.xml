@@ -20,6 +20,8 @@
     <string name="troubleshoot_lock_screen_description">When working correctly, pressing this button should lock the screen.</string>
     <string name="troubleshoot_proximity_description">When working correctly, covering the proximity sensor should change the icon to a crossed eye.</string>
     <string name="troubleshoot_reboot">Reboot the device, if it doesn\'t lock the screen after giving required permissions and enabling the service</string>
+    <string name="troubleshoot_sw_sensor_title">You device may be using a virtual Proximity sensor that is prone to have calibration issues and may need a reset.</string>
+    <string name="troubleshoot_sw_sensor_reset_app">Download the Proximity sensor reset app from the Play Store</string>
     <string name="overlay_title">Pocket mode is on</string>
     <string name="overlay_description">Uncover the top of your device</string>
     <string name="lab_sensors">Proximity sensors</string>
