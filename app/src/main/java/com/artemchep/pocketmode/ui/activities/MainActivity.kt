@@ -70,7 +70,12 @@ class MainActivity : BaseActivity(),
         setContentView(R.layout.activity_main)
 
         ViewCompat.setOnApplyWindowInsetsListener(window.decorView) { _, insets ->
-            viewBinding.statusBarBg.layoutParams.height = insets.systemWindowInsetTop
+            viewBinding.statusBarBg.updateLayoutParams {
+                height = insets.systemWindowInsetTop
+            }
+            viewBinding.statusBarBg.doOnLayout {
+                viewBinding.root.rebuildScene()
+            }
             viewBinding.scrollView.updatePadding(
                 bottom = insets.systemWindowInsetBottom
             )
