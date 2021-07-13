@@ -232,6 +232,7 @@ class MainActivity : BaseActivity(),
         viewBinding.mainStub.moreAppsBtn.setOnClickListener(this)
         viewBinding.troubleshootingStub.labBtn.setOnClickListener(this)
         viewBinding.troubleshootingStub.troubleshootingDontKillMyApp.setOnClickListener(this)
+        viewBinding.troubleshootingStub.troubleshootingSwSensorReset.setOnClickListener(this)
         viewBinding.troubleshootingStub.lockScreenBtn.setOnClickListener(this)
         viewBinding.mainStub.lockScreenDelayResetBtn.setOnClickListener(this)
         viewBinding.mainStub.vibrateDurationResetBtn.setOnClickListener(this)
@@ -313,7 +314,8 @@ class MainActivity : BaseActivity(),
             if (it == null) {
                 return@Observer
             }
-            viewBinding.troubleshootingStub.proximityCmText.text = getStringOrEmpty(R.string.cm, it)
+            viewBinding.troubleshootingStub.proximityCmText.text = getStringOrEmpty(R.string.cm, it.distance)
+            viewBinding.troubleshootingStub.troubleshootingSwSensor.isVisible = it.isSoftware
         })
         appInfoLiveData.observe(this@MainActivity, Observer {
             viewBinding.aboutAppVersionInfo.text = it
@@ -442,6 +444,7 @@ class MainActivity : BaseActivity(),
             R.id.codeBtn -> mainViewModel.openRepo()
             R.id.bugReportBtn -> mainViewModel.openBugReport()
             R.id.troubleshootingDontKillMyApp -> mainViewModel.openBugReportDontKillMyApp()
+            R.id.troubleshootingSwSensorReset -> mainViewModel.openSwSensorResetApp()
             R.id.translateBtn -> mainViewModel.openTranslationService()
             R.id.labBtn -> mainViewModel.openLab()
             R.id.moreAppsBtn -> mainViewModel.openApps()

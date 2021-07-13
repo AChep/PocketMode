@@ -9,6 +9,7 @@ import com.artemchep.pocketmode.ext.context
 import com.artemchep.pocketmode.models.MainScreen
 import com.artemchep.pocketmode.models.Proximity
 import com.artemchep.pocketmode.models.events.*
+import com.artemchep.pocketmode.models.sensors.ProximitySensorSnapshot
 import com.artemchep.pocketmode.sensors.*
 import com.artemchep.pocketmode.services.PocketAccessibilityService
 import com.artemchep.pocketmode.util.combine
@@ -32,7 +33,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     val vibrateDurationLiveData = ConfigVibrateDurationLiveData()
 
-    val proximityLiveData: LiveData<Float> = ProximityLiveData(context)
+    val proximityLiveData: LiveData<ProximitySensorSnapshot> = ProximityLiveData(context)
 
     val appInfoLiveData: LiveData<out String> = MutableLiveData<String>()
         .apply {
@@ -222,6 +223,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     fun openBugReport() = openUrl(LINK_BUG_REPORT)
 
     fun openBugReportDontKillMyApp() = openUrl(LINK_BUG_REPORT_DONT_KILL_MY_APP)
+
+    fun openSwSensorResetApp() = openUrl(LINK_SW_SENSOR_RESET_APP)
 
     fun openTranslationService() = openUrl(LINK_TRANSLATE)
 

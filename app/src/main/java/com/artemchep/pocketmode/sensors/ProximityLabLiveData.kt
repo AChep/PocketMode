@@ -65,18 +65,19 @@ class ProximityLabLiveData(
     private fun postValueReadOnly(map: Map<*, ProximitySensorSnapshot>) =
         postValue(map.values.toList())
 
-    // Converters
-
-    private fun Sensor.toProximitySensorSnapshot(event: SensorEvent) =
-        run {
-            val distance = event.values[0]
-            val proximity = proximityBinaryTransformationFactory(distance, maximumRange)
-            ProximitySensorSnapshot(
-                id = id,
-                name = name,
-                proximity = proximity,
-                distance = distance,
-            )
-        }
-
 }
+
+// Converters
+
+fun Sensor.toProximitySensorSnapshot(event: SensorEvent) =
+    run {
+        val distance = event.values[0]
+        val proximity = proximityBinaryTransformationFactory(distance, maximumRange)
+        ProximitySensorSnapshot(
+            id = id,
+            name = name,
+            isRuntime = isDynamicSensor,
+            proximity = proximity,
+            distance = distance,
+        )
+    }

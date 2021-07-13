@@ -8,13 +8,13 @@ import android.hardware.SensorManager
 import androidx.core.content.getSystemService
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.asLiveData
+import com.artemchep.pocketmode.models.sensors.ProximitySensorSnapshot
 import com.artemchep.pocketmode.util.observerFlow
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flatMap
 
 fun flowOfProximity(
     context: Context,
-): Flow<Float> = observerFlow<Float> { callback ->
+): Flow<ProximitySensorSnapshot> = observerFlow<ProximitySensorSnapshot> { callback ->
     val sensorManager = context.getSystemService<SensorManager>()
         ?: return@observerFlow {}
 
@@ -25,8 +25,8 @@ fun flowOfProximity(
         }
 
         override fun onSensorChanged(event: SensorEvent) {
-            val distance = event.values[0]
-            callback(distance)
+            val snapshot = event.sensor.toProximitySensorSnapshot(event)
+            callback(snapshot)
         }
     }
 
@@ -45,4 +45,4 @@ fun flowOfProximity(
 @Suppress("FunctionName")
 fun ProximityLiveData(
     context: Context
-): LiveData<Float> = flowOfProximity(context).asLiveData()
+): LiveData<ProximitySensorSnapshot> = flowOfProximity(context).asLiveData()
