@@ -13,6 +13,15 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppTheme_Light" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
+
+        <item name="colorPrimary">?android:colorBackground</item>
+        <item name="colorPrimaryDark">?android:colorBackground</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
     <style name="ButtonOutlined" parent="Widget.MaterialComponents.Button.OutlinedButton">
         <item name="cornerRadius">24dp</item>
         <item name="android:textColor">?android:textColorPrimary</item>

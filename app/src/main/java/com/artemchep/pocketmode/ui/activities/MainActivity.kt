@@ -343,6 +343,7 @@ class MainActivity : BaseActivity(),
         isRequiredGranted.observe(this@MainActivity, Observer {
             viewBinding.troubleshootingStub.lockScreenBtn.isEnabled = it
             viewBinding.masterSwitchText.isEnabled = it
+            viewBinding.masterSwitchText.alpha = if (it) 1f else 0.6f
             viewBinding.masterSwitch.isEnabled = it
         })
         // Events

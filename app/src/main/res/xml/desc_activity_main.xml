@@ -34,7 +34,7 @@
         <Constraint
             android:id="@id/toolbarBg"
             android:layout_width="0dp"
-            android:layout_height="220dp"
+            android:layout_height="208dp"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

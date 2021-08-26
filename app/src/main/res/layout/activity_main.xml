@@ -43,12 +43,20 @@
                     android:layout_marginStart="@dimen/cardMarginHorizontal"
                     android:layout_marginEnd="@dimen/cardMarginHorizontal"
                     android:layout_marginBottom="16dp"
-                    app:cardCornerRadius="@dimen/cardCornerRadius">
+                    android:theme="@style/AppTheme_Light"
+                    app:cardCornerRadius="@dimen/cardCornerRadius"
+                    app:cardElevation="0dp">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:alpha="0.2"
+                        android:background="?colorAccent" />
 
                     <TextView
                         android:id="@+id/masterSwitchText"
                         android:layout_width="match_parent"
-                        android:layout_height="56dp"
+                        android:layout_height="72dp"
                         android:layout_gravity="start|center_vertical"
                         android:background="?selectableItemBackground"
                         android:fontFamily="@font/manrope_semibold"
@@ -77,6 +85,7 @@
                     android:layout_marginEnd="@dimen/cardMarginHorizontal"
                     android:layout_marginBottom="16dp"
                     app:cardCornerRadius="@dimen/cardCornerRadius"
+                    app:cardElevation="0dp"
                     app:strokeColor="?colorAccent"
                     app:strokeWidth="1dp">
 
@@ -146,7 +155,7 @@
     <FrameLayout
         android:id="@+id/toolbarBg"
         android:layout_width="0dp"
-        android:layout_height="180dp"
+        android:layout_height="164dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/statusBarBg">
