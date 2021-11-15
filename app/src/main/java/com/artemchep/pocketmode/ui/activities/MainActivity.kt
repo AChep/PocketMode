@@ -69,29 +69,6 @@ class MainActivity : BaseActivity(),
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        ViewCompat.setOnApplyWindowInsetsListener(window.decorView) { _, insets ->
-            viewBinding.statusBarBg.updateLayoutParams {
-                height = insets.systemWindowInsetTop
-            }
-            viewBinding.statusBarBg.doOnLayout {
-                viewBinding.root.rebuildScene()
-            }
-            viewBinding.scrollView.updatePadding(
-                bottom = insets.systemWindowInsetBottom
-            )
-            viewBinding.scrollViewContent.updatePadding(
-                left = insets.systemWindowInsetLeft,
-                right = insets.systemWindowInsetRight
-            )
-
-            insets.consumeSystemWindowInsets()
-        }
-
-        viewBinding.toolbarBg.setOnTouchListener { v, event ->
-            viewBinding.root.requestDisallowInterceptTouchEvent(true)
-            true
-        }
-
         viewBinding.mainStub.lockScreenDelaySeekBar.max =
             resources.getInteger(R.integer.maxDelay) / DD
         viewBinding.mainStub.lockScreenDelaySeekBar.min =
@@ -328,11 +305,6 @@ class MainActivity : BaseActivity(),
         // Permissions
         isAccessibilityGranted.observe(this@MainActivity, Observer { isGranted ->
             viewBinding.accessStub.accessibilityServiceBtn.isGone = isGranted
-            viewBinding.accessContainer.strokeColor = viewBinding.accessContainer.strokeColor
-                .let { color ->
-                    val alpha = if (isGranted) 0 else 255
-                    ColorUtils.setAlphaComponent(color, alpha)
-                }
         })
         isReadPhoneCallGranted.observe(this@MainActivity, Observer {
             viewBinding.accessStub.callStateBtn.isGone = it
@@ -436,7 +408,6 @@ class MainActivity : BaseActivity(),
 
     override fun onClick(view: View) {
         when (view.id) {
-            R.id.toolbar -> viewBinding.masterSwitch.isChecked = !viewBinding.masterSwitch.isChecked
             R.id.masterSwitchText -> viewBinding.masterSwitch.performClick()
             R.id.lockScreenBtn -> mainViewModel.lockScreen()
             R.id.lockScreenDelayResetBtn -> mainViewModel.setLockScreenDelay()

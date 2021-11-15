@@ -11,6 +11,7 @@ import com.artemchep.pocketmode.analytics.AnalyticsHolder
 import com.artemchep.pocketmode.analytics.AnalyticsStub
 import com.artemchep.pocketmode.analytics.createAnalytics
 import com.artemchep.pocketmode.services.PocketService
+import com.google.android.material.color.DynamicColors
 import org.acra.ACRA
 import org.acra.annotation.AcraCore
 import org.acra.annotation.AcraHttpSender
@@ -67,6 +68,7 @@ class Heart : Application() {
     override fun attachBaseContext(base: Context?) {
         super.attachBaseContext(base)
         ACRA.init(this)
+        DynamicColors.applyToActivitiesIfAvailable(this)
     }
 
     override fun onCreate() {

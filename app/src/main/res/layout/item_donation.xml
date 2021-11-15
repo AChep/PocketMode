@@ -10,10 +10,9 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/priceTextView"
-        style="@style/ButtonOutlined"
+        style="@style/Widget.Material3.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-medium"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -25,12 +24,11 @@
         android:layout_height="wrap_content"
         android:contentDescription="@string/purchased"
         android:src="@drawable/ic_outline_check_circle"
-        android:textAppearance="?android:textAppearanceLarge"
-        android:tint="@color/green"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/green"
         tools:text="100 USD" />
 
     <androidx.constraintlayout.widget.Barrier
@@ -45,8 +43,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:textColor="?android:textColorPrimary"
-        android:textSize="16sp"
+        android:textAppearance="?textAppearanceBodyLarge"
         app:layout_constraintEnd_toStartOf="@id/endBarrier"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -57,6 +54,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
+        android:textAppearance="?textAppearanceBodyMedium"
         app:layout_constraintEnd_toStartOf="@id/endBarrier"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/titleTextView"

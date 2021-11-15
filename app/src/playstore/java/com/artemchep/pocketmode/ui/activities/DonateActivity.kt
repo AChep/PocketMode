@@ -38,23 +38,9 @@ class DonateActivity : BaseActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_donate)
 
-        ViewCompat.setOnApplyWindowInsetsListener(window.decorView) { _, insets ->
-            viewBinding.toolbarLayout.statusBar.layoutParams.height = insets.systemWindowInsetTop
-            viewBinding.recyclerView.updatePadding(
-                top = insets.systemWindowInsetTop +
-                        resources.getDimensionPixelSize(R.dimen.actionBarSize),
-                bottom = insets.systemWindowInsetBottom
-            )
-            viewBinding.toolbarLayout.toolbarContent.updatePadding(
-                left = insets.systemWindowInsetLeft,
-                right = insets.systemWindowInsetRight
-            )
-
-            insets.consumeSystemWindowInsets()
+        viewBinding.topAppBar.setNavigationOnClickListener {
+            supportFinishAfterTransition()
         }
-
-        viewBinding.toolbarLayout.titleTextView.setText(R.string.help_donate)
-        viewBinding.toolbarLayout.backBtn.setOnClickListener(this)
 
         viewBinding.recyclerView.layoutManager = LinearLayoutManager(this)
         viewBinding.recyclerView.adapter = FastAdapter.with<SkuItem, ItemAdapter<*>>(itemAdapter)
@@ -112,9 +98,6 @@ class DonateActivity : BaseActivity(), View.OnClickListener {
     }
 
     override fun onClick(v: View) {
-        when (v.id) {
-            R.id.backBtn -> supportFinishAfterTransition()
-        }
     }
 
 }

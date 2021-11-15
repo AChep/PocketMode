@@ -1,35 +1,26 @@
 <resources>
 
-    <style name="AppTheme_Base" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="AppTheme_Base" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:navigationBarColor">@color/colorNavigationBarPreQ</item>
     </style>
 
     <style name="AppTheme" parent="AppTheme_Base">
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
-
-        <item name="colorPrimary">?android:colorBackground</item>
-        <item name="colorPrimaryDark">?android:colorBackground</item>
-        <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="AppTheme_Light" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="AppTheme_Light" parent="Theme.Material3.Light.NoActionBar">
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
-
-        <item name="colorPrimary">?android:colorBackground</item>
-        <item name="colorPrimaryDark">?android:colorBackground</item>
-        <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="ButtonOutlined" parent="Widget.MaterialComponents.Button.OutlinedButton">
-        <item name="cornerRadius">24dp</item>
-        <item name="android:textColor">?android:textColorPrimary</item>
-        <item name="android:textSize">12sp</item>
-        <item name="android:textAllCaps">false</item>
+    <style name="ButtonText" parent="Widget.Material3.Button.TextButton">
     </style>
 
-    <style name="TextSection" parent="TextAppearance.AppCompat.Caption">
+    <style name="ButtonOutlined" parent="Widget.Material3.Button.OutlinedButton">
+    </style>
+
+    <style name="ButtonElevated" parent="Widget.Material3.Button.ElevatedButton">
     </style>
 
 </resources>

@@ -8,6 +8,7 @@ import com.artemchep.pocketmode.ext.isScreenOn
 import com.artemchep.pocketmode.models.Screen
 import com.artemchep.pocketmode.util.observerFlow
 import kotlinx.coroutines.*
+import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.*
 
 private const val SCREEN_ON_CHECK_INTERVAL = 600L

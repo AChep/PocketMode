@@ -2,8 +2,6 @@ package com.artemchep.pocketmode.ui.activities
 
 import android.os.Bundle
 import android.view.View
-import androidx.core.view.ViewCompat
-import androidx.core.view.updatePadding
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -34,26 +32,9 @@ class LabActivity : BaseActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lab)
 
-        ViewCompat.setOnApplyWindowInsetsListener(window.decorView) { _, insets ->
-            viewBinding.toolbarLayout.statusBar.layoutParams.height = insets.systemWindowInsetTop
-            viewBinding.scrollView.updatePadding(
-                top = insets.systemWindowInsetTop,
-                bottom = insets.systemWindowInsetBottom
-            )
-            viewBinding.toolbarLayout.toolbarContent.updatePadding(
-                left = insets.systemWindowInsetLeft,
-                right = insets.systemWindowInsetRight
-            )
-            viewBinding.scrollViewContent.updatePadding(
-                left = insets.systemWindowInsetLeft,
-                right = insets.systemWindowInsetRight
-            )
-
-            insets.consumeSystemWindowInsets()
+        viewBinding.topAppBar.setNavigationOnClickListener {
+            supportFinishAfterTransition()
         }
-
-        viewBinding.toolbarLayout.titleTextView.setText(R.string.help_test)
-        viewBinding.toolbarLayout.backBtn.setOnClickListener(this)
 
         viewBinding.sensorsRecyclerView.layoutManager = LinearLayoutManager(this)
         viewBinding.sensorsRecyclerView.adapter =
@@ -70,9 +51,6 @@ class LabActivity : BaseActivity(), View.OnClickListener {
     }
 
     override fun onClick(v: View) {
-        when (v.id) {
-            R.id.backBtn -> supportFinishAfterTransition()
-        }
     }
 
 }

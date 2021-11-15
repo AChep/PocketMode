@@ -1,23 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/content"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:clipChildren="false"
-    app:layoutDescription="@xml/desc_activity_main"
-    tools:showPaths="true">
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        app:liftOnScroll="true">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            style="?attr/collapsingToolbarLayoutLargeStyle"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/collapsingToolbarLayoutLargeSize"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/topAppBar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:title="@string/app_name" />
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scrollView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:clipToPadding="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbarBg">
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -43,15 +60,10 @@
                     android:layout_marginStart="@dimen/cardMarginHorizontal"
                     android:layout_marginEnd="@dimen/cardMarginHorizontal"
                     android:layout_marginBottom="16dp"
-                    android:theme="@style/AppTheme_Light"
+                    app:cardBackgroundColor="?colorPrimaryContainer"
                     app:cardCornerRadius="@dimen/cardCornerRadius"
-                    app:cardElevation="0dp">
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:alpha="0.2"
-                        android:background="?colorAccent" />
+                    app:cardElevation="0dp"
+                    app:strokeWidth="0dp">
 
                     <TextView
                         android:id="@+id/masterSwitchText"
@@ -59,13 +71,12 @@
                         android:layout_height="72dp"
                         android:layout_gravity="start|center_vertical"
                         android:background="?selectableItemBackground"
-                        android:fontFamily="@font/manrope_semibold"
                         android:gravity="center_vertical"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
                         android:text="@string/settings_use_pocket_mode"
-                        android:textAppearance="?android:textAppearanceMedium"
-                        android:textColor="?colorOnSurface" />
+                        android:textAppearance="?textAppearanceTitleLarge"
+                        android:textColor="?colorOnPrimaryContainer" />
 
                     <com.google.android.material.switchmaterial.SwitchMaterial
                         android:id="@+id/masterSwitch"
@@ -84,10 +95,10 @@
                     android:layout_marginStart="@dimen/cardMarginHorizontal"
                     android:layout_marginEnd="@dimen/cardMarginHorizontal"
                     android:layout_marginBottom="16dp"
+                    app:cardBackgroundColor="?colorTertiaryContainer"
                     app:cardCornerRadius="@dimen/cardCornerRadius"
                     app:cardElevation="0dp"
-                    app:strokeColor="?colorAccent"
-                    app:strokeWidth="1dp">
+                    app:strokeWidth="0dp">
 
                     <include
                         android:id="@+id/accessStub"
@@ -124,11 +135,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:alpha="0.5"
+                    android:alpha="0.6"
                     android:gravity="center"
                     android:paddingStart="16dp"
                     android:paddingEnd="16dp"
-                    android:textAppearance="@style/TextSection"
+                    android:textAppearance="?textAppearanceLabelMedium"
+                    android:textColor="?colorTertiary"
                     tools:text="Pocket Mode v1.0.0" />
 
             </LinearLayout>
@@ -137,84 +149,4 @@
 
     </androidx.core.widget.NestedScrollView>
 
-    <FrameLayout
-        android:id="@+id/statusBarBg"
-        android:layout_width="0dp"
-        android:layout_height="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:alpha="0.9"
-            android:background="?android:colorBackground" />
-    </FrameLayout>
-
-    <FrameLayout
-        android:id="@+id/toolbarBg"
-        android:layout_width="0dp"
-        android:layout_height="164dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/statusBarBg">
-
-        <View
-            android:id="@+id/toolbarBgImpl"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:alpha="0.9"
-            android:background="?android:colorBackground" />
-    </FrameLayout>
-
-    <FrameLayout
-        android:id="@+id/toolbarShadow"
-        android:layout_width="0dp"
-        android:layout_height="4dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbarBg">
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/bg_shadow" />
-    </FrameLayout>
-
-    <View
-        android:id="@+id/startGuideline"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="@dimen/sheetMarginStart"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/appIcon"
-        android:layout_width="wrap_content"
-        android:layout_height="?actionBarSize"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="8dp"
-        android:src="@mipmap/ic_launcher"
-        app:layout_constraintBottom_toBottomOf="@id/toolbarBg"
-        app:layout_constraintStart_toEndOf="@id/startGuideline" />
-
-    <TextView
-        android:id="@+id/appName"
-        android:layout_width="wrap_content"
-        android:layout_height="?actionBarSize"
-        android:layout_marginBottom="8dp"
-        android:fontFamily="@font/manrope_semibold"
-        android:gravity="center_vertical"
-        android:maxLines="1"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        android:text="@string/app_name"
-        android:textAppearance="?android:textAppearanceMedium"
-        android:textColor="?android:textColorPrimary"
-        android:textSize="32sp"
-        app:layout_constraintBottom_toBottomOf="@id/toolbarBg"
-        app:layout_constraintStart_toEndOf="@id/appIcon" />
-
-</androidx.constraintlayout.motion.widget.MotionLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
