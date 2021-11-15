@@ -41,7 +41,7 @@ jobs:
           echo ${{ secrets.KEYSTORE_B64 }} | base64 -d | zcat >> app/pocketmode-release.keystore
           echo ${{ secrets.KEYSTORE_PROPS_B64 }} | base64 -d | zcat >> app/pocketmode-release.properties
       - name: "./gradlew bundlePlaystoreRelease"
-        uses: eskatos/gradle-command-action@v1
+        uses: eskatos/gradle-command-action@v2
         env:
           JAVA_HOME: ${{ steps.setup-java.outputs.path }}
         with:
@@ -63,7 +63,7 @@ jobs:
           asset_name: pocketmode-release-${{ steps.vars.outputs.tag }}-play-store-mapping.txt
           asset_content_type: application/zip
       - name: "./gradlew assemblePlaystoreRelease assembleOpensourceRelease"
-        uses: eskatos/gradle-command-action@v1
+        uses: eskatos/gradle-command-action@v2
         env:
           JAVA_HOME: ${{ steps.setup-java.outputs.path }}
         with:
