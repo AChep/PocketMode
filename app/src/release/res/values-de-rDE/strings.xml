@@ -5,6 +5,7 @@
     <string name="settings_lock_screen_delay_description">Verzögerung, bis der Bildschirm gesperrt wird, wenn der Näherungssensor auslöst:</string>
     <string name="settings_lock_screen_delay_cur">Aktuelle Verzögerung ist %d ms.</string>
     <string name="settings_vibrate_before_locking">Vibrieren vor Sperren</string>
+    <string name="settings_vibrate_before_locking_test">Vibrate</string>
     <string name="settings_vibrate_before_locking_duration_cur">Current duration is %d ms.</string>
     <string name="settings_vibrate_before_locking_duration_off">Currently disabled.</string>
     <string name="settings_overlay_before_locking">Overlay anzeigen, bevor der Bildschirm gesperrt wird</string>

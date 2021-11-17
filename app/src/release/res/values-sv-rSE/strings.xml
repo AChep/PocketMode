@@ -5,6 +5,7 @@
     <string name="settings_lock_screen_delay_description">Fördröjning innan skärmen låses efter närvarosensorn täckts:</string>
     <string name="settings_lock_screen_delay_cur">Nuvarande fördröjning är %d ms.</string>
     <string name="settings_vibrate_before_locking">Vibrera före låsning</string>
+    <string name="settings_vibrate_before_locking_test">Vibrate</string>
     <string name="settings_vibrate_before_locking_duration_cur">Current duration is %d ms.</string>
     <string name="settings_vibrate_before_locking_duration_off">Currently disabled.</string>
     <string name="settings_overlay_before_locking">Show overlay before locking</string>

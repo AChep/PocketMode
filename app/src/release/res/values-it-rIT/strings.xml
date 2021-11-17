@@ -5,6 +5,7 @@
     <string name="settings_lock_screen_delay_description">Il ritardo prima di bloccare lo schermo dopo aver coperto il sensore di prossimità:</string>
     <string name="settings_lock_screen_delay_cur">Il ritardo attuale è di %d ms.</string>
     <string name="settings_vibrate_before_locking">Vibra prima di bloccare</string>
+    <string name="settings_vibrate_before_locking_test">Vibrate</string>
     <string name="settings_vibrate_before_locking_duration_cur">Current duration is %d ms.</string>
     <string name="settings_vibrate_before_locking_duration_off">Currently disabled.</string>
     <string name="settings_overlay_before_locking">Mostra sovrapposizione prima di bloccare</string>

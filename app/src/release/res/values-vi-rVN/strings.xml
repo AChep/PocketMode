@@ -5,6 +5,7 @@
     <string name="settings_lock_screen_delay_description">The delay before locking screen after covering proximity sensor:</string>
     <string name="settings_lock_screen_delay_cur">Current delay is %d ms.</string>
     <string name="settings_vibrate_before_locking">Vibrate before locking</string>
+    <string name="settings_vibrate_before_locking_test">Vibrate</string>
     <string name="settings_vibrate_before_locking_duration_cur">Current duration is %d ms.</string>
     <string name="settings_vibrate_before_locking_duration_off">Currently disabled.</string>
     <string name="settings_overlay_before_locking">Show overlay before locking</string>
@@ -20,7 +21,7 @@
     <string name="troubleshoot_lock_screen_description">When working correctly, pressing this button should lock the screen.</string>
     <string name="troubleshoot_proximity_description">When working correctly, covering the proximity sensor should change the icon to a crossed eye.</string>
     <string name="troubleshoot_reboot">Reboot the device, if it doesn\'t lock the screen after giving required permissions and enabling the service</string>
-    <string name="troubleshoot_sw_sensor_title">You device may be using a virtual Proximity sensor that is prone to have calibration issues and may need a reset.</string>
+    <string name="troubleshoot_sw_sensor_title">Thiết bị của bạn khi sử dụng cảm biến tiệm cận có thể gặp một số vấn đề và cần khởi động lại.</string>
     <string name="troubleshoot_sw_sensor_reset_app">Download the Proximity sensor reset app from the Play Store</string>
     <string name="overlay_title">Pocket mode is on</string>
     <string name="overlay_description">Uncover the top of your device</string>
