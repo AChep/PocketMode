@@ -427,7 +427,7 @@ class MainActivity : BaseActivity(),
             R.id.moreAppsBtn -> mainViewModel.openApps()
             // Permissions
             R.id.accessibilityServiceBtn -> MaterialAlertDialogBuilder(this)
-                .setTitle(R.string.access_accessibility_service_dialog_text)
+                .setTitle(R.string.access_accessibility_service_dialog_title)
                 .setMessage(R.string.access_accessibility_service_dialog_text)
                 .setNegativeButton(R.string.access_accessibility_service_dialog_no, null)
                 .setPositiveButton(
