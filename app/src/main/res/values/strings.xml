@@ -6,6 +6,7 @@
     <string name="settings_lock_screen_delay_description">The delay before locking screen after covering proximity sensor:</string>
     <string name="settings_lock_screen_delay_cur">Current delay is %d ms.</string>
     <string name="settings_vibrate_before_locking">Vibrate before locking</string>
+    <string name="settings_vibrate_before_locking_test">Vibrate</string>
     <string name="settings_vibrate_before_locking_duration_cur">Current duration is %d ms.</string>
     <string name="settings_vibrate_before_locking_duration_off">Currently disabled.</string>
     <string name="settings_overlay_before_locking">Show overlay before locking</string>

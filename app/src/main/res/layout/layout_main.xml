@@ -75,7 +75,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/lockScreenDelayResetBtn"
-        style="@style/ButtonOutlined"
+        style="@style/ButtonElevated"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -151,7 +151,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/vibrateDurationResetBtn"
-        style="@style/ButtonOutlined"
+        style="@style/ButtonElevated"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -165,7 +165,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:text="@string/test"
+        android:text="@string/settings_vibrate_before_locking_test"
         app:layout_constraintEnd_toStartOf="@id/vibrateDurationResetBtn"
         app:layout_constraintTop_toTopOf="@id/vibrateDurationResetBtn" />
 

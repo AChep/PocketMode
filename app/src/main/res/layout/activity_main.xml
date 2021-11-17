@@ -60,7 +60,7 @@
                     android:layout_marginStart="@dimen/cardMarginHorizontal"
                     android:layout_marginEnd="@dimen/cardMarginHorizontal"
                     android:layout_marginBottom="16dp"
-                    app:cardBackgroundColor="?colorPrimaryContainer"
+                    app:cardBackgroundColor="?colorSecondaryContainer"
                     app:cardCornerRadius="@dimen/cardCornerRadius"
                     app:cardElevation="0dp"
                     app:strokeWidth="0dp">
@@ -76,7 +76,7 @@
                         android:paddingEnd="16dp"
                         android:text="@string/settings_use_pocket_mode"
                         android:textAppearance="?textAppearanceTitleLarge"
-                        android:textColor="?colorOnPrimaryContainer" />
+                        android:textColor="?colorOnSecondaryContainer" />
 
                     <com.google.android.material.switchmaterial.SwitchMaterial
                         android:id="@+id/masterSwitch"
@@ -95,10 +95,10 @@
                     android:layout_marginStart="@dimen/cardMarginHorizontal"
                     android:layout_marginEnd="@dimen/cardMarginHorizontal"
                     android:layout_marginBottom="16dp"
-                    app:cardBackgroundColor="?colorTertiaryContainer"
                     app:cardCornerRadius="@dimen/cardCornerRadius"
                     app:cardElevation="0dp"
-                    app:strokeWidth="0dp">
+                    app:strokeColor="?colorTertiary"
+                    app:strokeWidth="1dp">
 
                     <include
                         android:id="@+id/accessStub"
