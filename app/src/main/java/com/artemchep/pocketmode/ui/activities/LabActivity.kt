@@ -25,7 +25,7 @@ class LabActivity : BaseActivity(), View.OnClickListener {
     private val itemAdapter by lazy { ItemAdapter<ProximitySensorSnapshotItem>() }
 
     private val viewBinding by lazy {
-        ActivityLabBinding.bind(findViewById(android.R.id.content))
+        ActivityLabBinding.bind(findViewById(R.id.content))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -31,7 +31,7 @@ class DonateActivity : BaseActivity(), View.OnClickListener {
     private val itemAdapter by lazy { ItemAdapter<SkuItem>() }
 
     private val viewBinding by lazy {
-        ActivityDonateBinding.bind(findViewById(android.R.id.content))
+        ActivityDonateBinding.bind(findViewById(R.id.content))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
