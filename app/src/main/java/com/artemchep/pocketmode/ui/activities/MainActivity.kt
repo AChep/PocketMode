@@ -7,7 +7,6 @@ import android.util.TypedValue
 import android.view.View
 import android.widget.SeekBar
 import androidx.browser.customtabs.CustomTabsIntent
-import androidx.core.graphics.ColorUtils
 import androidx.core.net.toUri
 import androidx.core.view.*
 import androidx.lifecycle.Observer
@@ -26,6 +25,7 @@ import com.artemchep.pocketmode.models.Proximity
 import com.artemchep.pocketmode.ui.activities.base.BaseActivity
 import com.artemchep.pocketmode.util.ObserverConsumer
 import com.artemchep.pocketmode.viewmodels.MainViewModel
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 
 /**
@@ -426,7 +426,16 @@ class MainActivity : BaseActivity(),
             R.id.labBtn -> mainViewModel.openLab()
             R.id.moreAppsBtn -> mainViewModel.openApps()
             // Permissions
-            R.id.accessibilityServiceBtn -> mainViewModel.grantAccessibilityService()
+            R.id.accessibilityServiceBtn -> MaterialAlertDialogBuilder(this)
+                .setTitle(R.string.access_accessibility_service_dialog_text)
+                .setMessage(R.string.access_accessibility_service_dialog_text)
+                .setNegativeButton(R.string.access_accessibility_service_dialog_no, null)
+                .setPositiveButton(
+                    R.string.access_accessibility_service_dialog_yes,
+                ) { _, _ ->
+                    mainViewModel.grantAccessibilityService()
+                }
+                .show()
             R.id.callStateBtn -> mainViewModel.grantCallState()
         }
     }
