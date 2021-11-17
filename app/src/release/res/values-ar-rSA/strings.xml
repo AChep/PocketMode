@@ -5,6 +5,7 @@
     <string name="settings_lock_screen_delay_description">التأخير قبل قفل الشاشة بعد تغطية مستشعر القرب:</string>
     <string name="settings_lock_screen_delay_cur">التأخير الحالي هو %d مللي ث.</string>
     <string name="settings_vibrate_before_locking">الاهتزاز قبل القفل</string>
+    <string name="settings_vibrate_before_locking_test">Vibrate</string>
     <string name="settings_vibrate_before_locking_duration_cur">Current duration is %d ms.</string>
     <string name="settings_vibrate_before_locking_duration_off">Currently disabled.</string>
     <string name="settings_overlay_before_locking">إظهار تراكب قبل القفل</string>

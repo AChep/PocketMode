@@ -5,6 +5,7 @@
     <string name="settings_lock_screen_delay_description">Prodleva před zamknutím obrazovky po zakrytí senzoru přiblížení:</string>
     <string name="settings_lock_screen_delay_cur">Aktuální prodleva je %d ms.</string>
     <string name="settings_vibrate_before_locking">Vibrovat před zamknutím</string>
+    <string name="settings_vibrate_before_locking_test">Vibrate</string>
     <string name="settings_vibrate_before_locking_duration_cur">Current duration is %d ms.</string>
     <string name="settings_vibrate_before_locking_duration_off">Currently disabled.</string>
     <string name="settings_overlay_before_locking">Zobrazit překrytí před zamknutím</string>

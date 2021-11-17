@@ -5,6 +5,7 @@
     <string name="settings_lock_screen_delay_description">A képernyő lezárása előtti késleltetés a közelségérzékelő lefedése után:</string>
     <string name="settings_lock_screen_delay_cur">A jelenlegi késés beállítva %d mp.</string>
     <string name="settings_vibrate_before_locking">Vibrate before locking</string>
+    <string name="settings_vibrate_before_locking_test">Vibrate</string>
     <string name="settings_vibrate_before_locking_duration_cur">Current duration is %d ms.</string>
     <string name="settings_vibrate_before_locking_duration_off">Currently disabled.</string>
     <string name="settings_overlay_before_locking">Show overlay before locking</string>

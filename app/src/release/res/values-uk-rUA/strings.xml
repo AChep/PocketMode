@@ -5,6 +5,7 @@
     <string name="settings_lock_screen_delay_description">Затримка блокування екрану після охоплення датчика наближення:</string>
     <string name="settings_lock_screen_delay_cur">Поточна затримка %d мс.</string>
     <string name="settings_vibrate_before_locking">Вібрація перед блокуванням</string>
+    <string name="settings_vibrate_before_locking_test">Vibrate</string>
     <string name="settings_vibrate_before_locking_duration_cur">Тривалість %d мс.</string>
     <string name="settings_vibrate_before_locking_duration_off">Зараз вимкнено.</string>
     <string name="settings_overlay_before_locking">Показати оверлей перед блокуванням</string>

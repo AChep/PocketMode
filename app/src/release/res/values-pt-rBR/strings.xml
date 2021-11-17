@@ -5,6 +5,7 @@
     <string name="settings_lock_screen_delay_description">O atraso para bloquear a tela após cobrir o sensor:</string>
     <string name="settings_lock_screen_delay_cur">O atraso atual é de %d ms.</string>
     <string name="settings_vibrate_before_locking">Vibrar antes de bloquear</string>
+    <string name="settings_vibrate_before_locking_test">Vibrate</string>
     <string name="settings_vibrate_before_locking_duration_cur">Current duration is %d ms.</string>
     <string name="settings_vibrate_before_locking_duration_off">Currently disabled.</string>
     <string name="settings_overlay_before_locking">Mostrar sobreposição antes de bloquear</string>
