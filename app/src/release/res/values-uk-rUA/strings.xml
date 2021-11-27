@@ -13,6 +13,10 @@
     <string name="settings_analytics">Надсилати анонімні дані про використання</string>
     <string name="access">Дозволи</string>
     <string name="access_accessibility_service">Pocket Mode використовує права доступу до команди, що блокує екран. Тапніть, щоб надати права доступу</string>
+    <string name="access_accessibility_service_dialog_title">How do we use accessibility service</string>
+    <string name="access_accessibility_service_dialog_text">Pocket Mode uses accessibility service to send the command that locks the screen. Without it locking the screen would require a PIN code on each unlock, ruining the user experience.</string>
+    <string name="access_accessibility_service_dialog_no">Close</string>
+    <string name="access_accessibility_service_dialog_yes">Enable accessibility service</string>
     <string name="access_runtime_call_state">Pocket Mode перевіряє стан дзвінка, щоб не вимикати екран під час виклику. Тапніть, щоб надати права доступу</string>
     <string name="access_overlays">Pocket Mode використовує оверлей по верх додатків, щоб сповістити про спрацювання датчика наближення.</string>
     <string name="how_it_works">Pocket Mode відстежує датчик наближення %d мс. після увімення екрану. Якщо датчик накритий %d мс. додаток знову вимикає екран.</string>

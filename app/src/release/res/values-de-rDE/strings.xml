@@ -13,6 +13,10 @@
     <string name="settings_analytics">Send usage data anonymously</string>
     <string name="access">Berechtigungen</string>
     <string name="access_accessibility_service">Pocket Mode nutzt einen Bedienungshilfen Dienst, um den Bildschirm zu sperren. Tippen Sie hier, um die Berechtigung zu gewähren</string>
+    <string name="access_accessibility_service_dialog_title">How do we use accessibility service</string>
+    <string name="access_accessibility_service_dialog_text">Pocket Mode uses accessibility service to send the command that locks the screen. Without it locking the screen would require a PIN code on each unlock, ruining the user experience.</string>
+    <string name="access_accessibility_service_dialog_no">Close</string>
+    <string name="access_accessibility_service_dialog_yes">Enable accessibility service</string>
     <string name="access_runtime_call_state">Pocket Mode liest den Anrufstatus aus, um zu verhindern, dass der Bildschirm während eines Gesprächs ausgeschaltet wird. Tippen Sie hier, um die Berechtigung zu gewähren</string>
     <string name="access_overlays">Pocket Mode kann ein Overlay über den Bildschirm legen, um anzuzeigen, dass der Näherungssensor ausgelöst hat.</string>
     <string name="how_it_works">Pocket mode monitors the proximity sensor for %d ms. after turning the screen on. If in this time window the proximity sensor has been covered for at least %d ms. the app turns the screen back off.</string>
