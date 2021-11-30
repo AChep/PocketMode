@@ -118,7 +118,7 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2'
     implementation 'com.artemchep.config:config:2.2.0'
     implementation 'com.afollestad.material-dialogs:core:3.3.0'
-    implementation 'com.google.android.material:material:1.5.0-beta01'
+    implementation 'com.google.android.material:material:1.6.0-alpha01'
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
     implementation 'com.eightbitlab:blurview:1.6.6'
