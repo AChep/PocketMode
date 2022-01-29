@@ -43,6 +43,9 @@
     <string name="notification_pocket_channel">Servicenotering för Pocket Mode</string>
     <string name="notification_pocket_title">Fickläge är på</string>
     <string name="notification_pocket_description">Tryck länge på notifieringen och göm den om du inte vill se den hela tiden.</string>
+    <string name="notification_restart_channel">Pocket mode restart notification</string>
+    <string name="notification_restart_title">Pocket mode has been stopped by the system</string>
+    <string name="notification_restart_description">Tap to restart the service</string>
     <string name="coming_soon">Kommer snart</string>
     <string name="error">Oh, snap!</string>
     <string name="purchased">Purchased</string>

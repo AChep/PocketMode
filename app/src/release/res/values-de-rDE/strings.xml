@@ -46,6 +46,9 @@ bestimmte Zeit ausgelöst hat.</string>
     <string name="notification_pocket_channel">Pocket Mode Dienst-Benachrichtigung</string>
     <string name="notification_pocket_title">Pocket Mode läuft</string>
     <string name="notification_pocket_description">Tippen Sie lange auf die Benachrichtigung und verstecken Sie sie, wenn Sie sie nicht dauerhaft sehen möchten.</string>
+    <string name="notification_restart_channel">Pocket mode restart notification</string>
+    <string name="notification_restart_title">Pocket mode has been stopped by the system</string>
+    <string name="notification_restart_description">Tap to restart the service</string>
     <string name="coming_soon">In Kürze verfügbar</string>
     <string name="error">Ooops!</string>
     <string name="purchased">Gekauft</string>

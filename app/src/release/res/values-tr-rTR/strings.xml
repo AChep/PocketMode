@@ -43,6 +43,9 @@
     <string name="notification_pocket_channel">Cep modu servis bildirimi</string>
     <string name="notification_pocket_title">Cep modu aktif</string>
     <string name="notification_pocket_description">Eger bildirim görmek istemiyorsanız. bildirimi gizlemek için uzun süre basılı tutun.</string>
+    <string name="notification_restart_channel">Pocket mode restart notification</string>
+    <string name="notification_restart_title">Pocket mode has been stopped by the system</string>
+    <string name="notification_restart_description">Tap to restart the service</string>
     <string name="coming_soon">Yakında</string>
     <string name="error">Oh, snap!</string>
     <string name="purchased">Satın alındı</string>
