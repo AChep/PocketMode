@@ -5,12 +5,16 @@ import android.app.Application
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.ProcessLifecycleOwner
+import androidx.work.*
 import com.artemchep.config.Config
 import com.artemchep.pocketmode.analytics.Analytics
 import com.artemchep.pocketmode.analytics.AnalyticsHolder
 import com.artemchep.pocketmode.analytics.AnalyticsStub
 import com.artemchep.pocketmode.analytics.createAnalytics
 import com.artemchep.pocketmode.services.PocketService
+import com.artemchep.pocketmode.services.PocketServiceRestartWorker
 import com.google.android.material.color.DynamicColors
 import org.acra.ACRA
 import org.acra.annotation.AcraCore
@@ -18,6 +22,7 @@ import org.acra.annotation.AcraHttpSender
 import org.acra.data.StringFormat
 import org.acra.sender.HttpSender
 import org.solovyev.android.checkout.Billing
+import java.time.Duration
 
 /**
  * @author Artem Chepurnoy
@@ -33,6 +38,11 @@ import org.solovyev.android.checkout.Billing
     httpMethod = HttpSender.Method.POST,
 )
 class Heart : Application() {
+    companion object {
+        private const val WORK_RESTART_ID = "PocketService::restart"
+        private const val WORK_RESTART_PERIOD = 2 * 60 * 60 * 1000L // 2h
+    }
+
     private val cfgObserver = object : Config.OnConfigChangedListener<String> {
         override fun onConfigChanged(keys: Set<String>) {
             if (Cfg.KEY_ENABLED in keys) {
@@ -40,7 +50,8 @@ class Heart : Application() {
                 // config.
                 val shouldBeEnabled = Cfg.isEnabled
                 if (shouldBeEnabled) {
-                    startForegroundService(pocketServiceIntent)
+                    if (ProcessLifecycleOwner.get().lifecycle.currentState >= Lifecycle.State.STARTED)
+                        startForegroundService(pocketServiceIntent)
                 }
                 // Else service should monitor the config and
                 // kill itself.
@@ -106,9 +117,13 @@ class Heart : Application() {
             }
         })
 
-        // Start the service.
-        if (Cfg.isEnabled) {
-            startForegroundService(pocketServiceIntent)
-        }
+        // Start a scheduler to restart service in
+        // few hours in cause it was killed.
+        val request = PeriodicWorkRequestBuilder<PocketServiceRestartWorker>(
+            Duration.ofMillis(WORK_RESTART_PERIOD)
+        ).build()
+        WorkManager
+            .getInstance(this)
+            .enqueueUniquePeriodicWork(WORK_RESTART_ID, ExistingPeriodicWorkPolicy.REPLACE, request)
     }
 }

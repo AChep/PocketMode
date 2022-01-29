@@ -15,11 +15,7 @@ inline fun <T> observerFlow(
     try {
         unregister = withContext(Dispatchers.Main) {
             val setter = { value: T ->
-                try {
-                    offer(value)
-                } catch (e: Exception) {
-                    // Do nothing.
-                }
+                trySend(value)
             }
             register(setter)
         }

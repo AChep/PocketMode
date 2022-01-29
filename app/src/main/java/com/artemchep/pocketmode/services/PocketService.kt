@@ -37,11 +37,10 @@ import kotlin.coroutines.CoroutineContext
  */
 class PocketService : Service(), CoroutineScope {
     companion object {
-        private const val WORK_RESTART_ID = "PocketService::restart"
-        private const val WORK_RESTART_PERIOD = 60 * 60 * 1000L // ms
-
         private const val NOTIFICATION_CHANNEL = "pocket_notification_channel"
         private const val NOTIFICATION_ID = 112
+
+        var running = false
     }
 
     private lateinit var job: Job
@@ -128,6 +127,7 @@ class PocketService : Service(), CoroutineScope {
 
     override fun onCreate() {
         job = Job()
+        running = true
         super.onCreate()
         Cfg.observe(configObserver)
         stopSelfIfPocketServiceIsDisabled()
@@ -148,15 +148,6 @@ class PocketService : Service(), CoroutineScope {
                 overlayObserver.onChanged(it)
             }
         }
-
-        // Start a scheduler to restart service in
-        // few hours in cause it was killed.
-        val request = PeriodicWorkRequestBuilder<PocketServiceRestartWorker>(
-            Duration.ofMillis(WORK_RESTART_PERIOD)
-        ).build()
-        WorkManager
-            .getInstance(this)
-            .enqueueUniquePeriodicWork(WORK_RESTART_ID, ExistingPeriodicWorkPolicy.KEEP, request)
     }
 
     private fun stopSelfIfPocketServiceIsDisabled() {
@@ -199,6 +190,7 @@ class PocketService : Service(), CoroutineScope {
         super.onDestroy()
         job.cancel()
         overlayExitJob?.cancel()
+        running = false
     }
 
     override fun onBind(intent: Intent?): IBinder? = null

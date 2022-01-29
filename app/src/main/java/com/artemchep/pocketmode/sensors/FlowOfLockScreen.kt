@@ -61,7 +61,7 @@ fun flowOfLockScreen(
                                         is Proximity.Far -> flowOf(Idle)
                                         // When the sensor gets covered, wait for a bit and if it
                                         // does not get uncovered -> send the lock screen event.
-                                        is Proximity.Near -> flow {
+                                        is Proximity.Near -> flow<LockScreenEvent> {
                                             emit(BeforeLockScreen)
                                             delay(Cfg.lockScreenDelay)
                                             emit(OnLockScreen)

@@ -53,6 +53,9 @@
     <string name="notification_pocket_channel">Pocket mode service notification</string>
     <string name="notification_pocket_title">Pocket mode is running</string>
     <string name="notification_pocket_description">Long press the notification and hide it, if you don\'t want to see it constantly.</string>
+    <string name="notification_restart_channel">Pocket mode restart notification</string>
+    <string name="notification_restart_title">Pocket mode has been stopped by the system</string>
+    <string name="notification_restart_description">Tap to restart the service</string>
 
     <string name="coming_soon">Coming soon</string>
     <string name="error">Oh, snap!</string>

@@ -43,9 +43,9 @@
         android:paddingBottom="12dp"
         android:text="@string/access_accessibility_service"
         android:textAppearance="?textAppearanceBodyLarge"
-        android:textColor="?colorTertiary"
+        android:textColor="?colorError"
         app:drawableStartCompat="@drawable/ic_outline_accessibility"
-        app:drawableTint="?colorTertiary"
+        app:drawableTint="?colorError"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/access" />
