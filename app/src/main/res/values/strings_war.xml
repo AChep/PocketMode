@@ -1,0 +1,8 @@
+<resources>
+
+    <string name="war_title" translatable="false">Maintenance of the app may be discontinued forever.</string>
+    <string name="war_text" translatable="false">My home is under attack by the russian army. Protest to stop the war!</string>
+    <string name="war_learn_more" translatable="false">What\'s going on?</string>
+    <string name="war_learn_more_url" translatable="false">https://www.youtube.com/watch?v=si1ZdU3wYr8</string>
+
+</resources>

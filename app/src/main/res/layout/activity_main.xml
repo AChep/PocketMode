@@ -54,6 +54,69 @@
                 app:layout_constraintWidth_max="520dp">
 
                 <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/warContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/cardMarginHorizontal"
+                    android:layout_marginEnd="@dimen/cardMarginHorizontal"
+                    android:layout_marginBottom="16dp"
+                    app:cardBackgroundColor="?colorErrorContainer"
+                    app:cardCornerRadius="@dimen/cardCornerRadius"
+                    app:cardElevation="0dp"
+                    app:strokeWidth="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingVertical="16dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start|center_vertical"
+                            android:background="?selectableItemBackground"
+                            android:gravity="center_vertical"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp"
+                            android:text="@string/war_title"
+                            android:textAppearance="?textAppearanceTitleMedium"
+                            android:textColor="?colorOnErrorContainer" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start|center_vertical"
+                            android:background="?selectableItemBackground"
+                            android:gravity="center_vertical"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp"
+                            android:text="@string/war_text"
+                            android:textAppearance="?textAppearanceBodyMedium"
+                            android:textColor="?colorOnErrorContainer" />
+
+                        <TextView
+                            android:id="@+id/warLearnMoreBtn"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:background="?selectableItemBackground"
+                            android:drawablePadding="16dp"
+                            android:paddingHorizontal="16dp"
+                            android:paddingTop="12dp"
+                            android:paddingBottom="12dp"
+                            android:text="@string/war_learn_more"
+                            android:textAppearance="?textAppearanceBodyLarge"
+                            android:textColor="?colorOnErrorContainer"
+                            app:drawableEndCompat="@drawable/ic_chevron"
+                            app:drawableStartCompat="@drawable/ic_outline_info"
+                            app:drawableTint="?colorOnErrorContainer" />
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
                     android:id="@+id/masterSwitchContainer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

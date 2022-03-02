@@ -204,6 +204,7 @@ class MainActivity : BaseActivity(),
             isAnalyticsSwitchBroadcasting = false
         }
 
+        viewBinding.warLearnMoreBtn.setOnClickListener(this)
         viewBinding.masterSwitchText.setOnClickListener(this)
         viewBinding.accessStub.accessibilityServiceBtn.setOnClickListener(this)
         viewBinding.accessStub.callStateBtn.setOnClickListener(this)
@@ -227,7 +228,7 @@ class MainActivity : BaseActivity(),
         viewBinding.mainStub.aboutAuthor.text = getStringOrEmpty(
             R.string.about_author,
             getString(R.string.about_author_artem_chepurnoy)
-        )
+        ) + " \uD83C\uDDFA\uD83C\uDDE6"
 
         mainViewModel.setup()
     }
@@ -417,6 +418,7 @@ class MainActivity : BaseActivity(),
                 vibrateOneShot(duration)
             }
             // Help
+            R.id.warLearnMoreBtn -> mainViewModel.openWarInfo()
             R.id.donateBtn -> mainViewModel.openDonateToMe()
             R.id.codeBtn -> mainViewModel.openRepo()
             R.id.bugReportBtn -> mainViewModel.openBugReport()

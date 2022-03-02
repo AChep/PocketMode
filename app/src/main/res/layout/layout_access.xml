@@ -44,6 +44,7 @@
         android:text="@string/access_accessibility_service"
         android:textAppearance="?textAppearanceBodyLarge"
         android:textColor="?colorError"
+        app:drawableEndCompat="@drawable/ic_chevron"
         app:drawableStartCompat="@drawable/ic_outline_accessibility"
         app:drawableTint="?colorError"
         app:layout_constraintEnd_toEndOf="parent"

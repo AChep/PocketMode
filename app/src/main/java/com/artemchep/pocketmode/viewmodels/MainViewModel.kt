@@ -245,6 +245,11 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     fun openApps() = openUrl(LINK_APPS)
 
+    fun openWarInfo() = kotlin.run {
+        val url = context.getString(R.string.war_learn_more_url)
+        openUrl(url)
+    }
+
     // ---- Permissions ----
 
     fun grantAccessibilityService() {
