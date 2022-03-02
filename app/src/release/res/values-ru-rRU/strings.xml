@@ -43,6 +43,9 @@
     <string name="notification_pocket_channel">Сервисное уведомление Pocket Mode</string>
     <string name="notification_pocket_title">Pocket Mode активен</string>
     <string name="notification_pocket_description">Скройте уведомление, если не хотите чтобы оно было в панели уведомления.</string>
+    <string name="notification_restart_channel">Pocket mode restart notification</string>
+    <string name="notification_restart_title">Pocket mode has been stopped by the system</string>
+    <string name="notification_restart_description">Tap to restart the service</string>
     <string name="coming_soon">Скоро будут доступно</string>
     <string name="error">Ой, блин!</string>
     <string name="purchased">Приобретено</string>

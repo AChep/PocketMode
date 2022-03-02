@@ -43,6 +43,9 @@
     <string name="notification_pocket_channel">Notificação de serviço do Modo Bolso</string>
     <string name="notification_pocket_title">Modo bolso está em execução</string>
     <string name="notification_pocket_description">Pressione e oculte a notificação, se você não quer vê-la constantemente.</string>
+    <string name="notification_restart_channel">Pocket mode restart notification</string>
+    <string name="notification_restart_title">Pocket mode has been stopped by the system</string>
+    <string name="notification_restart_description">Tap to restart the service</string>
     <string name="coming_soon">Em Breve</string>
     <string name="error">Ops, m*rda!</string>
     <string name="purchased">Comprado</string>
