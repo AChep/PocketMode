@@ -13,7 +13,7 @@
         app:liftOnScroll="true">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
-            style="?attr/collapsingToolbarLayoutLargeStyle"
+            style="@style/ToolbarStyle"
             android:layout_width="match_parent"
             android:layout_height="?attr/collapsingToolbarLayoutLargeSize"
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
@@ -23,7 +23,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
-                app:title="@string/app_name" />
+                app:title="@string/app_name"
+                app:titleCentered="@bool/titleCentered" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
@@ -42,16 +43,16 @@
 
             <LinearLayout
                 android:id="@+id/scrollViewContent"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/sheetMarginStart"
                 android:clipToPadding="false"
                 android:orientation="vertical"
                 android:paddingTop="16dp"
                 android:paddingBottom="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintWidth_max="520dp">
+                app:layout_constraintWidth_max="@dimen/sheetMaxWidth">
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/warContainer"

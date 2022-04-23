@@ -3,6 +3,5 @@
     <string name="war_title" translatable="false">Разработка и поддержка приложения может быть остановлена навсегда.</string>
     <string name="war_text" translatable="false">Мой дом сейчас под обстрелом российской армией. Выходите на улицы, что бы остановить войну!</string>
     <string name="war_learn_more" translatable="false">Что происходит?</string>
-    <string name="war_learn_more_url" translatable="false">https://www.youtube.com/watch?v=9F5ZmLhIy8E</string>
 
 </resources>

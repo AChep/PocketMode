@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="ToolbarStyle" parent="Widget.Material3.CollapsingToolbar.Large">
+        <item name="collapsedTitleGravity">center</item>
+        <item name="expandedTitleGravity">center_horizontal|bottom</item>
+    </style>
+
+    <item name="titleCentered" type="bool">true</item>
+
+</resources>

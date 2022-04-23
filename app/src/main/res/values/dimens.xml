@@ -2,6 +2,7 @@
 <resources>
     <dimen name="actionBarSize">56dp</dimen>
     <dimen name="sheetMarginStart">0dp</dimen>
+    <dimen name="sheetMaxWidth">640dp</dimen>
     <dimen name="cardMarginHorizontal">16dp</dimen>
     <dimen name="cardCornerRadius">24dp</dimen>
 
