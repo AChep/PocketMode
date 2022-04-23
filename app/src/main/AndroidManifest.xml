@@ -13,6 +13,17 @@
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
+    <!-- Chrome OS -->
+    <meta-data
+        android:name="WindowManagerPreference:SuppressWindowControlNavigationButton"
+        android:value="true" />
+    <meta-data
+        android:name="WindowManagerPreference:FreeformWindowSize"
+        android:value="tablet" />
+    <meta-data
+        android:name="WindowManagerPreference:FreeformWindowOrientation"
+        android:value="landscape" />
+
     <application
         android:name=".Heart"
         android:allowBackup="true"
@@ -29,6 +40,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+            <layout
+                android:defaultWidth="640dp"
+                android:defaultHeight="480dp" />
         </activity>
         <activity
             android:name=".ui.activities.LabActivity"
