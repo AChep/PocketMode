@@ -100,6 +100,9 @@ class PocketService : Service(), CoroutineScope {
             when (value.b) {
                 is OnLockScreen -> lockScreen()
                 is BeforeLockScreen -> beforeLockScreen()
+                is Idle -> {
+                    // Do nothing
+                }
             }
         }
     }

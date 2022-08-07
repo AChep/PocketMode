@@ -16,27 +16,12 @@ import com.artemchep.pocketmode.analytics.createAnalytics
 import com.artemchep.pocketmode.services.PocketService
 import com.artemchep.pocketmode.services.PocketServiceRestartWorker
 import com.google.android.material.color.DynamicColors
-import org.acra.ACRA
-import org.acra.annotation.AcraCore
-import org.acra.annotation.AcraHttpSender
-import org.acra.data.StringFormat
-import org.acra.sender.HttpSender
 import org.solovyev.android.checkout.Billing
 import java.time.Duration
 
 /**
  * @author Artem Chepurnoy
  */
-@AcraCore(
-    reportFormat = StringFormat.JSON,
-    alsoReportToAndroidFramework = true,
-)
-@AcraHttpSender(
-    uri = BuildConfig.ACRA_URI,
-    basicAuthLogin = BuildConfig.ACRA_USERNAME,
-    basicAuthPassword = BuildConfig.ACRA_PASSWORD,
-    httpMethod = HttpSender.Method.POST,
-)
 class Heart : Application() {
     companion object {
         private const val WORK_RESTART_ID = "PocketService::restart"
@@ -78,16 +63,11 @@ class Heart : Application() {
 
     override fun attachBaseContext(base: Context?) {
         super.attachBaseContext(base)
-        ACRA.init(this)
         DynamicColors.applyToActivitiesIfAvailable(this)
     }
 
     override fun onCreate() {
         super.onCreate()
-        // don't schedule anything in crash reporter process
-        if (ACRA.isACRASenderServiceProcess())
-            return
-
         Cfg.init(this)
         Cfg.observe(cfgObserver)
 
