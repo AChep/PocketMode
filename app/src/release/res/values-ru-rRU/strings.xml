@@ -31,6 +31,7 @@
     <string name="overlay_description">Уберите закрывающие верхнюю часть устройства предметы</string>
     <string name="lab_sensors">Датчики приближения</string>
     <string name="help_code">Внести свой вклад на GitHub</string>
+    <string name="help_disable_battery_optimizations">Open battery optimization settings</string>
     <string name="help_bug_report">Send bug report</string>
     <string name="help_bug_report_dont_kill_my_app">Приложение перестает работать через некоторое время! #dontkillmyapp</string>
     <string name="help_translate">Перевести на ваш родной язык</string>

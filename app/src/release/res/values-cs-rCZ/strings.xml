@@ -31,6 +31,7 @@
     <string name="overlay_description">Uncover the top of your device</string>
     <string name="lab_sensors">Senzory přiblížení</string>
     <string name="help_code">Pomozte při vývoji aplikace na GitHubu</string>
+    <string name="help_disable_battery_optimizations">Open battery optimization settings</string>
     <string name="help_bug_report">Poslat zprávu o chybě</string>
     <string name="help_bug_report_dont_kill_my_app">App stops working after a while! #dontkillmyapp</string>
     <string name="help_translate">Přeložte do svého jazyka</string>

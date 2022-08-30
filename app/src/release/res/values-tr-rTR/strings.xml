@@ -31,6 +31,7 @@
     <string name="overlay_description">Cihazın üst kısmını ortaya çıkar</string>
     <string name="lab_sensors">Yakınlık sensörleri</string>
     <string name="help_code">GitHub\'da Katkıda Bulun</string>
+    <string name="help_disable_battery_optimizations">Open battery optimization settings</string>
     <string name="help_bug_report">Geribildirim yollama</string>
     <string name="help_bug_report_dont_kill_my_app">Uygulama bir süre sonra çalışmayı durduruyor! #dontkillmyapp</string>
     <string name="help_translate">Senin diline çevir</string>
