@@ -148,6 +148,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     val openDonateToMeLiveData = MutableLiveData<Event<Unit>>()
 
+    val openBatteryOptimizationsLiveData = MutableLiveData<Event<Unit>>()
+
     val openLabLiveData = MutableLiveData<Event<Unit>>()
 
     /**
@@ -231,6 +233,11 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     private fun openUrl(url: String) {
         val event = Event(OpenUrlEvent(url))
         openUrlLiveData.postValue(event)
+    }
+
+    fun openBatteryOptimizations() {
+        val event = Event(Unit)
+        openBatteryOptimizationsLiveData.postValue(event)
     }
 
     fun openDonateToMe() {

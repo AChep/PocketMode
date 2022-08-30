@@ -211,6 +211,24 @@
         app:layout_constraintTop_toBottomOf="@id/troubleshootingDontKillMyApp" />
 
     <TextView
+        android:id="@+id/batteryOptimizationBtn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="?selectableItemBackground"
+        android:drawablePadding="16dp"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:text="@string/help_disable_battery_optimizations"
+        android:textAppearance="?textAppearanceBodyLarge"
+        app:drawableEndCompat="@drawable/ic_chevron"
+        app:drawableStartCompat="@drawable/ic_outline_battery"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bugReportBtn" />
+
+    <TextView
         android:id="@+id/labBtn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -226,6 +244,6 @@
         app:drawableStartCompat="@drawable/ic_test_tube"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/bugReportBtn" />
+        app:layout_constraintTop_toBottomOf="@id/batteryOptimizationBtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

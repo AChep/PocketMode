@@ -3,9 +3,9 @@ package com.artemchep.pocketmode.ui.activities
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.provider.Settings
 import android.util.TypedValue
 import android.view.View
-import android.widget.SeekBar
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.net.toUri
 import androidx.core.view.*
@@ -26,7 +26,6 @@ import com.artemchep.pocketmode.ui.activities.base.BaseActivity
 import com.artemchep.pocketmode.util.ObserverConsumer
 import com.artemchep.pocketmode.viewmodels.MainViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.android.material.slider.LabelFormatter
 import com.google.android.material.slider.Slider
 import com.google.android.material.slider.Slider.OnSliderTouchListener
 import kotlin.math.roundToInt
@@ -239,6 +238,7 @@ class MainActivity : BaseActivity(),
         viewBinding.troubleshootingStub.labBtn.setOnClickListener(this)
         viewBinding.troubleshootingStub.troubleshootingDontKillMyApp.setOnClickListener(this)
         viewBinding.troubleshootingStub.troubleshootingSwSensorReset.setOnClickListener(this)
+        viewBinding.troubleshootingStub.batteryOptimizationBtn.setOnClickListener(this)
         viewBinding.troubleshootingStub.bugReportBtn.setOnClickListener(this)
         viewBinding.troubleshootingStub.lockScreenBtn.setOnClickListener(this)
         viewBinding.mainStub.lockScreenDelayResetBtn.setOnClickListener(this)
@@ -356,6 +356,14 @@ class MainActivity : BaseActivity(),
         openUrlLiveData.observe(this@MainActivity, ObserverConsumer {
             openUrl(it.url)
         })
+        openBatteryOptimizationsLiveData.observe(this@MainActivity, ObserverConsumer {
+            kotlin.runCatching {
+                val intent = Intent().apply {
+                    action = Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS
+                }
+                startActivity(intent)
+            }
+        })
         openDonateToMeLiveData.observe(this@MainActivity, ObserverConsumer {
             kotlin.runCatching {
                 val clazz = Class.forName(DONATE_ACTIVITY_NAME)
@@ -446,6 +454,7 @@ class MainActivity : BaseActivity(),
             R.id.donateBtn -> mainViewModel.openDonateToMe()
             R.id.codeBtn -> mainViewModel.openRepo()
             R.id.bugReportBtn -> mainViewModel.openBugReport()
+            R.id.batteryOptimizationBtn -> mainViewModel.openBatteryOptimizations()
             R.id.troubleshootingDontKillMyApp -> mainViewModel.openBugReportDontKillMyApp()
             R.id.troubleshootingSwSensorReset -> mainViewModel.openSwSensorResetApp()
             R.id.translateBtn -> mainViewModel.openTranslationService()
