@@ -1,64 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="settings">Ayarlar</string>
-    <string name="settings_use_pocket_mode">Use pocket mode</string>
-    <string name="settings_lock_screen_delay_description">The delay before locking screen after covering proximity sensor:</string>
-    <string name="settings_lock_screen_delay_cur">Current delay is %d ms.</string>
-    <string name="settings_vibrate_before_locking">Vibrate before locking</string>
-    <string name="settings_vibrate_before_locking_test">Vibrate</string>
-    <string name="settings_vibrate_before_locking_duration_cur">Current duration is %d ms.</string>
-    <string name="settings_vibrate_before_locking_duration_off">Currently disabled.</string>
-    <string name="settings_overlay_before_locking">Show overlay before locking</string>
-    <string name="settings_turn_screen_off_when_covered">Turn screen black while the proximity sensor is covered</string>
-    <string name="settings_analytics">Send usage data anonymously</string>
-    <string name="access">Permissions</string>
+    <string name="settings">ayarlar</string>
+    <string name="settings_use_pocket_mode">Cep modunu kullan</string>
+    <string name="settings_lock_screen_delay_description">Yakınlık sensörünü kapattıktan sonra ekranı kilitlemeden önceki gecikme:</string>
+    <string name="settings_lock_screen_delay_cur">Mevcut gecikme %d ms.</string>
+    <string name="settings_vibrate_before_locking">Kilitlemeden önce titret</string>
+    <string name="settings_vibrate_before_locking_test">Titret</string>
+    <string name="settings_vibrate_before_locking_duration_cur">Geçerli süre %d ms.</string>
+    <string name="settings_vibrate_before_locking_duration_off">Şu anda devre dışı.</string>
+    <string name="settings_overlay_before_locking">Kilitlemeden önce kaplamayı göster</string>
+    <string name="settings_turn_screen_off_when_covered">Yakınlık sensörü kaplandığında ekranı siyaha çevir</string>
+    <string name="settings_analytics">Kullanım verilerini anonim olarak gönder</string>
+    <string name="access">İzinler</string>
     <string name="access_accessibility_service">Cep modu, ekranı kilitleyen komutları göndermek için erişilebilirlik hizmetini kullanır. Erişilebilirlik hizmet ayrıcalığını onaylamak için tıkla</string>
-    <string name="access_accessibility_service_dialog_title">How do we use accessibility service</string>
-    <string name="access_accessibility_service_dialog_text">Pocket Mode uses accessibility service to send the command that locks the screen. Without it locking the screen would require a PIN code on each unlock, ruining the user experience.</string>
-    <string name="access_accessibility_service_dialog_no">Close</string>
-    <string name="access_accessibility_service_dialog_yes">Enable accessibility service</string>
-    <string name="access_runtime_call_state">Pocket Mode reads call state to not turn screen off while call is active. Tap to grant call state privileges</string>
-    <string name="access_overlays">Pocket Mode can draw overlay on top of the user apps to show user that the proximity sensor is covered.</string>
-    <string name="how_it_works">Pocket mode monitors the proximity sensor for %d ms. after turning the screen on. If in this time window the proximity sensor has been covered for at least %d ms. the app turns the screen back off.</string>
+    <string name="access_accessibility_service_dialog_title">Erişilebilirlik hizmetini nasıl kullanırız</string>
+    <string name="access_accessibility_service_dialog_text">Cep Modu, ekranı kilitleyen komutu göndermek için erişilebilirlik hizmetini kullanır. Ekranı kilitlemeden, her kilit açma işleminde bir PIN kodu gerekir ve bu da kullanıcı deneyimini mahveder.</string>
+    <string name="access_accessibility_service_dialog_no">Kapat</string>
+    <string name="access_accessibility_service_dialog_yes">Erişilebilirlik hizmetini etkinleştir</string>
+    <string name="access_runtime_call_state">Cep Modu, arama etkinken ekranı kapatmamak için arama durumunu okur. Arama durumu ayrıcalıkları vermek için öğesine dokunun</string>
+    <string name="access_overlays">Cep Modu, kullanıcıya yakınlık sensörünün kapalı olduğunu göstermek için kullanıcı uygulamalarının üstüne kurulabilir.</string>
+    <string name="how_it_works">Cep modu, yakınlık sensörünü %d ms kadar izler. Ekranı açtıktan sonra. Bu zaman penceresinde, yakınlık sensörü en az %d ms süreyle kapatılmışsa. Uygulama ekranı tekrar kapatır.</string>
     <string name="troubleshoot">Üçlü dokunma</string>
     <string name="troubleshoot_lock_screen">Ekran kilidi</string>
-    <string name="troubleshoot_lock_screen_description">When working correctly, pressing this button should lock the screen.</string>
-    <string name="troubleshoot_proximity_description">When working correctly, covering the proximity sensor should change the icon to a crossed eye.</string>
-    <string name="troubleshoot_reboot">Reboot the device, if it doesn\'t lock the screen after giving required permissions and enabling the service</string>
-    <string name="troubleshoot_sw_sensor_title">You device may be using a virtual Proximity sensor that is prone to have calibration issues and may need a reset.</string>
-    <string name="troubleshoot_sw_sensor_reset_app">Download the Proximity sensor reset app from the Play Store</string>
+    <string name="troubleshoot_lock_screen_description">Düzgün çalışırken bu düğmeye basmak ekranı kilitlemelidir.</string>
+    <string name="troubleshoot_proximity_description">Doğru şekilde çalışırken yakınlık sensörünü kapatmak simgeyi çarpık olarak değiştirmelidir.</string>
+    <string name="troubleshoot_reboot">Gerekli izinleri verdikten ve hizmeti etkinleştirdikten sonra ekranı kilitlemiyorsa cihazı yeniden başlatın</string>
+    <string name="troubleshoot_sw_sensor_title">Cihazınız kalibrasyon sorunlarına yatkın olan ve sıfırlama gerektirebilecek sanal bir yakınlık sensörü kullanıyor olabilir.</string>
+    <string name="troubleshoot_sw_sensor_reset_app">Yakınlık sensörü sıfırlama uygulamasını Play Store\'dan indirin</string>
     <string name="overlay_title">Cep modu açık</string>
-    <string name="overlay_description">Uncover the top of your device</string>
-    <string name="lab_sensors">Proximity sensors</string>
-    <string name="help_code">Contribute on GitHub</string>
+    <string name="overlay_description">Cihazın üst kısmını ortaya çıkar</string>
+    <string name="lab_sensors">Yakınlık sensörleri</string>
+    <string name="help_code">GitHub\'da Katkıda Bulun</string>
     <string name="help_bug_report">Geribildirim yollama</string>
-    <string name="help_bug_report_dont_kill_my_app">App stops working after a while! #dontkillmyapp</string>
+    <string name="help_bug_report_dont_kill_my_app">Uygulama bir süre sonra çalışmayı durduruyor! #dontkillmyapp</string>
     <string name="help_translate">Senin diline çevir</string>
-    <string name="help_donate">Donate to me</string>
+    <string name="help_donate">Bana bağış yapın</string>
     <string name="help_test">Labaratuvar</string>
-    <string name="help_more_apps">Discover more apps</string>
+    <string name="help_more_apps">Daha fazla uygulama keşfedin</string>
     <string name="about">Hakkında</string>
-    <string name="about_author">Developed by %s</string>
-    <string name="about_description">Pocket Mode is a free simple utility app with a single goal: prevent accidental touches while the device is in pocket. \n\nApp accomplishes this goal by turning the screen off after proximity sensor has been covered for some time.</string>
+    <string name="about_author">%s tarafından geliştirildi</string>
+    <string name="about_description">Cep Modu, tek bir amacı olan ücretsiz, basit bir yardımcı uygulamadır: cihaz cebindeyken yanlışlıkla dokunmaları önlemek. \n\nUygulama yakınlık sensörü bir süre kapatıldıktan sonra ekranı kapatarak bu hedefe ulaşır.</string>
     <string name="notification_pocket_channel">Cep modu servis bildirimi</string>
     <string name="notification_pocket_title">Cep modu aktif</string>
     <string name="notification_pocket_description">Eger bildirim görmek istemiyorsanız. bildirimi gizlemek için uzun süre basılı tutun.</string>
-    <string name="notification_restart_channel">Pocket mode restart notification</string>
-    <string name="notification_restart_title">Pocket mode has been stopped by the system</string>
-    <string name="notification_restart_description">Tap to restart the service</string>
+    <string name="notification_restart_channel">Cep modu yeniden başlatma bildirimi</string>
+    <string name="notification_restart_title">Cep modu sistem tarafından durduruldu</string>
+    <string name="notification_restart_description">Hizmeti yeniden başlatmak için dokunun</string>
     <string name="coming_soon">Yakında</string>
-    <string name="error">Oh, snap!</string>
+    <string name="error">Hayda!</string>
     <string name="purchased">Satın alındı</string>
     <string name="ms">%d ms.</string>
     <string name="cm">%.1f cm.</string>
-    <string name="reset">Reset</string>
+    <string name="reset">Sıfırla</string>
     <string name="test">Test</string>
     <string name="accessibility_service_title">Cep modu</string>
     <string name="accessibility_event_screen_locked">Ekran kilitlendi</string>
-    <string name="accessibility_why_title">Grant accessibility service access</string>
-    <string name="accessibility_why_description">Pocket Mode uses accessibility service to send the command
-        that locks the screen.
-        \n\nIf you want to use this app, you\'ll have to grant the privileges
-        manually in the next screen.
+    <string name="accessibility_why_title">Erişilebilirlik hizmeti kullanımına izin ver</string>
+    <string name="accessibility_why_description">Cep Modu, komutu göndermek için erişilebilirlik hizmetini kullanır
+        bu ekranı kilitler.
+        \n\nBu uygulamayı kullanmak istiyorsanız, bir sonraki ekranda izinleri
+        manuel olarak vermeniz gerekecektir.
     </string>
 </resources>

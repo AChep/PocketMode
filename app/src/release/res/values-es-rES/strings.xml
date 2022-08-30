@@ -2,13 +2,13 @@
 <resources>
     <string name="settings">Ajustes</string>
     <string name="settings_use_pocket_mode">Usar el modo bolsillo</string>
-    <string name="settings_lock_screen_delay_description">Retardo antes de bloquear la pantalla tras cubrir el sensor de proximidad:</string>
-    <string name="settings_lock_screen_delay_cur">El retardo actual es %d ms.</string>
+    <string name="settings_lock_screen_delay_description">El retraso antes de bloquear la pantalla tras cubrir el sensor de proximidad:</string>
+    <string name="settings_lock_screen_delay_cur">El retraso actual es %d ms.</string>
     <string name="settings_vibrate_before_locking">Vibrar antes de bloquear</string>
     <string name="settings_vibrate_before_locking_test">Vibrar</string>
     <string name="settings_vibrate_before_locking_duration_cur">La duración actual es %d ms.</string>
     <string name="settings_vibrate_before_locking_duration_off">Deshabilitado actualmente.</string>
-    <string name="settings_overlay_before_locking">Mostrar sobreimpresión antes de bloquear</string>
+    <string name="settings_overlay_before_locking">Mostrar superposición antes de bloquear</string>
     <string name="settings_turn_screen_off_when_covered">Apagar la pantalla mientras el sensor de proximidad permanezca cubierto</string>
     <string name="settings_analytics">Enviar datos de uso de forma anónima</string>
     <string name="access">Permisos</string>

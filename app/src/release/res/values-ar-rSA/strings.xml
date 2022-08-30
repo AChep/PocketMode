@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="settings">Settings</string>
-    <string name="settings_use_pocket_mode">Use pocket mode</string>
+    <string name="settings_use_pocket_mode">استخدام وضع الجيب</string>
     <string name="settings_lock_screen_delay_description">التأخير قبل قفل الشاشة بعد تغطية مستشعر القرب:</string>
     <string name="settings_lock_screen_delay_cur">التأخير الحالي هو %d مللي ث.</string>
     <string name="settings_vibrate_before_locking">الاهتزاز قبل القفل</string>
