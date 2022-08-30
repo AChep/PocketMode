@@ -24,9 +24,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:alpha="0.66"
         android:text="@string/access"
+        android:textAllCaps="true"
         android:textAppearance="?textAppearanceLabelMedium"
-        android:textColor="?colorTertiary"
+        android:textColor="?colorOnSurface"
         app:layout_constraintEnd_toStartOf="@id/endGuideline"
         app:layout_constraintStart_toEndOf="@id/startGuideline"
         app:layout_constraintTop_toTopOf="parent" />

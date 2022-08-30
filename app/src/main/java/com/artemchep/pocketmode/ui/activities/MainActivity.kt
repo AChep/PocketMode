@@ -26,6 +26,10 @@ import com.artemchep.pocketmode.ui.activities.base.BaseActivity
 import com.artemchep.pocketmode.util.ObserverConsumer
 import com.artemchep.pocketmode.viewmodels.MainViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.slider.LabelFormatter
+import com.google.android.material.slider.Slider
+import com.google.android.material.slider.Slider.OnSliderTouchListener
+import kotlin.math.roundToInt
 
 
 /**
@@ -69,54 +73,74 @@ class MainActivity : BaseActivity(),
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        viewBinding.mainStub.lockScreenDelaySeekBar.max =
-            resources.getInteger(R.integer.maxDelay) / DD
-        viewBinding.mainStub.lockScreenDelaySeekBar.min =
-            resources.getInteger(R.integer.minDelay) / DD
-        viewBinding.mainStub.lockScreenDelaySeekBar.setOnSeekBarChangeListener(object :
-            SeekBar.OnSeekBarChangeListener {
-            override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
-                val delay = progress * DD
-                bindLockScreenDelay(delay.toLong())
-            }
+        viewBinding.mainStub.lockScreenDelaySeekBar.valueTo =
+            resources.getInteger(R.integer.maxDelay).toFloat() / DD
+        viewBinding.mainStub.lockScreenDelaySeekBar.valueFrom =
+            resources.getInteger(R.integer.minDelay).toFloat() / DD
+        viewBinding.mainStub.lockScreenDelaySeekBar.addOnChangeListener { slider, value, fromUser ->
+            val delay = value * DD
+            bindLockScreenDelay(delay.toLong())
+        }
+        viewBinding.mainStub.lockScreenDelaySeekBar.addOnSliderTouchListener(
+            object : OnSliderTouchListener {
+                override fun onStartTrackingTouch(slider: Slider) {
+                    // Do nothing.
+                }
 
-            override fun onStartTrackingTouch(seekBar: SeekBar) {
-            }
+                override fun onStopTrackingTouch(slider: Slider) {
+                    val delay = viewBinding.mainStub.lockScreenDelaySeekBar.value * DD
+                    mainViewModel.setLockScreenDelay(delay.toLong())
+                }
+            },
+        )
+        viewBinding.mainStub.lockScreenDelaySeekBar.setLabelFormatter { value: Float ->
+            getStringOrEmpty(R.string.ms, value.times(DD).roundToInt())
+        }
+        viewBinding.mainStub.lockScreenDelaySeekBar.addOnSliderTouchListener(
+            object : OnSliderTouchListener {
+                override fun onStartTrackingTouch(slider: Slider) {
+                    // Do nothing.
+                }
 
-            override fun onStopTrackingTouch(seekBar: SeekBar) {
-                val delay = viewBinding.mainStub.lockScreenDelaySeekBar.progress * DD
-                mainViewModel.setLockScreenDelay(delay.toLong())
-            }
-        })
+                override fun onStopTrackingTouch(slider: Slider) {
+                    val delay = viewBinding.mainStub.lockScreenDelaySeekBar.value * DD
+                    mainViewModel.setLockScreenDelay(delay.toLong())
+                }
+            },
+        )
 
         viewBinding.mainStub.lockScreenDelayMin.text =
-            getStringOrEmpty(R.string.ms, viewBinding.mainStub.lockScreenDelaySeekBar.min * DD)
+            getStringOrEmpty(R.string.ms, viewBinding.mainStub.lockScreenDelaySeekBar.valueFrom.times(DD).roundToInt())
         viewBinding.mainStub.lockScreenDelayMax.text =
-            getStringOrEmpty(R.string.ms, viewBinding.mainStub.lockScreenDelaySeekBar.max * DD)
+            getStringOrEmpty(R.string.ms, viewBinding.mainStub.lockScreenDelaySeekBar.valueTo.times(DD).roundToInt())
 
-        viewBinding.mainStub.vibrateDurationSeekBar.max =
-            resources.getInteger(R.integer.maxVibrateDuration) / VIBRATE_DURATION_DD
-        viewBinding.mainStub.vibrateDurationSeekBar.min =
-            resources.getInteger(R.integer.minVibrateDuration) / VIBRATE_DURATION_DD
-        viewBinding.mainStub.vibrateDurationSeekBar.setOnSeekBarChangeListener(object :
-            SeekBar.OnSeekBarChangeListener {
-            override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
-                bindVibrateDuration()
-            }
+        viewBinding.mainStub.vibrateDurationSeekBar.valueTo =
+            resources.getInteger(R.integer.maxVibrateDuration).toFloat() / VIBRATE_DURATION_DD
+        viewBinding.mainStub.vibrateDurationSeekBar.valueFrom =
+            resources.getInteger(R.integer.minVibrateDuration).toFloat() / VIBRATE_DURATION_DD
+        viewBinding.mainStub.vibrateDurationSeekBar.addOnChangeListener { slider, value, fromUser ->
+            bindVibrateDuration()
+        }
+        viewBinding.mainStub.vibrateDurationSeekBar.setLabelFormatter { value: Float ->
+            getStringOrEmpty(R.string.ms, value.times(VIBRATE_DURATION_DD).roundToInt())
+        }
+        viewBinding.mainStub.vibrateDurationSeekBar.addOnSliderTouchListener(
+            object : OnSliderTouchListener {
+                override fun onStartTrackingTouch(slider: Slider) {
+                    // Do nothing.
+                }
 
-            override fun onStartTrackingTouch(seekBar: SeekBar) {
-            }
-
-            override fun onStopTrackingTouch(seekBar: SeekBar) {
-                val delay = viewBinding.mainStub.vibrateDurationSeekBar.progress * VIBRATE_DURATION_DD
-                mainViewModel.setVibrateDurationDelay(delay.toLong())
-            }
-        })
+                override fun onStopTrackingTouch(slider: Slider) {
+                    val delay = viewBinding.mainStub.vibrateDurationSeekBar.value * VIBRATE_DURATION_DD
+                    mainViewModel.setVibrateDurationDelay(delay.toLong())
+                }
+            },
+        )
 
         viewBinding.mainStub.vibrateDurationMin.text =
-            getStringOrEmpty(R.string.ms, viewBinding.mainStub.vibrateDurationSeekBar.min * VIBRATE_DURATION_DD)
+            getStringOrEmpty(R.string.ms, viewBinding.mainStub.vibrateDurationSeekBar.valueFrom.times(VIBRATE_DURATION_DD).roundToInt())
         viewBinding.mainStub.vibrateDurationMax.text =
-            getStringOrEmpty(R.string.ms, viewBinding.mainStub.vibrateDurationSeekBar.max * VIBRATE_DURATION_DD)
+            getStringOrEmpty(R.string.ms, viewBinding.mainStub.vibrateDurationSeekBar.valueTo.times(VIBRATE_DURATION_DD).roundToInt())
 
         viewBinding.masterSwitch.setOnCheckedChangeListener { switch, isChecked ->
             if (isMasterSwitchBroadcasting) {
@@ -242,11 +266,11 @@ class MainActivity : BaseActivity(),
             viewBinding.troubleshootingStub.howItWorks.text = text
         })
         lockScreenDelayLiveData.observe(this@MainActivity, Observer {
-            viewBinding.mainStub.lockScreenDelaySeekBar.progress = it.toInt() / DD
+            viewBinding.mainStub.lockScreenDelaySeekBar.value = it.toFloat() / DD
             bindLockScreenDelay(it)
         })
         vibrateDurationLiveData.observe(this@MainActivity, Observer {
-            viewBinding.mainStub.vibrateDurationSeekBar.progress = it.toInt() / VIBRATE_DURATION_DD
+            viewBinding.mainStub.vibrateDurationSeekBar.value = it.toFloat() / VIBRATE_DURATION_DD
             bindVibrateDuration()
         })
         masterSwitchIsCheckedLiveData.observe(this@MainActivity, Observer {
@@ -402,7 +426,7 @@ class MainActivity : BaseActivity(),
             if (!viewBinding.mainStub.vibrateDurationSeekBar.isEnabled) {
                 getStringOrEmpty(R.string.settings_vibrate_before_locking_duration_off)
             } else {
-                val duration = viewBinding.mainStub.vibrateDurationSeekBar.progress * VIBRATE_DURATION_DD
+                val duration = viewBinding.mainStub.vibrateDurationSeekBar.value.times(VIBRATE_DURATION_DD).roundToInt()
                 getStringOrEmpty(R.string.settings_vibrate_before_locking_duration_cur, duration)
             }
     }

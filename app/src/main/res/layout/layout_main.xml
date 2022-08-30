@@ -25,9 +25,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:alpha="0.66"
         android:text="@string/settings"
+        android:textAllCaps="true"
         android:textAppearance="?textAppearanceLabelMedium"
-        android:textColor="?colorTertiary"
+        android:textColor="?colorOnSurface"
         app:layout_constraintEnd_toStartOf="@id/endGuideline"
         app:layout_constraintStart_toEndOf="@id/startGuideline"
         app:layout_constraintTop_toTopOf="parent" />
@@ -63,7 +65,7 @@
         app:layout_constraintTop_toTopOf="@id/lockScreenDelaySeekBar"
         tools:text="2000 ms." />
 
-    <androidx.appcompat.widget.AppCompatSeekBar
+    <com.google.android.material.slider.Slider
         android:id="@+id/lockScreenDelaySeekBar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -103,7 +105,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/lockScreenDelayCur" />
 
-    <com.google.android.material.switchmaterial.SwitchMaterial
+    <com.google.android.material.materialswitch.MaterialSwitch
         android:id="@+id/vibrateOnBeforeLockScreenCheckBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -139,7 +141,7 @@
         app:layout_constraintTop_toTopOf="@id/vibrateDurationSeekBar"
         tools:text="2000 ms." />
 
-    <androidx.appcompat.widget.AppCompatSeekBar
+    <com.google.android.material.slider.Slider
         android:id="@+id/vibrateDurationSeekBar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -190,7 +192,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/vibrateDurationCur" />
 
-    <com.google.android.material.switchmaterial.SwitchMaterial
+    <com.google.android.material.materialswitch.MaterialSwitch
         android:id="@+id/overlayOnBeforeLockScreenCheckBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -206,7 +208,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/overlayOnBeforeLockScreenDivider" />
 
-    <com.google.android.material.switchmaterial.SwitchMaterial
+    <com.google.android.material.materialswitch.MaterialSwitch
         android:id="@+id/proximityWakeLockCheckBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -224,7 +226,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/overlayOnBeforeLockScreenCheckBox" />
 
-    <com.google.android.material.switchmaterial.SwitchMaterial
+    <com.google.android.material.materialswitch.MaterialSwitch
         android:id="@+id/analyticsCheckBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -244,9 +246,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:alpha="0.66"
         android:text="@string/about"
+        android:textAllCaps="true"
         android:textAppearance="?textAppearanceLabelMedium"
-        android:textColor="?colorTertiary"
+        android:textColor="?colorOnSurface"
         app:layout_constraintEnd_toStartOf="@id/aboutAuthor"
         app:layout_constraintStart_toEndOf="@id/startGuideline"
         app:layout_constraintTop_toBottomOf="@id/analyticsCheckBox" />
@@ -255,8 +259,10 @@
         android:id="@+id/aboutAuthor"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:alpha="0.66"
+        android:textAllCaps="true"
         android:textAppearance="?textAppearanceLabelMedium"
-        android:textColor="?colorTertiary"
+        android:textColor="?colorOnSurface"
         app:layout_constraintBaseline_toBaselineOf="@id/about"
         app:layout_constraintEnd_toStartOf="@id/endGuideline"
         tools:text="@string/about_author" />

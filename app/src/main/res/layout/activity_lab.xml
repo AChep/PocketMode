@@ -59,9 +59,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
+                    android:alpha="0.66"
                     android:text="@string/lab_sensors"
+                    android:textAllCaps="true"
                     android:textAppearance="?textAppearanceLabelMedium"
-                    android:textColor="?colorTertiary" />
+                    android:textColor="?colorOnSurface" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/sensorsRecyclerView"
@@ -71,7 +73,7 @@
                     android:nestedScrollingEnabled="false" />
 
             </LinearLayout>
-            
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
