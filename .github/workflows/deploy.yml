@@ -97,7 +97,7 @@ jobs:
           asset_name: pocketmode-release-oss-${{ steps.vars.outputs.tag }}-mapping.txt
           asset_content_type: application/zip
       - name: upload to play store
-        uses: r0adkll/upload-google-play@v1.0.15
+        uses: r0adkll/upload-google-play@v1.0.19
         with:
           serviceAccountJsonPlainText: ${{ secrets.SERVICE_ACCOUNT }}
           packageName: com.artemchep.pocketmode
