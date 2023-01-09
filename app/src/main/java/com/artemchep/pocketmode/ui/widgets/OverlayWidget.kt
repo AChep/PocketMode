@@ -64,7 +64,7 @@ class OverlayWidget(context: Context) : FrameLayout(context) {
                     .translationY(-INIT_TRANSLATE_Y)
                     .rotationX(-INIT_ROTATION_X)
                     .setListener(object : AnimationListenerAdapter() {
-                        override fun onAnimationEnd(animation: Animator?) {
+                        override fun onAnimationEnd(animation: Animator) {
                             // Execute the given block after the end of
                             // the animation.
                             launch(Dispatchers.Unconfined) {
@@ -74,7 +74,7 @@ class OverlayWidget(context: Context) : FrameLayout(context) {
                             continuation.resumeOrNothing(Unit)
                         }
 
-                        override fun onAnimationCancel(animation: Animator?) {
+                        override fun onAnimationCancel(animation: Animator) {
                             continuation.resumeOrNothing(Unit)
                         }
                     })
@@ -83,16 +83,16 @@ class OverlayWidget(context: Context) : FrameLayout(context) {
         }
 
     open class AnimationListenerAdapter : Animator.AnimatorListener {
-        override fun onAnimationRepeat(animation: Animator?) {
+        override fun onAnimationRepeat(animation: Animator) {
         }
 
-        override fun onAnimationEnd(animation: Animator?) {
+        override fun onAnimationEnd(animation: Animator) {
         }
 
-        override fun onAnimationCancel(animation: Animator?) {
+        override fun onAnimationCancel(animation: Animator) {
         }
 
-        override fun onAnimationStart(animation: Animator?) {
+        override fun onAnimationStart(animation: Animator) {
         }
     }
 

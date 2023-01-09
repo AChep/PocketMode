@@ -11,7 +11,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 32
+    compileSdkVersion 33
     defaultConfig {
         applicationId "com.artemchep.pocketmode"
         minSdkVersion 28
@@ -117,13 +117,13 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
     implementation 'com.artemchep.config:config:2.2.0'
     implementation 'com.afollestad.material-dialogs:core:3.3.0'
-    implementation 'com.google.android.material:material:1.7.0-beta01'
+    implementation 'com.google.android.material:material:1.8.0-rc01'
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-process:$lifecycle_version"
     implementation 'com.eightbitlab:blurview:1.6.6'
-    implementation 'androidx.appcompat:appcompat:1.5.0'
-    implementation 'androidx.core:core-ktx:1.8.0'
+    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.browser:browser:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation "androidx.work:work-runtime-ktx:2.7.1"
@@ -135,8 +135,8 @@ dependencies {
     playstoreImplementation 'com.google.firebase:firebase-crashlytics'
     playstoreImplementation 'com.google.firebase:firebase-analytics'
     testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test:runner:1.4.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    androidTestImplementation 'androidx.test:runner:1.5.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 }
 
 if (!getGradle()
