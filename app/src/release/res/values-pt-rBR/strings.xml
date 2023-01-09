@@ -31,6 +31,7 @@
     <string name="overlay_description">Descubra o sensor do seu celular</string>
     <string name="lab_sensors">Sensores de proximidade</string>
     <string name="help_code">Contribuir no GitHub</string>
+    <string name="help_disable_battery_optimizations">Open battery optimization settings</string>
     <string name="help_bug_report">Enviar relatório de erro</string>
     <string name="help_bug_report_dont_kill_my_app">App stops working after a while! #dontkillmyapp</string>
     <string name="help_translate">Ajude a traduzir para seu idioma</string>

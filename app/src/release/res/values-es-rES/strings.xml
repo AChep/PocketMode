@@ -31,6 +31,7 @@
     <string name="overlay_description">Descubra la parte superior de su dispositivo</string>
     <string name="lab_sensors">Sensores de proximidad</string>
     <string name="help_code">Contribuir en GitHub</string>
+    <string name="help_disable_battery_optimizations">Open battery optimization settings</string>
     <string name="help_bug_report">Enviar un informe de errores</string>
     <string name="help_bug_report_dont_kill_my_app">¡La aplicación deja de funcionar pasado un rato! #dontkillmyapp</string>
     <string name="help_translate">Traducir a mi idioma</string>

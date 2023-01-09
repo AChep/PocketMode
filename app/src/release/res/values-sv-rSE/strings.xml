@@ -31,6 +31,7 @@
     <string name="overlay_description">Uncover the top of your device</string>
     <string name="lab_sensors">Proximity sensors</string>
     <string name="help_code">Bidra till GitHub</string>
+    <string name="help_disable_battery_optimizations">Open battery optimization settings</string>
     <string name="help_bug_report">Skicka felrapport</string>
     <string name="help_bug_report_dont_kill_my_app">App stops working after a while! #dontkillmyapp</string>
     <string name="help_translate">Översätt till ditt språk</string>

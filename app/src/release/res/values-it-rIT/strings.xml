@@ -31,6 +31,7 @@
     <string name="overlay_description">Cambia il Pin del tuo dispositivo</string>
     <string name="lab_sensors">Sensore di prossimità</string>
     <string name="help_code">Contribuisci su GitHub</string>
+    <string name="help_disable_battery_optimizations">Open battery optimization settings</string>
     <string name="help_bug_report">Manda un report sull\'errore</string>
     <string name="help_bug_report_dont_kill_my_app">L\'app smette di funzionare dopo un po\'! #dontkillmyapp</string>
     <string name="help_translate">Traducendo nella tua lingua</string>

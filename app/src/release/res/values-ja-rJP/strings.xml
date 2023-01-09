@@ -31,6 +31,7 @@
     <string name="overlay_description">デバイス上部を覆わないでください</string>
     <string name="lab_sensors">近接センサー</string>
     <string name="help_code">GitHub で貢献</string>
+    <string name="help_disable_battery_optimizations">Open battery optimization settings</string>
     <string name="help_bug_report">バグレポートを送信</string>
     <string name="help_bug_report_dont_kill_my_app">しばらくするとアプリが止まる場合 #dontkillmyapp</string>
     <string name="help_translate">自分の言語に翻訳</string>

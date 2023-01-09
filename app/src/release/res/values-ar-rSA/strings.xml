@@ -31,6 +31,7 @@
     <string name="overlay_description">اكتشف الجزء العلوي من جهازك</string>
     <string name="lab_sensors">مستشعرات القرب</string>
     <string name="help_code">قم بالمساهمة في GitHub</string>
+    <string name="help_disable_battery_optimizations">Open battery optimization settings</string>
     <string name="help_bug_report">إرسال تقرير حول الخطأ</string>
     <string name="help_bug_report_dont_kill_my_app">App stops working after a while! #dontkillmyapp</string>
     <string name="help_translate">ترجم إلى لغتك</string>

@@ -31,6 +31,7 @@
     <string name="overlay_description">Geben Sie den Näherungssensor frei</string>
     <string name="lab_sensors">Näherungssensor</string>
     <string name="help_code">Mitmachen auf GitHub</string>
+    <string name="help_disable_battery_optimizations">Open battery optimization settings</string>
     <string name="help_bug_report">Fehlerbericht senden</string>
     <string name="help_bug_report_dont_kill_my_app">App stops working after a while! #dontkillmyapp</string>
     <string name="help_translate">In Ihre Sprache übersetzen</string>

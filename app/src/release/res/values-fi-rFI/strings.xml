@@ -31,6 +31,7 @@
     <string name="overlay_description">Paljasta näytön yläosa</string>
     <string name="lab_sensors">Läheisyysanturit</string>
     <string name="help_code">Edistä GitHubissa</string>
+    <string name="help_disable_battery_optimizations">Open battery optimization settings</string>
     <string name="help_bug_report">Send bug report</string>
     <string name="help_bug_report_dont_kill_my_app">Sovellus pysähtyy jonkin ajan kuluttua! #dontkillmyapp</string>
     <string name="help_translate">Käännä sinun kielellesi</string>

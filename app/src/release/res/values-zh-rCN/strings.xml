@@ -31,6 +31,7 @@
     <string name="overlay_description">不要遮挡手机顶部</string>
     <string name="lab_sensors">距离传感器</string>
     <string name="help_code">在 GitHub 上贡献</string>
+    <string name="help_disable_battery_optimizations">Open battery optimization settings</string>
     <string name="help_bug_report">Send bug report</string>
     <string name="help_bug_report_dont_kill_my_app">在一段时间后应用停止工作! #dontkillmyapp</string>
     <string name="help_translate">翻译成你的语言</string>
