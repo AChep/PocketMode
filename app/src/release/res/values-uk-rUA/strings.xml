@@ -5,7 +5,7 @@
     <string name="settings_lock_screen_delay_description">Затримка блокування екрану після охоплення датчика наближення:</string>
     <string name="settings_lock_screen_delay_cur">Поточна затримка %d мс.</string>
     <string name="settings_vibrate_before_locking">Вібрація перед блокуванням</string>
-    <string name="settings_vibrate_before_locking_test">Vibrate</string>
+    <string name="settings_vibrate_before_locking_test">Вібрувати</string>
     <string name="settings_vibrate_before_locking_duration_cur">Тривалість %d мс.</string>
     <string name="settings_vibrate_before_locking_duration_off">Зараз вимкнено.</string>
     <string name="settings_overlay_before_locking">Показати оверлей перед блокуванням</string>
@@ -13,53 +13,53 @@
     <string name="settings_analytics">Надсилати анонімні дані про використання</string>
     <string name="access">Дозволи</string>
     <string name="access_accessibility_service">Pocket Mode використовує права доступу до команди, що блокує екран. Тапніть, щоб надати права доступу</string>
-    <string name="access_accessibility_service_dialog_title">How do we use accessibility service</string>
-    <string name="access_accessibility_service_dialog_text">Pocket Mode uses accessibility service to send the command that locks the screen. Without it locking the screen would require a PIN code on each unlock, ruining the user experience.</string>
-    <string name="access_accessibility_service_dialog_no">Close</string>
-    <string name="access_accessibility_service_dialog_yes">Enable accessibility service</string>
+    <string name="access_accessibility_service_dialog_title">Як ми використовуємо службу доступності</string>
+    <string name="access_accessibility_service_dialog_text">Pocket Mode використовує службу доступності для надсилання команди, яка блокує екран. Без нього блокування екрана потребуватиме PIN-коду під час кожного розблокування, що руйнує взаємодію з користувачем.</string>
+    <string name="access_accessibility_service_dialog_no">Закрити</string>
+    <string name="access_accessibility_service_dialog_yes">Увімкнути службу доступності</string>
     <string name="access_runtime_call_state">Pocket Mode перевіряє стан дзвінка, щоб не вимикати екран під час виклику. Тапніть, щоб надати права доступу</string>
     <string name="access_overlays">Pocket Mode використовує оверлей по верх додатків, щоб сповістити про спрацювання датчика наближення.</string>
     <string name="how_it_works">Pocket Mode відстежує датчик наближення %d мс. після увімення екрану. Якщо датчик накритий %d мс. додаток знову вимикає екран.</string>
     <string name="troubleshoot">Усунення проблем</string>
     <string name="troubleshoot_lock_screen">Екран блокування</string>
-    <string name="troubleshoot_lock_screen_description">When working correctly, pressing this button should lock the screen.</string>
-    <string name="troubleshoot_proximity_description">When working correctly, covering the proximity sensor should change the icon to a crossed eye.</string>
-    <string name="troubleshoot_reboot">Reboot the device, if it doesn\'t lock the screen after giving required permissions and enabling the service</string>
-    <string name="troubleshoot_sw_sensor_title">You device may be using a virtual Proximity sensor that is prone to have calibration issues and may need a reset.</string>
-    <string name="troubleshoot_sw_sensor_reset_app">Download the Proximity sensor reset app from the Play Store</string>
-    <string name="overlay_title">Pocket mode is on</string>
-    <string name="overlay_description">Uncover the top of your device</string>
-    <string name="lab_sensors">Proximity sensors</string>
-    <string name="help_code">Contribute on GitHub</string>
-    <string name="help_disable_battery_optimizations">Open battery optimization settings</string>
+    <string name="troubleshoot_lock_screen_description">При правильній роботі натискання цієї кнопки має заблокувати екран.</string>
+    <string name="troubleshoot_proximity_description">При правильній роботі накриття датчика наближення має змінити значок на схрещене око.</string>
+    <string name="troubleshoot_reboot">Перезавантажте пристрій, якщо він не заблокує екран після надання необхідних дозволів і ввімкнення служби</string>
+    <string name="troubleshoot_sw_sensor_title">Можливо, ваш пристрій використовує віртуальний датчик наближення, який схильний до проблем із калібруванням і потребує скидання.</string>
+    <string name="troubleshoot_sw_sensor_reset_app">Завантажте програму Proximity Sensor Reset з Play Store</string>
+    <string name="overlay_title">Pocket mode увімкнено</string>
+    <string name="overlay_description">Приберіть те, що закриває верхню частину пристрою</string>
+    <string name="lab_sensors">Датчики наближення</string>
+    <string name="help_code">Зробити внесок на GitHub</string>
+    <string name="help_disable_battery_optimizations">Відкрити налаштування оптимізації батареї</string>
     <string name="help_bug_report">Send bug report</string>
-    <string name="help_bug_report_dont_kill_my_app">App stops working after a while! #dontkillmyapp</string>
-    <string name="help_translate">Translate to your language</string>
-    <string name="help_donate">Donate to me</string>
-    <string name="help_test">Laboratory</string>
-    <string name="help_more_apps">Discover more apps</string>
-    <string name="about">About</string>
-    <string name="about_author">Developed by %s</string>
-    <string name="about_description">Pocket Mode is a free simple utility app with a single goal: prevent accidental touches while the device is in pocket. \n\nApp accomplishes this goal by turning the screen off after proximity sensor has been covered for some time.</string>
-    <string name="notification_pocket_channel">Pocket mode service notification</string>
-    <string name="notification_pocket_title">Pocket mode is running</string>
-    <string name="notification_pocket_description">Long press the notification and hide it, if you don\'t want to see it constantly.</string>
-    <string name="notification_restart_channel">Pocket mode restart notification</string>
-    <string name="notification_restart_title">Pocket mode has been stopped by the system</string>
-    <string name="notification_restart_description">Tap to restart the service</string>
-    <string name="coming_soon">Coming soon</string>
-    <string name="error">Oh, snap!</string>
-    <string name="purchased">Purchased</string>
-    <string name="ms">%d ms.</string>
-    <string name="cm">%.1f cm.</string>
-    <string name="reset">Reset</string>
-    <string name="test">Test</string>
+    <string name="help_bug_report_dont_kill_my_app">Через деякий час додаток перестане працювати! #dontkillmyapp</string>
+    <string name="help_translate">Перекладіть на вашу мову</string>
+    <string name="help_donate">Підтримати</string>
+    <string name="help_test">Лабораторія</string>
+    <string name="help_more_apps">Відкрийте для себе більше програм</string>
+    <string name="about">Про додаток</string>
+    <string name="about_author">Розроблено %s</string>
+    <string name="about_description">Pocket Mode — це безплатна проста службовий додаток з єдиною метою: запобігти випадковим дотикам, коли пристрій у кишені. \n\nДодаток досягає цієї мети, вимикаючи екран після того, як датчик наближення деякий час був закритий.</string>
+    <string name="notification_pocket_channel">Службове сповіщення в Pocket Mode</string>
+    <string name="notification_pocket_title">Pocket Mode працює</string>
+    <string name="notification_pocket_description">Натисніть і утримуйте сповіщення та сховайте його, якщо ви не хочете бачити його постійно.</string>
+    <string name="notification_restart_channel">Сповіщення про перезапуск Pocket Mode</string>
+    <string name="notification_restart_title">Pocket Mode зупинено системою</string>
+    <string name="notification_restart_description">Натисніть, щоб перезапустити службу</string>
+    <string name="coming_soon">Незабаром</string>
+    <string name="error">Ой, чорт!</string>
+    <string name="purchased">Придбано</string>
+    <string name="ms">%d мс.</string>
+    <string name="cm">%.1f см.</string>
+    <string name="reset">Скинути</string>
+    <string name="test">Тест</string>
     <string name="accessibility_service_title">Pocket Mode</string>
-    <string name="accessibility_event_screen_locked">Screen locked</string>
-    <string name="accessibility_why_title">Grant accessibility service access</string>
-    <string name="accessibility_why_description">Pocket Mode uses accessibility service to send the command
-        that locks the screen.
-        \n\nIf you want to use this app, you\'ll have to grant the privileges
-        manually in the next screen.
+    <string name="accessibility_event_screen_locked">Екран заблоковано</string>
+    <string name="accessibility_why_title">Надати доступ до служби доступності</string>
+    <string name="accessibility_why_description">Pocket Mode використовує службу доступності для надсилання команди
+        що блокує екран.
+        \n\nЯкщо ви хочете використовувати цю програму, вам потрібно буде надати привілеї
+        вручну на наступному екрані.
     </string>
 </resources>
