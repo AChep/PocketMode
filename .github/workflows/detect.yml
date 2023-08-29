@@ -11,4 +11,4 @@ jobs:
       - name: "checkout"
         uses: actions/checkout@v3
       - name: "detekt"
-        uses: natiginfo/action-detekt-all@1.19.0
+        uses: natiginfo/action-detekt-all@1.22.0
