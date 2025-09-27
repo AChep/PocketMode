@@ -1,0 +1,4 @@
+- "Donate to me" page
+- "Translate project" page
+- Read phone state permissions is now optional
+- Decreased minimum duration before screen lock

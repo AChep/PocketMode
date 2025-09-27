@@ -1,0 +1,2 @@
+* Update visual look of the donation item
+* Sort SKUs by the price
