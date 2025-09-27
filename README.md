@@ -14,6 +14,10 @@ I have developed this app because stock Android lacks this feature and my phone 
   <img alt="Get Pocket Mode on Google Play" vspace="20"
        src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" height="60" />
 </a>
+<a href="https://apt.izzysoft.de/packages/com.artemchep.pocketmode">
+  <img alt="Get Pocket Mode at IzzyOnDroid" vspace="20"
+       src="https://gitlab.com/IzzyOnDroid/repo/-/raw/master/assets/IzzyOnDroid.png" height="60" />
+</a>
 
 Report a bug or request a feature
 ----------------

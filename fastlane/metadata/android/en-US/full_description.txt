@@ -1,0 +1,1 @@
+<p><i>Pocket Mode</i> is an Android app that locks your phone when you hover the proximity sensor.</p><p>I have developed this app because stock Android lacks this feature and my phone always changes something or disables important things while laying inside the pocket. Seriously, this has to be stopped.</p>
