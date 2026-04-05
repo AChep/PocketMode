@@ -18,6 +18,7 @@
     <string name="access_accessibility_service_dialog_no">Cerrar</string>
     <string name="access_accessibility_service_dialog_yes">Habilitar servicio de accesibilidad</string>
     <string name="access_runtime_call_state">Pocket Mode lee el estado de la llamada para no apagar la pantalla mientras la llamada está activa. Pulse para conceder permisos de estado de la llamada</string>
+    <string name="access_runtime_notifications">Pocket Mode needs notification permission so its foreground-service and recovery notifications can be shown. Tap to grant notification privileges</string>
     <string name="access_overlays">Pocket Mode puede mostrar una sobreimpresión sobre las aplicaciones del usuario para indicarle que el sensor de proximidad está cubierto.</string>
     <string name="how_it_works">El modo bolsillo monitoriza el sensor de proximidad durante %d ms. tras encender la pantalla. Si durante este periodo el sensor de proximidad ha permanecido cubierto al menos %d ms. la aplicación vuelve a apagar la pantalla.</string>
     <string name="troubleshoot">Resolución de problemas</string>

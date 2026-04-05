@@ -18,6 +18,7 @@
     <string name="access_accessibility_service_dialog_no">Закрити</string>
     <string name="access_accessibility_service_dialog_yes">Увімкнути службу доступності</string>
     <string name="access_runtime_call_state">Pocket Mode перевіряє стан дзвінка, щоб не вимикати екран під час виклику. Тапніть, щоб надати права доступу</string>
+    <string name="access_runtime_notifications">Pocket Mode needs notification permission so its foreground-service and recovery notifications can be shown. Tap to grant notification privileges</string>
     <string name="access_overlays">Pocket Mode використовує оверлей по верх додатків, щоб сповістити про спрацювання датчика наближення.</string>
     <string name="how_it_works">Pocket Mode відстежує датчик наближення %d мс. після увімення екрану. Якщо датчик накритий %d мс. додаток знову вимикає екран.</string>
     <string name="troubleshoot">Усунення проблем</string>

@@ -18,6 +18,7 @@
     <string name="access_accessibility_service_dialog_no">Sluiten</string>
     <string name="access_accessibility_service_dialog_yes">Toegankelijkheidsservice inschakelen</string>
     <string name="access_runtime_call_state">Pocket Mode gebruikt de belstatus om het scherm niet uit te schakelen wanneer er een oproep actief is. Tik om toegang te verlenen tot de belstatus</string>
+    <string name="access_runtime_notifications">Pocket Mode needs notification permission so its foreground-service and recovery notifications can be shown. Tap to grant notification privileges</string>
     <string name="access_overlays">Pocket Mode kan overlay over andere apps tekenen om de gebruiker te laten zien dat de afstandssensor bedekt is.</string>
     <string name="how_it_works">Pocket mode controleert de afstandssensor voor %d ms nadat het scherm is ingeschakeld. Indien in deze tijd de afstandssensor ten minste %d ms bedekt is zal de app het scherm weer uitschakelen.</string>
     <string name="troubleshoot">Problemen oplossen</string>
