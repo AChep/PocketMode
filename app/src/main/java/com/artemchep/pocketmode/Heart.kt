@@ -8,7 +8,6 @@ import android.os.Bundle
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ProcessLifecycleOwner
 import androidx.work.*
-import com.artemchep.config.Config
 import com.artemchep.pocketmode.analytics.Analytics
 import com.artemchep.pocketmode.analytics.AnalyticsHolder
 import com.artemchep.pocketmode.analytics.AnalyticsStub

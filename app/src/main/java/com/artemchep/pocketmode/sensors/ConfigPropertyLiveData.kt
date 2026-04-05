@@ -1,8 +1,8 @@
 package com.artemchep.pocketmode.sensors
 
 import androidx.lifecycle.LiveData
-import com.artemchep.config.Config
 import com.artemchep.pocketmode.Cfg
+import com.artemchep.pocketmode.Config
 
 /**
  * @author Artem Chepurnoy

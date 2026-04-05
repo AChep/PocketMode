@@ -70,4 +70,21 @@
         app:layout_constraintTop_toBottomOf="@id/accessibilityServiceBtn"
         app:layout_goneMarginTop="16dp" />
 
+    <TextView
+        android:id="@+id/notificationBtn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="?selectableItemBackground"
+        android:drawablePadding="16dp"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:text="@string/access_runtime_notifications"
+        android:textAppearance="?textAppearanceBodyLarge"
+        app:drawableStartCompat="@drawable/ic_outline_info"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/callStateBtn"
+        app:layout_goneMarginTop="16dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

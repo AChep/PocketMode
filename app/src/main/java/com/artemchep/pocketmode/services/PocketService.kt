@@ -14,8 +14,8 @@ import androidx.lifecycle.Observer
 import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
-import com.artemchep.config.Config
 import com.artemchep.pocketmode.Cfg
+import com.artemchep.pocketmode.Config
 import com.artemchep.pocketmode.R
 import com.artemchep.pocketmode.ext.heart
 import com.artemchep.pocketmode.ext.vibrateOneShot

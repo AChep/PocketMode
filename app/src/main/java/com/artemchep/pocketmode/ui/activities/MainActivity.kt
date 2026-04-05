@@ -230,6 +230,7 @@ class MainActivity : BaseActivity(),
         viewBinding.masterSwitchText.setOnClickListener(this)
         viewBinding.accessStub.accessibilityServiceBtn.setOnClickListener(this)
         viewBinding.accessStub.callStateBtn.setOnClickListener(this)
+        viewBinding.accessStub.notificationBtn.setOnClickListener(this)
         viewBinding.mainStub.codeBtn.setOnClickListener(this)
         viewBinding.mainStub.donateBtn.setOnClickListener(this)
         viewBinding.mainStub.translateBtn.setOnClickListener(this)
@@ -332,6 +333,9 @@ class MainActivity : BaseActivity(),
         })
         isReadPhoneCallGranted.observe(this@MainActivity, Observer {
             viewBinding.accessStub.callStateBtn.isGone = it
+        })
+        isNotificationGranted.observe(this@MainActivity, Observer {
+            viewBinding.accessStub.notificationBtn.isGone = it
         })
         isAllGranted.observe(this@MainActivity, Observer {
             viewBinding.accessContainer.isGone = it
@@ -470,6 +474,7 @@ class MainActivity : BaseActivity(),
                 }
                 .show()
             R.id.callStateBtn -> mainViewModel.grantCallState()
+            R.id.notificationBtn -> mainViewModel.grantNotifications()
         }
     }
 

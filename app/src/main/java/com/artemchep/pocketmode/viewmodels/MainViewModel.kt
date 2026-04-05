@@ -2,6 +2,7 @@ package com.artemchep.pocketmode.viewmodels
 
 import android.Manifest
 import android.app.Application
+import android.os.Build
 import android.provider.Settings
 import androidx.lifecycle.*
 import com.artemchep.pocketmode.*
@@ -52,14 +53,25 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     val isAccessibilityGranted = AccessAccessibilityLiveData(context)
 
-    private val readPhoneCallStatePermissions = listOf(Manifest.permission.READ_PHONE_STATE)
-
     val isReadPhoneCallGranted = MediatorLiveData<Boolean>()
         .apply {
-            val src = AccessRuntimeLiveData(context, readPhoneCallStatePermissions)
+            val src = AccessRuntimeLiveData(context, READ_PHONE_STATE_PERMISSIONS)
             addSource(src) {
                 val isGranted = it.isEmpty()
                 postValue(isGranted)
+            }
+        }
+
+    val isNotificationGranted = MediatorLiveData<Boolean>()
+        .apply {
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
+                value = true
+            } else {
+                val src = AccessRuntimeLiveData(context, NOTIFICATION_PERMISSIONS)
+                addSource(src) {
+                    val isGranted = it.isEmpty()
+                    postValue(isGranted)
+                }
             }
         }
 
@@ -79,12 +91,15 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             val resolver: (Any) -> Unit = {
                 val isAccessibilityGranted = isAccessibilityGranted.value ?: false
                 val isReadPhoneCallGranted = isReadPhoneCallGranted.value ?: false
-                val isAllGranted = isAccessibilityGranted && isReadPhoneCallGranted
+                val isNotificationGranted = isNotificationGranted.value ?: false
+                val isAllGranted =
+                    isAccessibilityGranted && isReadPhoneCallGranted && isNotificationGranted
                 postValue(isAllGranted)
             }
 
             addSource(isAccessibilityGranted, resolver)
             addSource(isReadPhoneCallGranted, resolver)
+            addSource(isNotificationGranted, resolver)
         }
 
     // ---- Out ----
@@ -260,7 +275,16 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun grantCallState() {
-        val event = Event(OpenRuntimePermissionsEvent(readPhoneCallStatePermissions))
+        val event = Event(OpenRuntimePermissionsEvent(READ_PHONE_STATE_PERMISSIONS))
+        openRuntimePermissionLiveData.postValue(event)
+    }
+
+    fun grantNotifications() {
+        if (NOTIFICATION_PERMISSIONS.isEmpty()) {
+            return
+        }
+
+        val event = Event(OpenRuntimePermissionsEvent(NOTIFICATION_PERMISSIONS))
         openRuntimePermissionLiveData.postValue(event)
     }
 
