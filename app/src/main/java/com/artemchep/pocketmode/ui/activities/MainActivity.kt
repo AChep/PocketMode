@@ -382,7 +382,7 @@ class MainActivity : BaseActivity(),
                     .apply {
                         data = "package:$packageName".toUri()
                     }
-                startActivityForResult(intent, RC_ACCESSIBILITY)
+                startActivityForResult(intent, RC_OVERLAYS)
             }
 
             onShow { dialog ->
