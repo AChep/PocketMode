@@ -50,11 +50,12 @@ class PocketService : Service(), CoroutineScope {
 
     private val windowManager by lazy { getSystemService<WindowManager>() }
 
-    private val windowOverlayWidget by lazy {
+    private val windowOverlayWidgetDelegate = lazy {
         // Create a view overlay that is going to be shown
         // when the proximity sensor is covered.
         OverlayWidget(this)
     }
+    private val windowOverlayWidget by windowOverlayWidgetDelegate
 
     private var overlayExitJob: Job? = null
 
@@ -194,6 +195,14 @@ class PocketService : Service(), CoroutineScope {
         job.cancel()
         overlayExitJob?.cancel()
         running = false
+
+        // Just in case, make sure that the overlay is removed.
+        if (windowOverlayWidgetDelegate.isInitialized()) {
+            try {
+                windowManager?.removeViewImmediate(windowOverlayWidget)
+            } catch (_: Exception) {
+            }
+        }
     }
 
     override fun onBind(intent: Intent?): IBinder? = null
