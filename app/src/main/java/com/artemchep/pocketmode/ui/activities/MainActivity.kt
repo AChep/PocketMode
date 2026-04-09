@@ -95,18 +95,6 @@ class MainActivity : BaseActivity(),
         viewBinding.mainStub.lockScreenDelaySeekBar.setLabelFormatter { value: Float ->
             getStringOrEmpty(R.string.ms, value.times(DD).roundToInt())
         }
-        viewBinding.mainStub.lockScreenDelaySeekBar.addOnSliderTouchListener(
-            object : OnSliderTouchListener {
-                override fun onStartTrackingTouch(slider: Slider) {
-                    // Do nothing.
-                }
-
-                override fun onStopTrackingTouch(slider: Slider) {
-                    val delay = viewBinding.mainStub.lockScreenDelaySeekBar.value * DD
-                    mainViewModel.setLockScreenDelay(delay.toLong())
-                }
-            },
-        )
 
         viewBinding.mainStub.lockScreenDelayMin.text =
             getStringOrEmpty(R.string.ms, viewBinding.mainStub.lockScreenDelaySeekBar.valueFrom.times(DD).roundToInt())
