@@ -18,6 +18,7 @@
     <string name="access_accessibility_service_dialog_no">Sulje</string>
     <string name="access_accessibility_service_dialog_yes">Ota esteettömyyspalvelu käyttöön</string>
     <string name="access_runtime_call_state">Pocket Mode lukee puhelun tilan pitääkseen näytön päällä puhelun aikana. Napauta myöntääksesi puhelun tilan oikeudet</string>
+    <string name="access_runtime_notifications">Pocket Mode needs notification permission so its foreground-service and recovery notifications can be shown. Tap to grant notification privileges</string>
     <string name="access_overlays">Pocket Mode voi piirtää päällyksen käyttäjän sovellusten päälle näyttääkseen käyttäjälle, että etäisyysanturi on peitetty.</string>
     <string name="how_it_works">Taskutila valvoo etäisyysanturia %d ms. kun näyttö on kytketty päälle. Jos tällä kertaa ikkunassa etäisyysanturi on peitetty vähintään %d ms: n ajan. Sovellus sammuttaa näytön.</string>
     <string name="troubleshoot">Vianmääritys</string>

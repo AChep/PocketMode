@@ -18,6 +18,7 @@
     <string name="access_accessibility_service_dialog_no">Fermer</string>
     <string name="access_accessibility_service_dialog_yes">Activer le service d\'accessibilité</string>
     <string name="access_runtime_call_state">Le Mode Poche relève le statut de l\'appel pour ne pas éteindre l\'écran lorsqu\'un appel est en cours. Tapez pour accorder les privilèges du statut téléphonique</string>
+    <string name="access_runtime_notifications">Pocket Mode needs notification permission so its foreground-service and recovery notifications can be shown. Tap to grant notification privileges</string>
     <string name="access_overlays">Le Mode Poche peut superposer un avertissement sur les applications de l\'utilisateur pour lui montrer que le capteur de proximité est couvert.</string>
     <string name="how_it_works">Le Mode Poche surveille le capteur de proximité pendant %d ms après avoir allumé l\'écran. Si dans cette fenêtre de temps, le capteur de proximité a été couvert pendant au moins %d ms, l\'application éteint l\'écran à nouveau.</string>
     <string name="troubleshoot">Dépannage</string>

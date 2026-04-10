@@ -18,6 +18,7 @@
     <string name="access_accessibility_service_dialog_no">Kapat</string>
     <string name="access_accessibility_service_dialog_yes">Erişilebilirlik hizmetini etkinleştir</string>
     <string name="access_runtime_call_state">Cep Modu, arama etkinken ekranı kapatmamak için arama durumunu okur. Arama durumu ayrıcalıkları vermek için öğesine dokunun</string>
+    <string name="access_runtime_notifications">Pocket Mode needs notification permission so its foreground-service and recovery notifications can be shown. Tap to grant notification privileges</string>
     <string name="access_overlays">Cep Modu, kullanıcıya yakınlık sensörünün kapalı olduğunu göstermek için kullanıcı uygulamalarının üstüne kurulabilir.</string>
     <string name="how_it_works">Cep modu, yakınlık sensörünü %d ms kadar izler. Ekranı açtıktan sonra. Bu zaman penceresinde, yakınlık sensörü en az %d ms süreyle kapatılmışsa. Uygulama ekranı tekrar kapatır.</string>
     <string name="troubleshoot">Üçlü dokunma</string>

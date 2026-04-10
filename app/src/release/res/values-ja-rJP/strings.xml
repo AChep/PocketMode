@@ -18,6 +18,7 @@
     <string name="access_accessibility_service_dialog_no">閉じる</string>
     <string name="access_accessibility_service_dialog_yes">ユーザー補助機能を有効化</string>
     <string name="access_runtime_call_state">Pocket Mode は通話中に画面をオフにしないために通話状態を読み取ります。タップして通話状態の読み取り権限を付与</string>
+    <string name="access_runtime_notifications">Pocket Mode needs notification permission so its foreground-service and recovery notifications can be shown. Tap to grant notification privileges</string>
     <string name="access_overlays">Pocket Mode は近接センサーが反応していることを表示するために、ユーザーのアプリ画面上にオーバーレイを描画できます。</string>
     <string name="how_it_works">Pocket Mode は画面がオンになってから %d ミリ秒間近接センサを監視し、この間に少なくとも %d ミリ秒間近接センサが覆われた場合、画面をオフに戻します。</string>
     <string name="troubleshoot">トラブルシューティング</string>
