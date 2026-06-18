@@ -2,7 +2,7 @@
 
 buildscript {
     ext.kotlin_version = '2.3.20'
-    ext.lifecycle_version = "2.10.0"
+    ext.lifecycle_version = "2.11.0"
     repositories {
         google()
         mavenCentral()
